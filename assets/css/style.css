@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.outer-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.titel-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.upper-section,
+.lower-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
