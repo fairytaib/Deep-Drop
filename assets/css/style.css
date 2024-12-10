@@ -31,6 +31,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    font-family: var(--titel-font);
 
 }
 
@@ -42,6 +43,14 @@ body {
     border: 1px solid black;
     width: 90%;
     height: 60%;
+}
+
+.event-display,
+.display-box,
+#player-name-input,
+.upper-section,
+button {
+    font-family: var(--text-font);
 }
 
 .button-box {
