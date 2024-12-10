@@ -20,21 +20,31 @@
     <section>
         <div class="outer-box">
             <div class="titel-box">
-                <p class="main-titel">Titel</p>
-                <i class='bx bx-info-circle'></i>
+                <p class="main-titel">Deep Drop</p>
+                <i class='bx bx-info-circle' id="information-icon"></i>
             </div>
 
             <div class="display-box">
                 <p>Test text</p>
+                <div class="display hidden" id="player-stat-window"></div>
+                <div class="display hidden" id="player-skill-window"></div>
+                <div class="display hidden" id="player-fighting-style-window"></div>
+                <div class="display hidden" id="player-inventory-window"></div>
             </div>
+
             <div class="button-box">
+                <input type="text" placeholder="Enter your player name" id="player-name-input">
+                <button id="start-button"> Start the Game</button>
+                <button class="hidden" id="reward-button-one">Choose left</button>
+                <button class="hidden" id="reward-button-two">Choose right</button>
+                <button class="hidden" id="reward-button-three">Choose right</button>
                 <div class="upper-section">
-                    <p>Button 1</p>
-                    <p>Button 2</p>
+                    <button class="hidden" id="player-stat-button">Button 1</button>
+                    <button class="hidden" id="player-skill-button">Button 2</button>
                 </div>
                 <div class="lower-section">
-                    <p>Button 3</p>
-                    <p>Button 4</p>
+                    <button class="hidden" id="player-fighting-style-button">Button 3</button>
+                    <button class="hidden" id="player-inventory-button"> Button 4</button>
                 </div>
 
             </div>

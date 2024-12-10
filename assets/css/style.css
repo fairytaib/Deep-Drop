@@ -27,23 +27,39 @@ body {
 
 }
 
+
 .display-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid black;
-    width: 80%;
+    width: 90%;
     height: 60%;
 }
 
 .button-box {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: 1px solid black;
-    width: 80%;
+    width: 90%;
     height: 25%;
+
+}
+
+#player-name-input,
+#start-button {
+    margin: 2px;
 }
 
 .upper-section,
 .lower-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+}
+
+.hidden {
+    display: none;
 }
