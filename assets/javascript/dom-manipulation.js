@@ -24,6 +24,12 @@ const playerInventoryButton = document.getElementById("player-inventory-button")
 let playerName = ""
 
 
+//Restart Button
+function resetGame() {
+    //open window "Are you sure? You will lose all your progress"
+    //if button click = yes restart
+    //if button click = no just close the window again
+}
 
 // Input validation
 function validateInput() {
