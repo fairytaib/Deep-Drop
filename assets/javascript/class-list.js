@@ -31,3 +31,23 @@ let harpie = new Character(25, 25, 1, 25, 1)
 let troll = new Character(25, 25, 1, 25, 1)
 let fireElemental = new Character(25, 25, 1, 25, 1)
 let boss = new Character(25, 25, 1, 25, 1)
+
+// Basis Reward Class for Items and Skills
+class Reward {
+    constructor(name, description, rarity) {
+        this.name = name
+        this.description = description
+        this.rarity = rarity
+    }
+}
+
+// Item Class
+class Item extends Reward {
+    constructor(name, description, rarity, type, level) {
+        super(name, description, rarity);
+        this.type = type
+        this.level = level;
+    }
+}
+
+let
