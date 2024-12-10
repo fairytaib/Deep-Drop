@@ -25,9 +25,10 @@ let playerName = ""
 
 // Input validation
 function validateInput() {
+    const buttonBox = document.getElementById("button-box")
+    const inputTitle = document.getElementById("input-title")
     const startButton = document.getElementById("start-button")
     const playerNameInput = document.getElementById("player-name-input")
-    const inputTitle = document.getElementById("input-title")
     const pattern = /^[a-zA-Z0-9]+$/;
 
     if (playerNameInput.value.length <= 2) {
@@ -40,6 +41,8 @@ function validateInput() {
         // Update player name
         playerName = playerNameInput.value
         // Change windows
+        buttonBox.classList.toggle("button-box-flex-row")
+        buttonBox.classList.toggle("button-box-flex-column")
         // Hide Elements
         startButton.classList.toggle("hidden")
         playerNameInput.classList.toggle("hidden")

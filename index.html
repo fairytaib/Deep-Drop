@@ -32,15 +32,17 @@
                 <div class="event-display hidden" id="player-inventory-window"></div>
             </div>
 
-            <div class="button-box">
+            <div class="button-box-flex-column" id="button-box">
                 <!-- Start-Section -->
+
                 <h2 id="input-title">Enter your characters name</h2>
                 <input type="text" placeholder="Enter your player name" id="player-name-input" name="player-name-input"
                     minlength="1" maxlength="13" required>
                 <button type="submit" id="start-button" onclick="validateInput()"> Start the Game</button>
+
                 <!-- Reward Buttons -->
                 <button class="hidden" id="reward-button-one">Choose left</button>
-                <button class="hidden" id="reward-button-two">Choose right</button>
+                <button class="hidden" id="reward-button-two">Choose middle</button>
                 <button class="hidden" id="reward-button-three">Choose right</button>
                 <!-- Setting Buttons -->
                 <div class="upper-section">

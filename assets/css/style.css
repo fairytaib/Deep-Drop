@@ -54,11 +54,23 @@ button {
     font-family: var(--text-font);
 }
 
-.button-box {
+.button-box-flex-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid black;
+    width: 90%;
+    height: 25%;
+
+}
+
+.button-box-flex-column {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 0.5rem;
     border: 1px solid black;
     width: 90%;
     height: 25%;
