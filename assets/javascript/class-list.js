@@ -50,4 +50,4 @@ class Item extends Reward {
     }
 }
 
-let
+let rustyShortsword
