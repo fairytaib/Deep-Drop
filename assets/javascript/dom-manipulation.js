@@ -8,6 +8,7 @@ const playerSkillWindow = document.getElementById("player-skill-window")
 const playerFightingStyleWindow = document.getElementById("player-fighting-style-window")
 const playerInventoryWindow = document.getElementById("player-inventory-window")
 
+
 // Reward Button Display
 const rewardOne = document.getElementById("reward-button-one")
 const rewardTwo = document.getElementById("reward-button-two")
@@ -24,17 +25,21 @@ let playerName = ""
 
 // Input validation
 function validateInput() {
-    const input = document.getElementById("player-name-input").value
+    const startButton = document.getElementById("start-button")
+    const playerNameInput = document.getElementById("player-name-input").value
     const pattern = /^[a-zA-Z0-9]+$/;
 
-    if (input.length <= 2) {
+    if (playerNameInput.length <= 2) {
         alert("To short")
-    } else if (!pattern.test(input)) {
+    } else if (!pattern.test(playerNameInput)) {
         alert("Wrong")
-    } else if (input.length > 20) {
+    } else if (playerNameInput.length >= 20) {
         alert("To long")
     } else {
-        playerName = input
+        alert("yo")
+        // Update player name
+        playerName = playerNameInput.value
         // Change windows
+
     }
 }
