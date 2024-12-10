@@ -23,12 +23,19 @@ const playerInventoryButton = document.getElementById("player-inventory-button")
 // Player Name Variable
 let playerName = ""
 
+
+
 // Input validation
 function validateInput() {
-    const buttonBox = document.getElementById("button-box")
+    //Display Box Items
+    const displayBox = document.getElementById("display-box-section")
+    const displayBoxItems = document.getElementsByClassName("display-box-item")
+    //Button Box Items
+    const buttonBox = document.getElementById("button-box-section")
     const inputTitle = document.getElementById("input-title")
     const startButton = document.getElementById("start-button")
     const playerNameInput = document.getElementById("player-name-input")
+    //allowed input
     const pattern = /^[a-zA-Z0-9]+$/;
 
     if (playerNameInput.value.length <= 2) {
@@ -40,17 +47,23 @@ function validateInput() {
     } else {
         // Update player name
         playerName = playerNameInput.value
-        // Change windows
+        // Change flex-Design
         buttonBox.classList.toggle("button-box-flex-row")
         buttonBox.classList.toggle("button-box-flex-column")
+        displayBox.classList.toggle("display-box-flex-column")
+        displayBox.classList.toggle("display-box-flex-row")
         // Hide Elements
         startButton.classList.toggle("hidden")
         playerNameInput.classList.toggle("hidden")
         inputTitle.classList.toggle("hidden")
+        //toggle display-Box-items
+        for (let item = 0; item < displayBoxItems.length; item++) {
+            displayBoxItems[item].classList.toggle("hidden")
+        }
         // Show elements - Fix Flex direction for proper display
-        rewardOne.classList.remove("hidden")
-        rewardTwo.classList.remove("hidden")
-        rewardThree.classList.remove("hidden")
+        rewardOne.classList.toggle("hidden")
+        rewardTwo.classList.toggle("hidden")
+        rewardThree.classList.toggle("hidden")
         // Fix Flex direction for proper display
     }
 }

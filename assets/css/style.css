@@ -29,14 +29,25 @@ body {
 
 .titel-box {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    width: 90%;
     font-family: var(--titel-font);
 
 }
 
 
-.display-box {
+.display-box-flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 90%;
+    height: 60%;
+}
+
+.display-box-flex-row {
     display: flex;
     justify-content: center;
     align-items: center;
