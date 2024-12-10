@@ -26,20 +26,27 @@ let playerName = ""
 // Input validation
 function validateInput() {
     const startButton = document.getElementById("start-button")
-    const playerNameInput = document.getElementById("player-name-input").value
+    const playerNameInput = document.getElementById("player-name-input")
+    const inputTitle = document.getElementById("input-title")
     const pattern = /^[a-zA-Z0-9]+$/;
 
-    if (playerNameInput.length <= 2) {
+    if (playerNameInput.value.length <= 2) {
         alert("To short")
-    } else if (!pattern.test(playerNameInput)) {
+    } else if (!pattern.test(playerNameInput.value)) {
         alert("Wrong")
-    } else if (playerNameInput.length >= 20) {
+    } else if (playerNameInput.value.length >= 20) {
         alert("To long")
     } else {
-        alert("yo")
         // Update player name
         playerName = playerNameInput.value
         // Change windows
-
+        // Hide Elements
+        startButton.classList.toggle("hidden")
+        playerNameInput.classList.toggle("hidden")
+        inputTitle.classList.toggle("hidden")
+        // Show elements
+        rewardOne.classList.remove("hidden")
+        rewardTwo.classList.remove("hidden")
+        rewardThree.classList.remove("hidden")
     }
 }
