@@ -44,9 +44,10 @@ function validateInput() {
         startButton.classList.toggle("hidden")
         playerNameInput.classList.toggle("hidden")
         inputTitle.classList.toggle("hidden")
-        // Show elements
+        // Show elements - Fix Flex direction for proper display
         rewardOne.classList.remove("hidden")
         rewardTwo.classList.remove("hidden")
         rewardThree.classList.remove("hidden")
+        // Fix Flex direction for proper display
     }
 }
