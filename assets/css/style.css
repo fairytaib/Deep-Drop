@@ -48,6 +48,7 @@ body {
 .event-display,
 .display-box,
 #player-name-input,
+.button-box,
 .upper-section,
 button {
     font-family: var(--text-font);
