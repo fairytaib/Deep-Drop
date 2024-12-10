@@ -1,23 +1,23 @@
 // title
-titleDisplay = document.getElementById("title-display")
-roundCounterDisplay = document.getElementById("round-counter-display")
+const titleDisplay = document.getElementById("title-display")
+const roundCounterDisplay = document.getElementById("round-counter-display")
 
 // Event Display
-playerStatWindow = document.getElementById("player-stat-window")
-playerSkillWindow = document.getElementById("player-skill-window")
-playerFightingStyleWindow = document.getElementById("player-fighting-style-window")
-playerInventoryWindow = document.getElementById("player-inventory-window")
+const playerStatWindow = document.getElementById("player-stat-window")
+const playerSkillWindow = document.getElementById("player-skill-window")
+const playerFightingStyleWindow = document.getElementById("player-fighting-style-window")
+const playerInventoryWindow = document.getElementById("player-inventory-window")
 
 // Reward Button Display
-rewardOne = document.getElementById("reward-button-one")
-rewardTwo = document.getElementById("reward-button-two")
-rewardThree = document.getElementById("reward-button-three")
+const rewardOne = document.getElementById("reward-button-one")
+const rewardTwo = document.getElementById("reward-button-two")
+const rewardThree = document.getElementById("reward-button-three")
 
 // Menu Button
-playerStatButton = document.getElementById("player-stat-button")
-playerSkillButton = document.getElementById("player-skill-button")
-playerFightingStyleButton = document.getElementById("player-fighting-style-button")
-playerInventoryButton = document.getElementById("player-inventory-button")
+const playerStatButton = document.getElementById("player-stat-button")
+const playerSkillButton = document.getElementById("player-skill-button")
+const playerFightingStyleButton = document.getElementById("player-fighting-style-button")
+const playerInventoryButton = document.getElementById("player-inventory-button")
 
 // Player Name Variable
 let playerName = ""
