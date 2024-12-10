@@ -49,19 +49,24 @@ class Reward {
         this.name = name
         this.description = description
         this.rarity = rarity
-        this.effect
+        this.effect = effect
     }
 }
 
 // Item Class
 class Item extends Reward {
-    constructor(name, description, rarity, type, level) {
+    constructor(name, description, rarity, effect, type, level) {
         super(name, description, rarity, effect);
         this.type = type
         this.level = level;
     }
 }
-
+class Skill extends Reward {
+    constructor(name, description, rarity, effect) {
+        super(name, description, rarity, effect)
+    }
+}
+//Numbers are just examples
 // Weapons
 let rustyShortSword = new Item("Rusty Short Sword", "An old, rusted sword with a dull blade.", "common", (player) => player.damage += 1, "weapon", 1);
 
