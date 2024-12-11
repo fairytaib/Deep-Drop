@@ -33,23 +33,31 @@ const playerInventoryButton = document.getElementById("player-inventory-button")
 let playerName = ""
 
 function confirmUserChoiceWindow() {
-    //Create the window to confirm User Choice
-    const confirmWindow = document.createElement("div")
-    //Design the window
-    confirmWindow.style.width = "80%";
-    confirmWindow.style.height = "40%"
-    confirmWindow.style.border = "1px solid black"
-    confirmWindow.style.backgroundColor = "rgba(0, 0, 0, 0.4)"
-    confirmWindow.style.textAlign = "center";
-    confirmWindow.style.position = "relative";
-    confirmWindow.style.top = "50%";
-    confirmWindow.style.left = "50%";
-    confirmWindow.style.transform = "translate(-50%, -50%)";
-    //Show text
-    confirmWindow.textContent = "Are you sure you want to proceed?"
-    //Insert Div into display-box
-    displayBox.appendChild(confirmWindow)
+    // Create and window and class connection
+    const confirmWindow = document.createElement("div");
+    confirmWindow.classList.add("confirm-window");
+
+    // Insert text
+    confirmWindow.textContent = "Are you sure you want to proceed?";
+
+    // Yes-No Buttons
+    const yesButton = document.createElement("button");
+    yesButton.textContent = "Yes";
+    yesButton.style.width = "60%"
+    yesButton.onclick = () => confirmWindow.remove();
+
+    const noButton = document.createElement("button");
+    noButton.textContent = "No";
+    noButton.style.width = "60%"
+    noButton.onclick = () => confirmWindow.remove();
+
+    confirmWindow.appendChild(yesButton);
+    confirmWindow.appendChild(noButton);
+
+    // push the window into Display
+    displayBox.appendChild(confirmWindow);
 }
+
 
 //Restart Button
 function resetGame() {
