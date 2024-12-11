@@ -6,36 +6,45 @@ const roundCounterDisplay = document.getElementById("round-counter-display")
 
 //Display Box Items
 const displayBox = document.getElementById("display-box-section")
-const displayBoxStartItems = document.getElementsByClassName("display-box-item")
 
 //Button Box Items
 const buttonBox = document.getElementById("button-box-section")
-const inputTitle = document.getElementById("input-title")
-const startButton = document.getElementById("start-button")
-const playerNameInput = document.getElementById("player-name-input")
-
-// Menu Button
-const playerStatButton = document.getElementById("player-stat-button")
-const playerSkillButton = document.getElementById("player-skill-button")
-const playerFightingStyleButton = document.getElementById("player-fighting-style-button")
-const playerInventoryButton = document.getElementById("player-inventory-button")
 
 //DOM ELEMENTS END
-
-
 //VARIABLES START
 
 // Player Name Variable
+const playerNameInput = document.getElementById("player-name-input")
 let playerName = ""
 
 //VARIABLES END
 
 //FUNCTIONS START
-//Restart Button Functions
-function resetGame() {
-    displayUserChoiceConfirmation()
+//Prewritten functions
+//Toggle Flexbox
+function toggleFlexbox() {
+    // Change flex-Design
+    buttonBox.classList.toggle("button-box-flex-row")
+    buttonBox.classList.toggle("button-box-flex-column")
+    displayBox.classList.toggle("display-box-flex-column")
+    displayBox.classList.toggle("display-box-flex-row")
+}
+// Activate "Hide"-Class
+function hideStartItems() {
+    const startItems = document.getElementsByClassName("start-item")
+    //toggle display-Box-items
+    for (let item = 0; item < startItems.length; item++) {
+        startItems[item].classList.toggle("hidden")
+    }
 }
 
+function hideRewardItems() {
+    const rewardItems = document.getElementsByClassName("reward-item")
+    for (let item = 0; item < rewardItems.length; item++) {
+        rewardItems[item].classList.toggle("hidden")
+    }
+}
+//Restart Button Function
 function displayUserChoiceConfirmation() {
     // Create and window and class connection
     const confirmWindow = document.createElement("div");
@@ -61,8 +70,7 @@ function displayUserChoiceConfirmation() {
     // push the window into Display
     displayBox.appendChild(confirmWindow);
 }
-
-// Reward Choice buttons
+// Reward Choice buttons and Reward Options
 function displayRewardButtons() {
     const rewardOneButton = document.createElement("button")
     const rewardTwoButton = document.createElement("button")
@@ -73,51 +81,68 @@ function displayRewardButtons() {
     rewardThreeButton.textContent = "Right"
 
     //Add Classes to Buttons
-    rewardOneButton.classList.add("reward-button")
-    rewardTwoButton.classList.add("reward-button")
-    rewardThreeButton.classList.add("reward-button")
+    rewardOneButton.classList.add("reward-button", "reward-item")
+    rewardTwoButton.classList.add("reward-button", "reward-item")
+    rewardThreeButton.classList.add("reward-button", "reward-item")
 
     //Insert into Button-box
     buttonBox.appendChild(rewardOneButton)
     buttonBox.appendChild(rewardTwoButton)
     buttonBox.appendChild(rewardThreeButton)
 }
-//Reward Options
-function displayRewardOptions(rewardOne, rewardTwo, rewardThree) {
+
+function displayRewardOptions(rewardOneOption, rewardTwoOption, rewardThreeOption) {
     const rewardOneDisplay = document.createElement("div")
     const rewardTwoDisplay = document.createElement("div")
     const rewardThreeDisplay = document.createElement("div")
     //Add class
-    rewardOneDisplay.classList.add("reward-display-option")
-    rewardTwoDisplay.classList.add("reward-display-option")
-    rewardThreeDisplay.classList.add("reward-display-option")
+    rewardOneDisplay.classList.add("reward-display-option", "reward-item")
+    rewardTwoDisplay.classList.add("reward-display-option", "reward-item")
+    rewardThreeDisplay.classList.add("reward-display-option", "reward-item")
 
     //Insert Items into display
     displayBox.appendChild(rewardOneDisplay)
     displayBox.appendChild(rewardTwoDisplay)
     displayBox.appendChild(rewardThreeDisplay)
 
+    //UNFINISHED BECAUSE WE HAVE TO TAKE THE ARGUMENTS AND THEN DISPLAY IT
+}
+//Player "Menu"
+function displayPlayerMenuButtons() {
+    const playerStatButton = document.createElement("button")
+    const playerSkillButton = document.createElement("button")
+    const playerPatternButton = document.createElement("button")
+    const playerItemButton = document.createElement("button")
+
+    playerStatButton.classList.add("reward-button")
+    playerSkillButton.classList.add("reward-button")
+    playerPatternButton.classList.add("reward-button")
+    playerItemButton.classList.add("reward-button")
+
+    playerStatButton.innerText = "Attributes"
+    playerSkillButton.innerText = "Skills"
+    playerPatternButton.innerText = "Attack Patterns"
+    playerItemButton.innerText = "Items"
+
+    buttonBox.appendChild(playerStatButton)
+    buttonBox.appendChild(playerSkillButtonn)
+    buttonBox.appendChild(playerPatternButton)
+    buttonBox.appendChild(playerItemButton)
 }
 
 
 //Move from start screen to character selection
 function removeStartScreen() {
-    // Change flex-Design
-    buttonBox.classList.toggle("button-box-flex-row")
-    buttonBox.classList.toggle("button-box-flex-column")
-    displayBox.classList.toggle("display-box-flex-column")
-    displayBox.classList.toggle("display-box-flex-row")
-    // Hide Elements
-    startButton.classList.toggle("hidden")
-    playerNameInput.classList.toggle("hidden")
-    inputTitle.classList.toggle("hidden")
-    //toggle display-Box-items
-    for (let item = 0; item < displayBoxStartItems.length; item++) {
-        displayBoxStartItems[item].classList.toggle("hidden")
-    }
+    toggleFlexbox()
+    hideStartItems()
 }
 
-
+//Dom Active Functions / Onclick
+//Reset Game
+function resetGame() {
+    displayUserChoiceConfirmation()
+    //Unfinished
+}
 // Input validation
 function validateInput() {
     //allowed input
@@ -136,6 +161,12 @@ function validateInput() {
         displayRewardButtons()
         displayRewardOptions()
     }
+}
+//Choose Reward
+function chooseReward() {
+    //Logic so that the Reward choosen gets saved
+    displayPlayerMenuButtons()
+
 }
 
 //FUNCTIONS SECTION END
