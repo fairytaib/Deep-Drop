@@ -178,6 +178,33 @@ function displayPlayerMenuButtons() {
     buttonBox.appendChild(playerItemButton)
 }
 
+function displayPlayerAttributes() {
+    const playerAttributesDisplay = document.createElement("div")
+
+    playerAttributesDisplay.classList.add("player-menu-item")
+
+}
+
+function displayPlayerSkills() {
+    const playerSkillsDisplay = document.createElement("div")
+
+    playerSkillsDisplay.classList.add("player-menu-item")
+
+}
+
+function displayPlayerAttackPatterns() {
+    const playerAttackPatternsDisplay = document.createElement("div")
+
+    playerAttackPatternsDisplay.classList.add("player-menu-item")
+
+}
+
+function displayPlayerItems() {
+    const playerItemsDisplay = document.createElement("div")
+
+    playerItemsDisplay.classList.add("player-menu-item")
+
+}
 
 
 
