@@ -1,13 +1,22 @@
-// title
+// title display
 const titleDisplay = document.getElementById("title-display")
 const roundCounterDisplay = document.getElementById("round-counter-display")
 
-// Event Display
+// Event Display Box
 const playerStatWindow = document.getElementById("player-stat-window")
 const playerSkillWindow = document.getElementById("player-skill-window")
 const playerFightingStyleWindow = document.getElementById("player-fighting-style-window")
 const playerInventoryWindow = document.getElementById("player-inventory-window")
 
+//Display Box Items
+const displayBox = document.getElementById("display-box-section")
+const displayBoxItems = document.getElementsByClassName("display-box-item")
+
+//Button Box Items
+const buttonBox = document.getElementById("button-box-section")
+const inputTitle = document.getElementById("input-title")
+const startButton = document.getElementById("start-button")
+const playerNameInput = document.getElementById("player-name-input")
 
 // Reward Button Display
 const rewardOne = document.getElementById("reward-button-one")
@@ -23,6 +32,24 @@ const playerInventoryButton = document.getElementById("player-inventory-button")
 // Player Name Variable
 let playerName = ""
 
+function confirmUserChoiceWindow() {
+    //Create the window to confirm User Choice
+    const confirmWindow = document.createElement("div")
+    //Design the window
+    confirmWindow.style.width = "80%";
+    confirmWindow.style.height = "40%"
+    confirmWindow.style.border = "1px solid black"
+    confirmWindow.style.backgroundColor = "rgba(0, 0, 0, 0.4)"
+    confirmWindow.style.textAlign = "center";
+    confirmWindow.style.position = "relative";
+    confirmWindow.style.top = "50%";
+    confirmWindow.style.left = "50%";
+    confirmWindow.style.transform = "translate(-50%, -50%)";
+    //Show text
+    confirmWindow.textContent = "Are you sure you want to proceed?"
+    //Insert Div into display-box
+    displayBox.appendChild(confirmWindow)
+}
 
 //Restart Button
 function resetGame() {
@@ -33,14 +60,6 @@ function resetGame() {
 
 // Input validation
 function validateInput() {
-    //Display Box Items
-    const displayBox = document.getElementById("display-box-section")
-    const displayBoxItems = document.getElementsByClassName("display-box-item")
-    //Button Box Items
-    const buttonBox = document.getElementById("button-box-section")
-    const inputTitle = document.getElementById("input-title")
-    const startButton = document.getElementById("start-button")
-    const playerNameInput = document.getElementById("player-name-input")
     //allowed input
     const pattern = /^[a-zA-Z0-9]+$/;
 
