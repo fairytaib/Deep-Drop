@@ -27,6 +27,7 @@ body {
     border: 1px solid black;
 }
 
+/* Upper Title Section */
 .titel-box {
     display: flex;
     justify-content: space-between;
@@ -36,6 +37,7 @@ body {
 
 }
 
+/* Middle Section */
 .confirm-window {
     width: 80%;
     max-width: 400px;
@@ -64,7 +66,6 @@ body {
     /* Damit das absolute Fenster relativ zu diesem Container positioniert wird */
 }
 
-
 .display-box-flex-column {
     display: flex;
     flex-direction: column;
@@ -84,15 +85,8 @@ body {
     height: 60%;
 }
 
-.event-display,
-.display-box,
-#player-name-input,
-.button-box,
-.upper-section,
-button {
-    font-family: var(--text-font);
-}
-
+/* Button Display Section */
+/* Button Box Flex direction and general styling */
 .button-box-flex-row {
     display: flex;
     justify-content: center;
@@ -116,16 +110,28 @@ button {
 
 }
 
+/* Start Items */
 #player-name-input,
 #start-button {
     margin: 2px;
 }
 
+/* player menu button section */
 .upper-section,
 .lower-section {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+/* General styling */
+.event-display,
+.display-box,
+#player-name-input,
+.button-box,
+.upper-section,
+button {
+    font-family: var(--text-font);
 }
 
 .hidden {
