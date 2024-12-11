@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=MedievalSharp&display=swap');
 
 :root {
-    --titel-font: "MedievalSharp", cursive;
+    --title-font: "MedievalSharp", cursive;
     --text-font: "IM Fell English", serif;
 }
 
@@ -29,12 +29,12 @@ body {
 }
 
 /* Upper Title Section */
-.titel-box {
+.title-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 90%;
-    font-family: var(--titel-font);
+    font-family: var(--title-font);
 
 }
 
@@ -142,6 +142,14 @@ body {
 
 
 /* General styling */
+.title-font {
+    font-family: var(--title-font);
+}
+
+.text-font {
+    font-family: var(--text-font);
+}
+
 .event-display,
 .display-box,
 #player-name-input,

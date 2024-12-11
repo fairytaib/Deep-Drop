@@ -16,36 +16,15 @@ const buttonBox = document.getElementById("button-box-section")
 // Player Name Variable
 const playerNameInput = document.getElementById("player-name-input")
 let playerName = ""
-
 //VARIABLES END
 
 //FUNCTIONS START
-//Prewritten functions
-//Toggle Flexbox
-function toggleFlexbox() {
-    // Change flex-Design
-    buttonBox.classList.toggle("button-box-flex-row")
-    buttonBox.classList.toggle("button-box-flex-column")
-    displayBox.classList.toggle("display-box-flex-column")
-    displayBox.classList.toggle("display-box-flex-row")
+//Reset Game
+function resetGame() {
+    displayUserChoiceConfirmation()
+    //Unfinished
 }
-// Activate "Hide"-Class
-function hideStartItems() {
-    const startItems = document.getElementsByClassName("start-item")
-    //toggle display-Box-items
-    for (let item = 0; item < startItems.length; item++) {
-        startItems[item].classList.toggle("hidden")
-    }
-}
-
-function hideRewardItems() {
-    const rewardItems = document.getElementsByClassName("reward-item")
-    for (let item = 0; item < rewardItems.length; item++) {
-        rewardItems[item].classList.toggle("hidden")
-    }
-}
-
-//Restart Button Function
+//Confirm User Choice after the Reset Button press
 function displayUserChoiceConfirmation() {
     // Create and window and class connection
     const confirmWindow = document.createElement("div");
@@ -70,6 +49,47 @@ function displayUserChoiceConfirmation() {
 
     // push the window into Display
     displayBox.appendChild(confirmWindow);
+}
+//Toggle Flexbox
+function toggleFlexbox() {
+    // Change flex-Design
+    buttonBox.classList.toggle("button-box-flex-row")
+    buttonBox.classList.toggle("button-box-flex-column")
+    displayBox.classList.toggle("display-box-flex-column")
+    displayBox.classList.toggle("display-box-flex-row")
+}
+// Input validation
+function validateInput() {
+    //allowed input
+    const pattern = /^[a-zA-Z0-9]+$/;
+
+    if (playerNameInput.value.length <= 2) {
+        alert("To short")
+    } else if (!pattern.test(playerNameInput.value)) {
+        alert("Wrong")
+    } else if (playerNameInput.value.length >= 20) {
+        alert("To long")
+    } else {
+        // Update player name
+        playerName = playerNameInput.value
+        removeStartScreen()
+        displayRewardButtons()
+        displayRewardOptions()
+    }
+}
+//Move from start screen to character selection
+function removeStartScreen() {
+    toggleFlexbox()
+    hideStartItems()
+}
+
+// Activate "Hide"-Class
+function hideStartItems() {
+    const startItems = document.getElementsByClassName("start-item")
+    //toggle display-Box-items
+    for (let item = 0; item < startItems.length; item++) {
+        startItems[item].classList.toggle("hidden")
+    }
 }
 // Reward Choice buttons and Reward Options
 function displayRewardOptions(rewardOneOption, rewardTwoOption, rewardThreeOption) {
@@ -99,9 +119,9 @@ function displayRewardButtons() {
     rewardThreeButton.textContent = "Right"
 
     //Add Classes to Buttons
-    rewardOneButton.classList.add("reward-button", "reward-item")
-    rewardTwoButton.classList.add("reward-button", "reward-item")
-    rewardThreeButton.classList.add("reward-button", "reward-item")
+    rewardOneButton.classList.add("reward-button", "reward-item", "text-font")
+    rewardTwoButton.classList.add("reward-button", "reward-item", "text-font")
+    rewardThreeButton.classList.add("reward-button", "reward-item", "text-font")
 
     //Add onclick function
     rewardOneButton.onclick = chooseReward
@@ -113,12 +133,27 @@ function displayRewardButtons() {
     buttonBox.appendChild(rewardTwoButton)
     buttonBox.appendChild(rewardThreeButton)
 }
+//Choose Reward
+function chooseReward() {
+    //Write Logic so that the Reward choosen gets saved
+    hideRewardItems()
+    displayPlayerMenuButtons()
+    displayFightSequenz()
+}
 
+function hideRewardItems() {
+    const rewardItems = document.getElementsByClassName("reward-item")
+    for (let item = 0; item < rewardItems.length; item++) {
+        rewardItems[item].classList.toggle("hidden")
+    }
+}
 //Fight Display and player menu
-function displayFightSequenz(monster, ) {
+function displayFightSequenz(monster) {
     const fightingSequenzDisplay = document.createElement("div")
 
-    fightingSequenzDisplay.classList.add("fight-sequenz-display")
+    fightingSequenzDisplay.classList.add("fight-sequenz-display", "text-font")
+
+    displayBox.appendChild(fightingSequenzDisplay)
 }
 
 function displayPlayerMenuButtons() {
@@ -143,42 +178,8 @@ function displayPlayerMenuButtons() {
     buttonBox.appendChild(playerItemButton)
 }
 
-//Move from start screen to character selection
-function removeStartScreen() {
-    toggleFlexbox()
-    hideStartItems()
-}
 
-//Dom Active Functions / Onclick
-//Reset Game
-function resetGame() {
-    displayUserChoiceConfirmation()
-    //Unfinished
-}
-// Input validation
-function validateInput() {
-    //allowed input
-    const pattern = /^[a-zA-Z0-9]+$/;
 
-    if (playerNameInput.value.length <= 2) {
-        alert("To short")
-    } else if (!pattern.test(playerNameInput.value)) {
-        alert("Wrong")
-    } else if (playerNameInput.value.length >= 20) {
-        alert("To long")
-    } else {
-        // Update player name
-        playerName = playerNameInput.value
-        removeStartScreen()
-        displayRewardButtons()
-        displayRewardOptions()
-    }
-}
-//Choose Reward
-function chooseReward() {
-    //Write Logic so that the Reward choosen gets saved
-    hideRewardItems()
-    displayPlayerMenuButtons()
-}
+
 
 //FUNCTIONS SECTION END
