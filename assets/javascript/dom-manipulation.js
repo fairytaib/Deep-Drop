@@ -104,9 +104,9 @@ function displayRewardButtons() {
     rewardThreeButton.classList.add("reward-button", "reward-item")
 
     //Add onclick function
-    rewardOneButton.onclick = hideRewardItems
-    rewardTwoButton.onclick = hideRewardItems
-    rewardThreeButton.onclick = hideRewardItems
+    rewardOneButton.onclick = chooseReward
+    rewardTwoButton.onclick = chooseReward
+    rewardThreeButton.onclick = chooseReward
 
     //Insert into Button-box
     buttonBox.appendChild(rewardOneButton)
@@ -114,8 +114,13 @@ function displayRewardButtons() {
     buttonBox.appendChild(rewardThreeButton)
 }
 
+//Fight Display and player menu
+function displayFightSequenz(monster, ) {
+    const fightingSequenzDisplay = document.createElement("div")
 
-//Player "Menu"
+    fightingSequenzDisplay.classList.add("fight-sequenz-display")
+}
+
 function displayPlayerMenuButtons() {
     const playerStatButton = document.createElement("button")
     const playerSkillButton = document.createElement("button")
@@ -133,11 +138,10 @@ function displayPlayerMenuButtons() {
     playerItemButton.innerText = "Items"
 
     buttonBox.appendChild(playerStatButton)
-    buttonBox.appendChild(playerSkillButtonn)
+    buttonBox.appendChild(playerSkillButton)
     buttonBox.appendChild(playerPatternButton)
     buttonBox.appendChild(playerItemButton)
 }
-
 
 //Move from start screen to character selection
 function removeStartScreen() {

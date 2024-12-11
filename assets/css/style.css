@@ -95,6 +95,13 @@ body {
 
 }
 
+/* Fighting Sequenz Display */
+.fight-sequenz-display {
+    width: 80%;
+    height: 80%;
+    border: 1px solid black;
+}
+
 /* Button Display Section */
 /* Button Box Flex direction and general styling */
 .button-box-flex-row {
