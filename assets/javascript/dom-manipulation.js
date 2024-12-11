@@ -44,6 +44,7 @@ function hideRewardItems() {
         rewardItems[item].classList.toggle("hidden")
     }
 }
+
 //Restart Button Function
 function displayUserChoiceConfirmation() {
     // Create and window and class connection
@@ -71,26 +72,6 @@ function displayUserChoiceConfirmation() {
     displayBox.appendChild(confirmWindow);
 }
 // Reward Choice buttons and Reward Options
-function displayRewardButtons() {
-    const rewardOneButton = document.createElement("button")
-    const rewardTwoButton = document.createElement("button")
-    const rewardThreeButton = document.createElement("button")
-
-    rewardOneButton.textContent = "Left"
-    rewardTwoButton.textContent = "Middle"
-    rewardThreeButton.textContent = "Right"
-
-    //Add Classes to Buttons
-    rewardOneButton.classList.add("reward-button", "reward-item")
-    rewardTwoButton.classList.add("reward-button", "reward-item")
-    rewardThreeButton.classList.add("reward-button", "reward-item")
-
-    //Insert into Button-box
-    buttonBox.appendChild(rewardOneButton)
-    buttonBox.appendChild(rewardTwoButton)
-    buttonBox.appendChild(rewardThreeButton)
-}
-
 function displayRewardOptions(rewardOneOption, rewardTwoOption, rewardThreeOption) {
     const rewardOneDisplay = document.createElement("div")
     const rewardTwoDisplay = document.createElement("div")
@@ -107,6 +88,33 @@ function displayRewardOptions(rewardOneOption, rewardTwoOption, rewardThreeOptio
 
     //UNFINISHED BECAUSE WE HAVE TO TAKE THE ARGUMENTS AND THEN DISPLAY IT
 }
+
+function displayRewardButtons() {
+    const rewardOneButton = document.createElement("button")
+    const rewardTwoButton = document.createElement("button")
+    const rewardThreeButton = document.createElement("button")
+
+    rewardOneButton.textContent = "Left"
+    rewardTwoButton.textContent = "Middle"
+    rewardThreeButton.textContent = "Right"
+
+    //Add Classes to Buttons
+    rewardOneButton.classList.add("reward-button", "reward-item")
+    rewardTwoButton.classList.add("reward-button", "reward-item")
+    rewardThreeButton.classList.add("reward-button", "reward-item")
+
+    //Add onclick function
+    rewardOneButton.onclick = hideRewardItems
+    rewardTwoButton.onclick = hideRewardItems
+    rewardThreeButton.onclick = hideRewardItems
+
+    //Insert into Button-box
+    buttonBox.appendChild(rewardOneButton)
+    buttonBox.appendChild(rewardTwoButton)
+    buttonBox.appendChild(rewardThreeButton)
+}
+
+
 //Player "Menu"
 function displayPlayerMenuButtons() {
     const playerStatButton = document.createElement("button")
@@ -164,9 +172,9 @@ function validateInput() {
 }
 //Choose Reward
 function chooseReward() {
-    //Logic so that the Reward choosen gets saved
+    //Write Logic so that the Reward choosen gets saved
+    hideRewardItems()
     displayPlayerMenuButtons()
-
 }
 
 //FUNCTIONS SECTION END
