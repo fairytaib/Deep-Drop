@@ -1,3 +1,5 @@
+//DOM ELEMENTS
+
 // title display
 const titleDisplay = document.getElementById("title-display")
 const roundCounterDisplay = document.getElementById("round-counter-display")
@@ -29,10 +31,23 @@ const playerSkillButton = document.getElementById("player-skill-button")
 const playerFightingStyleButton = document.getElementById("player-fighting-style-button")
 const playerInventoryButton = document.getElementById("player-inventory-button")
 
+//DOM ELEMENTS
+
+
+//VARIABLES
+
 // Player Name Variable
 let playerName = ""
 
-function confirmUserChoiceWindow() {
+//VARIABLES
+
+//FUNCTIONS
+//Restart Button Functions
+function resetGame() {
+    displayUserChoiceConfirmation()
+}
+
+function displayUserChoiceConfirmation() {
     // Create and window and class connection
     const confirmWindow = document.createElement("div");
     confirmWindow.classList.add("confirm-window");
@@ -59,11 +74,34 @@ function confirmUserChoiceWindow() {
 }
 
 
-//Restart Button
-function resetGame() {
-    //open window "Are you sure? You will lose all your progress"
-    //if button click = yes restart
-    //if button click = no just close the window again
+//Move from start screen to character selection
+function removeStartScreen() {
+    // Change flex-Design
+    buttonBox.classList.toggle("button-box-flex-row")
+    buttonBox.classList.toggle("button-box-flex-column")
+    displayBox.classList.toggle("display-box-flex-column")
+    displayBox.classList.toggle("display-box-flex-row")
+    // Hide Elements
+    startButton.classList.toggle("hidden")
+    playerNameInput.classList.toggle("hidden")
+    inputTitle.classList.toggle("hidden")
+    //toggle display-Box-items
+    for (let item = 0; item < displayBoxItems.length; item++) {
+        displayBoxItems[item].classList.toggle("hidden")
+    }
+    // Show elements - Fix Flex direction for proper display
+    rewardOne.classList.toggle("hidden")
+    rewardTwo.classList.toggle("hidden")
+    rewardThree.classList.toggle("hidden")
+}
+
+function displayRewardChoice(rewardOne, rewardTwo, rewardThree) {
+    //Create Elements
+    const rewardOne = document.createElement("div")
+    const rewardTwo = document.createElement("div")
+    const rewardThree = document.createElement("div")
+
+
 }
 
 // Input validation
@@ -80,23 +118,8 @@ function validateInput() {
     } else {
         // Update player name
         playerName = playerNameInput.value
-        // Change flex-Design
-        buttonBox.classList.toggle("button-box-flex-row")
-        buttonBox.classList.toggle("button-box-flex-column")
-        displayBox.classList.toggle("display-box-flex-column")
-        displayBox.classList.toggle("display-box-flex-row")
-        // Hide Elements
-        startButton.classList.toggle("hidden")
-        playerNameInput.classList.toggle("hidden")
-        inputTitle.classList.toggle("hidden")
-        //toggle display-Box-items
-        for (let item = 0; item < displayBoxItems.length; item++) {
-            displayBoxItems[item].classList.toggle("hidden")
-        }
-        // Show elements - Fix Flex direction for proper display
-        rewardOne.classList.toggle("hidden")
-        rewardTwo.classList.toggle("hidden")
-        rewardThree.classList.toggle("hidden")
-        // Fix Flex direction for proper display
+        removeStartScreen()
     }
 }
+
+//FUNCTIONS
