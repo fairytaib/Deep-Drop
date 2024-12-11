@@ -1,4 +1,4 @@
-//DOM ELEMENTS
+//DOM ELEMENTS START
 
 // title display
 const titleDisplay = document.getElementById("title-display")
@@ -20,28 +20,23 @@ const inputTitle = document.getElementById("input-title")
 const startButton = document.getElementById("start-button")
 const playerNameInput = document.getElementById("player-name-input")
 
-// Reward Button Display
-const rewardOne = document.getElementById("reward-button-one")
-const rewardTwo = document.getElementById("reward-button-two")
-const rewardThree = document.getElementById("reward-button-three")
-
 // Menu Button
 const playerStatButton = document.getElementById("player-stat-button")
 const playerSkillButton = document.getElementById("player-skill-button")
 const playerFightingStyleButton = document.getElementById("player-fighting-style-button")
 const playerInventoryButton = document.getElementById("player-inventory-button")
 
-//DOM ELEMENTS
+//DOM ELEMENTS END
 
 
-//VARIABLES
+//VARIABLES START
 
 // Player Name Variable
 let playerName = ""
 
-//VARIABLES
+//VARIABLES END
 
-//FUNCTIONS
+//FUNCTIONS START
 //Restart Button Functions
 function resetGame() {
     displayUserChoiceConfirmation()
@@ -77,7 +72,20 @@ function displayRewardButtons() {
     const rewardOneButton = document.createElement("button")
     const rewardTwoButton = document.createElement("button")
     const rewardThreeButton = document.createElement("button")
-    //UNFINSHED
+
+    rewardOneButton.textContent = "Left"
+    rewardTwoButton.textContent = "Middle"
+    rewardThreeButton.textContent = "Right"
+
+    //Add Classes to Buttons
+    rewardOneButton.classList.add("reward-button")
+    rewardTwoButton.classList.add("reward-button")
+    rewardThreeButton.classList.add("reward-button")
+
+    //Insert into Button-box
+    buttonBox.appendChild(rewardOneButton)
+    buttonBox.appendChild(rewardTwoButton)
+    buttonBox.appendChild(rewardThreeButton)
 }
 
 //Move from start screen to character selection
@@ -95,10 +103,6 @@ function removeStartScreen() {
     for (let item = 0; item < displayBoxItems.length; item++) {
         displayBoxItems[item].classList.toggle("hidden")
     }
-    // Show elements - Fix Flex direction for proper display
-    rewardOne.classList.toggle("hidden")
-    rewardTwo.classList.toggle("hidden")
-    rewardThree.classList.toggle("hidden")
 }
 
 function displayRewardChoice(rewardOne, rewardTwo, rewardThree) {
@@ -125,7 +129,8 @@ function validateInput() {
         // Update player name
         playerName = playerNameInput.value
         removeStartScreen()
+        displayRewardButtons()
     }
 }
 
-//FUNCTIONS
+//FUNCTIONS SECTION END

@@ -8,6 +8,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -116,13 +117,13 @@ body {
     margin: 2px;
 }
 
-/* player menu button section */
-.upper-section,
-.lower-section {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+/* Reward Buttons */
+.reward-button {
+    width: 4rem;
+    padding: 5px;
+    text-align: center;
 }
+
 
 /* General styling */
 .event-display,
