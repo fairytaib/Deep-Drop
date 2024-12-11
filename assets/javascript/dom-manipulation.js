@@ -72,7 +72,13 @@ function displayUserChoiceConfirmation() {
     // push the window into Display
     displayBox.appendChild(confirmWindow);
 }
-
+// Reward Choice buttons
+function displayRewardButtons() {
+    const rewardOneButton = document.createElement("button")
+    const rewardTwoButton = document.createElement("button")
+    const rewardThreeButton = document.createElement("button")
+    //UNFINSHED
+}
 
 //Move from start screen to character selection
 function removeStartScreen() {
@@ -97,10 +103,10 @@ function removeStartScreen() {
 
 function displayRewardChoice(rewardOne, rewardTwo, rewardThree) {
     //Create Elements
-    const rewardOne = document.createElement("div")
-    const rewardTwo = document.createElement("div")
-    const rewardThree = document.createElement("div")
-
+    const rewardOneDisplay = document.createElement("div")
+    const rewardTwoDisplay = document.createElement("div")
+    const rewardThreeDisplay = document.createElement("div")
+    //UNFINISHED
 
 }
 
