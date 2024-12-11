@@ -84,6 +84,15 @@ body {
     border: 1px solid black;
     width: 90%;
     height: 60%;
+    gap: 1.5rem;
+}
+
+/* Reward options display */
+.reward-display-option {
+    width: 25%;
+    height: 70%;
+    border: 1px solid black;
+
 }
 
 /* Button Display Section */

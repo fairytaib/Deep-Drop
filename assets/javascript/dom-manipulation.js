@@ -4,15 +4,9 @@
 const titleDisplay = document.getElementById("title-display")
 const roundCounterDisplay = document.getElementById("round-counter-display")
 
-// Event Display Box
-const playerStatWindow = document.getElementById("player-stat-window")
-const playerSkillWindow = document.getElementById("player-skill-window")
-const playerFightingStyleWindow = document.getElementById("player-fighting-style-window")
-const playerInventoryWindow = document.getElementById("player-inventory-window")
-
 //Display Box Items
 const displayBox = document.getElementById("display-box-section")
-const displayBoxItems = document.getElementsByClassName("display-box-item")
+const displayBoxStartItems = document.getElementsByClassName("display-box-item")
 
 //Button Box Items
 const buttonBox = document.getElementById("button-box-section")
@@ -67,6 +61,7 @@ function displayUserChoiceConfirmation() {
     // push the window into Display
     displayBox.appendChild(confirmWindow);
 }
+
 // Reward Choice buttons
 function displayRewardButtons() {
     const rewardOneButton = document.createElement("button")
@@ -87,6 +82,23 @@ function displayRewardButtons() {
     buttonBox.appendChild(rewardTwoButton)
     buttonBox.appendChild(rewardThreeButton)
 }
+//Reward Options
+function displayRewardOptions(rewardOne, rewardTwo, rewardThree) {
+    const rewardOneDisplay = document.createElement("div")
+    const rewardTwoDisplay = document.createElement("div")
+    const rewardThreeDisplay = document.createElement("div")
+    //Add class
+    rewardOneDisplay.classList.add("reward-display-option")
+    rewardTwoDisplay.classList.add("reward-display-option")
+    rewardThreeDisplay.classList.add("reward-display-option")
+
+    //Insert Items into display
+    displayBox.appendChild(rewardOneDisplay)
+    displayBox.appendChild(rewardTwoDisplay)
+    displayBox.appendChild(rewardThreeDisplay)
+
+}
+
 
 //Move from start screen to character selection
 function removeStartScreen() {
@@ -100,19 +112,11 @@ function removeStartScreen() {
     playerNameInput.classList.toggle("hidden")
     inputTitle.classList.toggle("hidden")
     //toggle display-Box-items
-    for (let item = 0; item < displayBoxItems.length; item++) {
-        displayBoxItems[item].classList.toggle("hidden")
+    for (let item = 0; item < displayBoxStartItems.length; item++) {
+        displayBoxStartItems[item].classList.toggle("hidden")
     }
 }
 
-function displayRewardChoice(rewardOne, rewardTwo, rewardThree) {
-    //Create Elements
-    const rewardOneDisplay = document.createElement("div")
-    const rewardTwoDisplay = document.createElement("div")
-    const rewardThreeDisplay = document.createElement("div")
-    //UNFINISHED
-
-}
 
 // Input validation
 function validateInput() {
@@ -130,6 +134,7 @@ function validateInput() {
         playerName = playerNameInput.value
         removeStartScreen()
         displayRewardButtons()
+        displayRewardOptions()
     }
 }
 
