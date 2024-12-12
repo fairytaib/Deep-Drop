@@ -187,3 +187,10 @@ button {
 .hidden {
     display: none;
 }
+
+@media (max-width: 600px) {
+    .outer-box {
+        width: 100%;
+        height: 100%;
+    }
+}
