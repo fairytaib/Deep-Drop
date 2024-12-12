@@ -45,7 +45,7 @@ function hideItems(classItem) {
 function addOnclickEffect(targetClass, targetFunction) {
     const targetedItem = document.getElementsByClassName(targetClass)
     for (let item = 0; item < targetedItem.length; item++) {
-        targetedItem.onclick = targetFunction
+        targetedItem[item].onclick = targetFunction
     }
 
 }
@@ -96,14 +96,16 @@ function goToClassChoice() {
 }
 
 function goToFightSequenz() {
-    hideItems("reward-Items")
+    hideItems("reward-item")
     displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item")
     displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item")
     displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item")
     displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item")
 
-    addOnclickEffect("player-menu-button", () => goToFightSequenz())
+    addOnclickEffect("player-menu-button", () => displayItems("div"))
 }
+// displayItems("div", "", displayBox, "player-menu-display")
+
 // Input validation
 function validateInput() {
     //allowed input
@@ -119,5 +121,6 @@ function validateInput() {
         // Update player name
         playerName = playerNameInput.value
         toggleFlexbox()
+        goToClassChoice()
     }
 }

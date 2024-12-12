@@ -38,7 +38,7 @@ body {
 
 }
 
-/* Middle Section */
+/* Middle Display Section */
 .confirm-window {
     width: 80%;
     max-width: 400px;
@@ -85,6 +85,30 @@ body {
     width: 90%;
     height: 60%;
     gap: 1.5rem;
+}
+
+.player-menu-display {
+    width: 80%;
+    height: 80%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Reward options display */
