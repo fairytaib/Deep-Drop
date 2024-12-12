@@ -35,10 +35,10 @@ function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
     displayPlace.appendChild(displayedItem)
 }
 
-function hideItems(classItem) {
+function hideAndShowItems(classItem) {
     const removeableItem = document.getElementsByClassName(classItem)
     for (let item = 0; item < removeableItem.length; item++) {
-        removeableItem[item].classList.add("hidden")
+        removeableItem[item].classList.toggle("hidden")
     }
 }
 
@@ -82,7 +82,7 @@ function resetGame() {
 }
 
 function goToClassChoice() {
-    hideItems("start-item")
+    hideAndShowItems("start-item")
     //Display Reward choice buttons
     displayItems("button", "Left", buttonBox, "reward-button", "reward-item")
     displayItems("button", "Middle", buttonBox, "reward-button", "reward-item")
@@ -96,7 +96,7 @@ function goToClassChoice() {
 }
 
 function goToFightSequenz() {
-    hideItems("reward-item")
+    hideAndShowItems("reward-item")
     displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item")
     displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item")
     displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item")
