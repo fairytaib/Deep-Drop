@@ -19,6 +19,28 @@ let playerName = ""
 //VARIABLES END
 
 //FUNCTIONS START
+//Generic functions
+function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
+    const displayedItem = document.createElement(tagType)
+    displayedItem.classList.add(...classAttribute)
+    displayedItem.innerText = innerText
+    displayPlace.appendChild(displayedItem)
+}
+
+function hideItems(classItem) {
+    const removeableItem = document.getElementsByClassName(classItem)
+    for (let item = 0; item < removeableItem.length; item++) {
+        removeableItem[item].classList.add("hidden")
+    }
+}
+
+function addOnclickEffect(targetClass, targetFunction) {
+    const targetedItem = document.getElementsByClassName(targetClass)
+    for (let item = 0; item < targetedItem.length; item++) {
+        targetedItem.onclick = targetFunction
+    }
+
+}
 //Reset Game
 function resetGame() {
     displayUserChoiceConfirmation()
@@ -72,149 +94,28 @@ function validateInput() {
     } else {
         // Update player name
         playerName = playerNameInput.value
-        removeStartScreen()
-        displayRewardButtons()
-        displayRewardOptions()
-    }
-}
-//Move from start screen to character selection
-function removeStartScreen() {
-    toggleFlexbox()
-    hideItems("start-item")
-}
-
-// Activate "Hide"-Class
-function hideItems(classItem) {
-    const removeableItem = document.getElementsByClassName(classItem)
-    for (let item = 0; item < removeableItem.length; item++) {
-        removeableItem[item].classList.toggle("hidden")
+        toggleFlexbox()
+        hideItems("start-item")
+        //Display Reward choice buttons
+        displayItems("button", "Left", buttonBox, "reward-button", "reward-item")
+        displayItems("button", "Middle", buttonBox, "reward-button", "reward-item")
+        displayItems("button", "Right", buttonBox, "reward-button", "reward-item")
+        //Add onclick effect
+        addOnclickEffect("reward-button", () => hideItems("reward-item"))
+        //Create Hero Choice 
+        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font")
+        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font")
+        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font")
     }
 }
 
-// Reward Choice buttons and Reward Options
-function displayRewardOptions(rewardOneOption, rewardTwoOption, rewardThreeOption) {
-    const rewardOneDisplay = document.createElement("div")
-    const rewardTwoDisplay = document.createElement("div")
-    const rewardThreeDisplay = document.createElement("div")
-    //Add class
-    rewardOneDisplay.classList.add("reward-display-option", "reward-item")
-    rewardTwoDisplay.classList.add("reward-display-option", "reward-item")
-    rewardThreeDisplay.classList.add("reward-display-option", "reward-item")
-
-    //Insert Items into display
-    displayBox.appendChild(rewardOneDisplay)
-    displayBox.appendChild(rewardTwoDisplay)
-    displayBox.appendChild(rewardThreeDisplay)
-
-    //UNFINISHED BECAUSE WE HAVE TO TAKE THE ARGUMENTS AND THEN DISPLAY IT
-}
-
-function displayRewardButtons() {
-    const rewardOneButton = document.createElement("button")
-    const rewardTwoButton = document.createElement("button")
-    const rewardThreeButton = document.createElement("button")
-
-    rewardOneButton.textContent = "Left"
-    rewardTwoButton.textContent = "Middle"
-    rewardThreeButton.textContent = "Right"
-
-    //Add Classes to Buttons
-    rewardOneButton.classList.add("reward-button", "reward-item", "text-font")
-    rewardTwoButton.classList.add("reward-button", "reward-item", "text-font")
-    rewardThreeButton.classList.add("reward-button", "reward-item", "text-font")
-
-    //Add onclick function
-    rewardOneButton.onclick = chooseReward
-    rewardTwoButton.onclick = chooseReward
-    rewardThreeButton.onclick = chooseReward
-
-    //Insert into Button-box
-    buttonBox.appendChild(rewardOneButton)
-    buttonBox.appendChild(rewardTwoButton)
-    buttonBox.appendChild(rewardThreeButton)
-}
-//Choose Reward
+//Choose Reward and then remove reward items
 function chooseReward() {
     //Write Logic so that the Reward choosen gets saved
     hideItems("reward-item")
-    displayPlayerMenuButtons()
+    displayItems("button", "Attributes", buttonBox, "reward-button", "player-menu")
+    displayItems("button", "Skills", buttonBox, "reward-button", "player-menu")
+    displayItems("button", "Attack Patterns", buttonBox, "reward-button", "player-menu")
+    displayItems("button", "Items", buttonBox, "reward-button", "player-menu")
     displayFightSequenz()
 }
-
-//Fight Display and player menu
-function displayFightSequenz(monster) {
-    const fightingSequenzDisplay = document.createElement("div")
-
-    fightingSequenzDisplay.classList.add("fight-sequenz-display", "text-font")
-
-    displayBox.appendChild(fightingSequenzDisplay)
-}
-
-//Continue Screen
-function displayContinueScreen() {
-    const continueScreen = document.createElement("p")
-    const continueButton = document.createElement("Button")
-    continueScreen.innerText = "Do you want to proceed to the next fight?"
-    continueButton.innerText = "Continue"
-
-    continueScreen.classList.add("continue-item", "text-font")
-    continueButton.classList.add("continue-item", "text-font")
-
-    displayBox.appendChild(continueScreen)
-    displayBox.appendChild(continueButton)
-}
-
-function displayPlayerMenuButtons() {
-    const playerStatButton = document.createElement("button")
-    const playerSkillButton = document.createElement("button")
-    const playerPatternButton = document.createElement("button")
-    const playerItemButton = document.createElement("button")
-
-    playerStatButton.classList.add("reward-button")
-    playerSkillButton.classList.add("reward-button")
-    playerPatternButton.classList.add("reward-button")
-    playerItemButton.classList.add("reward-button")
-
-    playerStatButton.innerText = "Attributes"
-    playerSkillButton.innerText = "Skills"
-    playerPatternButton.innerText = "Attack Patterns"
-    playerItemButton.innerText = "Items"
-
-    buttonBox.appendChild(playerStatButton)
-    buttonBox.appendChild(playerSkillButton)
-    buttonBox.appendChild(playerPatternButton)
-    buttonBox.appendChild(playerItemButton)
-}
-
-function displayPlayerAttributes() {
-    const playerAttributesDisplay = document.createElement("div")
-
-    playerAttributesDisplay.classList.add("player-menu-item")
-
-}
-
-function displayPlayerSkills() {
-    const playerSkillsDisplay = document.createElement("div")
-
-    playerSkillsDisplay.classList.add("player-menu-item")
-
-}
-
-function displayPlayerAttackPatterns() {
-    const playerAttackPatternsDisplay = document.createElement("div")
-
-    playerAttackPatternsDisplay.classList.add("player-menu-item")
-
-}
-
-function displayPlayerItems() {
-    const playerItemsDisplay = document.createElement("div")
-
-    playerItemsDisplay.classList.add("player-menu-item")
-
-}
-
-
-
-
-//FUNCTIONS SECTION END
