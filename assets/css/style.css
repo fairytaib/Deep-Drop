@@ -134,7 +134,8 @@ body {
 }
 
 /* Reward Buttons */
-.reward-button {
+.reward-button,
+.player-menu-button {
     width: 4rem;
     padding: 5px;
     text-align: center;

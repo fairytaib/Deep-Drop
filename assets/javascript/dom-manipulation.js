@@ -20,6 +20,14 @@ let playerName = ""
 
 //FUNCTIONS START
 //Generic functions
+function toggleFlexbox() {
+    // Change flex-Design
+    buttonBox.classList.toggle("button-box-flex-row")
+    buttonBox.classList.toggle("button-box-flex-column")
+    displayBox.classList.toggle("display-box-flex-column")
+    displayBox.classList.toggle("display-box-flex-row")
+}
+
 function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
     const displayedItem = document.createElement(tagType)
     displayedItem.classList.add(...classAttribute)
@@ -42,11 +50,6 @@ function addOnclickEffect(targetClass, targetFunction) {
 
 }
 //Reset Game
-function resetGame() {
-    displayUserChoiceConfirmation()
-    //Unfinished
-}
-//Confirm User Choice after the Reset Button press
 function displayUserChoiceConfirmation() {
     // Create and window and class connection
     const confirmWindow = document.createElement("div");
@@ -72,13 +75,37 @@ function displayUserChoiceConfirmation() {
     // push the window into Display
     displayBox.appendChild(confirmWindow);
 }
-//Toggle Flexbox
-function toggleFlexbox() {
-    // Change flex-Design
-    buttonBox.classList.toggle("button-box-flex-row")
-    buttonBox.classList.toggle("button-box-flex-column")
-    displayBox.classList.toggle("display-box-flex-column")
-    displayBox.classList.toggle("display-box-flex-row")
+
+function resetGame() {
+    displayUserChoiceConfirmation()
+    //Unfinished
+}
+
+function goToClassChoice() {
+    hideItems("start-item")
+    //Display Reward choice buttons
+    displayItems("button", "Left", buttonBox, "reward-button", "reward-item")
+    displayItems("button", "Middle", buttonBox, "reward-button", "reward-item")
+    displayItems("button", "Right", buttonBox, "reward-button", "reward-item")
+    //Add onclick effect
+    addOnclickEffect("reward-button", () => goToFightSequenz())
+    //Create Hero Choice 
+    displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font")
+    displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font")
+    displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font")
+}
+
+
+function goToFightSequenz() {
+    hideItems("reward-Items")
+    displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item")
+    displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item")
+    displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item")
+    displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item")
+
+    addOnclickEffect("player-menu-button", () => goToFightSequenz())
+
+
 }
 // Input validation
 function validateInput() {
@@ -95,17 +122,7 @@ function validateInput() {
         // Update player name
         playerName = playerNameInput.value
         toggleFlexbox()
-        hideItems("start-item")
-        //Display Reward choice buttons
-        displayItems("button", "Left", buttonBox, "reward-button", "reward-item")
-        displayItems("button", "Middle", buttonBox, "reward-button", "reward-item")
-        displayItems("button", "Right", buttonBox, "reward-button", "reward-item")
-        //Add onclick effect
-        addOnclickEffect("reward-button", () => hideItems("reward-item"))
-        //Create Hero Choice 
-        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font")
-        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font")
-        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font")
+
     }
 }
 
