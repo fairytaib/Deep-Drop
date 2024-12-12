@@ -188,6 +188,11 @@ button {
     display: none;
 }
 
+.disabled {
+    cursor: not-allowed;
+    color: gray;
+}
+
 @media (max-width: 600px) {
     .outer-box {
         width: 100%;

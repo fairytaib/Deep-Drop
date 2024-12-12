@@ -97,10 +97,11 @@ function goToClassChoice() {
 
 function goToFightSequenz() {
     hideAndShowItems("reward-item")
-    displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item")
-    displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item")
-    displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item")
-    displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item")
+    displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "disabled")
+    displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "disabled")
+    displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "disabled")
+    displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "disabled")
+    displayItems("div", "", displayBox, "fight-sequenz-display", "fighting-item")
 
     addOnclickEffect("player-menu-button", () => displayItems("div"))
 }
