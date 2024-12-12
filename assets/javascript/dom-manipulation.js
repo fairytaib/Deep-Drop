@@ -103,7 +103,7 @@ function goToFightSequenz() {
     displayItems("div", "", buttonBox, "fight-item")
     //Example Code.
     let playerHP = 100;
-    let monsterHP = 80;
+    let monsterHP = 0;
 
     const playerHPContainer = document.createElement("div");
     playerHPContainer.classList.add("fighting-item", "title-font");
@@ -123,12 +123,17 @@ function goToFightSequenz() {
 
 function goToContinueScreen() {
     hideAndShowItems("fighting-item")
-    displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "disabled")
-    displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "disabled")
-    displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "disabled")
-    displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "disabled")
+    toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column")
 
-    addOnclickEffect("player-menu-button", () => displayItems("div"))
+    displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "player-attribute-button")
+    displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "player-skill-button")
+    displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "player-item-button")
+    displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "player-attack-pattern-button")
+
+    addOnclickEffect("player-attribute-button", () => displayItems("div", "", displayBox, "player-menu-display"))
+    addOnclickEffect("player-skill-button", () => displayItems("div", "", displayBox, "player-menu-display"))
+    addOnclickEffect("player-item-button", () => displayItems("div", "", displayBox, "player-menu-display"))
+    addOnclickEffect("player-attack-pattern-button", () => displayItems("div", "", displayBox, "player-menu-display"))
 }
 
 
