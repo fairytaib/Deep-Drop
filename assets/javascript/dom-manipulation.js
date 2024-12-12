@@ -156,6 +156,21 @@ function displayFightSequenz(monster) {
     displayBox.appendChild(fightingSequenzDisplay)
 }
 
+
+//Continue Screen
+function displayContinueScreen() {
+    const continueScreen = document.createElement("p")
+    const continueButton = document.createElement("Button")
+    continueScreen.innerText = "Do you want to proceed to the next fight?"
+    continueButton.innerText = "Continue"
+
+    continueScreen.classList.add("continue-item", "text-font")
+    continueButton.classList.add("continue-item", "text-font")
+
+    displayBox.appendChild(continueScreen)
+    displayBox.appendChild(continueButton)
+}
+
 function displayPlayerMenuButtons() {
     const playerStatButton = document.createElement("button")
     const playerSkillButton = document.createElement("button")
