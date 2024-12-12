@@ -95,7 +95,6 @@ function goToClassChoice() {
     displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font")
 }
 
-
 function goToFightSequenz() {
     hideItems("reward-Items")
     displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item")
@@ -104,8 +103,6 @@ function goToFightSequenz() {
     displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item")
 
     addOnclickEffect("player-menu-button", () => goToFightSequenz())
-
-
 }
 // Input validation
 function validateInput() {
@@ -122,17 +119,5 @@ function validateInput() {
         // Update player name
         playerName = playerNameInput.value
         toggleFlexbox()
-
     }
-}
-
-//Choose Reward and then remove reward items
-function chooseReward() {
-    //Write Logic so that the Reward choosen gets saved
-    hideItems("reward-item")
-    displayItems("button", "Attributes", buttonBox, "reward-button", "player-menu")
-    displayItems("button", "Skills", buttonBox, "reward-button", "player-menu")
-    displayItems("button", "Attack Patterns", buttonBox, "reward-button", "player-menu")
-    displayItems("button", "Items", buttonBox, "reward-button", "player-menu")
-    displayFightSequenz()
 }
