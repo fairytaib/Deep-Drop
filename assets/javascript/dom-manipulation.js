@@ -80,17 +80,17 @@ function validateInput() {
 //Move from start screen to character selection
 function removeStartScreen() {
     toggleFlexbox()
-    hideStartItems()
+    hideItems("start-item")
 }
 
 // Activate "Hide"-Class
-function hideStartItems() {
-    const startItems = document.getElementsByClassName("start-item")
-    //toggle display-Box-items
-    for (let item = 0; item < startItems.length; item++) {
-        startItems[item].classList.toggle("hidden")
+function hideItems(classItem) {
+    const removeableItem = document.getElementsByClassName(classItem)
+    for (let item = 0; item < removeableItem.length; item++) {
+        removeableItem[item].classList.toggle("hidden")
     }
 }
+
 // Reward Choice buttons and Reward Options
 function displayRewardOptions(rewardOneOption, rewardTwoOption, rewardThreeOption) {
     const rewardOneDisplay = document.createElement("div")
@@ -136,17 +136,11 @@ function displayRewardButtons() {
 //Choose Reward
 function chooseReward() {
     //Write Logic so that the Reward choosen gets saved
-    hideRewardItems()
+    hideItems("reward-item")
     displayPlayerMenuButtons()
     displayFightSequenz()
 }
 
-function hideRewardItems() {
-    const rewardItems = document.getElementsByClassName("reward-item")
-    for (let item = 0; item < rewardItems.length; item++) {
-        rewardItems[item].classList.toggle("hidden")
-    }
-}
 //Fight Display and player menu
 function displayFightSequenz(monster) {
     const fightingSequenzDisplay = document.createElement("div")
@@ -155,7 +149,6 @@ function displayFightSequenz(monster) {
 
     displayBox.appendChild(fightingSequenzDisplay)
 }
-
 
 //Continue Screen
 function displayContinueScreen() {
