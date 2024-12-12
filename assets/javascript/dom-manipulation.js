@@ -20,12 +20,10 @@ let playerName = ""
 
 //FUNCTIONS START
 //Generic functions
-function toggleFlexbox() {
+function toggleFlexbox(displayWindow, toggleType, detoggleType) {
     // Change flex-Design
-    buttonBox.classList.toggle("button-box-flex-row")
-    buttonBox.classList.toggle("button-box-flex-column")
-    displayBox.classList.toggle("display-box-flex-column")
-    displayBox.classList.toggle("display-box-flex-row")
+    displayWindow.classList.toggle(toggleType)
+    displayWindow.classList.toggle(detoggleType)
 }
 
 function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
@@ -97,15 +95,42 @@ function goToClassChoice() {
 
 function goToFightSequenz() {
     hideAndShowItems("reward-item")
+    displayItems("div", "", displayBox, "fight-sequenz-display", "fighting-item")
+
+    toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column")
+
+    displayItems("h3", "Fight in progress", buttonBox, "fighting-item", "title-font")
+    displayItems("div", "", buttonBox, "fight-item")
+    //Example Code.
+    let playerHP = 100;
+    let monsterHP = 80;
+
+    const playerHPContainer = document.createElement("div");
+    playerHPContainer.classList.add("fighting-item", "title-font");
+    playerHPContainer.innerHTML = `Player HP: <span id="player-hp">${playerHP}</span>`;
+    buttonBox.appendChild(playerHPContainer);
+    const monsterHPContainer = document.createElement("div");
+    monsterHPContainer.classList.add("fighting-item", "title-font");
+    monsterHPContainer.innerHTML = `Monster HP: <span id="monster-hp">${monsterHP}</span>`;
+    buttonBox.appendChild(monsterHPContainer);
+
+    if (monsterHP < 1 || playerHP < 1) {
+        hideAndShowItems("fighting-item")
+        goToContinueScreen()
+    }
+
+}
+
+function goToContinueScreen() {
+    hideAndShowItems("fighting-item")
     displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "disabled")
     displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "disabled")
     displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "disabled")
     displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "disabled")
-    displayItems("div", "", displayBox, "fight-sequenz-display", "fighting-item")
 
     addOnclickEffect("player-menu-button", () => displayItems("div"))
 }
-// displayItems("div", "", displayBox, "player-menu-display")
+
 
 // Input validation
 function validateInput() {
@@ -121,7 +146,8 @@ function validateInput() {
     } else {
         // Update player name
         playerName = playerNameInput.value
-        toggleFlexbox()
+        toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column")
+        toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column")
         goToClassChoice()
     }
 }
