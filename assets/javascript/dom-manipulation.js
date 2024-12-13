@@ -47,6 +47,21 @@ function addOnclickEffect(targetClass, targetFunction) {
     }
 
 }
+
+function createCloseButton() {
+    // Schließknopf erstellen
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "X";
+    closeButton.classList.add("close-button");
+
+    // Klick-Event hinzufügen, um das übergeordnete Element zu entfernen
+    closeButton.addEventListener("click", function () {
+        closeButton.parentElement.remove();
+    });
+
+    return closeButton;
+}
+
 //Reset Game
 function displayUserChoiceConfirmation() {
     // Create and window and class connection
