@@ -16,16 +16,16 @@ class Character {
     }
 
     calculateDamage(monsterDefense) {
-        return Math.max(0, this.attackDamage - monsterDefense);
+        return Math.max(0, this.damage - monsterDefense);
     }
 
     dodge() {
-        return Math.random() < this.dodgeValue;
+        return Math.random() < this.dodge;
     }
 
     takeDamage(damage) {
-        this.hp -= damage;
-        console.log(`${this.name} has ${this.hp} HP left.`);
+        this.health -= damage;
+        console.log(`${this.name} has ${this.health} HP left.`);
     }
 }
 
@@ -178,7 +178,7 @@ export function fight(player, monster) {
     console.log(`The battle between ${player.name} and ${monster.name} begins!`);
 
     function playerAttackTurn() {
-        if (player.hp <= 0 || monster.hp <= 0) return;
+        if (player.health <= 0 || monster.health <= 0) return;
 
         const playerDamage = player.attack(monster);
         if (!monster.dodge()) {
@@ -189,7 +189,7 @@ export function fight(player, monster) {
 
         updateDOM();
 
-        if (monster.hp > 0) {
+        if (monster.health > 0) {
             setTimeout(playerAttackTurn, player.attackSpeed);
         } else {
             console.log(`${monster.name} has been defeated!`);
@@ -197,7 +197,7 @@ export function fight(player, monster) {
     }
 
     function monsterAttackTurn() {
-        if (player.hp <= 0 || monster.hp <= 0) return;
+        if (player.health <= 0 || monster.health <= 0) return;
 
         const monsterDamage = monster.attack(player);
         if (!player.dodge()) {
@@ -208,7 +208,7 @@ export function fight(player, monster) {
 
         updateDOM();
 
-        if (player.hp > 0) {
+        if (player.health > 0) {
             setTimeout(monsterAttackTurn, monster.attackSpeed);
         } else {
             console.log(`${player.name} has been defeated!`);

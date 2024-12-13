@@ -22,7 +22,7 @@ const buttonBox = document.getElementById("button-box-section");
 
 // Player Name Variable
 const playerNameInput = document.getElementById("player-name-input");
-let playerName = "";
+let playerName
 
 // FUNCTIONS START
 // Generic functions
@@ -84,8 +84,10 @@ function displayUserChoiceConfirmation() {
     const yesButton = document.createElement("button");
     yesButton.textContent = "Yes";
     yesButton.style.width = "60%";
-    yesButton.addEventListener("click", () => confirmWindow.remove());
-    yesButton.addEventListener("click", () => resetGame())
+    yesButton.addEventListener("click", () => {
+        confirmWindow.remove();
+        resetGame();
+    });
 
     const noButton = document.createElement("button");
     noButton.textContent = "No";
@@ -101,27 +103,27 @@ function displayUserChoiceConfirmation() {
 function resetGame() {
     // Lösche alle dynamisch hinzugefügten Elemente
     displayBox.innerHTML = '';
-    buttonBox.innerHTML = '';
+    buttonBox.innerHTML = `
+    <h2 class="start-item" id="input-title">Enter your character's name</h2>
+    <input class="start-item" type="text" placeholder="Enter your player name" id="player-name-input" name="player-name-input minlength="1" maxlength="13"  required>
+    <button class="start-item" type="submit" id="start-button" onclick="validateInput()">Start the Game</button>`;
+
 
     // Setze die Start-Items zurück
-    const startItemsHTML = `
-        <h1 class="start-item">The Deep Drop</h1>
-        <h2 class="start-item">Welcome to the bottom of the well!</h2>
-        <h2 class="start-item" id="input-title">Enter your characters name</h2>
-        <input class="start-item" type="text" placeholder="Enter your player name" id="player-name-input" name="player-name-input" minlength="1" maxlength="13" required>
-        <button class="start-item" type="submit" id="start-button">Start the Game</button>
+    displayBox.innerHTML = `
+    <h1 class="start-item">The Deep Drop</h1>
+    <h2 class="start-item">Welcome to the bottom of the well!</h2>
     `;
-    buttonBox.innerHTML = startItemsHTML;
 
     // Event-Listener für den Start-Button erneut hinzufügen
     document.getElementById("start-button").addEventListener("click", validateInput);
 
-    // Setze Flexbox-Layouts zurück
-    displayBox.classList.remove("display-box-flex-row", "display-box-flex-column");
-    buttonBox.classList.remove("button-box-flex-row", "button-box-flex-column");
-    displayBox.classList.add("display-box-flex-column");
-    buttonBox.classList.add("button-box-flex-column");
-
+    // Reset Flexbox
+    function resetFlexbox(displayBox, buttonBox) {
+        displayBox.className = "display-box display-box-flex-column";
+        buttonBox.className = "button-box button-box-flex-column";
+    }
+    resetFlexbox(displayBox, buttonBox);
     // Setze den Spielernamen zurück
     playerName = "";
     playerNameInput.value = "";
