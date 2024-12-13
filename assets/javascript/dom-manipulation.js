@@ -8,6 +8,10 @@ import {
     fight
 } from "./class-list.js";
 
+//EXAMPLE
+let player = knight
+let monster = monsterList[0]
+
 // DOM ELEMENTS START
 // Title display
 const titleDisplay = document.getElementById("title-display");
@@ -153,6 +157,7 @@ function goToClassChoice() {
 
 // Next page
 function goToFightSequenz() {
+    fight(player, monster, goToContinueScreen)
     hideAndShowItems("reward-item");
     displayItems("div", "", displayBox, "fight-sequenz-display", "fighting-item");
 
@@ -161,23 +166,16 @@ function goToFightSequenz() {
     displayItems("h3", "Fight in progress", buttonBox, "fighting-item", "title-font");
     displayItems("div", "", buttonBox, "fight-item");
 
-    let playerHP = 100;
-    let monsterHP = 0;
-
     const playerHPContainer = document.createElement("div");
     playerHPContainer.classList.add("fighting-item", "title-font");
-    playerHPContainer.innerHTML = `Player HP: <span id="player-hp">${playerHP}</span>`;
+    playerHPContainer.innerHTML = `Player HP: <span id="player-hp">${player.health}</span>`;
     buttonBox.appendChild(playerHPContainer);
 
     const monsterHPContainer = document.createElement("div");
     monsterHPContainer.classList.add("fighting-item", "title-font");
-    monsterHPContainer.innerHTML = `Monster HP: <span id="monster-hp">${monsterHP}</span>`;
+    monsterHPContainer.innerHTML = `Monster HP: <span id="monster-hp">${monster.health}</span>`;
     buttonBox.appendChild(monsterHPContainer);
 
-    if (monsterHP < 1 || playerHP < 1) {
-        hideAndShowItems("fighting-item");
-        goToContinueScreen();
-    }
 }
 
 // Next page

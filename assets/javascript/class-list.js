@@ -31,7 +31,7 @@ class Character {
 
 // Player Classes
 // Refine Stats later on
-export const knight = new Character(25, 25, 1, 25, 1, 1)
+export const knight = new Character(50, 50, 5, 50, 5, 5)
 
 export const ranger = new Character(25, 25, 1, 25, 1, 1)
 
@@ -174,7 +174,7 @@ let pathOfBalance = new Skill("Path of Balance", "Gain 10% additional attack and
 // Fighting System
 //Player chooses Class
 
-export function fight(player, monster) {
+export function fight(player, monster, onFightEnd) {
     console.log(`The battle between ${player.name} and ${monster.name} begins!`);
 
     function playerAttackTurn() {
@@ -193,6 +193,7 @@ export function fight(player, monster) {
             setTimeout(playerAttackTurn, player.attackSpeed);
         } else {
             console.log(`${monster.name} has been defeated!`);
+            onFightEnd();
         }
     }
 
@@ -212,6 +213,7 @@ export function fight(player, monster) {
             setTimeout(monsterAttackTurn, monster.attackSpeed);
         } else {
             console.log(`${player.name} has been defeated!`);
+            onFightEnd();
         }
     }
 
