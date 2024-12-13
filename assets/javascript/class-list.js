@@ -59,7 +59,7 @@ let fireElemental = new Character(25, 25, 1, 25, 1, 1)
 
 let boss = new Character(25, 25, 1, 25, 1, 1)
 
-export const montserList = [slime, swarmOfRats, kobold, goblin, skeletonWarrior, orc, harpie, troll, fireElemental, boss]
+export const monsterList = [slime, swarmOfRats, kobold, goblin, skeletonWarrior, orc, harpie, troll, fireElemental, boss]
 // Basis Reward Class for Items and Skills
 class Reward {
     constructor(name, description, rarity, effect) {
