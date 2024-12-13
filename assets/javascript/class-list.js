@@ -151,3 +151,17 @@ let dodgeRoll = new Skill("Dodge Roll", "All characters gain an additional 5% ch
 let bloodyDetermination = new Skill("Bloody Determination", "Increases damage by 15% when HP falls below 25%.", "common", "insert function")
 
 let pathOfBalance = new Skill("Path of Balance", "Gain 10% additional attack and defense as long as their HP remains above 75%.", "common", "insert function")
+
+// Fighting System
+
+let player;
+let exampleChoice = 1
+
+//Player chooses Class
+if (exampleChoice == 1) {
+    player = knight
+} else if (exampleChoice == 2) {
+    player = assassin
+} else {
+    player = ranger
+}
