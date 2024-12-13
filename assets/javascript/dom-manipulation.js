@@ -1,5 +1,15 @@
-//DOM ELEMENTS START
+//Import Class list
+import {
+    knight,
+    ranger,
+    assassin,
+    montserList,
+    allItemRewardsList,
+    fight
 
+} from "./class-list.js"
+
+//DOM ELEMENTS START
 // title display
 const titleDisplay = document.getElementById("title-display")
 const roundCounterDisplay = document.getElementById("round-counter-display")
@@ -170,7 +180,6 @@ function goToContinueScreen() {
     addOnclickEffect("player-item-button", () => displayPlayerMenu("Items"))
     addOnclickEffect("player-attack-pattern-button", () => displayPlayerMenu("Attack patterns"))
 }
-
 
 // Input validation
 function validateInput() {

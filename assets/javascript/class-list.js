@@ -31,11 +31,11 @@ class Character {
 
 // Player Classes
 // Refine Stats later on
-const knight = new Character(25, 25, 1, 25, 1, 1)
+export const knight = new Character(25, 25, 1, 25, 1, 1)
 
-const ranger = new Character(25, 25, 1, 25, 1, 1)
+export const ranger = new Character(25, 25, 1, 25, 1, 1)
 
-const assassin = new Character(25, 25, 1, 25, 1, 1)
+export const assassin = new Character(25, 25, 1, 25, 1, 1)
 
 // Monster Classes
 // Refine Stats later on
@@ -59,6 +59,7 @@ let fireElemental = new Character(25, 25, 1, 25, 1, 1)
 
 let boss = new Character(25, 25, 1, 25, 1, 1)
 
+export const montserList = [slime, swarmOfRats, kobold, goblin, skeletonWarrior, orc, harpie, troll, fireElemental, boss]
 // Basis Reward Class for Items and Skills
 class Reward {
     constructor(name, description, rarity, effect) {
@@ -134,9 +135,12 @@ const phantomShoes = new Item("Phantom Shoes", "Shoes that const the wearer move
 
 //shoes in a List
 const shoeList = [wornBoots, lightSandals, windrunnerBoots, wandererBoots, phantomShoes]
+//
 
+export const allItemRewardsList = [weaponList, armorList, helmList, shoeList]
 //Numbers have to be edited
 //Skill Class
+
 class Skill extends Reward {
     constructor(name, description, rarity, effect) {
         super(name, description, rarity, effect)
@@ -168,20 +172,9 @@ let bloodyDetermination = new Skill("Bloody Determination", "Increases damage by
 let pathOfBalance = new Skill("Path of Balance", "Gain 10% additional attack and defense as long as their HP remains above 75%.", "common", "insert function")
 
 // Fighting System
-
-let player;
-let exampleChoice = 1
-
 //Player chooses Class
-if (exampleChoice == 1) {
-    player = knight
-} else if (exampleChoice == 2) {
-    player = assassin
-} else {
-    player = ranger
-}
 
-function fight(player, monster) {
+export function fight(player, monster) {
     console.log(`The battle between ${player.name} and ${monster.name} begins!`);
 
     function playerAttackTurn() {
@@ -226,13 +219,6 @@ function fight(player, monster) {
     setTimeout(playerAttackTurn, player.attackSpeed);
     setTimeout(monsterAttackTurn, monster.attackSpeed);
 }
-
-
-// Update health
-function updateDOM() {
-    console.log("Updating DOM/UI with current HP values...");
-}
-
 
 // Kampf starten
 //fight(player, monster);
