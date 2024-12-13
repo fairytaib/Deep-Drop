@@ -9,8 +9,23 @@ class Character {
         this.critChance = critChance
     }
 
-    attack() {
-        console.log("attack")
+    attack(enemy) {
+        const actualDamage = this.calculateDamage(enemy.defense);
+        console.log(`${this.name} attacks ${monster.name} for ${actualDamage} damage!`);
+        return actualDamage;
+    }
+
+    calculateDamage(monsterDefense) {
+        return Math.max(0, this.attackDamage - monsterDefense);
+    }
+
+    dodge() {
+        return Math.random() < this.dodgeValue;
+    }
+
+    takeDamage(damage) {
+        this.hp -= damage;
+        console.log(`${this.name} has ${this.hp} HP left.`);
     }
 }
 
