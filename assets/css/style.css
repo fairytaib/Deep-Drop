@@ -87,6 +87,22 @@ body {
     gap: 1.5rem;
 }
 
+/* Reward options display */
+.reward-display-option {
+    width: 25%;
+    height: 70%;
+    border: 1px solid black;
+
+}
+
+/* Fighting Sequenz Display */
+.fight-sequenz-display {
+    width: 80%;
+    height: 80%;
+    border: 1px solid black;
+}
+
+/* Player Menu */
 .player-menu-display {
     width: 80%;
     height: 80%;
@@ -111,20 +127,24 @@ body {
     transform: translate(-50%, -50%);
 }
 
-/* Reward options display */
-.reward-display-option {
-    width: 25%;
-    height: 70%;
-    border: 1px solid black;
-
+.close-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
-/* Fighting Sequenz Display */
-.fight-sequenz-display {
-    width: 80%;
-    height: 80%;
-    border: 1px solid black;
+.close-button:hover {
+    background-color: darkred;
 }
+
+
 
 /* Button Display Section */
 /* Button Box Flex direction and general styling */

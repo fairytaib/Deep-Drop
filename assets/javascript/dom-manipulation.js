@@ -62,6 +62,25 @@ function createCloseButton() {
     return closeButton;
 }
 
+function displayPlayerMenu(menuTitle) {
+    // Menü-Container erstellen
+    const menuContainer = document.createElement("div");
+    menuContainer.classList.add("player-menu-display");
+
+    // Titel des Menüs hinzufügen
+    const title = document.createElement("h2");
+    title.textContent = menuTitle;
+    menuContainer.appendChild(title);
+
+    // Schließknopf hinzufügen
+    const closeButton = createCloseButton();
+    menuContainer.appendChild(closeButton);
+
+    // Menü-Container zum Display-Container hinzufügen
+    displayBox.appendChild(menuContainer);
+}
+
+
 //Reset Game
 function displayUserChoiceConfirmation() {
     // Create and window and class connection
@@ -116,6 +135,7 @@ function goToFightSequenz() {
 
     displayItems("h3", "Fight in progress", buttonBox, "fighting-item", "title-font")
     displayItems("div", "", buttonBox, "fight-item")
+
     //Example Code.
     let playerHP = 100;
     let monsterHP = 0;
@@ -145,10 +165,10 @@ function goToContinueScreen() {
     displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "player-item-button")
     displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "player-attack-pattern-button")
 
-    addOnclickEffect("player-attribute-button", () => displayItems("div", "", displayBox, "player-menu-display"))
-    addOnclickEffect("player-skill-button", () => displayItems("div", "", displayBox, "player-menu-display"))
-    addOnclickEffect("player-item-button", () => displayItems("div", "", displayBox, "player-menu-display"))
-    addOnclickEffect("player-attack-pattern-button", () => displayItems("div", "", displayBox, "player-menu-display"))
+    addOnclickEffect("player-attribute-button", () => displayPlayerMenu("Attributes"))
+    addOnclickEffect("player-skill-button", () => displayPlayerMenu("Skills"))
+    addOnclickEffect("player-item-button", () => displayPlayerMenu("Items"))
+    addOnclickEffect("player-attack-pattern-button", () => displayPlayerMenu("Attack patterns"))
 }
 
 
