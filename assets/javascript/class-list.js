@@ -182,47 +182,51 @@ if (exampleChoice == 1) {
 }
 
 function fight(player, monster) {
-    //Add proper UI later
     console.log(`The battle between ${player.name} and ${monster.name} begins!`);
 
-    while (player.hp > 0 && monster.hp > 0) {
-        // Implement Time (Attack Speed)
-        setTimeout(() => {
-            // player attacks
-            const playerDamage = player.attack(monster);
-            if (!monster.dodge()) {
-                monster.takeDamage(playerDamage);
-            } else {
-                console.log(`${monster.name} dodged the attack!`);
-            }
+    function playerAttackTurn() {
+        if (player.hp <= 0 || monster.hp <= 0) return;
 
-            // Check for Monster death
-            if (monster.hp <= 0) {
-                console.log(`${monster.name} has been defeated!`);
-                updateDOM();
-                return;
-            }
+        const playerDamage = player.attack(monster);
+        if (!monster.dodge()) {
+            monster.takeDamage(playerDamage);
+        } else {
+            console.log(`${monster.name} dodged the attack!`);
+        }
 
-            // monster attack
-            const monsterDamage = monster.attack(player);
-            if (!player.dodge()) {
-                player.takeDamage(monsterDamage);
-            } else {
-                console.log(`${player.name} dodged the attack!`);
-            }
+        updateDOM();
 
-            // Update to Game Over screen
-            if (player.hp <= 0) {
-                console.log(`${player.name} has been defeated!`);
-                updateDOM();
-                return;
-            }
-
-            //update health 
-            updateDOM();
-        }, Math.max(player.attackSpeed, monster.attackSpeed));
+        if (monster.hp > 0) {
+            setTimeout(playerAttackTurn, player.attackSpeed);
+        } else {
+            console.log(`${monster.name} has been defeated!`);
+        }
     }
+
+    function monsterAttackTurn() {
+        if (player.hp <= 0 || monster.hp <= 0) return;
+
+        const monsterDamage = monster.attack(player);
+        if (!player.dodge()) {
+            player.takeDamage(monsterDamage);
+        } else {
+            console.log(`${player.name} dodged the attack!`);
+        }
+
+        updateDOM();
+
+        if (player.hp > 0) {
+            setTimeout(monsterAttackTurn, monster.attackSpeed);
+        } else {
+            console.log(`${player.name} has been defeated!`);
+        }
+    }
+
+    // Starte beide Angriffsrunden gleichzeitig
+    setTimeout(playerAttackTurn, player.attackSpeed);
+    setTimeout(monsterAttackTurn, monster.attackSpeed);
 }
+
 
 // Update health
 function updateDOM() {
