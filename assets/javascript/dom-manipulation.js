@@ -2,27 +2,21 @@
 import {
     Character,
     monsterList,
-    allItemRewardsList,
+    allItemsList,
     fight
 } from "./class-list.js";
 
 //EXAMPLE
 // Player Classes
 // Refine Stats later on
-const knight = new Character(playerName, 50, 5, 5000, 50, 5, 5)
+const knight = new Character("Knight", 50, 5, 500, 50, 5, 5)
 
-const ranger = new Character(playerName, 25, 25, 1, 25, 1, 1)
+const ranger = new Character("Ranger", 25, 25, 1, 25, 1, 1)
 
-const assassin = new Character(playerName, 25, 25, 1, 25, 1, 1)
+const assassin = new Character("Assassin", 25, 25, 1, 25, 1, 1)
 let player = knight
-let monster = monsterList[roundCounter - 1]
 let roundCounter = 0;
-
-// DOM ELEMENTS START
-// Title display
-const titleDisplay = document.getElementById("title-display");
-const roundCounterDisplay = document.getElementById("round-counter-display");
-const restartButton = document.getElementById("restart-button")
+let monster = monsterList[roundCounter]
 
 // Display Box Items
 const displayBox = document.getElementById("display-box-section");
@@ -31,8 +25,8 @@ const displayBox = document.getElementById("display-box-section");
 const buttonBox = document.getElementById("button-box-section");
 
 // Player Name Variable
-const playerNameInput = document.getElementById("player-name-input");
-let playerName;
+let playerNameInput = document.getElementById("player-name-input");
+let playerName = "";
 
 // FUNCTIONS START
 // Generic functions
@@ -112,18 +106,16 @@ function displayUserChoiceConfirmation() {
 
 function resetGame() {
     // Lösche alle dynamisch hinzugefügten Elemente
-    displayBox.innerHTML = '';
-    buttonBox.innerHTML = `
-    <h2 class="start-item" id="input-title">Enter your character's name</h2>
-    <input class="start-item" type="text" placeholder="Enter your player name" id="player-name-input" name="player-name-input minlength="1" maxlength="13"  required>
-    <button class="start-item" type="submit" id="start-button" onclick="validateInput()">Start the Game</button>`;
-
-
-    // Setze die Start-Items zurück
     displayBox.innerHTML = `
     <h1 class="start-item">The Deep Drop</h1>
     <h2 class="start-item">Welcome to the bottom of the well!</h2>
     `;
+    buttonBox.innerHTML = `
+    <h2 class="start-item" id="input-title">Enter your character's name</h2>
+    <input class="start-item" type="text" placeholder="Enter your player name" id="player-name-input" name="player-name-input" minlength="1" maxlength="13"  required>
+    <button class="start-item" type="submit" id="start-button">Start the Game</button>`;
+
+    playerNameInput = document.getElementById("player-name-input");
 
     // Event-Listener für den Start-Button erneut hinzufügen
     document.getElementById("start-button").addEventListener("click", validateInput);
@@ -139,9 +131,9 @@ function resetGame() {
     playerNameInput.value = "";
     roundCounter = 0;
 }
-restartButton.addEventListener("click", resetGame);
-
+//Apply reset settings
 document.getElementById("restart-button").addEventListener("click", displayUserChoiceConfirmation);
+//Apply validate input
 document.getElementById("start-button").addEventListener("click", validateInput);
 
 // Next page
@@ -172,7 +164,7 @@ function goToFightSequenz() {
 
     const playerHPContainer = document.createElement("div");
     playerHPContainer.classList.add("fighting-item", "title-font");
-    playerHPContainer.innerHTML = `Player HP: <span id="player-hp">${player.health}</span>`;
+    playerHPContainer.innerHTML = `${playerName} HP: <span id="player-hp">${player.health}</span>`;
     buttonBox.appendChild(playerHPContainer);
 
     const monsterHPContainer = document.createElement("div");

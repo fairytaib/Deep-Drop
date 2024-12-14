@@ -1,5 +1,5 @@
 // Basis Character Class for Monster and Player
-class Character {
+export class Character {
     constructor(name, health, damage, attackSpeed, defense, dodgeChance, critChance) {
         this.name = name
         this.health = health
@@ -21,7 +21,7 @@ class Character {
     }
 
     dodge() {
-        return Math.random() < this.dodge;
+        return Math.random() < this.dodge / 100;
     }
 
     takeDamage(damage) {
@@ -30,37 +30,23 @@ class Character {
     }
 }
 
-// Player Classes
-// Refine Stats later on
-const knight = new Character(playerName, 50, 5, 5000, 50, 5, 5)
-
-const ranger = new Character(playerName, 25, 25, 1, 25, 1, 1)
-
-const assassin = new Character(playerName, 25, 25, 1, 25, 1, 1)
-
 // Monster Classes
 // Refine Stats later on
-let slime = new Character("Slime", 25, 25, 10000, 25, 1, 1)
 
-let swarmOfRats = new Character("Swarm of Rats", 25, 25, 1, 25, 1, 1)
 
-let kobold = new Character("Kobold", 25, 25, 1, 25, 1, 1)
+export const monsterList = [
+    new Character("Slime", 25, 5, 2000, 2, 5, 0),
+    new Character("Swarm of Rats", 30, 7, 1800, 3, 10, 0),
+    new Character("Kobold", 35, 10, 1500, 5, 15, 5),
+    new Character("Goblin", 40, 12, 1200, 6, 20, 10),
+    new Character("Skeleton Warrior", 50, 15, 1000, 8, 10, 15),
+    new Character("Orc", 60, 20, 900, 10, 5, 20),
+    new Character("Harpie", 45, 18, 1100, 7, 25, 10),
+    new Character("Troll", 80, 25, 800, 15, 5, 10),
+    new Character("Fire Elemental", 70, 30, 700, 10, 10, 25),
+    new Character("Boss", 100, 50, 500, 20, 0, 30)
 
-let goblin = new Character("Goblin", 25, 25, 1, 25, 1, 1)
-
-let skeletonWarrior = new Character("Skeleton Warrior", 25, 25, 1, 25, 1, 1)
-
-let orc = new Character("Orc", 25, 25, 1, 25, 1, 1)
-
-let harpie = new Character("Harpie", 25, 25, 1, 25, 1, 1)
-
-let troll = new Character("Troll", 25, 25, 1, 25, 1, 1)
-
-let fireElemental = new Character("Fire Elemental", 25, 25, 1, 25, 1, 1)
-
-let boss = new Character("Boss", 25, 25, 1, 25, 1, 1)
-
-export const monsterList = [slime, swarmOfRats, kobold, goblin, skeletonWarrior, orc, harpie, troll, fireElemental, boss]
+]
 // Basis Reward Class for Items and Skills
 class Reward {
     constructor(name, description, rarity, effect) {
@@ -80,65 +66,33 @@ class Item extends Reward {
     }
 }
 
-//Numbers are just examples
-// Weapons
-const rustyShortSword = new Item("Rusty Short Sword", "An old, rusted sword with a dull blade.", "common", (player) => player.damage += 1, "weapon", 1);
 
-const wornMagicStaff = new Item("Worn Magic Staff", "A simple staff with faded enchantments.", "common", (player) => player.damage += 1, "weapon", 1);
-
-const flameDagger = new Item("Flame Dagger", "A dagger that glows with a fiery aura.", "uncommon", (player) => player.damage += 1, "weapon", 2);
-
-const frostMace = new Item("Frost Mace", "A heavy mace that radiates freezing cold.", "rare", (player) => player.damage += 1, "weapon", 3);
-
-const stormblade = new Item("Stormblade", "A legendary sword crackling with lightning energy.", "epic", (player) => player.damage += 1, "weapon", 5);
-
-//weapons in a List
-const weaponList = [rustyShortSword, wornMagicStaff, flameDagger, frostMace, stormblade]
-
-//Helmets
-const leatherHood = new Item("Leather Hood", "A basic hood made of worn leather.", "common", (player) => player.defense += 1, "helmet", 1);
-
-const ironHelmet = new Item("Iron Helmet", "A simple helmet offering minimal protection.", (player) => player.defense += 1, "common", "helmet", 1);
-
-const runedHelmet = new Item("Runed Helmet", "A helmet engraved with faintly glowing runes.", "uncommon", (player) => player.defense += 1, "helmet", 2);
-
-const guardianHelmet = new Item("Guardian’s Helmet", "A sturdy helmet for vigilant defenders.", "rare", (player) => player.defense += 1, "helmet", 3);
-
-const dragonsteelHelmet = new Item("Dragonsteel Helmet", "A helmet forged from dragonsteel, offering unmatched protection.", "epic", (player) => player.defense += 1, "helmet", 5);
-
-//weapons in a List
-const helmList = [leatherHood, ironHelmet, runedHelmet, guardianHelmet, dragonsteelHelmet]
-
-//Armor
-const leatherJerkin = new Item("Leather Jerkin", "A simple jerkin made of hardened leather.", "common", (player) => player.health += 1, "armor", 1);
-
-const chainmailArmor = new Item("Chainmail Armor", "A basic chainmail offering decent protection.", "common", (player) => player.health += 1, "armor", 1);
-
-const armoredRobe = new Item("Armored Robe", "A robe reinforced with leather plates.", "uncommon", (player) => player.health += 1, "armor", 2);
-
-const shadowArmor = new Item("Shadow Armor", "A dark armor that blends into the shadows.", "rare", (player) => player.health += 1, "armor", 3);
-
-const titanArmor = new Item("Titan Armor", "A legendary armor forged by ancient titans.", "epic", (player) => player.health += 1, "armor", 5);
-
-//armor in a List
-const armorList = [leatherJerkin, chainmailArmor, armoredRobe, shadowArmor, titanArmor]
-
-//Shoes
-const wornBoots = new Item("Worn Boots", "Old, scuffed boots that have seen better days.", "common", (player) => player.dodgeChance += 1, "shoes", 1);
-
-const lightSandals = new Item("Light Sandals", "Simple sandals for quick movement.", "common", (player) => player.dodgeChance += 1, "shoes", 1);
-
-const windrunnerBoots = new Item("Windrunner Boots", "Boots enchanted with the power of wind.", "uncommon", (player) => player.dodgeChance += 1, "shoes", 2);
-
-const wandererBoots = new Item("Wanderer’s Boots", "Sturdy boots for long journeys.", "rare", (player) => player.dodgeChance += 1, "shoes", 3);
-
-const phantomShoes = new Item("Phantom Shoes", "Shoes that const the wearer move like a ghost.", "epic", (player) => player.dodgeChance += 1, "shoes", 5);
-
-//shoes in a List
-const shoeList = [wornBoots, lightSandals, windrunnerBoots, wandererBoots, phantomShoes]
-//
-
-export const allItemRewardsList = [weaponList, armorList, helmList, shoeList]
+export const allItemsList = [
+    //Weapons
+    new Item("Rusty Short Sword", "An old, rusted sword with a dull blade.", "common", (player) => player.damage += 1, "weapon", 1),
+    new Item("Worn Magic Staff", "A simple staff with faded enchantments.", "common", (player) => player.damage += 1, "weapon", 1),
+    new Item("Flame Dagger", "A dagger that glows with a fiery aura.", "uncommon", (player) => player.damage += 1, "weapon", 2),
+    new Item("Frost Mace", "A heavy mace that radiates freezing cold.", "rare", (player) => player.damage += 1, "weapon", 3),
+    new Item("Stormblade", "A legendary sword crackling with lightning energy.", "epic", (player) => player.damage += 1, "weapon", 5),
+    //Helmet
+    new Item("Leather Hood", "A basic hood made of worn leather.", "common", (player) => player.defense += 1, "helmet", 1),
+    new Item("Iron Helmet", "A simple helmet offering minimal protection.", "common", (player) => player.defense += 1, "helmet", 1),
+    new Item("Runed Helmet", "A helmet engraved with faintly glowing runes.", "uncommon", (player) => player.defense += 1, "helmet", 2),
+    new Item("Guardian’s Helmet", "A sturdy helmet for vigilant defenders.", "rare", (player) => player.defense += 1, "helmet", 3),
+    new Item("Dragonsteel Helmet", "A helmet forged from dragonsteel, offering unmatched protection.", "epic", (player) => player.defense += 1, "helmet", 5),
+    //Armor
+    new Item("Leather Jerkin", "A simple jerkin made of hardened leather.", "common", (player) => player.health += 1, "armor", 1),
+    new Item("Chainmail Armor", "A basic chainmail offering decent protection.", "common", (player) => player.health += 1, "armor", 1),
+    new Item("Armored Robe", "A robe reinforced with leather plates.", "uncommon", (player) => player.health += 1, "armor", 2),
+    new Item("Shadow Armor", "A dark armor that blends into the shadows.", "rare", (player) => player.health += 1, "armor", 3),
+    new Item("Titan Armor", "A legendary armor forged by ancient titans.", "epic", (player) => player.health += 1, "armor", 5),
+    //Shoes
+    new Item("Worn Boots", "Old, scuffed boots that have seen better days.", "common", (player) => player.dodgeChance += 1, "shoes", 1),
+    new Item("Light Sandals", "Simple sandals for quick movement.", "common", (player) => player.dodgeChance += 1, "shoes", 1),
+    new Item("Windrunner Boots", "Boots enchanted with the power of wind.", "uncommon", (player) => player.dodgeChance += 1, "shoes", 2),
+    new Item("Wanderer’s Boots", "Sturdy boots for long journeys.", "rare", (player) => player.dodgeChance += 1, "shoes", 3),
+    new Item("Phantom Shoes", "Shoes that let the wearer move like a ghost.", "epic", (player) => player.dodgeChance += 1, "shoes", 5)
+]
 //Numbers have to be edited
 //Skill Class
 
@@ -148,29 +102,27 @@ class Skill extends Reward {
     }
 }
 
-//Knight Skills
-let shieldwall = new Skill("Shieldwall", "You take 15% less damage", "common", "Insert Function")
+const knightSkills = [
+    new Skill("Shieldwall", "You take 15% less damage", "common", "Insert Function"),
+    new Skill("Unyielding Will", "The Knight has a 10% chance to survive a lethal attack and continue fighting with full HP", "rare", "Insert Function")
+];
 
-let unyieldingWill = new Skill("Unyielding Will", "The Knight has a 10% chance to survive a lethal attack and continue fighting with full HP", "rare", "Insert Function")
+const assassinSkills = [
+    new Skill("Blinding Speed", "Increases attack speed by 10% if the fight lasts longer than 10 seconds", "common", "Insert Function"),
+    new Skill("Deadly Precision", "The first attack deals 200% damage.", "common", "Insert Function")
+];
 
-//Assassin Skills
-let blindingSpeed = new Skill("Blinding Speed", "Increases attack speed by 10% if the fight lasts longer than 10 seconds", "common")
+const rangerSkills = [
+    new Skill("Targeted Weakness", "The Ranger deals 20% extra damage to enemies when their HP falls below 30%", "common", "Insert Function"),
+    new Skill("Repair Protocol", "Regenerates 2% of maximum HP when you dodge", "common", "Insert Function")
+];
 
-let deadlyPrecision = new Skill("Deadly Precision", "The first attack deals 200% damage.", "common", "Insert Function")
-
-//Ranger Skills
-let targetedWeakness = new Skill("Targeted Weakness", "The Ranger deals 20% extra damage to enemies when their HP falls below 30%", "common", "Instert Function")
-
-let repairProtocol = new Skill("Repair Protocol", "Regenerates 2% of maximum HP when you dodge", "common", "insert function")
-
-//Available to All Classes
-let longshot = new Skill("Longshot", "Decrease attackspeed by 50% for 500% Damage", "common", "Insert Function")
-
-let dodgeRoll = new Skill("Dodge Roll", "All characters gain an additional 5% chance to dodge an attack", "common", "Insert Function")
-
-let bloodyDetermination = new Skill("Bloody Determination", "Increases damage by 15% when HP falls below 25%.", "common", "insert function")
-
-let pathOfBalance = new Skill("Path of Balance", "Gain 10% additional attack and defense as long as their HP remains above 75%.", "common", "insert function")
+const universalSkills = [
+    new Skill("Longshot", "Decrease attackspeed by 50% for 500% Damage", "common", "Insert Function"),
+    new Skill("Dodge Roll", "All characters gain an additional 5% chance to dodge an attack", "common", "Insert Function"),
+    new Skill("Bloody Determination", "Increases damage by 15% when HP falls below 25%.", "common", "Insert Function"),
+    new Skill("Path of Balance", "Gain 10% additional attack and defense as long as their HP remains above 75%.", "common", "Insert Function")
+];
 
 // Fighting System
 //Player chooses Class
@@ -187,6 +139,8 @@ export function fight(player, monster, onFightEnd) {
         } else {
             console.log(`${monster.name} dodged the attack!`);
         }
+
+        updateHealthDisplay(player, monster)
 
         if (monster.health > 0) {
             setTimeout(playerAttackTurn, player.attackSpeed);
@@ -206,6 +160,8 @@ export function fight(player, monster, onFightEnd) {
             console.log(`${player.name} dodged the attack!`);
         }
 
+        updateHealthDisplay(player, monster)
+
         if (player.health > 0) {
             setTimeout(monsterAttackTurn, monster.attackSpeed);
         } else {
@@ -219,5 +175,15 @@ export function fight(player, monster, onFightEnd) {
     setTimeout(monsterAttackTurn, monster.attackSpeed);
 }
 
-// Kampf starten
-//fight(player, monster);
+function updateHealthDisplay(player, monster) {
+    const playerHealth = document.getElementById("player-hp");
+    const monsterHealth = document.getElementById("monster-hp");
+
+    if (playerHealth) {
+        playerHealth.textContent = player.health;
+    }
+
+    if (monsterHealth) {
+        monsterHealth.textContent = monster.health;
+    }
+}
