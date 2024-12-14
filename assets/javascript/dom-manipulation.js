@@ -9,7 +9,7 @@ import {
 //EXAMPLE
 // Variables
 // Refine Stats later on
-const knight = new Character("Knight", 50, 5, 500, 50, 5, 5)
+const knight = new Character("Knight", 50, 50, 500, 50, 5, 5)
 const ranger = new Character("Ranger", 25, 25, 1, 25, 1, 1)
 const assassin = new Character("Assassin", 25, 25, 1, 25, 1, 1)
 let player = knight
@@ -151,7 +151,6 @@ function validateInput() {
 
 // Next page
 function goToClassAndRewardChoice(hideItem) {
-    roundCounter += 1;
     hideAndShowItems(hideItem);
     displayItems("button", "Left", buttonBox, "reward-button", "reward-item");
     displayItems("button", "Middle", buttonBox, "reward-button", "reward-item");
@@ -190,12 +189,21 @@ function goToFightSequenz() {
 // Next page
 function goToContinueScreen() {
     hideAndShowItems("fighting-item");
-    //if flexbox this way, then keep it - code it
-    toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
+
+    // if (displayBox.classList.contains("display-box-flex-column")) {
+    //     toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
+    // }
+    if (buttonBox.classList.contains("button-box-flex-column")) {
+        toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
+    }
+    if (displayBox.classList.contains("display-box-flex-row")) {
+        toggleFlexbox(displayBox, "display-box-flex-column", "display-box-flex-row");
+    }
+
 
     displayItems("h2", "Do you want to go to the next fight?", displayBox, "continue-screen", "continue-item")
     displayItems("button", "Continue", displayBox, "continue-screen", "continue-item", "continue-button")
-    toggleFlexbox(displayBox, "display-box-flex-column", "display-box-flex-row")
+
 
     displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "player-attribute-button", "continue-item");
     displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "player-skill-button", "continue-item");
@@ -207,11 +215,27 @@ function goToContinueScreen() {
     addFunction("player-skill-button", () => displayPlayerMenu("Skills"));
     addFunction("player-item-button", () => displayPlayerMenu("Items"));
     addFunction("player-attack-pattern-button", () => displayPlayerMenu("Attack patterns"));
+
+    loopTheGame()
 }
 //Loop it
 function loopTheGame() {
-    addFunction("continue-button", goToClassAndRewardChoice("continue-item"))
+    if (roundCounter < 10) {
+        addFunction("continue-button", () => {
+            roundCounter++;
+
+
+            if (roundCounter < 10) {
+
+                goToClassAndRewardChoice("continue-item");
+            } else {
+
+                displayItems("h2", "Congratulations! You have completed the Game", displayBox, "game-end-message");
+            }
+        });
+    }
 }
+
 
 //Apply reset settings
 document.getElementById("restart-button").addEventListener("click", displayUserChoiceConfirmation);
