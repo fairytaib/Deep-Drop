@@ -7,26 +7,23 @@ import {
 } from "./class-list.js";
 
 //EXAMPLE
-// Player Classes
+// Variables
 // Refine Stats later on
 const knight = new Character("Knight", 50, 5, 500, 50, 5, 5)
-
 const ranger = new Character("Ranger", 25, 25, 1, 25, 1, 1)
-
 const assassin = new Character("Assassin", 25, 25, 1, 25, 1, 1)
 let player = knight
 let roundCounter = 0;
 let monster = monsterList[roundCounter]
-
-// Display Box Items
-const displayBox = document.getElementById("display-box-section");
-
-// Button Box Items
-const buttonBox = document.getElementById("button-box-section");
-
 // Player Name Variable
 let playerNameInput = document.getElementById("player-name-input");
 let playerName = "";
+
+//Display
+// Display Box Items
+const displayBox = document.getElementById("display-box-section");
+// Button Box Items
+const buttonBox = document.getElementById("button-box-section");
 
 // FUNCTIONS START
 // Generic functions
@@ -49,10 +46,12 @@ function hideAndShowItems(classItem) {
     }
 }
 
-function addOnclickEffect(targetClass, targetFunction) {
-    const targetedItem = document.getElementsByClassName(targetClass);
-    for (let item = 0; item < targetedItem.length; item++) {
-        targetedItem[item].addEventListener("click", targetFunction);
+function addFunction(targetClass, ...targetFunctions) {
+    const targetedItems = document.getElementsByClassName(targetClass);
+    for (let item = 0; item < targetedItems.length; item++) {
+        targetedItems[item].addEventListener("click", () => {
+            targetFunctions.forEach(func => func());
+        });
     }
 }
 
@@ -131,20 +130,34 @@ function resetGame() {
     playerNameInput.value = "";
     roundCounter = 0;
 }
-//Apply reset settings
-document.getElementById("restart-button").addEventListener("click", displayUserChoiceConfirmation);
-//Apply validate input
-document.getElementById("start-button").addEventListener("click", validateInput);
+
+// Input validation
+function validateInput() {
+    const pattern = /^[a-zA-Z0-9]+$/;
+
+    if (playerNameInput.value.length <= 2) {
+        alert("Too short");
+    } else if (!pattern.test(playerNameInput.value)) {
+        alert("Wrong");
+    } else if (playerNameInput.value.length >= 20) {
+        alert("Too long");
+    } else {
+        playerName = playerNameInput.value;
+        toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
+        toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
+        goToClassAndRewardChoice("start-item");
+    }
+}
 
 // Next page
-function goToClassChoice() {
+function goToClassAndRewardChoice(hideItem) {
     roundCounter += 1;
-    hideAndShowItems("start-item");
+    hideAndShowItems(hideItem);
     displayItems("button", "Left", buttonBox, "reward-button", "reward-item");
     displayItems("button", "Middle", buttonBox, "reward-button", "reward-item");
     displayItems("button", "Right", buttonBox, "reward-button", "reward-item");
 
-    addOnclickEffect("reward-button", () => goToFightSequenz());
+    addFunction("reward-button", () => goToFightSequenz());
 
     displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
     displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
@@ -177,6 +190,7 @@ function goToFightSequenz() {
 // Next page
 function goToContinueScreen() {
     hideAndShowItems("fighting-item");
+    //if flexbox this way, then keep it - code it
     toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
 
     displayItems("h2", "Do you want to go to the next fight?", displayBox, "continue-screen", "continue-item")
@@ -188,26 +202,18 @@ function goToContinueScreen() {
     displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "player-item-button", "continue-item");
     displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "player-attack-pattern-button", "continue-item");
 
-    addOnclickEffect("player-attribute-button", () => displayPlayerMenu("Attributes"));
-    addOnclickEffect("player-skill-button", () => displayPlayerMenu("Skills"));
-    addOnclickEffect("player-item-button", () => displayPlayerMenu("Items"));
-    addOnclickEffect("player-attack-pattern-button", () => displayPlayerMenu("Attack patterns"));
+    addFunction("player-attribute-button", () => displayPlayerMenu("Attributes"), loopTheGame);
+
+    addFunction("player-skill-button", () => displayPlayerMenu("Skills"));
+    addFunction("player-item-button", () => displayPlayerMenu("Items"));
+    addFunction("player-attack-pattern-button", () => displayPlayerMenu("Attack patterns"));
+}
+//Loop it
+function loopTheGame() {
+    addFunction("continue-button", goToClassAndRewardChoice("continue-item"))
 }
 
-// Input validation
-function validateInput() {
-    const pattern = /^[a-zA-Z0-9]+$/;
-
-    if (playerNameInput.value.length <= 2) {
-        alert("Too short");
-    } else if (!pattern.test(playerNameInput.value)) {
-        alert("Wrong");
-    } else if (playerNameInput.value.length >= 20) {
-        alert("Too long");
-    } else {
-        playerName = playerNameInput.value;
-        toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
-        toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
-        goToClassChoice();
-    }
-}
+//Apply reset settings
+document.getElementById("restart-button").addEventListener("click", displayUserChoiceConfirmation);
+//Apply validate input
+document.getElementById("start-button").addEventListener("click", validateInput);
