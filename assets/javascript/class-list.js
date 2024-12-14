@@ -1,6 +1,7 @@
 // Basis Character Class for Monster and Player
 class Character {
-    constructor(health, damage, attackSpeed, defense, dodgeChance, critChance) {
+    constructor(name, health, damage, attackSpeed, defense, dodgeChance, critChance) {
+        this.name = name
         this.health = health
         this.damage = damage
         this.attackSpeed = attackSpeed
@@ -31,33 +32,33 @@ class Character {
 
 // Player Classes
 // Refine Stats later on
-export const knight = new Character(50, 50, 5000, 50, 5, 5)
+const knight = new Character(playerName, 50, 5, 5000, 50, 5, 5)
 
-export const ranger = new Character(25, 25, 1, 25, 1, 1)
+const ranger = new Character(playerName, 25, 25, 1, 25, 1, 1)
 
-export const assassin = new Character(25, 25, 1, 25, 1, 1)
+const assassin = new Character(playerName, 25, 25, 1, 25, 1, 1)
 
 // Monster Classes
 // Refine Stats later on
-let slime = new Character(25, 25, 10000, 25, 1, 1)
+let slime = new Character("Slime", 25, 25, 10000, 25, 1, 1)
 
-let swarmOfRats = new Character(25, 25, 1, 25, 1, 1)
+let swarmOfRats = new Character("Swarm of Rats", 25, 25, 1, 25, 1, 1)
 
-let kobold = new Character(25, 25, 1, 25, 1, 1)
+let kobold = new Character("Kobold", 25, 25, 1, 25, 1, 1)
 
-let goblin = new Character(25, 25, 1, 25, 1, 1)
+let goblin = new Character("Goblin", 25, 25, 1, 25, 1, 1)
 
-let skeletonWarrior = new Character(25, 25, 1, 25, 1, 1)
+let skeletonWarrior = new Character("Skeleton Warrior", 25, 25, 1, 25, 1, 1)
 
-let orc = new Character(25, 25, 1, 25, 1, 1)
+let orc = new Character("Orc", 25, 25, 1, 25, 1, 1)
 
-let harpie = new Character(25, 25, 1, 25, 1, 1)
+let harpie = new Character("Harpie", 25, 25, 1, 25, 1, 1)
 
-let troll = new Character(25, 25, 1, 25, 1, 1)
+let troll = new Character("Troll", 25, 25, 1, 25, 1, 1)
 
-let fireElemental = new Character(25, 25, 1, 25, 1, 1)
+let fireElemental = new Character("Fire Elemental", 25, 25, 1, 25, 1, 1)
 
-let boss = new Character(25, 25, 1, 25, 1, 1)
+let boss = new Character("Boss", 25, 25, 1, 25, 1, 1)
 
 export const monsterList = [slime, swarmOfRats, kobold, goblin, skeletonWarrior, orc, harpie, troll, fireElemental, boss]
 // Basis Reward Class for Items and Skills

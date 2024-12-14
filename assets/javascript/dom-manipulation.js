@@ -1,16 +1,21 @@
 // Import Class list
 import {
-    knight,
-    ranger,
-    assassin,
+    Character,
     monsterList,
     allItemRewardsList,
     fight
 } from "./class-list.js";
 
 //EXAMPLE
+// Player Classes
+// Refine Stats later on
+const knight = new Character(playerName, 50, 5, 5000, 50, 5, 5)
+
+const ranger = new Character(playerName, 25, 25, 1, 25, 1, 1)
+
+const assassin = new Character(playerName, 25, 25, 1, 25, 1, 1)
 let player = knight
-let monster = monsterList[0]
+let monster = monsterList[roundCounter - 1]
 let roundCounter = 0;
 
 // DOM ELEMENTS START
@@ -27,7 +32,7 @@ const buttonBox = document.getElementById("button-box-section");
 
 // Player Name Variable
 const playerNameInput = document.getElementById("player-name-input");
-let playerName
+let playerName;
 
 // FUNCTIONS START
 // Generic functions
