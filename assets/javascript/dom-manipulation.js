@@ -11,6 +11,7 @@ import {
 //EXAMPLE
 let player = knight
 let monster = monsterList[0]
+let roundCounter = 0;
 
 // DOM ELEMENTS START
 // Title display
@@ -131,6 +132,7 @@ function resetGame() {
     // Setze den Spielernamen zurück
     playerName = "";
     playerNameInput.value = "";
+    roundCounter = 0;
 }
 restartButton.addEventListener("click", resetGame);
 
@@ -139,6 +141,7 @@ document.getElementById("start-button").addEventListener("click", validateInput)
 
 // Next page
 function goToClassChoice() {
+    roundCounter += 1;
     hideAndShowItems("start-item");
     displayItems("button", "Left", buttonBox, "reward-button", "reward-item");
     displayItems("button", "Middle", buttonBox, "reward-button", "reward-item");
