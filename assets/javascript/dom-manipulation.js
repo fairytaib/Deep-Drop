@@ -179,10 +179,14 @@ function goToContinueScreen() {
     hideAndShowItems("fighting-item");
     toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
 
-    displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "player-attribute-button");
-    displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "player-skill-button");
-    displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "player-item-button");
-    displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "player-attack-pattern-button");
+    displayItems("h2", "Do you want to go to the next fight?", displayBox, "continue-screen", "continue-item")
+    displayItems("button", "Continue", displayBox, "continue-screen", "continue-item", "continue-button")
+    toggleFlexbox(displayBox, "display-box-flex-column", "display-box-flex-row")
+
+    displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "player-attribute-button", "continue-item");
+    displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "player-skill-button", "continue-item");
+    displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "player-item-button", "continue-item");
+    displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "player-attack-pattern-button", "continue-item");
 
     addOnclickEffect("player-attribute-button", () => displayPlayerMenu("Attributes"));
     addOnclickEffect("player-skill-button", () => displayPlayerMenu("Skills"));
