@@ -134,11 +134,7 @@ function resetGame() {
 }
 restartButton.addEventListener("click", resetGame);
 
-
-// Event-Listener für den Restart-Button
 document.getElementById("restart-button").addEventListener("click", displayUserChoiceConfirmation);
-
-// Event-Listener für den Start-Button
 document.getElementById("start-button").addEventListener("click", validateInput);
 
 // Next page

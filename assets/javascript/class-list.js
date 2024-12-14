@@ -11,7 +11,7 @@ class Character {
 
     attack(enemy) {
         const actualDamage = this.calculateDamage(enemy.defense);
-        console.log(`${this.name} attacks ${monster.name} for ${actualDamage} damage!`);
+        console.log(`${this.name} attacks ${enemy.name} for ${actualDamage} damage!`);
         return actualDamage;
     }
 
@@ -31,7 +31,7 @@ class Character {
 
 // Player Classes
 // Refine Stats later on
-export const knight = new Character(50, 50, 5, 50, 5, 5)
+export const knight = new Character(50, 50, 5000, 50, 5, 5)
 
 export const ranger = new Character(25, 25, 1, 25, 1, 1)
 
@@ -39,7 +39,7 @@ export const assassin = new Character(25, 25, 1, 25, 1, 1)
 
 // Monster Classes
 // Refine Stats later on
-let slime = new Character(25, 25, 1, 25, 1, 1)
+let slime = new Character(25, 25, 10000, 25, 1, 1)
 
 let swarmOfRats = new Character(25, 25, 1, 25, 1, 1)
 
@@ -187,8 +187,6 @@ export function fight(player, monster, onFightEnd) {
             console.log(`${monster.name} dodged the attack!`);
         }
 
-        updateDOM();
-
         if (monster.health > 0) {
             setTimeout(playerAttackTurn, player.attackSpeed);
         } else {
@@ -206,8 +204,6 @@ export function fight(player, monster, onFightEnd) {
         } else {
             console.log(`${player.name} dodged the attack!`);
         }
-
-        updateDOM();
 
         if (player.health > 0) {
             setTimeout(monsterAttackTurn, monster.attackSpeed);
