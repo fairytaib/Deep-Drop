@@ -46,6 +46,13 @@ function hideAndShowItems(classItem) {
     }
 }
 
+function removeItems(classItem) {
+    const removableItems = document.getElementsByClassName(classItem);
+    while (removableItems.length > 0) {
+        removableItems[0].remove();
+    }
+}
+
 function addFunction(targetClass, ...targetFunctions) {
     const targetedItems = document.getElementsByClassName(targetClass);
     for (let item = 0; item < targetedItems.length; item++) {
@@ -143,15 +150,26 @@ function validateInput() {
         alert("Too long");
     } else {
         playerName = playerNameInput.value;
-        toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
-        toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
         goToClassAndRewardChoice("start-item");
     }
 }
 
 // Next page
 function goToClassAndRewardChoice(hideItem) {
-    hideAndShowItems(hideItem);
+
+    if (roundCounter == 0) {
+        hideAndShowItems("start-item")
+    } else {
+        removeItems(hideItem);
+    }
+
+    if (displayBox.classList.contains("display-box-flex-column")) {
+        toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
+    }
+    if (buttonBox.classList.contains("button-box-flex-column")) {
+        toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
+    }
+
     displayItems("button", "Left", buttonBox, "reward-button", "reward-item");
     displayItems("button", "Middle", buttonBox, "reward-button", "reward-item");
     displayItems("button", "Right", buttonBox, "reward-button", "reward-item");
@@ -165,14 +183,16 @@ function goToClassAndRewardChoice(hideItem) {
 
 // Next page
 function goToFightSequenz() {
-    fight(player, monster, goToContinueScreen)
-    hideAndShowItems("reward-item");
+    removeItems("reward-item");
+
     displayItems("div", "", displayBox, "fight-sequenz-display", "fighting-item");
 
     toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
 
     displayItems("h3", "Fight in progress", buttonBox, "fighting-item", "title-font");
     displayItems("div", "", buttonBox, "fight-item");
+
+    monster = monsterList[roundCounter]
 
     const playerHPContainer = document.createElement("div");
     playerHPContainer.classList.add("fighting-item", "title-font");
@@ -183,16 +203,17 @@ function goToFightSequenz() {
     monsterHPContainer.classList.add("fighting-item", "title-font");
     monsterHPContainer.innerHTML = `Monster HP: <span id="monster-hp">${monster.health}</span>`;
     buttonBox.appendChild(monsterHPContainer);
+    if (roundCounter < 10) {
+        fight(player, monster, goToContinueScreen)
+    }
 
 }
 
 // Next page
 function goToContinueScreen() {
-    hideAndShowItems("fighting-item");
 
-    // if (displayBox.classList.contains("display-box-flex-column")) {
-    //     toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
-    // }
+    removeItems("fighting-item");
+
     if (buttonBox.classList.contains("button-box-flex-column")) {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
     }
@@ -200,10 +221,8 @@ function goToContinueScreen() {
         toggleFlexbox(displayBox, "display-box-flex-column", "display-box-flex-row");
     }
 
-
     displayItems("h2", "Do you want to go to the next fight?", displayBox, "continue-screen", "continue-item")
     displayItems("button", "Continue", displayBox, "continue-screen", "continue-item", "continue-button")
-
 
     displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "player-attribute-button", "continue-item");
     displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "player-skill-button", "continue-item");
@@ -221,15 +240,11 @@ function goToContinueScreen() {
 //Loop it
 function loopTheGame() {
     if (roundCounter < 10) {
+        roundCounter++;
         addFunction("continue-button", () => {
-            roundCounter++;
-
-
             if (roundCounter < 10) {
-
                 goToClassAndRewardChoice("continue-item");
             } else {
-
                 displayItems("h2", "Congratulations! You have completed the Game", displayBox, "game-end-message");
             }
         });
