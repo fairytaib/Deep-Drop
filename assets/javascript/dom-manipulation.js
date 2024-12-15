@@ -39,11 +39,8 @@ function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
     displayPlace.appendChild(displayedItem);
 }
 
-function hideAndShowItems(classItem) {
-    const removeableItem = document.getElementsByClassName(classItem);
-    for (let item = 0; item < removeableItem.length; item++) {
-        removeableItem[item].classList.toggle("hidden");
-    }
+function clearButtonBox() {
+    buttonBox.innerHTML = "";
 }
 
 function removeItems(classItem) {
@@ -158,7 +155,7 @@ function validateInput() {
 function goToClassAndRewardChoice(hideItem) {
 
     if (roundCounter == 0) {
-        hideAndShowItems("start-item")
+        removeItems("start-item")
     } else {
         removeItems(hideItem);
     }
@@ -185,22 +182,24 @@ function goToClassAndRewardChoice(hideItem) {
 function goToFightSequenz() {
     removeItems("reward-item");
 
-    displayItems("div", "", displayBox, "fight-sequenz-display", "fighting-item");
+    displayItems("div", "", displayBox, "fight-sequenz-display", "fight-item");
 
-    toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
+    if (buttonBox.classList.contains("button-box-flex-row")) {
+        toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
+    }
 
-    displayItems("h3", "Fight in progress", buttonBox, "fighting-item", "title-font");
+    displayItems("h3", "Fight in progress", buttonBox, "fight-item", "title-font");
     displayItems("div", "", buttonBox, "fight-item");
 
     monster = monsterList[roundCounter]
 
     const playerHPContainer = document.createElement("div");
-    playerHPContainer.classList.add("fighting-item", "title-font");
+    playerHPContainer.classList.add("fight-item", "title-font");
     playerHPContainer.innerHTML = `${playerName} HP: <span id="player-hp">${player.health}</span>`;
     buttonBox.appendChild(playerHPContainer);
 
     const monsterHPContainer = document.createElement("div");
-    monsterHPContainer.classList.add("fighting-item", "title-font");
+    monsterHPContainer.classList.add("fight-item", "title-font");
     monsterHPContainer.innerHTML = `Monster HP: <span id="monster-hp">${monster.health}</span>`;
     buttonBox.appendChild(monsterHPContainer);
     if (roundCounter < 10) {
@@ -212,7 +211,7 @@ function goToFightSequenz() {
 // Next page
 function goToContinueScreen() {
 
-    removeItems("fighting-item");
+    removeItems("fight-item");
 
     if (buttonBox.classList.contains("button-box-flex-column")) {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
