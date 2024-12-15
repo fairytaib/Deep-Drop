@@ -17,23 +17,31 @@ const knight = new Character("Knight", 50, 50, 500, 50, 5, 5, )
 const ranger = new Character("Ranger", 25, 25, 1, 25, 1, 1)
 const assassin = new Character("Assassin", 25, 25, 1, 25, 1, 1)
 
-let player = knight
 let roundCounter = 0;
 let monster = monsterList[roundCounter]
 let allSkillsList = [universalSkills]
 
-//Add Skills from own classes
-if (player.name === "Knight") {
-    allSkillsList.push(knightSkills)
-} else if (player.name === "Ranger") {
-    allSkillsList.push(rangerSkills)
-} else if (player.name === "Assassin") {
-    allSkillsList.push(assassinSkills)
-}
+const classOptions = [{
+        name: "Knight",
+        description: "A strong and resilient warrior, excelling in defense.",
+        image: "../images/player-classes/knight.webp"
+    },
+    {
+        name: "Ranger",
+        description: "A swift and agile archer, skilled in ranged attacks.",
+        image: ".../images/player-classes/ranger.webp"
+    },
+    {
+        name: "Assassin",
+        description: "A deadly and elusive fighter, striking from the shadows.",
+        image: ".../images/player-classes/assassin.png"
+    }
+];
 
 // Player Name Variable
 let playerNameInput = document.getElementById("player-name-input");
 let playerName = "";
+let player
 
 //Display
 // Display Box Items
@@ -93,6 +101,18 @@ function displayPlayerMenu(menuTitle) {
     displayBox.appendChild(menuContainer);
 }
 
+function selectClass(className) {
+    if (className === "Knight") {
+        player = new Character("Knight", 50, 50, 500, 50, 5, 5);
+        allSkillsList.push(knightSkills)
+    } else if (className === "Ranger") {
+        player = new Character("Ranger", 25, 25, 1, 25, 1, 1);
+        allSkillsList.push(rangerSkills)
+    } else if (className === "Assassin") {
+        player = new Character("Assassin", 25, 25, 1, 25, 1, 1);
+        allSkillsList.push(assassinSkills)
+    }
+}
 // Reset Game
 //Reset Monster
 function resetMonsters() {
@@ -174,7 +194,7 @@ function resetGame() {
     roundCounter = 0;
 }
 
-// Input validation
+// Input validation - First Page
 function validateInput() {
     const pattern = /^[a-zA-Z0-9]+$/;
 
@@ -193,12 +213,6 @@ function validateInput() {
 // Next page
 function goToClassAndRewardChoice(hideItem) {
 
-    if (roundCounter == 0) {
-        removeItems("start-item")
-    } else {
-        removeItems(hideItem);
-    }
-
     if (displayBox.classList.contains("display-box-flex-column")) {
         toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
     }
@@ -206,15 +220,57 @@ function goToClassAndRewardChoice(hideItem) {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
     }
 
-    displayItems("button", "Left", buttonBox, "reward-button", "reward-item");
-    displayItems("button", "Middle", buttonBox, "reward-button", "reward-item");
-    displayItems("button", "Right", buttonBox, "reward-button", "reward-item");
+    if (roundCounter == 0) {
+        removeItems("start-item")
+        displayItems("h2", "Choose Your Class", displayBox, "title-font");
 
-    addFunction("reward-button", () => goToFightSequenz());
+        // Erstelle für jede Klasse ein Auswahlfeld
+        classOptions.forEach(classOption => {
+            const classContainer = document.createElement("div");
+            classContainer.classList.add("reward-display-option", "text-font");
 
-    displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
-    displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
-    displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
+            // Bild hinzufügen
+            const classImage = document.createElement("img");
+            classImage.src = classOption.image;
+            classImage.alt = classOption.name;
+            classImage.style.width = "100%";
+
+            // Titel hinzufügen
+            const classTitle = document.createElement("h3");
+            classTitle.textContent = classOption.name;
+
+            // Beschreibung hinzufügen
+            const classDescription = document.createElement("p");
+            classDescription.textContent = classOption.description;
+
+            // Button zur Auswahl hinzufügen
+            const selectButton = document.createElement("button");
+            selectButton.textContent = `Select ${classOption.name}`;
+            selectButton.classList.add("reward-button");
+            selectButton.addEventListener("click", () => selectClass(classOption.name));
+
+            // Elemente zum Container hinzufügen
+            classContainer.appendChild(classImage);
+            classContainer.appendChild(classTitle);
+            classContainer.appendChild(classDescription);
+            classContainer.appendChild(selectButton);
+
+            // Container in die Anzeige einfügen
+            displayBox.appendChild(classContainer);
+        })
+    } else {
+        removeItems(hideItem);
+
+        displayItems("button", "Left", buttonBox, "reward-button", "reward-item");
+        displayItems("button", "Middle", buttonBox, "reward-button", "reward-item");
+        displayItems("button", "Right", buttonBox, "reward-button", "reward-item");
+
+        addFunction("reward-button", () => goToFightSequenz());
+
+        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
+        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
+        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
+    }
 }
 
 // Next page
