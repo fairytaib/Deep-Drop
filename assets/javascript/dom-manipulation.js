@@ -2,7 +2,7 @@
 import {
     Character,
     monsterList,
-    allItemsList,
+    originalMonsterList,
     knightSkills,
     assassinSkills,
     rangerSkills,
@@ -13,7 +13,7 @@ import {
 //EXAMPLE
 // Variables
 // Refine Stats later on
-const knight = new Character("Knight", 50, 50, 500, 50, 5, 5)
+const knight = new Character("Knight", 50, 50, 500, 50, 5, 5, )
 const ranger = new Character("Ranger", 25, 25, 1, 25, 1, 1)
 const assassin = new Character("Assassin", 25, 25, 1, 25, 1, 1)
 
@@ -55,7 +55,6 @@ function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
     displayPlace.appendChild(displayedItem);
 }
 
-
 function removeItems(classItem) {
     const removableItems = document.getElementsByClassName(classItem);
     while (removableItems.length > 0) {
@@ -95,6 +94,36 @@ function displayPlayerMenu(menuTitle) {
 }
 
 // Reset Game
+//Reset Monster
+function resetMonsters() {
+    monsterList.forEach((monster, index) => {
+        Object.assign(monster, new Character(
+            originalMonsterList[index].name,
+            originalMonsterList[index].health,
+            originalMonsterList[index].damage,
+            originalMonsterList[index].attackSpeed,
+            originalMonsterList[index].defense,
+            originalMonsterList[index].dodgeChance,
+            originalMonsterList[index].critChance
+        ));
+    });
+}
+// Reset Flexbox
+function resetFlexbox(displayBox, buttonBox) {
+    displayBox.className = "display-box display-box-flex-column";
+    buttonBox.className = "button-box button-box-flex-column";
+}
+
+function resetPlayer() {
+    if (player.name === "Knight") {
+        player = new Character("Knight", 50, 50, 500, 50, 5, 5);
+    } else if (player.name === "Ranger") {
+        player = new Character("Ranger", 25, 25, 1, 25, 1, 1);
+    } else if (player.name === "Assassin") {
+        player = new Character("Assassin", 25, 25, 1, 25, 1, 1);
+    }
+}
+
 function displayUserChoiceConfirmation() {
     const confirmWindow = document.createElement("div");
     confirmWindow.classList.add("confirm-window");
@@ -136,12 +165,9 @@ function resetGame() {
     // Event-Listener für den Start-Button erneut hinzufügen
     document.getElementById("start-button").addEventListener("click", validateInput);
 
-    // Reset Flexbox
-    function resetFlexbox(displayBox, buttonBox) {
-        displayBox.className = "display-box display-box-flex-column";
-        buttonBox.className = "button-box button-box-flex-column";
-    }
     resetFlexbox(displayBox, buttonBox);
+    resetMonsters()
+    resetPlayer()
     // Setze den Spielernamen zurück
     playerName = "";
     playerNameInput.value = "";

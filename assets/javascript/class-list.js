@@ -1,6 +1,6 @@
 // Basis Character Class for Monster and Player
 export class Character {
-    constructor(name, health, damage, attackSpeed, defense, dodgeChance, critChance) {
+    constructor(name, health, damage, attackSpeed, defense, dodgeChance, critChance, skills) {
         this.name = name
         this.health = health
         this.damage = damage
@@ -8,6 +8,7 @@ export class Character {
         this.defense = defense
         this.dodgeChance = dodgeChance
         this.critChance = critChance
+
     }
 
     attack(enemy) {
@@ -32,8 +33,6 @@ export class Character {
 
 // Monster Classes
 // Refine Stats later on
-
-
 export const monsterList = [
     new Character("Slime", 25, 5, 2000, 2, 5, 0),
     new Character("Swarm of Rats", 30, 7, 1800, 3, 10, 0),
@@ -47,6 +46,16 @@ export const monsterList = [
     new Character("Boss", 100, 50, 500, 20, 0, 30)
 
 ]
+
+export const originalMonsterList = monsterList.map(monster => ({
+    name: monster.name,
+    health: monster.health,
+    damage: monster.damage,
+    attackSpeed: monster.attackSpeed,
+    defense: monster.defense,
+    dodgeChance: monster.dodgeChance,
+    critChance: monster.critChance
+}));
 // Basis Reward Class for Items and Skills
 class Reward {
     constructor(name, description, rarity, effect) {
