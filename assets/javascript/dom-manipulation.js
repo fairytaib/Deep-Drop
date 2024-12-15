@@ -3,6 +3,10 @@ import {
     Character,
     monsterList,
     allItemsList,
+    knightSkills,
+    assassinSkills,
+    rangerSkills,
+    universalSkills,
     fight
 } from "./class-list.js";
 
@@ -12,9 +16,21 @@ import {
 const knight = new Character("Knight", 50, 50, 500, 50, 5, 5)
 const ranger = new Character("Ranger", 25, 25, 1, 25, 1, 1)
 const assassin = new Character("Assassin", 25, 25, 1, 25, 1, 1)
+
 let player = knight
 let roundCounter = 0;
 let monster = monsterList[roundCounter]
+let allSkillsList = [universalSkills]
+
+//Add Skills from own classes
+if (player.name === "Knight") {
+    allSkillsList.push(knightSkills)
+} else if (player.name === "Ranger") {
+    allSkillsList.push(rangerSkills)
+} else if (player.name === "Assassin") {
+    allSkillsList.push(assassinSkills)
+}
+
 // Player Name Variable
 let playerNameInput = document.getElementById("player-name-input");
 let playerName = "";
@@ -39,9 +55,6 @@ function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
     displayPlace.appendChild(displayedItem);
 }
 
-function clearButtonBox() {
-    buttonBox.innerHTML = "";
-}
 
 function removeItems(classItem) {
     const removableItems = document.getElementsByClassName(classItem);

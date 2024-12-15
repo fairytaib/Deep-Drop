@@ -102,27 +102,28 @@ class Skill extends Reward {
     }
 }
 
-const knightSkills = [
+export const knightSkills = [
     new Skill("Shieldwall", "You take 15% less damage", "common", "Insert Function"),
     new Skill("Unyielding Will", "The Knight has a 10% chance to survive a lethal attack and continue fighting with full HP", "rare", "Insert Function")
 ];
 
-const assassinSkills = [
+export const assassinSkills = [
     new Skill("Blinding Speed", "Increases attack speed by 10% if the fight lasts longer than 10 seconds", "common", "Insert Function"),
     new Skill("Deadly Precision", "The first attack deals 200% damage.", "common", "Insert Function")
 ];
 
-const rangerSkills = [
+export const rangerSkills = [
     new Skill("Targeted Weakness", "The Ranger deals 20% extra damage to enemies when their HP falls below 30%", "common", "Insert Function"),
     new Skill("Repair Protocol", "Regenerates 2% of maximum HP when you dodge", "common", "Insert Function")
 ];
 
-const universalSkills = [
+export const universalSkills = [
     new Skill("Longshot", "Decrease attackspeed by 50% for 500% Damage", "common", "Insert Function"),
     new Skill("Dodge Roll", "All characters gain an additional 5% chance to dodge an attack", "common", "Insert Function"),
     new Skill("Bloody Determination", "Increases damage by 15% when HP falls below 25%.", "common", "Insert Function"),
     new Skill("Path of Balance", "Gain 10% additional attack and defense as long as their HP remains above 75%.", "common", "Insert Function")
 ];
+
 
 // Fighting System
 //Player chooses Class
