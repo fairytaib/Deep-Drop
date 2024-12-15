@@ -13,7 +13,7 @@ import {
 //EXAMPLE
 // Variables
 // Refine Stats later on
-const knight = new Character("Knight", 50, 50, 500, 50, 5, 5, )
+const knight = new Character("Knight", 50, 50, 500, 50, 5, 5)
 const ranger = new Character("Ranger", 25, 25, 1, 25, 1, 1)
 const assassin = new Character("Assassin", 25, 25, 1, 25, 1, 1)
 
@@ -24,17 +24,17 @@ let allSkillsList = [universalSkills]
 const classOptions = [{
         name: "Knight",
         description: "A strong and resilient warrior, excelling in defense.",
-        image: "../images/player-classes/knight.webp"
+        image: "./assets/images/player-classes/knight.webp"
     },
     {
         name: "Ranger",
         description: "A swift and agile archer, skilled in ranged attacks.",
-        image: ".../images/player-classes/ranger.webp"
+        image: "./assets/images/player-classes/ranger.webp"
     },
     {
         name: "Assassin",
         description: "A deadly and elusive fighter, striking from the shadows.",
-        image: ".../images/player-classes/assassin.png"
+        image: "./assets/images/player-classes/assassin.webp"
     }
 ];
 
