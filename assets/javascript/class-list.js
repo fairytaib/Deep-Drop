@@ -1,6 +1,6 @@
 // Basis Character Class for Monster and Player
 export class Character {
-    constructor(name, health, damage, attackSpeed, defense, dodgeChance, critChance, skills) {
+    constructor(name, health, damage, attackSpeed, defense, dodgeChance, critChance) {
         this.name = name
         this.health = health
         this.damage = damage
