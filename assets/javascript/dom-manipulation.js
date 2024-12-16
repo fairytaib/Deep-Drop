@@ -13,10 +13,6 @@ import {
 //EXAMPLE
 // Variables
 // Refine Stats later on
-const knight = new Character("Knight", 50, 50, 500, 50, 5, 5)
-const ranger = new Character("Ranger", 25, 25, 1, 25, 1, 1)
-const assassin = new Character("Assassin", 25, 25, 1, 25, 1, 1)
-
 let roundCounter = 0;
 let monster = monsterList[roundCounter]
 let allSkillsList = [universalSkills]
@@ -37,6 +33,48 @@ const classOptions = [{
         image: "./assets/images/player-classes/assassin.webp"
     }
 ];
+
+const monsterOptions = [{
+        name: "slime",
+        image: "./assets/images/monsters/slime.webp"
+    },
+    {
+        name: "Swarm of Rats",
+        image: "./assets/images/monsters/swarm-of-rats.webp"
+    },
+    {
+        name: "Kobold",
+        image: "./assets/images/monsters/kobold.webp"
+    },
+    {
+        name: "Goblin",
+        image: "./assets/images/monsters/goblin.webp"
+    },
+    {
+        name: "Skeleton Warrior",
+        image: "./assets/images/monsters/skeleton-warrior.webp"
+    },
+    {
+        name: "Orc",
+        image: "./assets/images/monsters/orc.webp"
+    },
+    {
+        name: "Harpie",
+        image: "./assets/images/monsters/harpie.webp"
+    },
+    {
+        name: "Troll",
+        image: "./assets/images/monsters/troll.webp"
+    },
+    {
+        name: "Fire Elemental",
+        image: "./assets/images/monsters/fire-elemental.webp"
+    },
+    {
+        name: "The Boss",
+        image: "./assets/images/monsters/boss.webp"
+    },
+]
 
 // Player Name Variable
 let playerNameInput = document.getElementById("player-name-input");
@@ -243,6 +281,7 @@ function goToClassAndRewardChoice(hideItem) {
             // Beschreibung hinzufügen
             const classDescription = document.createElement("p");
             classDescription.textContent = classOption.description;
+            classDescription.style.fontSize = "0.8rem"
 
             const selectButton = document.createElement("button");
             selectButton.textContent = `Select ${classOption.name}`;
@@ -283,6 +322,15 @@ function goToFightSequenz() {
     removeItems("reward-item");
 
     displayItems("div", "", displayBox, "fight-sequenz-display", "fight-item");
+    const fightDisplayDiv = document.querySelector(".fight-sequenz-display");
+
+    const monsterImage = document.createElement("img");
+    monsterImage.src = monsterOptions[roundCounter].image;
+    monsterImage.alt = monsterOptions[roundCounter].name;
+    monsterImage.style.width = "100%";
+
+    fightDisplayDiv.appendChild(monsterImage)
+
 
     if (buttonBox.classList.contains("button-box-flex-row")) {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
@@ -300,7 +348,7 @@ function goToFightSequenz() {
 
     const monsterHPContainer = document.createElement("div");
     monsterHPContainer.classList.add("fight-item", "title-font");
-    monsterHPContainer.innerHTML = `Monster HP: <span id="monster-hp">${monster.health}</span>`;
+    monsterHPContainer.innerHTML = `${monsterOptions[roundCounter].name} HP: <span id="monster-hp">${monster.health}</span>`;
     buttonBox.appendChild(monsterHPContainer);
     if (roundCounter < 10) {
         fight(player, monster, goToContinueScreen)
