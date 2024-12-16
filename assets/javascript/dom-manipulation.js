@@ -321,15 +321,14 @@ function goToClassAndRewardChoice(hideItem) {
 function goToFightSequenz() {
     removeItems("reward-item");
 
-    displayItems("div", "", displayBox, "fight-sequenz-display", "fight-item");
-    const fightDisplayDiv = document.querySelector(".fight-sequenz-display");
-
     const monsterImage = document.createElement("img");
     monsterImage.src = monsterOptions[roundCounter].image;
     monsterImage.alt = monsterOptions[roundCounter].name;
-    monsterImage.style.width = "100%";
+    monsterImage.classList.add("fight-item")
+    monsterImage.style.width = "80%";
+    monsterImage.style.height = "80%";
 
-    fightDisplayDiv.appendChild(monsterImage)
+    displayBox.appendChild(monsterImage)
 
 
     if (buttonBox.classList.contains("button-box-flex-row")) {
