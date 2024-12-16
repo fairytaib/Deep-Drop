@@ -50,69 +50,6 @@ const displayBox = document.getElementById("display-box-section");
 const buttonBox = document.getElementById("button-box-section");
 
 // FUNCTIONS START
-// Generic functions
-function toggleFlexbox(displayWindow, toggleType, detoggleType) {
-    displayWindow.classList.toggle(toggleType);
-    displayWindow.classList.toggle(detoggleType);
-}
-
-function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
-    const displayedItem = document.createElement(tagType);
-    displayedItem.classList.add(...classAttribute);
-    displayedItem.innerText = innerText;
-    displayPlace.appendChild(displayedItem);
-}
-
-function removeItems(classItem) {
-    const removableItems = document.getElementsByClassName(classItem);
-    while (removableItems.length > 0) {
-        removableItems[0].remove();
-    }
-}
-
-function addFunction(targetClass, ...targetFunctions) {
-    const targetedItems = document.getElementsByClassName(targetClass);
-    for (let item = 0; item < targetedItems.length; item++) {
-        targetedItems[item].addEventListener("click", () => {
-            targetFunctions.forEach(func => func());
-        });
-    }
-}
-
-function createCloseButton() {
-    const closeButton = document.createElement("button");
-    closeButton.textContent = "X";
-    closeButton.classList.add("close-button");
-    closeButton.addEventListener("click", () => closeButton.parentElement.remove());
-    return closeButton;
-}
-
-function displayPlayerMenu(menuTitle) {
-    const menuContainer = document.createElement("div");
-    menuContainer.classList.add("player-menu-display");
-
-    const title = document.createElement("h2");
-    title.textContent = menuTitle;
-    menuContainer.appendChild(title);
-
-    const closeButton = createCloseButton();
-    menuContainer.appendChild(closeButton);
-
-    displayBox.appendChild(menuContainer);
-}
-
-function selectClass(className) {
-    if (className === "Knight") {
-        player = new Character("Knight", 50, 50, 500, 50, 5, 5);
-        allSkillsList.push(knightSkills)
-    } else if (className === "Ranger") {
-        player = new Character("Ranger", 25, 25, 1, 25, 1, 1);
-        allSkillsList.push(rangerSkills)
-    } else if (className === "Assassin") {
-        player = new Character("Assassin", 25, 25, 1, 25, 1, 1);
-        allSkillsList.push(assassinSkills)
-    }
-}
 // Reset Game
 //Reset Monster
 function resetMonsters() {
@@ -194,6 +131,71 @@ function resetGame() {
     roundCounter = 0;
 }
 
+// Generic functions
+function toggleFlexbox(displayWindow, toggleType, detoggleType) {
+    displayWindow.classList.toggle(toggleType);
+    displayWindow.classList.toggle(detoggleType);
+}
+
+function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
+    const displayedItem = document.createElement(tagType);
+    displayedItem.classList.add(...classAttribute);
+    displayedItem.innerText = innerText;
+    displayPlace.appendChild(displayedItem);
+}
+
+function removeItems(classItem) {
+    const removableItems = document.getElementsByClassName(classItem);
+    while (removableItems.length > 0) {
+        removableItems[0].remove();
+    }
+}
+
+function addFunction(targetClass, ...targetFunctions) {
+    const targetedItems = document.getElementsByClassName(targetClass);
+    for (let item = 0; item < targetedItems.length; item++) {
+        targetedItems[item].addEventListener("click", () => {
+            targetFunctions.forEach(func => func());
+        });
+    }
+}
+
+function createCloseButton() {
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "X";
+    closeButton.classList.add("close-button");
+    closeButton.addEventListener("click", () => closeButton.parentElement.remove());
+    return closeButton;
+}
+
+function displayPlayerMenu(menuTitle) {
+    const menuContainer = document.createElement("div");
+    menuContainer.classList.add("player-menu-display");
+
+    const title = document.createElement("h2");
+    title.textContent = menuTitle;
+    menuContainer.appendChild(title);
+
+    const closeButton = createCloseButton();
+    menuContainer.appendChild(closeButton);
+
+    displayBox.appendChild(menuContainer);
+}
+
+function selectClass(classOption) {
+    if (classOption.name === "Knight") {
+        player = new Character("Knight", 50, 50, 500, 50, 5, 5);
+        allSkillsList.push(knightSkills)
+    } else if (classOption.name === "Ranger") {
+        player = new Character("Ranger", 25, 25, 1, 25, 1, 1);
+        allSkillsList.push(rangerSkills)
+    } else if (classOption.name === "Assassin") {
+        player = new Character("Assassin", 25, 25, 1, 25, 1, 1);
+        allSkillsList.push(assassinSkills)
+    }
+}
+
+
 // Input validation - First Page
 function validateInput() {
     const pattern = /^[a-zA-Z0-9]+$/;
@@ -222,12 +224,11 @@ function goToClassAndRewardChoice(hideItem) {
 
     if (roundCounter == 0) {
         removeItems("start-item")
-        displayItems("h2", "Choose Your Class", displayBox, "title-font");
 
         // Erstelle für jede Klasse ein Auswahlfeld
         classOptions.forEach(classOption => {
             const classContainer = document.createElement("div");
-            classContainer.classList.add("reward-display-option", "text-font");
+            classContainer.classList.add("reward-display-option", "text-font", "reward-item");
 
             // Bild hinzufügen
             const classImage = document.createElement("img");
@@ -243,21 +244,25 @@ function goToClassAndRewardChoice(hideItem) {
             const classDescription = document.createElement("p");
             classDescription.textContent = classOption.description;
 
-            // Button zur Auswahl hinzufügen
             const selectButton = document.createElement("button");
             selectButton.textContent = `Select ${classOption.name}`;
-            selectButton.classList.add("reward-button");
-            selectButton.addEventListener("click", () => selectClass(classOption.name));
+            selectButton.classList.add("reward-button", "reward-item");
+            selectButton.addEventListener("click", () => {
+                selectClass(classOption);
+                goToFightSequenz();
+            });
+
 
             // Elemente zum Container hinzufügen
             classContainer.appendChild(classImage);
             classContainer.appendChild(classTitle);
             classContainer.appendChild(classDescription);
-            classContainer.appendChild(selectButton);
+            buttonBox.appendChild(selectButton)
 
             // Container in die Anzeige einfügen
             displayBox.appendChild(classContainer);
         })
+
     } else {
         removeItems(hideItem);
 
