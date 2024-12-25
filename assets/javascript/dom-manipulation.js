@@ -111,11 +111,11 @@ function resetFlexbox(displayBox, buttonBox) {
 
 function resetPlayer() {
     if (player.name === "Knight") {
-        player = new Character("Knight", 50, 50, 500, 50, 5, 5);
+        player = new Character("Knight", 10, 10, 10000, 10, 5, 5);
     } else if (player.name === "Ranger") {
-        player = new Character("Ranger", 25, 25, 1, 25, 1, 1);
+        player = new Character("Ranger", 10, 10, 10000, 10, 1, 1);
     } else if (player.name === "Assassin") {
-        player = new Character("Assassin", 25, 25, 1, 25, 1, 1);
+        player = new Character("Assassin", 10, 10, 10000, 10, 1, 1);
     }
 }
 
@@ -329,7 +329,6 @@ function goToFightSequenz() {
     monsterImage.style.height = "80%";
 
     displayBox.appendChild(monsterImage)
-
 
     if (buttonBox.classList.contains("button-box-flex-row")) {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
