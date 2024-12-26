@@ -222,13 +222,13 @@ function displayPlayerMenu(menuTitle) {
 
 function selectClass(classOption) {
     if (classOption.name === "Knight") {
-        player = new Character("Knight", 10, 10, 10000, 10, 5, 5);
+        player = new Character("Knight", 10, 10, 1000, 10, 5, 5);
         allSkillsList.push(knightSkills)
     } else if (classOption.name === "Ranger") {
-        player = new Character("Ranger", 10, 10, 10000, 10, 5, 5);
+        player = new Character("Ranger", 10, 10, 1000, 10, 5, 5);
         allSkillsList.push(rangerSkills)
     } else if (classOption.name === "Assassin") {
-        player = new Character("Assassin", 10, 10, 10000, 10, 5, 5);
+        player = new Character("Assassin", 10, 10, 1000, 10, 5, 5);
         allSkillsList.push(assassinSkills)
     }
 }
