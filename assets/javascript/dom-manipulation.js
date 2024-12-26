@@ -3,6 +3,7 @@ import {
     Character,
     monsterList,
     originalMonsterList,
+    allItemsList,
     knightSkills,
     assassinSkills,
     rangerSkills,
@@ -15,7 +16,7 @@ import {
 // Refine Stats later on
 let roundCounter = 0;
 let monster = monsterList[roundCounter]
-let allSkillsList = [universalSkills]
+
 
 const classOptions = [{
         name: "Knight",
@@ -223,13 +224,19 @@ function displayPlayerMenu(menuTitle) {
 function selectClass(classOption) {
     if (classOption.name === "Knight") {
         player = new Character("Knight", 10, 10, 1000, 10, 5, 5);
-        allSkillsList.push(knightSkills)
+        for (let i = 0; i < knightSkills.length; i++) {
+            universalSkills.push(knightSkills[i]);
+        }
     } else if (classOption.name === "Ranger") {
         player = new Character("Ranger", 10, 10, 1000, 10, 5, 5);
-        allSkillsList.push(rangerSkills)
+        for (let i = 0; i < rangerSkills.length; i++) {
+            universalSkills.push(rangerSkills[i]);
+        }
     } else if (classOption.name === "Assassin") {
         player = new Character("Assassin", 10, 10, 1000, 10, 5, 5);
-        allSkillsList.push(assassinSkills)
+        for (let i = 0; i < assassinSkills.length; i++) {
+            universalSkills.push(assassinSkills[i]);
+        }
     }
 }
 
@@ -305,15 +312,60 @@ function goToClassAndRewardChoice(hideItem) {
     } else {
         removeItems(hideItem);
 
+        const randomItem = allItemsList[Math.floor(Math.random() * allItemsList.length)];
+
+        const randomSkill = universalSkills[Math.floor(Math.random() * universalSkills.length)];
+
+        const rewards = [{
+                type: "Item",
+                name: randomItem.name,
+                description: randomItem.description,
+                image: randomItem.image
+            },
+            {
+                type: "Skill",
+                name: randomSkill.name,
+                description: randomSkill.description,
+                image: randomSkill.image
+            },
+            {
+                type: "Heal",
+                name: "Healing Potion",
+                description: "Restore 50% of your max HP.",
+                image: "./assets/images/heal-picture/heal.webp"
+            }
+        ];
+
+        rewards.forEach((reward) => {
+            const rewardContainer = document.createElement("div");
+            rewardContainer.classList.add("reward-display-option", "text-font");
+
+            // Bild hinzufügen
+            const rewardImage = document.createElement("img");
+            rewardImage.src = reward.image;
+            rewardImage.alt = reward.name;
+            rewardImage.style.width = "100%";
+
+            // Titel hinzufügen
+            const rewardTitle = document.createElement("h3");
+            rewardTitle.textContent = reward.name;
+
+            // Beschreibung hinzufügen
+            const rewardDescription = document.createElement("p");
+            rewardDescription.textContent = reward.description;
+
+            rewardContainer.appendChild(rewardImage);
+            rewardContainer.appendChild(rewardTitle);
+            rewardContainer.appendChild(rewardDescription);
+
+            displayBox.appendChild(rewardContainer);
+        });
+
         displayItems("button", "Left", buttonBox, "reward-button", "reward-item");
         displayItems("button", "Middle", buttonBox, "reward-button", "reward-item");
         displayItems("button", "Right", buttonBox, "reward-button", "reward-item");
 
         addFunction("reward-button", () => goToFightSequenz());
-
-        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
-        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
-        displayItems("div", "###", displayBox, "reward-display-option", "reward-item", "text-font");
     }
 }
 
