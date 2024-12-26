@@ -338,7 +338,7 @@ function goToClassAndRewardChoice(hideItem) {
 
         rewards.forEach((reward) => {
             const rewardContainer = document.createElement("div");
-            rewardContainer.classList.add("reward-display-option", "text-font");
+            rewardContainer.classList.add("reward-display-option", "text-font", "reward-item");
 
             // Bild hinzufügen
             const rewardImage = document.createElement("img");
