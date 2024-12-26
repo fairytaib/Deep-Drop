@@ -253,12 +253,51 @@ function validateInput() {
         alert("Too long");
     } else {
         playerName = playerNameInput.value;
-        goToClassAndRewardChoice("start-item");
+        goToClassChoice();
     }
 }
 
+function goToClassChoice() {
+    removeItems("start-item");
+
+    toggleFlexbox(displayBox, "display-box-flex-column", "display-box-flex-row")
+    toggleFlexbox(buttonBox, "button-box-flex-column", "button-box-flex-row")
+
+    classOptions.forEach(classOption => {
+        const classContainer = document.createElement("div");
+        classContainer.classList.add("class-display-option", "text-font", "class-item");
+
+        const classImage = document.createElement("img");
+        classImage.src = classOption.image;
+        classImage.alt = classOption.name;
+        classImage.style.width = "80%";
+
+        const classTitle = document.createElement("h3");
+        classTitle.textContent = classOption.name;
+
+        const classDescription = document.createElement("p");
+        classDescription.textContent = classOption.description;
+        classDescription.style.fontSize = "0.8rem";
+
+        const selectButton = document.createElement("button");
+        selectButton.textContent = `Select ${classOption.name}`;
+        selectButton.classList.add("class-button", "class-item");
+        selectButton.addEventListener("click", () => {
+            selectClass(classOption);
+            goToFightSequenz("class-item");
+        });
+
+        classContainer.appendChild(classImage);
+        classContainer.appendChild(classTitle);
+        classContainer.appendChild(classDescription);
+        buttonBox.appendChild(selectButton);
+
+        displayBox.appendChild(classContainer);
+    });
+}
+
 // Next page
-function goToClassAndRewardChoice(hideItem) {
+function goToRewardSequenz() {
 
     if (displayBox.classList.contains("display-box-flex-column")) {
         toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
@@ -266,112 +305,66 @@ function goToClassAndRewardChoice(hideItem) {
     if (buttonBox.classList.contains("button-box-flex-column")) {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
     }
+    removeItems("fight-item");
 
-    if (roundCounter == 0) {
-        removeItems("start-item")
+    const randomItem = allItemsList[Math.floor(Math.random() * allItemsList.length)];
+    const randomSkill = universalSkills[Math.floor(Math.random() * universalSkills.length)];
 
-        // Erstelle für jede Klasse ein Auswahlfeld
-        classOptions.forEach(classOption => {
-            const classContainer = document.createElement("div");
-            classContainer.classList.add("reward-display-option", "text-font", "reward-item");
+    const rewards = [{
+            type: "Item",
+            name: randomItem.name,
+            description: randomItem.description,
+            image: randomItem.image
+        },
+        {
+            type: "Skill",
+            name: randomSkill.name,
+            description: randomSkill.description,
+            image: randomSkill.image
+        },
+        {
+            type: "Heal",
+            name: "Healing Potion",
+            description: "Restore 50% of your max HP.",
+            image: "./assets/images/heal-picture/heal.webp"
+        }
+    ];
 
-            // Bild hinzufügen
-            const classImage = document.createElement("img");
-            classImage.src = classOption.image;
-            classImage.alt = classOption.name;
-            classImage.style.width = "100%";
+    rewards.forEach(reward => {
+        const rewardContainer = document.createElement("div");
+        rewardContainer.classList.add("reward-display-option", "text-font", "reward-item");
 
-            // Titel hinzufügen
-            const classTitle = document.createElement("h3");
-            classTitle.textContent = classOption.name;
+        const rewardImage = document.createElement("img");
+        rewardImage.src = reward.image;
+        rewardImage.alt = reward.name;
+        rewardImage.style.width = "100%";
 
-            // Beschreibung hinzufügen
-            const classDescription = document.createElement("p");
-            classDescription.textContent = classOption.description;
-            classDescription.style.fontSize = "0.8rem"
+        const rewardTitle = document.createElement("h3");
+        rewardTitle.textContent = reward.name;
 
-            const selectButton = document.createElement("button");
-            selectButton.textContent = `Select ${classOption.name}`;
-            selectButton.classList.add("reward-button", "reward-item");
-            selectButton.addEventListener("click", () => {
-                selectClass(classOption);
-                goToFightSequenz();
-            });
+        const rewardDescription = document.createElement("p");
+        rewardDescription.textContent = reward.description;
 
+        rewardContainer.appendChild(rewardImage);
+        rewardContainer.appendChild(rewardTitle);
+        rewardContainer.appendChild(rewardDescription);
 
-            // Elemente zum Container hinzufügen
-            classContainer.appendChild(classImage);
-            classContainer.appendChild(classTitle);
-            classContainer.appendChild(classDescription);
-            buttonBox.appendChild(selectButton)
-
-            // Container in die Anzeige einfügen
-            displayBox.appendChild(classContainer);
-        })
-
-    } else {
-        removeItems(hideItem);
-
-        const randomItem = allItemsList[Math.floor(Math.random() * allItemsList.length)];
-
-        const randomSkill = universalSkills[Math.floor(Math.random() * universalSkills.length)];
-
-        const rewards = [{
-                type: "Item",
-                name: randomItem.name,
-                description: randomItem.description,
-                image: randomItem.image
-            },
-            {
-                type: "Skill",
-                name: randomSkill.name,
-                description: randomSkill.description,
-                image: randomSkill.image
-            },
-            {
-                type: "Heal",
-                name: "Healing Potion",
-                description: "Restore 50% of your max HP.",
-                image: "./assets/images/heal-picture/heal.webp"
-            }
-        ];
-
-        rewards.forEach((reward) => {
-            const rewardContainer = document.createElement("div");
-            rewardContainer.classList.add("reward-display-option", "text-font", "reward-item");
-
-            // Bild hinzufügen
-            const rewardImage = document.createElement("img");
-            rewardImage.src = reward.image;
-            rewardImage.alt = reward.name;
-            rewardImage.style.width = "100%";
-
-            // Titel hinzufügen
-            const rewardTitle = document.createElement("h3");
-            rewardTitle.textContent = reward.name;
-
-            // Beschreibung hinzufügen
-            const rewardDescription = document.createElement("p");
-            rewardDescription.textContent = reward.description;
-
-            rewardContainer.appendChild(rewardImage);
-            rewardContainer.appendChild(rewardTitle);
-            rewardContainer.appendChild(rewardDescription);
-
-            displayBox.appendChild(rewardContainer);
+        const selectButton = document.createElement("button");
+        selectButton.textContent = `Select ${reward.name}`;
+        selectButton.classList.add("class-button", "reward-item");
+        selectButton.addEventListener("click", () => {
+            //selectClass(classOption);
+            goToContinueScreen("reward-item");
         });
 
-        displayItems("button", "Left", buttonBox, "reward-button", "reward-item");
-        displayItems("button", "Middle", buttonBox, "reward-button", "reward-item");
-        displayItems("button", "Right", buttonBox, "reward-button", "reward-item");
-
-        addFunction("reward-button", () => goToFightSequenz());
-    }
+        displayBox.appendChild(rewardContainer);
+        buttonBox.appendChild(selectButton)
+    });
 }
 
 // Next page
-function goToFightSequenz() {
-    removeItems("reward-item");
+function goToFightSequenz(hideItem) {
+    removeItems(hideItem);
 
     const monsterImage = document.createElement("img");
     monsterImage.src = monsterOptions[roundCounter].image;
@@ -401,7 +394,7 @@ function goToFightSequenz() {
     monsterHPContainer.innerHTML = `${monsterOptions[roundCounter].name} HP: <span id="monster-hp">${monster.health}</span>`;
     buttonBox.appendChild(monsterHPContainer);
     if (roundCounter < 10) {
-        fight(player, monster, goToContinueScreen)
+        fight(player, monster, goToRewardSequenz)
     }
 
 }
@@ -409,7 +402,7 @@ function goToFightSequenz() {
 // Next page
 function goToContinueScreen() {
 
-    removeItems("fight-item");
+    removeItems("reward-item");
 
     if (buttonBox.classList.contains("button-box-flex-column")) {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
@@ -418,35 +411,31 @@ function goToContinueScreen() {
         toggleFlexbox(displayBox, "display-box-flex-column", "display-box-flex-row");
     }
 
-    displayItems("h2", "Do you want to go to the next fight?", displayBox, "continue-screen", "continue-item")
-    displayItems("button", "Continue", displayBox, "continue-screen", "continue-item", "continue-button")
+    displayItems("h2", "Do you want to go to the next fight?", displayBox, "continue-screen", "continue-item");
+    displayItems("button", "Continue", displayBox, "continue-screen", "continue-item", "continue-button");
 
     displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "player-attribute-button", "continue-item");
     displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "player-skill-button", "continue-item");
     displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "player-item-button", "continue-item");
     displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "player-attack-pattern-button", "continue-item");
 
-    addFunction("player-attribute-button", () => displayPlayerMenu("Attributes"), loopTheGame);
+    addFunction("player-attribute-button", () => displayPlayerMenu("Attributes"));
 
     addFunction("player-skill-button", () => displayPlayerMenu("Skills"));
     addFunction("player-item-button", () => displayPlayerMenu("Items"));
     addFunction("player-attack-pattern-button", () => displayPlayerMenu("Attack patterns"));
 
-    loopTheGame()
+    addFunction("continue-button", () => {
+        if (roundCounter < 10) {
+            roundCounter++;
+            goToFightSequenz("continue-item");
+        } else {
+            displayItems("h2", "Congratulations! You have completed the Game", displayBox, "game-end-message");
+        }
+    });
+
 }
-//Loop it
-function loopTheGame() {
-    if (roundCounter < 10) {
-        roundCounter++;
-        addFunction("continue-button", () => {
-            if (roundCounter < 10) {
-                goToClassAndRewardChoice("continue-item");
-            } else {
-                displayItems("h2", "Congratulations! You have completed the Game", displayBox, "game-end-message");
-            }
-        });
-    }
-}
+
 
 
 //Apply reset settings
