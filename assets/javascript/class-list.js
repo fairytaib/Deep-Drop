@@ -76,7 +76,6 @@ class Item extends Reward {
     }
 }
 
-
 export const allItemsList = [
     //Weapons
     new Item("Rusty Short Sword", "An old, rusted sword with a dull blade.", "common", (player) => player.damage += 1, "weapon", 1, "./assets/images/items/weapons/rusty-short-sword.webp"),
@@ -198,3 +197,50 @@ function updateHealthDisplay(player, monster) {
         monsterHealth.textContent = monster.health;
     }
 }
+
+export let playerAvailableHelmet = []
+export let playerAvailableArmor = []
+export let playerAvailableWeapon = []
+export let playerAvailablShoes = []
+
+export let playerAvailableFightingStyle = [{
+        name: "Aggressive Attacker",
+        description: "The character focuses on continuous physical attacks, disregarding defense.",
+        effect: (player) => {
+            player.attackSpeed *= 1.15; // Erhöht die Angriffsgeschwindigkeit um 15%
+            player.defense *= 0.8; // Verringert die Verteidigung um 20%
+        }
+    },
+    {
+        name: "Defensive Tank",
+        description: "The character prioritizes defense, aiming to minimize damage while attacking rarely.",
+        effect: (player) => {
+            player.defense *= 1.3; // Reduziert eingehenden Schaden um 30%
+            player.attackSpeed *= 0.75; // Verringert die Angriffsgeschwindigkeit um 25%
+
+        }
+    },
+    {
+        name: "Critical Fighter",
+        description: "The character aims to perform few but highly damaging attacks.",
+        effect: (player) => {
+            player.critChance = (player.critChance || 0) + 0.5; // Erhöht die Chance auf Chrit Angriff um 50%
+            player.attackSpeed *= 0.8; // Verringert die Angriffsgeschwindigkeit um 20%
+        }
+    },
+    {
+        name: "Skillful Dodger",
+        description: "The character focuses on evading attacks and uses quick movements to control the fight.",
+        effect: (player) => {
+            player.dodgeChance = (player.dodgeChance || 0) + 0.2; // Erhöht die Ausweichchance um 20%
+            player.damage *= 0.85; // Verringert den physischen Schaden um 15%
+        }
+    }
+];
+export let playerActiveFightingStyle;
+
+export let playerActiveHelmet;
+export let playerActiveWeapon;
+export let playerActiveArmor;
+export let playerActiveShoes;
+export let playerActiveSkill;
