@@ -10,7 +10,9 @@ import {
     universalSkills,
     fight,
     playerAvailableFightingStyle,
-    playerActiveFightingStyle
+    playerAvailableItems,
+    playerAvailableSkills
+
 } from "./class-list.js";
 
 //EXAMPLE
@@ -224,7 +226,6 @@ function displayPlayerMenu(menuTitle, itemContent) {
 
     displayPlayerMenuItem(itemContent, menuContainer)
 }
-let testlist = []
 
 function displayPlayerMenuItem(itemContent, appendBox) {
     if (itemContent.length === 0) {
@@ -241,6 +242,8 @@ function displayPlayerMenuItem(itemContent, appendBox) {
         })
     }
 }
+
+
 
 function selectClass(classOption) {
     if (classOption.name === "Knight") {
@@ -442,9 +445,9 @@ function goToContinueScreen() {
 
     addFunction("player-attribute-button", () => displayPlayerMenu("Attributes"));
 
-    addFunction("player-skill-button", () => displayPlayerMenu("Skills"));
+    addFunction("player-skill-button", () => displayPlayerMenu("Skills", playerAvailableSkills));
 
-    addFunction("player-item-button", () => displayPlayerMenu("Items", testlist));
+    addFunction("player-item-button", () => displayPlayerMenu("Items", playerAvailableItems));
 
     addFunction("player-attack-pattern-button", () => displayPlayerMenu("Attack patterns", playerAvailableFightingStyle));
 

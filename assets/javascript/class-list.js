@@ -198,10 +198,13 @@ function updateHealthDisplay(player, monster) {
     }
 }
 
-export let playerAvailableHelmet = []
-export let playerAvailableArmor = []
-export let playerAvailableWeapon = []
-export let playerAvailablShoes = []
+export let playerAvailableItems = []
+
+export let playerActiveHelmet;
+export let playerActiveWeapon;
+export let playerActiveArmor;
+export let playerActiveShoes;
+export let playerActiveSkill;
 
 export let playerAvailableFightingStyle = [{
         name: "Aggressive Attacker",
@@ -239,8 +242,4 @@ export let playerAvailableFightingStyle = [{
 ];
 export let playerActiveFightingStyle;
 
-export let playerActiveHelmet;
-export let playerActiveWeapon;
-export let playerActiveArmor;
-export let playerActiveShoes;
-export let playerActiveSkill;
+export let playerAvailableSkills = []
