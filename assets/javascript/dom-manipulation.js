@@ -243,8 +243,6 @@ function displayPlayerMenuItem(itemContent, appendBox) {
     }
 }
 
-
-
 function selectClass(classOption) {
     if (classOption.name === "Knight") {
         player = new Character("Knight", 10, 10, 1000, 10, 5, 5);
@@ -264,6 +262,13 @@ function selectClass(classOption) {
     }
 }
 
+function selectReward(reward) {
+    if (reward.type === "Item") {
+        playerAvailableItems.push(reward);
+    } else if (reward.type === "Skill") {
+        playerAvailableSkills.push(reward);
+    }
+}
 
 // Input validation - First Page
 function validateInput() {
@@ -374,11 +379,10 @@ function goToRewardSequenz() {
         rewardContainer.appendChild(rewardDescription);
 
         const selectButton = document.createElement("button");
-        selectButton.textContent = `Select ${reward.name}`;
+        selectButton.textContent = `Select ${reward.type}`;
         selectButton.classList.add("class-button", "reward-item");
         selectButton.addEventListener("click", () => {
-            //selectClass(classOption);
-            goToContinueScreen("reward-item");
+            goToContinueScreen("reward-item"), selectReward(reward);
         });
 
         displayBox.appendChild(rewardContainer);
