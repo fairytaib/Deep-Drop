@@ -8,7 +8,9 @@ import {
     assassinSkills,
     rangerSkills,
     universalSkills,
-    fight
+    fight,
+    playerAvailableFightingStyle,
+    playerActiveFightingStyle
 } from "./class-list.js";
 
 //EXAMPLE
@@ -207,7 +209,7 @@ function createCloseButton() {
     return closeButton;
 }
 
-function displayPlayerMenu(menuTitle) {
+function displayPlayerMenu(menuTitle, itemContent) {
     const menuContainer = document.createElement("div");
     menuContainer.classList.add("player-menu-display");
 
@@ -219,6 +221,25 @@ function displayPlayerMenu(menuTitle) {
     menuContainer.appendChild(closeButton);
 
     displayBox.appendChild(menuContainer);
+
+    displayPlayerMenuItem(itemContent, menuContainer)
+}
+let testlist = []
+
+function displayPlayerMenuItem(itemContent, appendBox) {
+    if (itemContent.length === 0) {
+        const text = document.createElement("p")
+        text.innerText = "You don't have anything in here yet"
+        text.classList.add("player-menu-text")
+        appendBox.appendChild(text)
+    } else {
+        itemContent.forEach(item => {
+            const text = document.createElement("p")
+            text.innerText = item.name
+            text.classList.add("player-menu-text")
+            appendBox.appendChild(text)
+        })
+    }
 }
 
 function selectClass(classOption) {
@@ -422,8 +443,10 @@ function goToContinueScreen() {
     addFunction("player-attribute-button", () => displayPlayerMenu("Attributes"));
 
     addFunction("player-skill-button", () => displayPlayerMenu("Skills"));
-    addFunction("player-item-button", () => displayPlayerMenu("Items"));
-    addFunction("player-attack-pattern-button", () => displayPlayerMenu("Attack patterns"));
+
+    addFunction("player-item-button", () => displayPlayerMenu("Items", testlist));
+
+    addFunction("player-attack-pattern-button", () => displayPlayerMenu("Attack patterns", playerAvailableFightingStyle));
 
     addFunction("continue-button", () => {
         if (roundCounter < 10) {
