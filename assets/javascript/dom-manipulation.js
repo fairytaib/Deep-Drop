@@ -11,7 +11,8 @@ import {
     fight,
     playerAvailableFightingStyle,
     playerAvailableItems,
-    playerAvailableSkills
+    playerAvailableSkills,
+    playerActiveFightingStyle
 
 } from "./class-list.js";
 
@@ -235,14 +236,61 @@ function displayPlayerMenuItem(itemContent, appendBox) {
         appendBox.appendChild(text)
     } else {
         itemContent.forEach(item => {
-            const text = document.createElement("p")
-            text.innerText = item.name
-            text.classList.add("player-menu-text")
-            appendBox.appendChild(text)
+            const itemContainer = document.createElement("div");
+            itemContainer.classList.add("reward-display-option", "text-font");
+
+            // Name des Fighting Styles
+            const itemTitle = document.createElement("h3");
+            itemTitle.textContent = item.name;
+
+            // Beschreibung des Fighting Styles
+            const itemDescription = document.createElement("p");
+            itemDescription.textContent = item.description;
+
+            // Button zur Auswahl
+            const selectButton = document.createElement("button");
+            selectButton.textContent = `Select ${item.name}`;
+            selectButton.classList.add("reward-button");
+            selectButton.addEventListener("click", () => selectFightingStyle(item));
+
+            // Elemente hinzufügen
+            appendBox.appendChild(itemContainer)
+            itemContainer.appendChild(itemTitle);
+            itemContainer.appendChild(itemDescription);
+            itemContainer.appendChild(selectButton);
         })
     }
 }
 
+function selectFightingStyle(style) {
+    if (playerActiveFightingStyle) {
+        resetFightingStyleEffects(playerActiveFightingStyle);
+    }
+
+    // Aktuellen Style speichern und Effekte anwenden
+    playerActiveFightingStyle = style;
+    style.effect(player);
+}
+
+function resetFightingStyleEffects(style) {
+    if (!style) return;
+
+    // Effekte umkehren (angenommen, die Effekte sind linear)
+    if (style.name === "Aggressive Attacker") {
+        player.attackSpeed /= 1.15; // Rückgängig machen
+        player.defense /= 0.8;
+    } else if (style.name === "Defensive Tank") {
+        player.incomingDamageReduction -= 0.3;
+        player.attackSpeed /= 0.75;
+    } else if (style.name === "Critical Fighter") {
+        player.critChance -= 0.5;
+        player.attackSpeed /= 0.8;
+    } else if (style.name === "Skillful Dodger") {
+        player.dodgeChance -= 0.2;
+        player.physicalDamage /= 0.85;
+        player.magicalDamage /= 0.85;
+    }
+}
 
 
 function selectClass(classOption) {
