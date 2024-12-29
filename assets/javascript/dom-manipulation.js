@@ -420,8 +420,21 @@ function validateInput() {
 function goToClassChoice() {
     removeItems("start-item");
 
-    toggleFlexbox(displayBox, "display-box-flex-column", "display-box-flex-row")
-    toggleFlexbox(buttonBox, "button-box-flex-column", "button-box-flex-row")
+    toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column")
+
+    const titleBox = document.createElement("div")
+    titleBox.classList.add("class-title-box", "class-item")
+    displayBox.appendChild(titleBox);
+
+    const itemBox = document.createElement("div")
+    itemBox.classList.add("class-item-box", "class-item")
+    displayBox.appendChild(itemBox)
+
+
+    const titleText = document.createElement("h3")
+    titleText.classList.add("title-font")
+    titleText.innerText = "Choose your Hero"
+    titleBox.appendChild(titleText)
 
     classOptions.forEach(classOption => {
         const classContainer = document.createElement("div");
@@ -453,7 +466,7 @@ function goToClassChoice() {
         classContainer.appendChild(classDescription);
         buttonBox.appendChild(selectButton);
 
-        displayBox.appendChild(classContainer);
+        itemBox.appendChild(classContainer)
     });
 }
 
