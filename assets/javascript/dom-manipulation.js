@@ -415,9 +415,13 @@ function goToRewardSequenz() {
         rewardTitle.textContent = reward.name;
         rewardTitle.classList.add("reward-title")
 
+        const rewardType = document.createElement("h4")
+        rewardType.textContent = reward.type
+        rewardType.classList.add("reward-type")
+
         const rewardRarity = document.createElement("h5")
         rewardRarity.textContent = reward.rarity
-        rewardRarity.classList.add("reward-type-text")
+        rewardRarity.classList.add("reward-rarity")
         if (reward.rarity == "common") {
             rewardRarity.style.color = "grey"
         } else if (reward.rarity == "rare") {
@@ -432,6 +436,7 @@ function goToRewardSequenz() {
 
         rewardContainer.appendChild(rewardImage);
         rewardContainer.appendChild(rewardTitle);
+        rewardContainer.appendChild(rewardType)
         rewardContainer.appendChild(rewardRarity)
         rewardContainer.appendChild(rewardDescription);
 
