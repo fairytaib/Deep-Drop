@@ -16,6 +16,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: url("../images/background/background-three.webp") no-repeat center center / cover;
+
 }
 
 .outer-box {
@@ -26,6 +28,7 @@ body {
     width: 500px;
     height: 500px;
     border: 1px solid black;
+    background-color: #f5f5dcf2;
 }
 
 /* Upper Title Section */
