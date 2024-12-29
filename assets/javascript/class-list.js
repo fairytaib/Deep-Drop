@@ -100,7 +100,7 @@ export const allItemsList = [
     new Item("Light Sandals", "Simple sandals for quick movement.", "common", (player) => player.dodgeChance += 1, "shoes", 1, "./assets/images/items/shoes/light-sandals.webp"),
     new Item("Windrunner Boots", "Boots enchanted with the power of wind.", "uncommon", (player) => player.dodgeChance += 1, "shoes", 2, "./assets/images/items/shoes/windrunner-boots.webp"),
     new Item("Wanderer’s Boots", "Sturdy boots for long journeys.", "rare", (player) => player.dodgeChance += 1, "shoes", 3, "./assets/images/items/shoes/wanderers-boots.webp"),
-    new Item("Phantom Shoes", "Shoes that let the wearer move like a ghost.", "epic", (player) => player.dodgeChance += 1, "shoes", 5, "./assets/images/items/shoes/phantom-boots.webp")
+    new Item("Phantom Shoes", "Shoes that let the wearer move like a ghost.", "epic", (player) => player.dodgeChance += 1, "shoes", 5, "./assets/images/items/shoes/phantom-shoes.webp")
 ]
 //Numbers have to be edited
 //Skill Class
