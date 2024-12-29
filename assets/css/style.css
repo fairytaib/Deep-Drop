@@ -65,7 +65,6 @@ body {
     transform: translate(-50%, -50%);
 }
 
-
 .display-box {
     position: relative;
     /* Damit das absolute Fenster relativ zu diesem Container positioniert wird */
@@ -104,6 +103,12 @@ body {
     width: 80%;
     height: 80%;
     border: 1px solid black;
+}
+
+.monster-image {
+    width: 80%;
+    height: 80%;
+    border-radius: 5%;
 }
 
 /* Player Menu */
@@ -185,6 +190,10 @@ body {
     width: 90%;
     height: 25%;
 
+}
+
+.button-box {
+    padding: 5px;
 }
 
 /* Start Items */

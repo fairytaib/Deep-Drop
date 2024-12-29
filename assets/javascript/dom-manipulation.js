@@ -442,9 +442,7 @@ function goToFightSequenz(hideItem) {
     const monsterImage = document.createElement("img");
     monsterImage.src = monsterOptions[roundCounter].image;
     monsterImage.alt = monsterOptions[roundCounter].name;
-    monsterImage.classList.add("fight-item")
-    monsterImage.style.width = "80%";
-    monsterImage.style.height = "80%";
+    monsterImage.classList.add("fight-item", "monster-image")
 
     displayBox.appendChild(monsterImage)
 
