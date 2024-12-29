@@ -310,6 +310,15 @@ function selectClass(classOption) {
     }
 }
 
+function selectReward(reward) {
+    if (reward.type === "Item") {
+        playerAvailableItems.push(reward);
+    } else if (reward.type === "Skill") {
+        playerAvailableSkills.push(reward);
+    } else if (reward.type === "Heal") {
+        player.health *= 2
+    }
+}
 // Input validation - First Page
 function validateInput() {
     const pattern = /^[a-zA-Z0-9]+$/;
@@ -444,8 +453,7 @@ function goToRewardSequenz() {
         selectButton.textContent = `Select ${reward.name}`;
         selectButton.classList.add("class-button", "reward-item");
         selectButton.addEventListener("click", () => {
-            //selectClass(classOption);
-            goToContinueScreen("reward-item");
+            selectReward(reward), goToContinueScreen("reward-item");
         });
 
         displayBox.appendChild(rewardContainer);
