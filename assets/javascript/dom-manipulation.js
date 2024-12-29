@@ -346,10 +346,11 @@ function goToClassChoice() {
 
         const classTitle = document.createElement("h3");
         classTitle.textContent = classOption.name;
+        classTitle.classList.add("class-title")
 
         const classDescription = document.createElement("p");
         classDescription.textContent = classOption.description;
-        classDescription.style.fontSize = "0.8rem";
+        classDescription.classList.add("class-description")
 
         const selectButton = document.createElement("button");
         selectButton.textContent = `Select ${classOption.name}`;
