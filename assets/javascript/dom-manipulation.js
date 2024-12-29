@@ -237,7 +237,7 @@ function displayPlayerMenuItem(itemContent, appendBox) {
     } else {
         itemContent.forEach(item => {
             const itemContainer = document.createElement("div");
-            itemContainer.classList.add("reward-display-option", "text-font");
+            itemContainer.classList.add("player-menu-display-option", "text-font");
 
             // Name des Fighting Styles
             const itemTitle = document.createElement("h3");
@@ -250,7 +250,7 @@ function displayPlayerMenuItem(itemContent, appendBox) {
             // Button zur Auswahl
             const selectButton = document.createElement("button");
             selectButton.textContent = `Select ${item.name}`;
-            selectButton.classList.add("reward-button");
+            selectButton.classList.add("reward-button", "player-inner-menu-button");
             selectButton.addEventListener("click", () => selectFightingStyle(item));
 
             // Elemente hinzufügen

@@ -62,6 +62,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
+
 .display-box {
     position: relative;
     /* Damit das absolute Fenster relativ zu diesem Container positioniert wird */
@@ -104,8 +105,8 @@ body {
 
 /* Player Menu */
 .player-menu-display {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     max-width: 400px;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -144,7 +145,19 @@ body {
     background-color: darkred;
 }
 
+/* Player Menu Innen drinnen */
+.player-menu-display-option {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5rem;
+}
 
+/* Der Button der sich mit dem Fenster öffnet */
+.player-inner-menu-button {
+    font-size: 0.5rem;
+}
 
 /* Button Display Section */
 /* Button Box Flex direction and general styling */
