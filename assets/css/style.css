@@ -307,6 +307,11 @@ button:active {
     margin: 10px;
 }
 
+.class-item-box {
+    height: 90%;
+    display: flex;
+}
+
 /* class Images */
 .class-image,
 .reward-image {
