@@ -90,7 +90,6 @@ body {
     gap: 1.5rem;
 }
 
-
 /* Fighting Sequenz Display */
 .fight-sequenz-display {
     width: 80%;
@@ -103,7 +102,6 @@ body {
     height: 80%;
     border-radius: 5%;
 }
-
 
 /* Player Menu */
 .player-menu-display {

@@ -22,7 +22,6 @@ import {
 let roundCounter = 0;
 let monster = monsterList[roundCounter]
 
-
 const classOptions = [{
         name: "Knight",
         description: "A strong and resilient warrior, excelling in defense.",
@@ -292,7 +291,6 @@ function resetFightingStyleEffects(style) {
     }
 }
 
-
 function selectClass(classOption) {
     if (classOption.name === "Knight") {
         player = new Character("Knight", 10, 10, 1000, 10, 5, 5);
@@ -311,7 +309,6 @@ function selectClass(classOption) {
         }
     }
 }
-
 
 // Input validation - First Page
 function validateInput() {
@@ -524,8 +521,6 @@ function goToContinueScreen() {
     });
 
 }
-
-
 
 //Apply reset settings
 document.getElementById("restart-button").addEventListener("click", displayUserChoiceConfirmation);

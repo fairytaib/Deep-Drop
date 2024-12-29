@@ -133,7 +133,6 @@ export const universalSkills = [
     new Skill("Path of Balance", "Gain 10% additional attack and defense as long as their HP remains above 75%.", "common", "Insert Function", "./assets/images/skills/universal-skills/path-of-balance.webp")
 ];
 
-
 // Fighting System
 //Player chooses Class
 
