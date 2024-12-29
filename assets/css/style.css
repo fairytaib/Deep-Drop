@@ -20,6 +20,32 @@ body {
 
 }
 
+/* General Button Style */
+button {
+    font-size: 1rem;
+    background-color: #3a3a3a;
+    color: #d4d4d4;
+    border: 2px solid #2b2b2b;
+    border-radius: 5px;
+    padding: 2px 20px;
+    text-shadow: 1px 1px 2px #000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+    background-color: #4a4e44;
+    color: #e5e5e5;
+    border-color: #67a667;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.8);
+    background-color: #2e2e2e;
+}
+
 .outer-box {
     display: flex;
     flex-direction: column;
@@ -52,6 +78,31 @@ body {
 #information-icon {
     font-size: 1.5rem;
 }
+
+#info-button {
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#info-button i {
+    font-size: 24px;
+    color: inherit;
+}
+
+#info-button:focus {
+    outline: none;
+}
+
+#info-button:hover i {
+    color: #ccc;
+}
+
 
 /* Middle Display Section */
 .confirm-window {
@@ -274,32 +325,6 @@ body {
 .upper-section,
 button {
     font-family: var(--text-font);
-}
-
-/* General Button Style */
-button {
-    font-size: 1rem;
-    background-color: #3a3a3a;
-    color: #d4d4d4;
-    border: 2px solid #2b2b2b;
-    border-radius: 5px;
-    padding: 2px 20px;
-    text-shadow: 1px 1px 2px #000;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-button:hover {
-    background-color: #4a4e44;
-    color: #e5e5e5;
-    border-color: #67a667;
-    transform: scale(1.05);
-}
-
-button:active {
-    transform: scale(0.8);
-    background-color: #2e2e2e;
 }
 
 .hidden {
