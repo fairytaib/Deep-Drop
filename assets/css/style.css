@@ -204,7 +204,7 @@ body {
 /* Class display */
 .class-display-option {
     height: 90%;
-    background-color: rgb(56, 72, 67);
+    background-color: #3a3a3a;
     border: solid 0.5px black;
     display: flex;
     flex-direction: column;
@@ -218,6 +218,17 @@ body {
 .class-image {
     width: 80%;
     border-radius: 10%;
+}
+
+.class-title {
+    color: #d4d4d4;
+    padding: 7px 0;
+}
+
+.class-description {
+    font-size: 0.8rem;
+    color: #d4d4d4;
+    text-align: center;
 }
 
 /* General styling */
