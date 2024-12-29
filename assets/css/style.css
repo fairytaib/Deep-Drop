@@ -108,6 +108,7 @@ button:active {
 /* Middle Display Section */
 .confirm-window {
     width: 80%;
+    height: 80%;
     max-width: 400px;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -168,7 +169,8 @@ button:active {
 }
 
 /* Player Menu */
-.player-menu-display {
+.player-menu-display,
+.tutorial-window {
     width: 90%;
     height: 90%;
     max-width: 400px;
@@ -182,7 +184,7 @@ button:active {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 10px;
 
@@ -212,6 +214,26 @@ button:active {
 .no-reset-button,
 .yes-reset-button {
     width: 60%;
+}
+
+.tutorial-window {
+    justify-content: space-evenly;
+}
+
+.next-slide-button-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.next-slide-button {
+    min-width: 2.4rem;
+    min-height: 2.4rem;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 50%;
+    padding: 0;
 }
 
 /* Player Menu Innen drinnen */
