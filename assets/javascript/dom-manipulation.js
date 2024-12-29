@@ -206,7 +206,56 @@ function displayTutorial() {
     tutorialContainer.appendChild(buttonContainer)
     buttonContainer.appendChild(leftSlideButton)
     buttonContainer.appendChild(rightSlideButton)
+
+    const tutorialSteps = [{
+            title: "How to play",
+            text: "Your mission is to survive 10 rounds of combat, improve your character, and conquer the depths of the well."
+        },
+        {
+            title: "Choose Your Class",
+            text: "Choose one of three classes. Each class has its own strength and weaknesses"
+        },
+        {
+            title: "Fight Monsters",
+            text: "Battles are automatic. Your stats, skills and your 'Fighting Style' decide the outcome."
+        },
+        {
+            title: "Improving Your Character",
+            text: "There are different rewards you can choose from after a fight. Items that can be equiped. Skills add passive bonuses and 'Healing' wich restore health for the next fight."
+        },
+        {
+            title: "Adjust & Continue",
+            text: "Equip items and tweak your fighting style each round after you have chosen your reward"
+        }
+    ];
+
+    let currentStep = 0;
+
+    // Update tutorial content
+    function updateTutorial(step) {
+        title.textContent = tutorialSteps[step].title;
+        tutorialText.innerText = tutorialSteps[step].text;
+    }
+
+    // Button event listeners
+    rightSlideButton.addEventListener("click", () => {
+        if (currentStep < tutorialSteps.length - 1) {
+            currentStep++;
+            updateTutorial(currentStep);
+        }
+    });
+
+    leftSlideButton.addEventListener("click", () => {
+        if (currentStep > 0) {
+            currentStep--;
+            updateTutorial(currentStep);
+        }
+    });
+
+    // Initialize
+    updateTutorial(currentStep);
 }
+
 // Generic functions
 function toggleFlexbox(displayWindow, toggleType, detoggleType) {
     displayWindow.classList.toggle(toggleType);
