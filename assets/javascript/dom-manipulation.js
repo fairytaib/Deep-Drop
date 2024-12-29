@@ -174,6 +174,39 @@ function resetGame() {
     roundCounter = 0;
 }
 
+function displayTutorial() {
+    const tutorialContainer = document.createElement("div");
+    tutorialContainer.classList.add("tutorial-window");
+
+    const title = document.createElement("h2");
+    title.textContent = "How to play";
+
+    const tutorialText = document.createElement("p")
+    tutorialText.innerText = "Your mission is to survive 10 rounds of combat, improve your character, and conquer the depths of the well."
+    tutorialText.classList.add("tutorial-text")
+
+    const closeButton = createCloseButton();
+
+    const buttonContainer = document.createElement("div")
+    buttonContainer.classList.add("next-slide-button-box")
+
+    const rightSlideButton = document.createElement("button")
+    rightSlideButton.innerHTML = "<i class='bx bx-chevron-right' ></i>"
+    rightSlideButton.classList.add("next-slide-button")
+
+    const leftSlideButton = document.createElement("button")
+    leftSlideButton.innerHTML = "<i class='bx bx-chevron-left' ></i>"
+    leftSlideButton.classList.add("next-slide-button")
+
+    //Append it
+    displayBox.appendChild(tutorialContainer);
+    tutorialContainer.appendChild(closeButton);
+    tutorialContainer.appendChild(title)
+    tutorialContainer.appendChild(tutorialText)
+    tutorialContainer.appendChild(buttonContainer)
+    buttonContainer.appendChild(leftSlideButton)
+    buttonContainer.appendChild(rightSlideButton)
+}
 // Generic functions
 function toggleFlexbox(displayWindow, toggleType, detoggleType) {
     displayWindow.classList.toggle(toggleType);
@@ -539,3 +572,5 @@ function goToContinueScreen() {
 document.getElementById("restart-button").addEventListener("click", displayUserChoiceConfirmation);
 //Apply validate input
 document.getElementById("start-button").addEventListener("click", validateInput);
+//Info Button
+document.getElementById("info-button").addEventListener("click", displayTutorial)
