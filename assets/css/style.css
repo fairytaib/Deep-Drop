@@ -67,7 +67,7 @@ body {
 
 .display-box {
     position: relative;
-    /* Damit das absolute Fenster relativ zu diesem Container positioniert wird */
+    padding: 10px;
 }
 
 .display-box-flex-column {
@@ -90,13 +90,6 @@ body {
     gap: 1.5rem;
 }
 
-/* Reward options display */
-.reward-display-option {
-    width: 25%;
-    height: 80%;
-    border: 1px solid black;
-
-}
 
 /* Fighting Sequenz Display */
 .fight-sequenz-display {
@@ -111,8 +104,6 @@ body {
     border-radius: 5%;
 }
 
-/* Reward section */
-.reward-title .reward-type-text .reward-description
 
 /* Player Menu */
 .player-menu-display {
@@ -154,6 +145,11 @@ body {
 
 .close-button:hover {
     background-color: darkred;
+}
+
+.no-reset-button,
+.yes-reset-button {
+    width: 60%;
 }
 
 /* Player Menu Innen drinnen */
@@ -214,7 +210,8 @@ body {
 }
 
 /* Class display */
-.class-display-option {
+.class-display-option,
+.reward-display-option {
     height: 90%;
     background-color: #3a3a3a;
     border: solid 0.5px black;
@@ -227,17 +224,24 @@ body {
 }
 
 /* class Images */
-.class-image {
+.class-image,
+.reward-image {
     width: 80%;
     border-radius: 10%;
 }
 
-.class-title {
+.class-title,
+.reward-title {
     color: #d4d4d4;
     padding: 7px 0;
 }
 
-.class-description {
+.reward-title {
+    font-size: 0.7rem;
+}
+
+.class-description,
+.reward-description {
     font-size: 0.8rem;
     color: #d4d4d4;
     text-align: center;

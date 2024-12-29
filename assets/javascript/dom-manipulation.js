@@ -132,16 +132,16 @@ function displayUserChoiceConfirmation() {
     confirmWindow.textContent = "Are you sure you want to proceed?";
 
     const yesButton = document.createElement("button");
+    yesButton.classList.add("yes-reset-button")
     yesButton.textContent = "Yes";
-    yesButton.style.width = "60%";
     yesButton.addEventListener("click", () => {
         confirmWindow.remove();
         resetGame();
     });
 
     const noButton = document.createElement("button");
+    noButton.classList.add("no-reset-button")
     noButton.textContent = "No";
-    noButton.style.width = "60%";
     noButton.addEventListener("click", () => confirmWindow.remove());
 
     confirmWindow.appendChild(yesButton);
@@ -412,7 +412,7 @@ function goToRewardSequenz() {
         const rewardImage = document.createElement("img");
         rewardImage.src = reward.image;
         rewardImage.alt = reward.name;
-        rewardImage.style.width = "100%";
+        rewardImage.classList.add("reward-image")
 
         const rewardTitle = document.createElement("h3");
         rewardTitle.textContent = reward.name;
@@ -422,7 +422,7 @@ function goToRewardSequenz() {
         rewardRarity.textContent = reward.rarity
         rewardRarity.classList.add("reward-type-text")
         if (reward.rarity == "common") {
-            rewardRarity.style.color = "white"
+            rewardRarity.style.color = "grey"
         } else if (reward.rarity == "rare") {
             rewardRarity.style.color = "green"
         } else if (reward.rarity == "epic") {
