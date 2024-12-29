@@ -387,13 +387,15 @@ function goToRewardSequenz() {
             type: "Item",
             name: randomItem.name,
             description: randomItem.description,
-            image: randomItem.image
+            image: randomItem.image,
+            rarity: randomItem.rarity
         },
         {
             type: "Skill",
             name: randomSkill.name,
             description: randomSkill.description,
-            image: randomSkill.image
+            image: randomSkill.image,
+            rarity: randomSkill.rarity
         },
         {
             type: "Heal",
@@ -414,12 +416,26 @@ function goToRewardSequenz() {
 
         const rewardTitle = document.createElement("h3");
         rewardTitle.textContent = reward.name;
+        rewardTitle.classList.add("reward-title")
+
+        const rewardRarity = document.createElement("h5")
+        rewardRarity.textContent = reward.rarity
+        rewardRarity.classList.add("reward-type-text")
+        if (reward.rarity == "common") {
+            rewardRarity.style.color = "white"
+        } else if (reward.rarity == "rare") {
+            rewardRarity.style.color = "green"
+        } else if (reward.rarity == "epic") {
+            rewardRarity.style.color = "purple"
+        }
 
         const rewardDescription = document.createElement("p");
         rewardDescription.textContent = reward.description;
+        rewardDescription.classList.add("reward-description")
 
         rewardContainer.appendChild(rewardImage);
         rewardContainer.appendChild(rewardTitle);
+        rewardContainer.appendChild(rewardRarity)
         rewardContainer.appendChild(rewardDescription);
 
         const selectButton = document.createElement("button");
