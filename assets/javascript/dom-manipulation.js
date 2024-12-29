@@ -342,7 +342,7 @@ function goToClassChoice() {
         const classImage = document.createElement("img");
         classImage.src = classOption.image;
         classImage.alt = classOption.name;
-        classImage.style.width = "80%";
+        classImage.classList.add("class-image")
 
         const classTitle = document.createElement("h3");
         classTitle.textContent = classOption.name;
