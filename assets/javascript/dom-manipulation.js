@@ -328,11 +328,18 @@ function displayPlayerMenuItem(itemContent, appendBox) {
             const itemDescription = document.createElement("p");
             itemDescription.textContent = item.description;
 
-            // Button zur Auswahl
-            const selectButton = document.createElement("button");
-            selectButton.textContent = `Select ${item.name}`;
-            selectButton.classList.add("reward-button", "player-inner-menu-button");
-            selectButton.addEventListener("click", () => selectFightingStyle(item));
+            if (itemContent == playerAvailableItems) {
+                const selectButton = document.createElement("button");
+                selectButton.textContent = `Select ${item.name}`;
+                selectButton.classList.add("reward-button", "player-inner-menu-button");
+                selectButton.addEventListener("click", () => selectFightingStyle(item));
+            } else if (itemContent == playerAvailableItems) {
+                const selectButton = document.createElement("button");
+                selectButton.textContent = `Select ${item.name}`;
+                selectButton.classList.add("reward-button", "player-inner-menu-button");
+                //selectButton.addEventListener("click", () => selectFightingStyle(item));  
+            }
+
 
             // Elemente hinzufügen
             appendBox.appendChild(itemContainer)
