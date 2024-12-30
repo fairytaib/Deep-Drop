@@ -256,6 +256,45 @@ function displayTutorial() {
     updateTutorial(currentStep);
 }
 
+function displayPlayerStats(player) {
+    const statsContainer = document.createElement("div");
+    statsContainer.classList.add("stats-container");
+
+    const statsList = document.createElement("ul");
+    statsList.classList.add("stats-list");
+
+    function addStat(icon, label, value) {
+        const statItem = document.createElement("li");
+        statItem.classList.add("stat-item");
+
+        const statIcon = document.createElement("span");
+        statIcon.innerHTML = icon;
+        statIcon.classList.add("stat-icon");
+
+        const statText = document.createElement("span");
+        statText.innerText = `${label}: ${value}`;
+        statText.classList.add("stat-text");
+
+        statItem.appendChild(statIcon);
+        statItem.appendChild(statText);
+        statsList.appendChild(statItem);
+    }
+
+    addStat("\u2764", "HP", `${player.health}`);
+    addStat("\u2694", "ATK", player.damage);
+    addStat("\u26E8", "DEF", player.defense);
+    addStat("\u2699", "ATK.SPD", player.attackSpeed);
+    addStat("\u26A1", "C.RATE", `${player.critChance}%`);
+    addStat("\uD83D\uDCA8", "DODGE CHANCE", `${player.dodgeChance}%`);
+
+
+    statsContainer.appendChild(statsList);
+
+    const menuContainer = document.querySelector(".player-menu-display");
+    menuContainer.appendChild(statsContainer);
+}
+
+
 // Generic functions
 function toggleFlexbox(displayWindow, toggleType, detoggleType) {
     displayWindow.classList.toggle(toggleType);
@@ -309,6 +348,22 @@ function displayPlayerMenu(menuTitle, itemContent) {
     displayPlayerMenuItem(itemContent, menuContainer)
 }
 
+function displayPlayerMenuAttributes(menuTitle) {
+    const menuContainer = document.createElement("div");
+    menuContainer.classList.add("player-menu-display");
+
+    const title = document.createElement("h2");
+    title.textContent = menuTitle;
+    menuContainer.appendChild(title);
+
+    const closeButton = createCloseButton();
+    menuContainer.appendChild(closeButton);
+
+    displayBox.appendChild(menuContainer);
+
+    displayPlayerStats(player)
+}
+
 function displayPlayerMenuItem(itemContent, appendBox) {
     if (itemContent.length === 0) {
         const text = document.createElement("p")
@@ -338,7 +393,7 @@ function displayPlayerMenuItem(itemContent, appendBox) {
                 itemContainer.appendChild(selectButton);
             } else if (itemContent == playerAvailableItems) {
                 const selectButton = document.createElement("button");
-                selectButton.textContent = `Select ${item.name}`;
+                selectButton.textContent = `Select`;
                 selectButton.classList.add("reward-button", "player-inner-menu-button");
                 //selectButton.addEventListener("click", () => selectFightingStyle(item));  
                 itemContainer.appendChild(selectButton);
@@ -553,7 +608,7 @@ function goToRewardSequenz() {
         rewardContainer.appendChild(rewardDescription);
 
         const selectButton = document.createElement("button");
-        selectButton.textContent = `Select ${reward.name}`;
+        selectButton.textContent = `Select ${reward.type}`;
         selectButton.classList.add("class-button", "reward-item");
         selectButton.addEventListener("click", () => {
             selectReward(reward), goToContinueScreen("reward-item");
@@ -619,7 +674,7 @@ function goToContinueScreen() {
     displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "player-item-button", "continue-item");
     displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "player-attack-pattern-button", "continue-item");
 
-    addFunction("player-attribute-button", () => displayPlayerMenu("Attributes"));
+    addFunction("player-attribute-button", () => displayPlayerMenuAttributes("Attributes"));
 
     addFunction("player-skill-button", () => displayPlayerMenu("Skills", playerAvailableSkills));
 
