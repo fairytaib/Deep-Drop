@@ -315,7 +315,7 @@ button:active {
     color: white;
     padding: 5px;
     border-radius: 4px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     white-space: nowrap;
     visibility: hidden;
     opacity: 0;
@@ -329,11 +329,20 @@ button:active {
     transform: translateX(-50%) translateY(-5px);
 }
 
+.player-menu-button {
+    width: 5rem;
+    height: 3.5rem;
+    padding: 5px;
+    text-align: center;
+}
+
+.stats-list {
+    list-style-type: none;
+}
 
 /* Reward Buttons */
-.reward-button,
-.player-menu-button {
-    width: 4rem;
+.reward-button {
+    width: 6rem;
     padding: 5px;
     text-align: center;
 }
