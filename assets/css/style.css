@@ -3,6 +3,7 @@
 :root {
     --title-font: "MedievalSharp", cursive;
     --text-font: "IM Fell English", serif;
+    --background: #3a3a3a;
 }
 
 * {
@@ -11,6 +12,7 @@
     box-sizing: border-box;
 }
 
+/* Start Page and general Designs */
 body {
     height: 100vh;
     display: flex;
@@ -20,10 +22,17 @@ body {
 
 }
 
-/* General Button Style */
+.title-font {
+    font-family: var(--title-font);
+}
+
+.text-font {
+    font-family: var(--text-font);
+}
+
 button {
     font-size: 1rem;
-    background-color: #3a3a3a;
+    background-color: var(--background);
     color: #d4d4d4;
     border: 2px solid #2b2b2b;
     border-radius: 5px;
@@ -58,7 +67,6 @@ button:active {
     padding: 0 0 20px 0;
 }
 
-/* Upper Title Section */
 .title-box {
     display: flex;
     justify-content: center;
@@ -104,32 +112,13 @@ button:active {
     color: #ccc;
 }
 
-
-/* Middle Display Section */
-.confirm-window {
-    width: 80%;
-    height: 80%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    text-align: center;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* Start Items */
+#player-name-input,
+#start-button {
+    margin: 2px;
 }
 
+/* Middle Section pure html elements */
 .display-box {
     position: relative;
     padding: 10px;
@@ -153,101 +142,6 @@ button:active {
     width: 90%;
     height: 60%;
     gap: 1.5rem;
-}
-
-/* Fighting Sequenz Display */
-.fight-sequenz-display {
-    width: 80%;
-    height: 80%;
-    border: 1px solid black;
-}
-
-.monster-image {
-    width: 80%;
-    height: 80%;
-    border-radius: 5%;
-}
-
-/* Player Menu */
-.player-menu-display,
-.tutorial-window {
-    width: 90%;
-    height: 90%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    text-align: center;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.close-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.close-button:hover {
-    background-color: darkred;
-}
-
-.no-reset-button,
-.yes-reset-button {
-    width: 60%;
-}
-
-.tutorial-window {
-    justify-content: space-evenly;
-}
-
-.next-slide-button-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-}
-
-.next-slide-button {
-    min-width: 2.4rem;
-    min-height: 2.4rem;
-    font-size: 1.2rem;
-    text-align: center;
-    border-radius: 50%;
-    padding: 0;
-}
-
-/* Player Menu Innen drinnen */
-.player-menu-display-option {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.5rem;
-}
-
-/* Der Button der sich mit dem Fenster öffnet */
-.player-inner-menu-button {
-    font-size: 0.5rem;
 }
 
 /* Button Display Section */
@@ -279,11 +173,162 @@ button:active {
     padding: 5px;
 }
 
-/* Start Items */
-#player-name-input,
-#start-button {
-    margin: 2px;
+/* Display Section with JavaScript*/
+/* general */
+.close-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
+
+.close-button:hover {
+    background-color: darkred;
+}
+
+.player-menu-display,
+.tutorial-window {
+    width: 90%;
+    height: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* tutorial */
+.tutorial-window {
+    justify-content: space-evenly;
+}
+
+.next-slide-button-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.next-slide-button {
+    min-width: 2.4rem;
+    min-height: 2.4rem;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 50%;
+    padding: 0;
+}
+
+/* reset */
+.confirm-window {
+    width: 80%;
+    height: 80%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.no-reset-button,
+.yes-reset-button {
+    width: 60%;
+}
+
+/* fighting-sequenz */
+.fight-sequenz-display {
+    width: 80%;
+    height: 80%;
+    border: 1px solid black;
+}
+
+.monster-image {
+    width: 80%;
+    height: 80%;
+    border-radius: 5%;
+}
+
+/* Player Menu */
+/* inside Player Menu */
+.player-menu-display-option {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5rem;
+}
+
+/* The button that opens with the menu-window */
+.player-inner-menu-button {
+    font-size: 0.5rem;
+}
+
+.player-menu-item {
+    font-size: 1rem;
+}
+
+.player-menu-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.player-menu-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--background);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    z-index: 10;
+}
+
+.player-menu-item:hover::after {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
 
 /* Reward Buttons */
 .reward-button,
@@ -297,7 +342,7 @@ button:active {
 .class-display-option,
 .reward-display-option {
     height: 90%;
-    background-color: #3a3a3a;
+    background-color: var(--background);
     border: solid 0.5px black;
     display: flex;
     flex-direction: column;
@@ -325,6 +370,7 @@ button:active {
     padding: 7px 0;
 }
 
+/* Reward Section */
 .reward-title {
     font-size: 0.7rem;
 }
@@ -337,15 +383,6 @@ button:active {
     padding: 7px 0;
 }
 
-/* General styling */
-.title-font {
-    font-family: var(--title-font);
-}
-
-.text-font {
-    font-family: var(--text-font);
-}
-
 .event-display,
 .display-box,
 #player-name-input,
@@ -355,6 +392,7 @@ button {
     font-family: var(--text-font);
 }
 
+/* Hide Items */
 .hidden {
     display: none;
 }
@@ -364,6 +402,7 @@ button {
     color: gray;
 }
 
+/* Media Query */
 @media (max-width: 600px) {
     .outer-box {
         width: 100%;
