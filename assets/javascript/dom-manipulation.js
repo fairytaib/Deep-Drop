@@ -323,29 +323,30 @@ function displayPlayerMenuItem(itemContent, appendBox) {
             // Name des Fighting Styles
             const itemTitle = document.createElement("h3");
             itemTitle.textContent = item.name;
+            itemTitle.classList.add("player-menu-item")
+            itemTitle.setAttribute("data-tooltip", item.description)
 
-            // Beschreibung des Fighting Styles
-            const itemDescription = document.createElement("p");
-            itemDescription.textContent = item.description;
+            appendBox.appendChild(itemContainer)
+            itemContainer.appendChild(itemTitle);
+
 
             if (itemContent == playerAvailableItems) {
                 const selectButton = document.createElement("button");
                 selectButton.textContent = `Select ${item.name}`;
                 selectButton.classList.add("reward-button", "player-inner-menu-button");
                 selectButton.addEventListener("click", () => selectFightingStyle(item));
+                itemContainer.appendChild(selectButton);
             } else if (itemContent == playerAvailableItems) {
                 const selectButton = document.createElement("button");
                 selectButton.textContent = `Select ${item.name}`;
                 selectButton.classList.add("reward-button", "player-inner-menu-button");
                 //selectButton.addEventListener("click", () => selectFightingStyle(item));  
+                itemContainer.appendChild(selectButton);
             }
 
 
             // Elemente hinzufügen
-            appendBox.appendChild(itemContainer)
-            itemContainer.appendChild(itemTitle);
-            itemContainer.appendChild(itemDescription);
-            itemContainer.appendChild(selectButton);
+
         })
     }
 }
