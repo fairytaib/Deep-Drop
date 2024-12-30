@@ -128,7 +128,7 @@ export const rangerSkills = [
 
 export const universalSkills = [
     new Skill("Longshot", "Decrease attackspeed by 50% for 500% Damage", "common", "Insert Function", "./assets/images/skills/universal-skills/longshot.webp"),
-    new Skill("Dodge Roll", "All characters gain an additional 5% chance to dodge an attack", "common", "Insert Function", "./assets/images/skills/universal-skills/dodge-roll.webp"),
+    new Skill("Dodge Roll", "Character gain an additional 5% chance to dodge an attack", "common", "Insert Function", "./assets/images/skills/universal-skills/dodge-roll.webp"),
     new Skill("Bloody Determination", "Increases damage by 15% when HP falls below 25%.", "common", "Insert Function", "./assets/images/skills/universal-skills/bloody-determination.webp"),
     new Skill("Path of Balance", "Gain 10% additional attack and defense as long as their HP remains above 75%.", "common", "Insert Function", "./assets/images/skills/universal-skills/path-of-balance.webp")
 ];
