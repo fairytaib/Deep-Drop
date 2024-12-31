@@ -12,7 +12,8 @@ import {
     playerAvailableFightingStyle,
     playerAvailableItems,
     playerAvailableSkills,
-    playerActiveFightingStyle
+    playerActiveFightingStyle,
+    playerActiveItems
 
 } from "./class-list.js";
 
@@ -294,6 +295,33 @@ function displayPlayerStats(player) {
     menuContainer.appendChild(statsContainer);
 }
 
+function displayequippedPlayerItems(appendBox) {
+    const equipedItemsDiv = document.createElement("div")
+    equipedItemsDiv.classList.add("equipped-item-box")
+    appendBox.appendChild(equipedItemsDiv)
+
+    const equipedItemsTitle = document.createElement("h3")
+    equipedItemsTitle.classList.add("title-font")
+    equipedItemsTitle.innerText = "Equipped Items:"
+    equipedItemsDiv.appendChild(equipedItemsTitle)
+
+    playerActiveItems.forEach(item => {
+        const itemContainer = document.createElement("div");
+        itemContainer.classList.add("player-menu-display-option", "text-font");
+
+        const itemTitle = document.createElement("p");
+        itemTitle.textContent = item.name;
+        itemTitle.classList.add("player-menu-item")
+        itemTitle.setAttribute("data-tooltip", item.description)
+
+        const selectButton = document.createElement("button");
+        selectButton.textContent = `Unequip`;
+        selectButton.classList.add("reward-button", "player-inner-menu-button");
+        //Add eventlistener
+        itemContainer.appendChild(selectButton);
+    })
+}
+}
 
 // Generic functions
 function toggleFlexbox(displayWindow, toggleType, detoggleType) {
@@ -345,7 +373,12 @@ function displayPlayerMenu(menuTitle, itemContent) {
 
     displayBox.appendChild(menuContainer);
 
-    displayPlayerMenuItem(itemContent, menuContainer)
+    displayPLayerMenuItems(itemContent, menuContainer)
+
+    if (itemContent == playerAvailableItems) {
+        menuContainer.classList.add("player-menu-item-display")
+        displayequippedPlayerItems(menuContainer)
+    }
 }
 
 function displayPlayerMenuAttributes(menuTitle) {
@@ -364,7 +397,7 @@ function displayPlayerMenuAttributes(menuTitle) {
     displayPlayerStats(player)
 }
 
-function displayPlayerMenuItem(itemContent, appendBox) {
+function displayPLayerMenuItems(itemContent, appendBox) {
     if (itemContent.length === 0) {
         const text = document.createElement("p")
         text.innerText = "You don't have anything in here yet"
@@ -398,9 +431,6 @@ function displayPlayerMenuItem(itemContent, appendBox) {
                 //selectButton.addEventListener("click", () => selectFightingStyle(item));  
                 itemContainer.appendChild(selectButton);
             }
-
-
-            // Elemente hinzufügen
 
         })
     }
