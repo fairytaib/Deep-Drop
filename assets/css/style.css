@@ -217,6 +217,11 @@ button:active {
     transform: translate(-50%, -50%);
 }
 
+.player-menu-item-display {
+    justify-content: space-between;
+    padding: 20px 20px 5px 20px;
+}
+
 /* tutorial */
 .tutorial-window {
     justify-content: space-evenly;
@@ -338,6 +343,12 @@ button:active {
 
 .stats-list {
     list-style-type: none;
+}
+
+.equipped-item-box {
+    width: 100%;
+    border: 2px white solid;
+    height: 40%
 }
 
 /* Reward Buttons */
