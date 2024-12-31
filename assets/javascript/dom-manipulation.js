@@ -295,7 +295,7 @@ function displayPlayerStats(player) {
     menuContainer.appendChild(statsContainer);
 }
 
-function displayequippedPlayerItems(appendBox) {
+function displayEquippedPlayerItems(appendBox) {
     const equipedItemsDiv = document.createElement("div")
     equipedItemsDiv.classList.add("equipped-item-box")
     appendBox.appendChild(equipedItemsDiv)
@@ -321,7 +321,7 @@ function displayequippedPlayerItems(appendBox) {
         itemContainer.appendChild(selectButton);
     })
 }
-}
+
 
 // Generic functions
 function toggleFlexbox(displayWindow, toggleType, detoggleType) {
@@ -377,7 +377,7 @@ function displayPlayerMenu(menuTitle, itemContent) {
 
     if (itemContent == playerAvailableItems) {
         menuContainer.classList.add("player-menu-item-display")
-        displayequippedPlayerItems(menuContainer)
+        displayEquippedPlayerItems(menuContainer)
     }
 }
 
@@ -424,7 +424,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
                 selectButton.classList.add("reward-button", "player-inner-menu-button");
                 selectButton.addEventListener("click", () => selectFightingStyle(item));
                 itemContainer.appendChild(selectButton);
-            } else if (itemContent == playerAvailableItems) {
+            } else if (itemContent == playerAvailableFightingStyle) {
                 const selectButton = document.createElement("button");
                 selectButton.textContent = `Select`;
                 selectButton.classList.add("reward-button", "player-inner-menu-button");
@@ -432,6 +432,9 @@ function displayPLayerMenuItems(itemContent, appendBox) {
                 itemContainer.appendChild(selectButton);
             }
 
+            if (itemContent == playerAvailableFightingStyle) {
+                itemContainer.classList.add("fighting-styles-divs")
+            }
         })
     }
 }
