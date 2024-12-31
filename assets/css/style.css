@@ -349,6 +349,10 @@ button:active {
     width: 70%;
 }
 
+.active-fighting-style-display {
+    background-color: orange;
+}
+
 /* Attributes menu */
 .stats-list {
     list-style-type: none;
