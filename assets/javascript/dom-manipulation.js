@@ -422,13 +422,18 @@ function displayPLayerMenuItems(itemContent, appendBox) {
                 const selectButton = document.createElement("button");
                 selectButton.textContent = `Select ${item.name}`;
                 selectButton.classList.add("reward-button", "player-inner-menu-button");
-                selectButton.addEventListener("click", () => selectFightingStyle(item));
+                selectButton.addEventListener("click", () => activateFightingStyle(item));
                 itemContainer.appendChild(selectButton);
+
             } else if (itemContent == playerAvailableFightingStyle) {
                 const selectButton = document.createElement("button");
                 selectButton.textContent = `Select`;
                 selectButton.classList.add("reward-button", "player-inner-menu-button");
-                //selectButton.addEventListener("click", () => selectFightingStyle(item));  
+                selectButton.addEventListener("click", () => {
+                    const allFightingStyleDivs = document.querySelectorAll(".active-fighting-style-display");
+                    allFightingStyleDivs.forEach(div => div.classList.remove("active-fighting-style-display"));
+                    itemTitle.classList.add("active-fighting-style-display");
+                });
                 itemContainer.appendChild(selectButton);
             }
 
@@ -439,9 +444,9 @@ function displayPLayerMenuItems(itemContent, appendBox) {
     }
 }
 
-function selectFightingStyle(style) {
+function activateFightingStyle(style) {
     if (playerActiveFightingStyle) {
-        resetFightingStyleEffects(playerActiveFightingStyle);
+        resetFightingStyleEffects(playerActiveFightingStyle, selectButton);
     }
 
     // Aktuellen Style speichern und Effekte anwenden
@@ -462,6 +467,7 @@ function resetFightingStyleEffects(style) {
     } else if (style.name === "Critical Fighter") {
         player.critChance -= 0.5;
         player.attackSpeed /= 0.8;
+
     } else if (style.name === "Skillful Dodger") {
         player.dodgeChance -= 0.2;
         player.physicalDamage /= 0.85;
@@ -497,6 +503,8 @@ function selectReward(reward) {
         player.health *= 2
     }
 }
+
+
 // Input validation - First Page
 function validateInput() {
     const pattern = /^[a-zA-Z0-9]+$/;
