@@ -341,10 +341,20 @@ button:active {
     text-align: center;
 }
 
+/* fighting menu */
+.fighting-styles-divs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+
+/* Attributes menu */
 .stats-list {
     list-style-type: none;
 }
 
+/* Item menu */
 .equipped-item-box {
     width: 100%;
     border: 2px white solid;
