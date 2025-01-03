@@ -405,10 +405,21 @@ function displayPLayerMenuItems(itemContent, appendBox) {
         appendBox.appendChild(text)
     } else {
         if (itemContent == playerAvailableFightingStyle) {
+            const currentItemDiv = document.createElement("div")
+
             const currentItem = document.createElement("h3")
             currentItem.classList.add("player-menu-item", "text-font")
-            currentItem.innerText = playerActiveFightingStyle.name
-            appendBox.appendChild(currentItem)
+            currentItem.innerText = "Current Style:"
+            appendBox.appendChild(currentItemDiv)
+            currentItemDiv.appendChild(currentItem)
+
+            if (playerActiveFightingStyle) {
+                const activeStyle = document.createElement("p")
+                activeStyle.classList.add("text-font")
+                activeStyle.innerText = playerActiveFightingStyle.name
+                currentItem.appendChild(activeStyle)
+            }
+
         }
 
         itemContent.forEach(item => {
