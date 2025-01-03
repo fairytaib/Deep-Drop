@@ -415,11 +415,11 @@ function displayPLayerMenuItems(itemContent, appendBox) {
 
             if (playerActiveFightingStyle) {
                 const activeStyle = document.createElement("p")
+                activeStyle.id("active-style")
                 activeStyle.classList.add("text-font")
-                activeStyle.innerText = playerActiveFightingStyle.name
-                currentItem.appendChild(activeStyle)
+                activeStyle.innerText = itemContent.name
+                currentItemDiv.appendChild(activeStyle)
             }
-
         }
 
         itemContent.forEach(item => {
@@ -450,7 +450,9 @@ function displayPLayerMenuItems(itemContent, appendBox) {
                 selectButton.addEventListener("click", () => {
                     const allFightingStyleDivs = document.querySelectorAll(".active-fighting-style-display");
                     allFightingStyleDivs.forEach(div => div.classList.remove("active-fighting-style-display"));
-                    itemTitle.classList.add("active-fighting-style-display");
+                    itemTitle.classList.add("active-fighting-style-display"),
+                    activeStyle = document.getElementById("active-style");
+                    activeStyle.innerText = playerActiveFightingStyle
                 });
                 itemContainer.appendChild(selectButton);
             }
@@ -471,6 +473,7 @@ function activateFightingStyle(style) {
     // Aktuellen Style speichern und Effekte anwenden
     playerActiveFightingStyle = style;
     style.effect(player);
+    return playerActiveFightingStyle
 }
 
 function resetFightingStyleEffects(style) {
