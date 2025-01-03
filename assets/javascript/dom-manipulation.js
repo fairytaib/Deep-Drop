@@ -397,28 +397,29 @@ function displayPlayerMenuAttributes(menuTitle) {
     displayPlayerStats(player)
 }
 
+
 function displayPLayerMenuItems(itemContent, appendBox) {
     if (itemContent.length === 0) {
-        const text = document.createElement("p")
-        text.innerText = "You don't have anything in here yet"
-        text.classList.add("player-menu-text")
-        appendBox.appendChild(text)
+        const text = document.createElement("p");
+        text.innerText = "You don't have anything in here yet";
+        text.classList.add("player-menu-text");
+        appendBox.appendChild(text);
     } else {
-        if (itemContent == playerAvailableFightingStyle) {
-            const currentItemDiv = document.createElement("div")
+        if (Array.isArray(itemContent) && itemContent === playerAvailableFightingStyle) {
+            const currentItemDiv = document.createElement("div");
 
-            const currentItem = document.createElement("h3")
-            currentItem.classList.add("player-menu-item", "text-font")
-            currentItem.innerText = "Current Style:"
-            appendBox.appendChild(currentItemDiv)
-            currentItemDiv.appendChild(currentItem)
+            const currentItem = document.createElement("h3");
+            currentItem.classList.add("player-menu-item", "text-font");
+            currentItem.innerText = "Current Style:";
+            appendBox.appendChild(currentItemDiv);
+            currentItemDiv.appendChild(currentItem);
 
-            if (playerActiveFightingStyle) {
-                const activeStyle = document.createElement("p")
-                activeStyle.id("active-style")
-                activeStyle.classList.add("text-font")
-                activeStyle.innerText = itemContent.name
-                currentItemDiv.appendChild(activeStyle)
+            if (itemContent === playerAvailableFightingStyle) {
+                const activeStyle = document.createElement("p");
+                activeStyle.id = "active-style";
+                activeStyle.classList.add("text-font");
+                activeStyle.innerText = "None";
+                currentItemDiv.appendChild(activeStyle);
             }
         }
 
@@ -426,44 +427,45 @@ function displayPLayerMenuItems(itemContent, appendBox) {
             const itemContainer = document.createElement("div");
             itemContainer.classList.add("player-menu-display-option", "text-font");
 
-            // Name des Fighting Styles
             const itemTitle = document.createElement("h3");
             itemTitle.textContent = item.name;
-            itemTitle.classList.add("player-menu-item")
-            itemTitle.setAttribute("data-tooltip", item.description)
+            itemTitle.classList.add("player-menu-item");
+            itemTitle.setAttribute("data-tooltip", item.description);
 
-            appendBox.appendChild(itemContainer)
+            appendBox.appendChild(itemContainer);
             itemContainer.appendChild(itemTitle);
 
-
-            if (itemContent == playerAvailableItems) {
+            if (itemContent === playerAvailableItems) {
                 const selectButton = document.createElement("button");
                 selectButton.textContent = `Select ${item.name}`;
                 selectButton.classList.add("reward-button", "player-inner-menu-button");
-                selectButton.addEventListener("click", () => activateFightingStyle(item));
+                selectButton.addEventListener("click", () => {});
                 itemContainer.appendChild(selectButton);
-
-            } else if (itemContent == playerAvailableFightingStyle) {
+            } else if (itemContent === playerAvailableFightingStyle) {
                 const selectButton = document.createElement("button");
                 selectButton.textContent = `Select`;
                 selectButton.classList.add("reward-button", "player-inner-menu-button");
                 selectButton.addEventListener("click", () => {
                     const allFightingStyleDivs = document.querySelectorAll(".active-fighting-style-display");
                     allFightingStyleDivs.forEach(div => div.classList.remove("active-fighting-style-display"));
-                    itemTitle.classList.add("active-fighting-style-display"),
-                    activeStyle = document.getElementById("active-style");
-                    activeStyle.innerText = playerActiveFightingStyle
-                });
+                    itemTitle.classList.add("active-fighting-style-display");
+
+                    const activeStyleElement = document.getElementById("active-style");
+
+                    activeStyleElement.innerText = playerActiveFightingStyle.name
+
+
+                }, activateFightingStyle(item));
                 itemContainer.appendChild(selectButton);
             }
 
-            if (itemContent == playerAvailableFightingStyle) {
-
-                itemContainer.classList.add("fighting-styles-divs")
+            if (itemContent === playerAvailableFightingStyle) {
+                itemContainer.classList.add("fighting-styles-divs");
             }
-        })
+        });
     }
 }
+
 
 function activateFightingStyle(style) {
     if (playerActiveFightingStyle) {
