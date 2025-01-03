@@ -12,7 +12,6 @@ import {
     playerAvailableFightingStyle,
     playerAvailableItems,
     playerAvailableSkills,
-    playerActiveFightingStyle,
     playerActiveItems
 
 } from "./class-list.js";
@@ -22,6 +21,7 @@ import {
 // Refine Stats later on
 let roundCounter = 0;
 let monster = monsterList[roundCounter]
+let playerActiveFightingStyle;
 
 const classOptions = [{
         name: "Knight",
@@ -418,7 +418,13 @@ function displayPLayerMenuItems(itemContent, appendBox) {
                 const activeStyle = document.createElement("p");
                 activeStyle.id = "active-style";
                 activeStyle.classList.add("text-font");
-                activeStyle.innerText = "None";
+                if (playerActiveFightingStyle && playerActiveFightingStyle.name) {
+                    activeStyle.innerText = playerActiveFightingStyle.name;
+                } else {
+                    activeStyle.innerText = "None"
+                }
+
+
                 currentItemDiv.appendChild(activeStyle);
             }
         }
@@ -469,7 +475,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
 
 function activateFightingStyle(style) {
     if (playerActiveFightingStyle) {
-        resetFightingStyleEffects(playerActiveFightingStyle, selectButton);
+        resetFightingStyleEffects(playerActiveFightingStyle);
     }
 
     // Aktuellen Style speichern und Effekte anwenden
