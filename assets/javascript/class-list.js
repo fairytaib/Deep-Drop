@@ -236,6 +236,5 @@ export let playerAvailableFightingStyle = [{
         }
     }
 ];
-export let playerActiveFightingStyle;
 
 export let playerAvailableSkills = []
