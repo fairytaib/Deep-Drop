@@ -404,6 +404,13 @@ function displayPLayerMenuItems(itemContent, appendBox) {
         text.classList.add("player-menu-text")
         appendBox.appendChild(text)
     } else {
+        if (itemContent == playerAvailableFightingStyle) {
+            const currentItem = document.createElement("h3")
+            currentItem.classList.add("player-menu-item", "text-font")
+            currentItem.innerText = playerActiveFightingStyle.name
+            appendBox.appendChild(currentItem)
+        }
+
         itemContent.forEach(item => {
             const itemContainer = document.createElement("div");
             itemContainer.classList.add("player-menu-display-option", "text-font");
@@ -438,6 +445,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
             }
 
             if (itemContent == playerAvailableFightingStyle) {
+
                 itemContainer.classList.add("fighting-styles-divs")
             }
         })
@@ -605,7 +613,7 @@ function goToRewardSequenz() {
         {
             type: "Heal",
             name: "Healing Potion",
-            description: "Restore 50% of your max HP.",
+            description: "Double your current HP.",
             image: "./assets/images/heal-picture/heal.webp"
         }
     ];
