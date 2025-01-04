@@ -295,32 +295,7 @@ function displayPlayerStats(player) {
     menuContainer.appendChild(statsContainer);
 }
 
-function displayEquippedPlayerItems(appendBox) {
-    const equipedItemsDiv = document.createElement("div")
-    equipedItemsDiv.classList.add("equipped-item-box")
-    appendBox.appendChild(equipedItemsDiv)
 
-    const equipedItemsTitle = document.createElement("h3")
-    equipedItemsTitle.classList.add("title-font")
-    equipedItemsTitle.innerText = "Equipped Items:"
-    equipedItemsDiv.appendChild(equipedItemsTitle)
-
-    playerActiveItems.forEach(item => {
-        const itemContainer = document.createElement("div");
-        itemContainer.classList.add("player-menu-display-option", "text-font");
-
-        const itemTitle = document.createElement("p");
-        itemTitle.textContent = item.name;
-        itemTitle.classList.add("player-menu-item")
-        itemTitle.setAttribute("data-tooltip", item.description)
-
-        const selectButton = document.createElement("button");
-        selectButton.textContent = `Unequip`;
-        selectButton.classList.add("reward-button", "player-inner-menu-button");
-        //Add eventlistener
-        itemContainer.appendChild(selectButton);
-    })
-}
 
 
 // Generic functions
@@ -375,10 +350,6 @@ function displayPlayerMenu(menuTitle, itemContent) {
 
     displayPLayerMenuItems(itemContent, menuContainer)
 
-    if (itemContent == playerAvailableItems) {
-        menuContainer.classList.add("player-menu-item-display")
-        displayEquippedPlayerItems(menuContainer)
-    }
 }
 
 function displayPlayerMenuAttributes(menuTitle) {
