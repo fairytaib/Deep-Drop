@@ -373,6 +373,7 @@ button:active {
     text-align: center;
 }
 
+
 /* Class display */
 .class-display-option,
 .reward-display-option {
@@ -417,6 +418,38 @@ button:active {
     text-align: center;
     padding: 7px 0;
 }
+
+.reward-description {
+    overflow-y: scroll;
+}
+
+/* Scrollbar */
+/* Für Webkit-Browser (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 0.2rem;
+    /* Breite der Scrollbar */
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Farbe des Scrollbalkens */
+    border-radius: 10px;
+    /* Abgerundete Ecken */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Farbe beim Hover */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+    /* Hintergrund der Scrollbar */
+    border-radius: 10px;
+    /* Abgerundete Ecken */
+}
+
 
 .event-display,
 .display-box,
