@@ -116,7 +116,7 @@ class Skill extends Reward {
 }
 
 export const knightSkills = [
-    new Skill("Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses against attacks.", "common", "Insert Function", "./assets/images/skills/knight-skills/shieldwall.webp"),
+    new Skill("Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses against attacks.", "common", (player) => player.defense = (player.defense || 0) + 0.15, "./assets/images/skills/knight-skills/shieldwall.webp"),
     new Skill("Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP, keeping the fight alive.", "rare", "Insert Function", "./assets/images/skills/knight-skills/unyielding-will.webp")
 ];
 
