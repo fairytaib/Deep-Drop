@@ -391,8 +391,6 @@ function displayPLayerMenuItems(itemContent, appendBox) {
                 } else {
                     activeStyle.innerText = "None"
                 }
-
-
                 currentItemDiv.appendChild(activeStyle);
             }
         }
@@ -433,7 +431,13 @@ function displayPLayerMenuItems(itemContent, appendBox) {
             const selectButton = document.createElement("button");
             selectButton.textContent = `Select ${item.name}`;
             selectButton.classList.add("reward-button", "player-inner-menu-button");
-            selectButton.addEventListener("click", () => {});
+            selectButton.addEventListener("click", () => {
+                playerActiveItem = item
+
+                const activeStyleElement = document.getElementById("active-style");
+                activeStyleElement.innerText = playerActiveItem.name
+
+            });
             itemContainer.appendChild(selectButton);
         } else if (itemContent === playerAvailableFightingStyle) {
             const selectButton = document.createElement("button");
