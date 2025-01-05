@@ -284,7 +284,7 @@ function displayPlayerStats(player) {
     addStat("\u2764", "HP", `${player.health}`);
     addStat("\u2694", "ATK", player.damage);
     addStat("\u26E8", "DEF", player.defense);
-    addStat("\u2699", "ATK.SPD", player.attackSpeed);
+    addStat("\u2699", "ATK.SPD", `${(player.attackSpeed / 1000).toFixed(2)} per Second`);
     addStat("\u26A1", "C.RATE", `${player.critChance}%`);
     addStat("\uD83D\uDCA8", "DODGE CHANCE", `${player.dodgeChance}%`);
 
@@ -429,7 +429,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
 
         if (itemContent === playerAvailableItems) {
             const selectButton = document.createElement("button");
-            selectButton.textContent = `Select ${item.name}`;
+            selectButton.textContent = `Select`;
             selectButton.classList.add("reward-button", "player-inner-menu-button");
             selectButton.addEventListener("click", () => {
                 playerActiveItem = item
@@ -444,6 +444,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
             selectButton.textContent = `Select`;
             selectButton.classList.add("reward-button", "player-inner-menu-button");
             selectButton.addEventListener("click", () => {
+                activateFightingStyle(item)
                 const allFightingStyleDivs = document.querySelectorAll(".active-fighting-style-display");
                 allFightingStyleDivs.forEach(div => div.classList.remove("active-fighting-style-display"));
                 itemTitle.classList.add("active-fighting-style-display");
@@ -453,7 +454,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
                 activeStyleElement.innerText = playerActiveFightingStyle.name
 
 
-            }, activateFightingStyle(item));
+            });
             itemContainer.appendChild(selectButton);
         }
 
