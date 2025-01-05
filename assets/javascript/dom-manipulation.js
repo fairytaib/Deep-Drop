@@ -12,7 +12,6 @@ import {
     playerAvailableFightingStyle,
     playerAvailableItems,
     playerAvailableSkills,
-    playerActiveItems
 
 } from "./class-list.js";
 
@@ -22,6 +21,7 @@ import {
 let roundCounter = 0;
 let monster = monsterList[roundCounter]
 let playerActiveFightingStyle;
+let playerActiveItem;
 
 const classOptions = [{
         name: "Knight",
@@ -295,9 +295,6 @@ function displayPlayerStats(player) {
     menuContainer.appendChild(statsContainer);
 }
 
-
-
-
 // Generic functions
 function toggleFlexbox(displayWindow, toggleType, detoggleType) {
     displayWindow.classList.toggle(toggleType);
@@ -400,49 +397,67 @@ function displayPLayerMenuItems(itemContent, appendBox) {
             }
         }
 
-        itemContent.forEach(item => {
-            const itemContainer = document.createElement("div");
-            itemContainer.classList.add("player-menu-display-option", "text-font");
+        if (Array.isArray(itemContent) && itemContent === playerAvailableItems) {
+            const currentItemDiv = document.createElement("div");
 
-            const itemTitle = document.createElement("h3");
-            itemTitle.textContent = item.name;
-            itemTitle.classList.add("player-menu-item");
-            itemTitle.setAttribute("data-tooltip", item.description);
+            const currentItem = document.createElement("h3");
+            currentItem.classList.add("player-menu-item", "text-font");
+            currentItem.innerText = "Current Item:";
+            appendBox.appendChild(currentItemDiv);
+            currentItemDiv.appendChild(currentItem);
 
-            appendBox.appendChild(itemContainer);
-            itemContainer.appendChild(itemTitle);
-
-            if (itemContent === playerAvailableItems) {
-                const selectButton = document.createElement("button");
-                selectButton.textContent = `Select ${item.name}`;
-                selectButton.classList.add("reward-button", "player-inner-menu-button");
-                selectButton.addEventListener("click", () => {});
-                itemContainer.appendChild(selectButton);
-            } else if (itemContent === playerAvailableFightingStyle) {
-                const selectButton = document.createElement("button");
-                selectButton.textContent = `Select`;
-                selectButton.classList.add("reward-button", "player-inner-menu-button");
-                selectButton.addEventListener("click", () => {
-                    const allFightingStyleDivs = document.querySelectorAll(".active-fighting-style-display");
-                    allFightingStyleDivs.forEach(div => div.classList.remove("active-fighting-style-display"));
-                    itemTitle.classList.add("active-fighting-style-display");
-
-                    const activeStyleElement = document.getElementById("active-style");
-
-                    activeStyleElement.innerText = playerActiveFightingStyle.name
-
-
-                }, activateFightingStyle(item));
-                itemContainer.appendChild(selectButton);
+            const activeStyle = document.createElement("p");
+            activeStyle.id = "active-style";
+            activeStyle.classList.add("text-font");
+            if (playerActiveItem && playerActiveItem.name) {
+                activeStyle.innerText = playerActiveItem.name;
+            } else {
+                activeStyle.innerText = "None"
             }
-
-            if (itemContent === playerAvailableFightingStyle) {
-                itemContainer.classList.add("fighting-styles-divs");
-            }
-        });
+            currentItemDiv.appendChild(activeStyle);
+        }
     }
-}
+    itemContent.forEach(item => {
+        const itemContainer = document.createElement("div");
+        itemContainer.classList.add("player-menu-display-option", "text-font");
 
+        const itemTitle = document.createElement("h3");
+        itemTitle.textContent = item.name;
+        itemTitle.classList.add("player-menu-item");
+        itemTitle.setAttribute("data-tooltip", item.description);
+
+        appendBox.appendChild(itemContainer);
+        itemContainer.appendChild(itemTitle);
+
+        if (itemContent === playerAvailableItems) {
+            const selectButton = document.createElement("button");
+            selectButton.textContent = `Select ${item.name}`;
+            selectButton.classList.add("reward-button", "player-inner-menu-button");
+            selectButton.addEventListener("click", () => {});
+            itemContainer.appendChild(selectButton);
+        } else if (itemContent === playerAvailableFightingStyle) {
+            const selectButton = document.createElement("button");
+            selectButton.textContent = `Select`;
+            selectButton.classList.add("reward-button", "player-inner-menu-button");
+            selectButton.addEventListener("click", () => {
+                const allFightingStyleDivs = document.querySelectorAll(".active-fighting-style-display");
+                allFightingStyleDivs.forEach(div => div.classList.remove("active-fighting-style-display"));
+                itemTitle.classList.add("active-fighting-style-display");
+
+                const activeStyleElement = document.getElementById("active-style");
+
+                activeStyleElement.innerText = playerActiveFightingStyle.name
+
+
+            }, activateFightingStyle(item));
+            itemContainer.appendChild(selectButton);
+        }
+
+        if (itemContent === playerAvailableFightingStyle) {
+            itemContainer.classList.add("fighting-styles-divs");
+        }
+    });
+}
 
 function activateFightingStyle(style) {
     if (playerActiveFightingStyle) {
