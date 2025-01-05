@@ -199,7 +199,6 @@ function updateHealthDisplay(player, monster) {
 
 export let playerAvailableItems = []
 
-export let playerActiveItems = []
 export let playerActiveSkill;
 
 export let playerAvailableFightingStyle = [{
