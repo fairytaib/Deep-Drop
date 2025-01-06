@@ -118,43 +118,77 @@ class Skill extends Reward {
 
 export const knightSkills = [
     new Skill("Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses against attacks.", "common", (player) => player.defense = (player.defense || 0) + 0.15, "./assets/images/skills/knight-skills/shieldwall.webp"),
-    new Skill("Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP, keeping the fight alive.", "rare", unyieldingWill(player), "./assets/images/skills/knight-skills/unyielding-will.webp")
+    new Skill("Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP, keeping the fight alive.", "rare", (player) => unyieldingWill(player), "./assets/images/skills/knight-skills/unyielding-will.webp")
 ];
 
 function unyieldingWill(player) {
     let survive = Math.floor(Math.random() * 101)
-    if (player.health == 1) {
-        if (survive >= 10) {
-            player.health = player.maxHealth
-        }
+    if (player.health == 1 && survive >= 10) {
+        player.health = player.maxHealth
     }
 }
 
 export const assassinSkills = [
-    new Skill("Blinding Speed", "Increases attack speed by 10% if the battle lasts longer than 10 seconds, making your strikes faster over time.", "common", setTimeout(blindingSpeed, 10000), "./assets/images/skills/assassin-skills/blinding-speed.webp"),
-    new Skill("Deadly Precision", "Empowers your first attack to deal 200% damage, delivering a devastating opening strike.", "common", "Insert Function", "./assets/images/skills/assassin-skills/deadly-precision.webp")
+    new Skill("Blinding Speed", "Increases attack speed by 10% if the battle lasts longer than 10 seconds, making your strikes faster over time.", "common", (player) => setTimeout(() => blindingSpeed(player), 10000), "./assets/images/skills/assassin-skills/blinding-speed.webp"),
+    // new Skill("Deadly Precision", "Empowers your first attack to deal 200% damage, delivering a devastating opening strike.", "common", "Insert Function", "./assets/images/skills/assassin-skills/deadly-precision.webp")
 ];
 
 function blindingSpeed(player) {
     player.attackSpeed *= 1.1
 }
 
-function deadlyPrecision(player) {
-
-}
+// }
 
 export const rangerSkills = [
-    new Skill("Targeted Weakness", "Deals 20% extra damage to enemies with less than 30% HP, exploiting their vulnerabilities.", "common", "Insert Function", "./assets/images/skills/ranger-skills/targeted-weakness.webp"),
-    new Skill("Repair Protocol", "Restores 2% of your maximum HP each time you successfully dodge an attack, enhancing survivability.", "common", "Insert Function", "./assets/images/skills/ranger-skills/repair-protocol.webp")
+    new Skill("Targeted Weakness", "Deals 20% extra damage to enemies with less than 30% HP, exploiting their vulnerabilities.", "common", (enemy) => targetedWeakness(enemy), "./assets/images/skills/ranger-skills/targeted-weakness.webp"),
+    new Skill("Repair Protocol", "Restores 2% of your maximum HP each time you successfully dodge an attack, enhancing survivability.", "common", (player) => repairProtocol(player), "./assets/images/skills/ranger-skills/repair-protocol.webp")
 ];
+
+function targetedWeakness(enemy) {
+    if (enemy.healt <= (enemy.maxHealth * 0.3)) {
+        enemy.defense *= 0.8
+    }
+}
+
+function repairProtocol(player) {
+    // Speichere die ursprüngliche Dodge-Funktion
+    const originalDodge = player.dodge;
+
+    // Überschreibe die Dodge-Funktion des Spielers
+    player.dodge = () => {
+        const dodged = originalDodge.call(player);
+
+        if (dodged) {
+            const healAmount = player.maxHealth * 0.02;
+            player.health = Math.min(player.health + healAmount, player.maxHealth); // Stelle sicher, dass die HP das Maximum nicht überschreiten
+            console.log(`${player.name} successfully dodged and restored ${healAmount.toFixed(2)} HP!`);
+        }
+
+        return dodged;
+    };
+}
 
 export const universalSkills = [
-    new Skill("Longshot", "Reduces attack speed by 50%, but increases damage dealt by 500%, ideal for calculated and powerful strikes.", "common", "Insert Function", "./assets/images/skills/universal-skills/longshot.webp"),
+    new Skill("Longshot", "Reduces attack speed by 50%, but increases damage dealt by 500%, ideal for calculated and powerful strikes.", "common", (player) => longshot(player), "./assets/images/skills/universal-skills/longshot.webp"),
     new Skill("Dodge Roll", "Adds an additional 5% chance to dodge attacks, improving your evasive capabilities.", "common", "Insert Function", "./assets/images/skills/universal-skills/dodge-roll.webp"),
-    new Skill("Bloody Determination", "Increases damage by 15% when your HP falls below 25%, turning desperation into power.", "common", "Insert Function", "./assets/images/skills/universal-skills/bloody-determination.webp"),
-    new Skill("Path of Balance", "Grants 10% additional attack and defense as long as your HP remains above 75%, maintaining strength while healthy.", "common", "Insert Function", "./assets/images/skills/universal-skills/path-of-balance.webp")
+    new Skill("Bloody Determination", "Increases damage by 15% when your HP falls below 25%, turning desperation into power.", "common", (player) => dogdeRoll(player), "./assets/images/skills/universal-skills/bloody-determination.webp"),
+    new Skill("Path of Balance", "Grants 10% additional attack and defense as long as your HP remains above 75%, maintaining strength while healthy.", "common", (player) => pathOfBalance(player), "./assets/images/skills/universal-skills/path-of-balance.webp")
 ];
 
+function longshot(player) {
+    player.damage *= 5
+    player.attackSpeed *= 0.5
+}
+
+function dogdeRoll(player) {
+    player.dodge += 5
+}
+
+function pathOfBalance(player) {
+    if (player.hp >= (player.maxHealth * 0.75)) {
+        player.damage *= 1.1
+    }
+}
 
 // Fighting System
 //Player chooses Class
