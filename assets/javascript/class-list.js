@@ -111,14 +111,22 @@ export const allItemsList = [
 //Skill Class
 
 class Skill extends Reward {
-    constructor(name, description, rarity, effect, image) {
+    constructor(name, description, rarity, effect, image, triggerCondition = () => true) {
         super(name, description, rarity, effect, image)
+        this.triggerCondition = triggerCondition
     }
+
+    applyEffect(player, enemy) {
+        if (this.triggerCondition(player, enemy)) {
+            this.effect(player, enemy); // Applies the skill's effect if the condition is met
+        }
+    }
+
 }
 
 export const knightSkills = [
-    new Skill("Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses against attacks.", "common", (player) => player.defense = (player.defense || 0) + 0.15, "./assets/images/skills/knight-skills/shieldwall.webp"),
-    new Skill("Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP, keeping the fight alive.", "rare", (player) => unyieldingWill(player), "./assets/images/skills/knight-skills/unyielding-will.webp")
+    new Skill("Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses against attacks.", "common", (player) => player.defense = (player.defense || 0) + 0.15, "./assets/images/skills/knight-skills/shieldwall.webp", (player, enemy) => true),
+    new Skill("Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP, keeping the fight alive.", "rare", (player) => unyieldingWill(player), "./assets/images/skills/knight-skills/unyielding-will.webp", (player) => player.health === 1 && Math.random() <= 0.1)
 ];
 
 function unyieldingWill(player) {
@@ -129,19 +137,23 @@ function unyieldingWill(player) {
 }
 
 export const assassinSkills = [
-    new Skill("Blinding Speed", "Increases attack speed by 10% if the battle lasts longer than 10 seconds, making your strikes faster over time.", "common", (player) => setTimeout(() => blindingSpeed(player), 10000), "./assets/images/skills/assassin-skills/blinding-speed.webp"),
-    // new Skill("Deadly Precision", "Empowers your first attack to deal 200% damage, delivering a devastating opening strike.", "common", "Insert Function", "./assets/images/skills/assassin-skills/deadly-precision.webp")
+    new Skill("Blinding Speed", "Increases all Stats by 10%", "common", (player) => blindingSpeed(player), "./assets/images/skills/assassin-skills/blinding-speed.webp", (player) => true),
+
 ];
 
 function blindingSpeed(player) {
+    player.damage *= 1.1
     player.attackSpeed *= 1.1
+    player.defense *= 1.1
+    player.dodgeChance += 10
+    player.critChance += 10
 }
 
 // }
 
 export const rangerSkills = [
-    new Skill("Targeted Weakness", "Deals 20% extra damage to enemies with less than 30% HP, exploiting their vulnerabilities.", "common", (enemy) => targetedWeakness(enemy), "./assets/images/skills/ranger-skills/targeted-weakness.webp"),
-    new Skill("Repair Protocol", "Restores 2% of your maximum HP each time you successfully dodge an attack, enhancing survivability.", "common", (player) => repairProtocol(player), "./assets/images/skills/ranger-skills/repair-protocol.webp")
+    new Skill("Targeted Weakness", "Deals 20% extra damage to enemies with less than 30% HP, exploiting their vulnerabilities.", "common", (enemy) => targetedWeakness(enemy), "./assets/images/skills/ranger-skills/targeted-weakness.webp", (player, enemy) => enemy.health <= enemy.maxHealth * 0.3),
+    new Skill("Repair Protocol", "Restores 2% of your maximum HP each time you successfully dodge an attack, enhancing survivability.", "common", (player) => repairProtocol(player), "./assets/images/skills/ranger-skills/repair-protocol.webp", (player) => true)
 ];
 
 function targetedWeakness(enemy) {
@@ -151,28 +163,24 @@ function targetedWeakness(enemy) {
 }
 
 function repairProtocol(player) {
-    // Speichere die ursprüngliche Dodge-Funktion
-    const originalDodge = player.dodge;
-
-    // Überschreibe die Dodge-Funktion des Spielers
-    player.dodge = () => {
-        const dodged = originalDodge.call(player);
-
+    const originalDodge = player.dodge; // Store the original dodge function
+    player.dodge = function () {
+        const dodged = originalDodge.call(player); // Call the original dodge function
         if (dodged) {
             const healAmount = player.maxHealth * 0.02;
-            player.health = Math.min(player.health + healAmount, player.maxHealth); // Stelle sicher, dass die HP das Maximum nicht überschreiten
+            player.health = Math.min(player.health + healAmount, player.maxHealth);
             console.log(`${player.name} successfully dodged and restored ${healAmount.toFixed(2)} HP!`);
         }
-
         return dodged;
     };
 }
 
+
 export const universalSkills = [
-    new Skill("Longshot", "Reduces attack speed by 50%, but increases damage dealt by 500%, ideal for calculated and powerful strikes.", "common", (player) => longshot(player), "./assets/images/skills/universal-skills/longshot.webp"),
-    new Skill("Dodge Roll", "Adds an additional 5% chance to dodge attacks, improving your evasive capabilities.", "common", "Insert Function", "./assets/images/skills/universal-skills/dodge-roll.webp"),
-    new Skill("Bloody Determination", "Increases damage by 15% when your HP falls below 25%, turning desperation into power.", "common", (player) => dogdeRoll(player), "./assets/images/skills/universal-skills/bloody-determination.webp"),
-    new Skill("Path of Balance", "Grants 10% additional attack and defense as long as your HP remains above 75%, maintaining strength while healthy.", "common", (player) => pathOfBalance(player), "./assets/images/skills/universal-skills/path-of-balance.webp")
+    new Skill("Longshot", "Reduces attack speed by 50%, but increases damage dealt by 500%, ideal for calculated and powerful strikes.", "common", (player) => longshot(player), "./assets/images/skills/universal-skills/longshot.webp", (player, enemy) => true),
+    new Skill("Dodge Roll", "Adds an additional 5% chance to dodge attacks, improving your evasive capabilities.", "common", "Insert Function", "./assets/images/skills/universal-skills/dodge-roll.webp", (player) => true),
+    new Skill("Bloody Determination", "Increases damage by 15% when your HP falls below 25%, turning desperation into power.", "common", (player) => dogdeRoll(player), "./assets/images/skills/universal-skills/bloody-determination.webp", (player) => player.health <= player.maxHealth * 0.25),
+    new Skill("Path of Balance", "Grants 10% additional attack and defense as long as your HP remains above 75%, maintaining strength while healthy.", "common", (player) => pathOfBalance(player), "./assets/images/skills/universal-skills/path-of-balance.webp", (player) => player.health >= player.maxHealth * 0.75)
 ];
 
 function longshot(player) {
@@ -193,6 +201,14 @@ function pathOfBalance(player) {
 // Fighting System
 //Player chooses Class
 
+export function activateSkills(player) {
+    playerAvailableSkills.forEach(skill => {
+        if (skill.effect) {
+            skill.effect(player); // Wendet den Effekt auf den Spieler an
+        }
+    });
+}
+
 export function fight(player, monster, onFightEnd) {
     console.log(`The battle between ${player.name} and ${monster.name} begins!`);
 
@@ -200,13 +216,21 @@ export function fight(player, monster, onFightEnd) {
         if (player.health <= 0 || monster.health <= 0) return;
 
         const playerDamage = player.attack(monster);
+
         if (!monster.dodge()) {
             monster.takeDamage(playerDamage);
         } else {
             console.log(`${monster.name} dodged the attack!`);
         }
 
-        updateHealthDisplay(player, monster)
+        // Apply all player skills
+        playerAvailableSkills.forEach(skill => {
+            if (typeof skill.applyEffect === 'function') {
+                skill.applyEffect(player, monster);
+            }
+        });
+
+        updateHealthDisplay(player, monster);
 
         if (monster.health > 0) {
             setTimeout(playerAttackTurn, player.attackSpeed);
@@ -220,23 +244,25 @@ export function fight(player, monster, onFightEnd) {
         if (player.health <= 0 || monster.health <= 0) return;
 
         const monsterDamage = monster.attack(player);
+
         if (!player.dodge()) {
             player.takeDamage(monsterDamage);
         } else {
             console.log(`${player.name} dodged the attack!`);
         }
 
-        updateHealthDisplay(player, monster)
+        // Apply all monster effects if needed (extendable for monster skills)
+        updateHealthDisplay(player, monster);
 
         if (player.health > 0) {
-            setTimeout(monsterAttackTurn, monster.attackSpeed);
+            setTimeout(monsterAttackTurn, monster.attackSpeed); // Pass function reference properly
         } else {
             console.log(`${player.name} has been defeated!`);
             onFightEnd();
         }
     }
 
-    // Starte beide Angriffsrunden gleichzeitig
+    // Start both attack turns
     setTimeout(playerAttackTurn, player.attackSpeed);
     setTimeout(monsterAttackTurn, monster.attackSpeed);
 }

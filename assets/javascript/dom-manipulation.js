@@ -8,6 +8,7 @@ import {
     assassinSkills,
     rangerSkills,
     universalSkills,
+    activateSkills,
     fight,
     playerAvailableFightingStyle,
     playerAvailableItems,
@@ -519,18 +520,13 @@ function selectReward(reward, player) {
     if (reward.type === "Item") {
         playerAvailableItems.push(reward);
     } else if (reward.type === "Skill") {
-        if (playerActiveSkills.some(activeSkill => activeSkill.name === reward.name)) {
-            alert(`Skill "${skill.name}" is already in your Skillist.`);
+        if (playerAvailableSkills.some(activeSkill => activeSkill.name === reward.name)) {
+            alert(`Skill "${reward.name}" is already in your Skillist.`);
             return;
         }
 
         // Füge den Skill zur Liste der aktiven Skills hinzu
         playerAvailableSkills.push(reward);
-
-        // Wende den Effekt auf den Spieler an
-        if (reward.effect) {
-            reward.effect(player);
-        }
     } else if (reward.type === "Heal") {
         player.health *= 2
     }
@@ -630,6 +626,7 @@ function goToRewardSequenz() {
             type: "Skill",
             name: randomSkill.name,
             description: randomSkill.description,
+            effect: randomSkill.effect,
             image: randomSkill.image,
             rarity: randomSkill.rarity
         },
@@ -721,6 +718,7 @@ function goToFightSequenz(hideItem) {
     monsterHPContainer.innerHTML = `${monsterOptions[roundCounter].name} HP: <span id="monster-hp">${monster.health}</span>`;
     buttonBox.appendChild(monsterHPContainer);
     if (roundCounter < 10) {
+        activateSkills(player)
         fight(player, monster, goToRewardSequenz)
     }
 
