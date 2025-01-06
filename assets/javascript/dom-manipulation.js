@@ -515,11 +515,22 @@ function selectClass(classOption) {
     }
 }
 
-function selectReward(reward) {
+function selectReward(reward, player) {
     if (reward.type === "Item") {
         playerAvailableItems.push(reward);
     } else if (reward.type === "Skill") {
+        if (playerActiveSkills.some(activeSkill => activeSkill.name === reward.name)) {
+            alert(`Skill "${skill.name}" is already in your Skillist.`);
+            return;
+        }
+
+        // Füge den Skill zur Liste der aktiven Skills hinzu
         playerAvailableSkills.push(reward);
+
+        // Wende den Effekt auf den Spieler an
+        if (reward.effect) {
+            reward.effect(player);
+        }
     } else if (reward.type === "Heal") {
         player.health *= 2
     }
@@ -672,7 +683,7 @@ function goToRewardSequenz() {
         selectButton.textContent = `Select ${reward.type}`;
         selectButton.classList.add("class-button", "reward-item");
         selectButton.addEventListener("click", () => {
-            selectReward(reward), goToContinueScreen("reward-item");
+            selectReward(reward, player), goToContinueScreen("reward-item");
         });
 
         displayBox.appendChild(rewardContainer);
