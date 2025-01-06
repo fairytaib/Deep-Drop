@@ -1,7 +1,8 @@
 // Basis Character Class for Monster and Player
 export class Character {
-    constructor(name, health, damage, attackSpeed, defense, dodgeChance, critChance) {
+    constructor(name, maxHealth, health, damage, attackSpeed, defense, dodgeChance, critChance) {
         this.name = name
+        this.maxHealth = maxHealth
         this.health = health
         this.damage = damage
         this.attackSpeed = attackSpeed
@@ -34,16 +35,16 @@ export class Character {
 // Monster Classes
 // Refine Stats later on
 export const monsterList = [
-    new Character("Slime", 25, 5, 2000, 2, 5, 0),
-    new Character("Swarm of Rats", 30, 7, 1800, 3, 10, 0),
-    new Character("Kobold", 35, 10, 1500, 5, 15, 5),
-    new Character("Goblin", 40, 12, 1200, 6, 20, 10),
-    new Character("Skeleton Warrior", 50, 15, 1000, 8, 10, 15),
-    new Character("Orc", 60, 20, 900, 10, 5, 20),
-    new Character("Harpie", 45, 18, 1100, 7, 25, 10),
-    new Character("Troll", 80, 25, 800, 15, 5, 10),
-    new Character("Fire Elemental", 70, 30, 700, 10, 10, 25),
-    new Character("Boss", 100, 50, 500, 20, 0, 30)
+    new Character("Slime", 25, 25, 5, 2000, 2, 5, 0),
+    new Character("Swarm of Rats", 30, 30, 7, 1800, 3, 10, 0),
+    new Character("Kobold", 35, 35, 10, 1500, 5, 15, 5),
+    new Character("Goblin", 40, 35, 12, 1200, 6, 20, 10),
+    new Character("Skeleton Warrior", 50, 50, 15, 1000, 8, 10, 15),
+    new Character("Orc", 60, 60, 20, 900, 10, 5, 20),
+    new Character("Harpie", 45, 45, 18, 1100, 7, 25, 10),
+    new Character("Troll", 80, 80, 25, 800, 15, 5, 10),
+    new Character("Fire Elemental", 70, 70, 30, 700, 10, 10, 25),
+    new Character("Boss", 100, 100, 50, 500, 20, 0, 30)
 
 ]
 
@@ -117,13 +118,30 @@ class Skill extends Reward {
 
 export const knightSkills = [
     new Skill("Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses against attacks.", "common", (player) => player.defense = (player.defense || 0) + 0.15, "./assets/images/skills/knight-skills/shieldwall.webp"),
-    new Skill("Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP, keeping the fight alive.", "rare", "Insert Function", "./assets/images/skills/knight-skills/unyielding-will.webp")
+    new Skill("Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP, keeping the fight alive.", "rare", unyieldingWill(player), "./assets/images/skills/knight-skills/unyielding-will.webp")
 ];
 
+function unyieldingWill(player) {
+    let survive = Math.floor(Math.random() * 101)
+    if (player.health == 1) {
+        if (survive >= 10) {
+            player.health = player.maxHealth
+        }
+    }
+}
+
 export const assassinSkills = [
-    new Skill("Blinding Speed", "Increases attack speed by 10% if the battle lasts longer than 10 seconds, making your strikes faster over time.", "common", "Insert Function", "./assets/images/skills/assassin-skills/blinding-speed.webp"),
+    new Skill("Blinding Speed", "Increases attack speed by 10% if the battle lasts longer than 10 seconds, making your strikes faster over time.", "common", setTimeout(blindingSpeed, 10000), "./assets/images/skills/assassin-skills/blinding-speed.webp"),
     new Skill("Deadly Precision", "Empowers your first attack to deal 200% damage, delivering a devastating opening strike.", "common", "Insert Function", "./assets/images/skills/assassin-skills/deadly-precision.webp")
 ];
+
+function blindingSpeed(player) {
+    player.attackSpeed *= 1.1
+}
+
+function deadlyPrecision(player) {
+
+}
 
 export const rangerSkills = [
     new Skill("Targeted Weakness", "Deals 20% extra damage to enemies with less than 30% HP, exploiting their vulnerabilities.", "common", "Insert Function", "./assets/images/skills/ranger-skills/targeted-weakness.webp"),
