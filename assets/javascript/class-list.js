@@ -256,8 +256,6 @@ function updateHealthDisplay(player, monster) {
 
 export let playerAvailableItems = []
 
-export let playerActiveSkill;
-
 export let playerAvailableFightingStyle = [{
         name: "Aggressive Attacker",
         description: "Increases attack speed by 15%, but reduces defense by 20%, making the character faster but more vulnerable.",
