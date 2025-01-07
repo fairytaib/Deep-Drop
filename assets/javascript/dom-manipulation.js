@@ -13,7 +13,7 @@ import {
     playerAvailableFightingStyle,
     playerAvailableItems,
     playerAvailableSkills,
-
+    Skill
 } from "./class-list.js";
 
 //EXAMPLE
