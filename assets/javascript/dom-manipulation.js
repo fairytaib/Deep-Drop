@@ -283,12 +283,12 @@ function displayPlayerStats(player) {
         statsList.appendChild(statItem);
     }
 
-    addStat("\u2764", "HP", `${player.health}`);
-    addStat("\u2694", "ATK", player.damage);
-    addStat("\u26E8", "DEF", player.defense);
+    addStat("\u2764", "HP", Math.floor(player.health));
+    addStat("\u2694", "ATK", Math.floor(player.damage));
+    addStat("\u26E8", "DEF", Math.floor(player.defense));
     addStat("\u2699", "ATK.SPD", `${(player.attackSpeed / 1000).toFixed(2)} per Second`);
-    addStat("\u26A1", "C.RATE", `${player.critChance}%`);
-    addStat("\uD83D\uDCA8", "DODGE CHANCE", `${player.dodgeChance}%`);
+    addStat("\u26A1", "C.RATE", `${Math.floor(player.critChance)}%`);
+    addStat("\uD83D\uDCA8", "DODGE CHANCE", `${Math.floor(player.dodgeChance)}%`);
 
 
     statsContainer.appendChild(statsList);
