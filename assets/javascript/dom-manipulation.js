@@ -13,7 +13,8 @@ import {
     playerAvailableFightingStyle,
     playerAvailableItems,
     playerAvailableSkills,
-    Skill
+    Skill,
+    Item
 } from "./class-list.js";
 
 //EXAMPLE
@@ -527,10 +528,13 @@ function selectReward(reward, player) {
 
         // Füge den Skill zur Liste der aktiven Skills hinzu
         playerAvailableSkills.push(reward);
+        console.log(playerAvailableSkills)
+        console.log("Skill List properly populated")
     } else if (reward.type === "Heal") {
         player.health *= 2
     }
 }
+
 
 // Input validation - First Page
 function validateInput() {
@@ -615,21 +619,32 @@ function goToRewardSequenz() {
     const randomItem = allItemsList[Math.floor(Math.random() * allItemsList.length)];
     const randomSkill = universalSkills[Math.floor(Math.random() * universalSkills.length)];
 
-    const rewards = [{
-            type: "Item",
-            name: randomItem.name,
-            description: randomItem.description,
-            image: randomItem.image,
-            rarity: randomItem.rarity
-        },
-        {
-            type: "Skill",
-            name: randomSkill.name,
-            description: randomSkill.description,
-            effect: randomSkill.effect,
-            image: randomSkill.image,
-            rarity: randomSkill.rarity
-        },
+    // const rewards = [{
+    //         type: "Item",
+    //         name: randomItem.name,
+    //         description: randomItem.description,
+    //         image: randomItem.image,
+    //         rarity: randomItem.rarity
+    //     },
+    //     {
+    //         type: "Skill",
+    //         name: randomSkill.name,
+    //         description: randomSkill.description,
+    //         effect: randomSkill.effect,
+    //         image: randomSkill.image,
+    //         rarity: randomSkill.rarity
+    //     },
+    //     {
+    //         type: "Heal",
+    //         name: "Healing Potion",
+    //         description: "Double your current HP.",
+    //         image: "./assets/images/heal-picture/heal.webp"
+    //     }
+    // ];
+
+    const rewards = [
+        new Item(randomItem.type, randomItem.name, randomItem.description, randomItem.rarity, randomItem.effect, randomItem.image),
+        new Skill(randomSkill.type, randomSkill.name, randomSkill.description, randomSkill.rarity, randomSkill.effect, randomSkill.image, randomSkill.triggerCondition),
         {
             type: "Heal",
             name: "Healing Potion",
@@ -646,34 +661,36 @@ function goToRewardSequenz() {
         rewardImage.src = reward.image;
         rewardImage.alt = reward.name;
         rewardImage.classList.add("reward-image")
+        rewardContainer.appendChild(rewardImage);
 
         const rewardTitle = document.createElement("h3");
         rewardTitle.textContent = reward.name;
         rewardTitle.classList.add("reward-title")
+        rewardContainer.appendChild(rewardTitle);
 
         const rewardType = document.createElement("h4")
         rewardType.textContent = reward.type
         rewardType.classList.add("reward-type")
+        rewardContainer.appendChild(rewardType)
 
-        const rewardRarity = document.createElement("h5")
-        rewardRarity.textContent = reward.rarity
-        rewardRarity.classList.add("reward-rarity")
-        if (reward.rarity == "common") {
-            rewardRarity.style.color = "grey"
-        } else if (reward.rarity == "rare") {
-            rewardRarity.style.color = "green"
-        } else if (reward.rarity == "epic") {
-            rewardRarity.style.color = "purple"
+        if (reward.rarity) {
+            const rewardRarity = document.createElement("h5")
+            rewardRarity.textContent = reward.rarity
+            rewardRarity.classList.add("reward-rarity")
+            if (reward.rarity == "common") {
+                rewardRarity.style.color = "grey"
+            } else if (reward.rarity == "rare") {
+                rewardRarity.style.color = "green"
+            } else if (reward.rarity == "epic") {
+                rewardRarity.style.color = "purple"
+            }
+            rewardContainer.appendChild(rewardRarity)
         }
+
 
         const rewardDescription = document.createElement("p");
         rewardDescription.textContent = reward.description;
         rewardDescription.classList.add("reward-description")
-
-        rewardContainer.appendChild(rewardImage);
-        rewardContainer.appendChild(rewardTitle);
-        rewardContainer.appendChild(rewardType)
-        rewardContainer.appendChild(rewardRarity)
         rewardContainer.appendChild(rewardDescription);
 
         const selectButton = document.createElement("button");
