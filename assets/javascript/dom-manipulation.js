@@ -520,7 +520,7 @@ function selectClass(classOption) {
 function selectReward(reward, player) {
     if (reward.type === "Item") {
         playerAvailableItems.push(reward);
-    } else if (reward.type === "Skill") {
+    } else if (reward.type === "skill") {
         if (playerAvailableSkills.some(activeSkill => activeSkill.name === reward.name)) {
             alert(`Skill "${reward.name}" is already in your Skillist.`);
             return;
@@ -528,8 +528,11 @@ function selectReward(reward, player) {
 
         // Füge den Skill zur Liste der aktiven Skills hinzu
         playerAvailableSkills.push(reward);
-        console.log(playerAvailableSkills)
-        console.log("Skill List properly populated")
+        playerAvailableSkills.forEach(skill => {
+            if (skill.type == 'skill') {
+                skill.applyEffect(player, monster);
+            }
+        });
     } else if (reward.type === "Heal") {
         player.health *= 2
     }
@@ -735,7 +738,6 @@ function goToFightSequenz(hideItem) {
     monsterHPContainer.innerHTML = `${monsterOptions[roundCounter].name} HP: <span id="monster-hp">${monster.health}</span>`;
     buttonBox.appendChild(monsterHPContainer);
     if (roundCounter < 10) {
-        activateSkills(player)
         fight(player, monster, goToRewardSequenz)
     }
 

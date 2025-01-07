@@ -222,14 +222,7 @@ export function fight(player, monster, onFightEnd) {
     function playerAttackTurn() {
         if (player.health <= 0 || monster.health <= 0) return;
 
-        playerAvailableSkills.forEach(skill => {
-            // if (skill.type == 'Skill') {
-            //     skill.applyEffect(player, monster);
-            // }
-            // console.log("Skill Check successful")
-            console.log(skill);
-            console.log(skill instanceof Skill)
-        });
+
 
         const playerDamage = player.attack(monster);
 
@@ -267,7 +260,7 @@ export function fight(player, monster, onFightEnd) {
         updateHealthDisplay(player, monster);
 
         if (player.health > 0) {
-            setTimeout(() => monsterAttackTurn, monster.attackSpeed); // Pass function reference properly
+            setTimeout(monsterAttackTurn, monster.attackSpeed); // Pass function reference properly
         } else {
             console.log(`${player.name} has been defeated!`);
             onFightEnd();
@@ -284,11 +277,11 @@ function updateHealthDisplay(player, monster) {
     const monsterHealth = document.getElementById("monster-hp");
 
     if (playerHealth) {
-        playerHealth.textContent = player.health;
+        playerHealth.textContent = Math.floor(player.health);
     }
 
     if (monsterHealth) {
-        monsterHealth.textContent = monster.health;
+        monsterHealth.textContent = Math.floor(monster.health);
     }
 }
 
