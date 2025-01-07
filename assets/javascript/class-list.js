@@ -110,7 +110,7 @@ export const allItemsList = [
 //Numbers have to be edited
 //Skill Class
 
-class Skill extends Reward {
+export class Skill extends Reward {
     constructor(name, description, rarity, effect, image, triggerCondition = () => true) {
         super(name, description, rarity, effect, image)
         this.triggerCondition = triggerCondition
@@ -223,6 +223,13 @@ export function fight(player, monster, onFightEnd) {
     function playerAttackTurn() {
         if (player.health <= 0 || monster.health <= 0) return;
 
+        playerAvailableSkills.forEach(skill => {
+            if (skill.type == 'Skill') {
+                skill.applyEffect(player, monster);
+            }
+            console.log("Skill Check successful")
+        });
+
         const playerDamage = player.attack(monster);
 
         if (!monster.dodge()) {
@@ -232,12 +239,7 @@ export function fight(player, monster, onFightEnd) {
         }
 
         // Apply all player skills
-        playerAvailableSkills.forEach(skill => {
-            if (typeof skill.applyEffect === 'function') {
-                skill.applyEffect(player, monster);
-            }
-            console.log("Skill Check successful")
-        });
+
 
         updateHealthDisplay(player, monster);
 
