@@ -114,11 +114,13 @@ class Skill extends Reward {
     constructor(name, description, rarity, effect, image, triggerCondition = () => true) {
         super(name, description, rarity, effect, image)
         this.triggerCondition = triggerCondition
+        this.isApplied = false
     }
 
     applyEffect(player, enemy) {
-        if (this.triggerCondition(player, enemy)) {
+        if (this.triggerCondition(player, enemy) && !this.isApplied) {
             this.effect(player, enemy); // Applies the skill's effect if the condition is met
+            this.isApplied = true
         }
     }
 
@@ -163,28 +165,34 @@ function targetedWeakness(enemy) {
 }
 
 function repairProtocol(player) {
-    const originalDodge = player.dodge; // Store the original dodge function
+    // Speichere die ursprüngliche Dodge-Funktion
+    const originalDodge = player.dodge.bind(player);
+
+    // Überschreibe die Dodge-Funktion des Spielers
     player.dodge = function () {
-        const dodged = originalDodge.call(player); // Call the original dodge function
+        const dodged = originalDodge(); // Aufruf der ursprünglichen Dodge-Funktion
+
         if (dodged) {
             const healAmount = player.maxHealth * 0.02;
-            player.health = Math.min(player.health + healAmount, player.maxHealth);
+            player.health = Math.min(player.health + healAmount, player.maxHealth); // HP überschreiten Maximum nicht
             console.log(`${player.name} successfully dodged and restored ${healAmount.toFixed(2)} HP!`);
         }
-        return dodged;
+
+        return dodged; // Rückgabe, ob ausgewichen wurde
     };
 }
 
 
+
 export const universalSkills = [
-    new Skill("Longshot", "Reduces attack speed by 50%, but increases damage dealt by 500%, ideal for calculated and powerful strikes.", "common", (player) => longshot(player), "./assets/images/skills/universal-skills/longshot.webp", (player, enemy) => true),
+    new Skill("Longshot", "Reduces attack speed by 50%, but increases damage dealt by 200%, ideal for calculated and powerful strikes.", "common", (player) => longshot(player), "./assets/images/skills/universal-skills/longshot.webp", (player, enemy) => true),
     new Skill("Dodge Roll", "Adds an additional 5% chance to dodge attacks, improving your evasive capabilities.", "common", "Insert Function", "./assets/images/skills/universal-skills/dodge-roll.webp", (player) => true),
     new Skill("Bloody Determination", "Increases damage by 15% when your HP falls below 25%, turning desperation into power.", "common", (player) => dogdeRoll(player), "./assets/images/skills/universal-skills/bloody-determination.webp", (player) => player.health <= player.maxHealth * 0.25),
     new Skill("Path of Balance", "Grants 10% additional attack and defense as long as your HP remains above 75%, maintaining strength while healthy.", "common", (player) => pathOfBalance(player), "./assets/images/skills/universal-skills/path-of-balance.webp", (player) => player.health >= player.maxHealth * 0.75)
 ];
 
 function longshot(player) {
-    player.damage *= 5
+    player.damage *= 2
     player.attackSpeed *= 0.5
 }
 
@@ -228,6 +236,7 @@ export function fight(player, monster, onFightEnd) {
             if (typeof skill.applyEffect === 'function') {
                 skill.applyEffect(player, monster);
             }
+            console.log("Skill Check successful")
         });
 
         updateHealthDisplay(player, monster);
@@ -255,7 +264,7 @@ export function fight(player, monster, onFightEnd) {
         updateHealthDisplay(player, monster);
 
         if (player.health > 0) {
-            setTimeout(monsterAttackTurn, monster.attackSpeed); // Pass function reference properly
+            setTimeout(() => monsterAttackTurn, monster.attackSpeed); // Pass function reference properly
         } else {
             console.log(`${player.name} has been defeated!`);
             onFightEnd();
