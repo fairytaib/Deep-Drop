@@ -80,30 +80,30 @@ export const allItemsList = [
     // Weapons
     new Item("item", "Rusty Short Sword", "Increases damage by 1, but its dull blade makes it less effective than other weapons.", "common", (player) => player.damage += 1, "./assets/images/items/weapons/rusty-short-sword.webp"),
     new Item("item", "Worn Magic Staff", "Adds 1 to damage, channeling faint magical energy to enhance attacks.", "common", (player) => player.damage += 1, "./assets/images/items/weapons/worn-magic-staff.webp"),
-    new Item("item", "Flame Dagger", "Increases damage by 1, its fiery aura adds a burning effect to your strikes.", "uncommon", (player) => player.damage += 1, "./assets/images/items/weapons/flame-dagger.webp"),
-    new Item("item", "Frost Mace", "Adds 1 to damage, with its freezing cold slowing enemies upon impact.", "rare", (player) => player.damage += 1, "./assets/images/items/weapons/frost-mace.webp"),
-    new Item("item", "Stormblade", "Increases damage by 1, crackling with lightning to deliver powerful strikes.", "epic", (player) => player.damage += 1, "./assets/images/items/weapons/stormblade.webp"),
+    new Item("item", "Flame Dagger", "Increases damage by 4, its fiery aura adds a burning effect to your strikes.", "uncommon", (player) => player.damage += 4, "./assets/images/items/weapons/flame-dagger.webp"),
+    new Item("item", "Frost Mace", "Adds 8 to damage, with its freezing cold slowing enemies upon impact.", "rare", (player) => player.damage += 8, "./assets/images/items/weapons/frost-mace.webp"),
+    new Item("item", "Stormblade", "Increases damage by 10, crackling with lightning to deliver powerful strikes.", "epic", (player) => player.damage += 10, "./assets/images/items/weapons/stormblade.webp"),
 
     // Helmets
     new Item("item", "Leather Hood", "Adds 1 to defense, offering minimal protection against weak attacks.", "common", (player) => player.defense += 1, "./assets/images/items/helmets/leather-hood.webp"),
     new Item("item", "Iron Helmet", "Increases defense by 1, providing basic protection for the wearer.", "common", (player) => player.defense += 1, "helmet", "./assets/images/items/helmets/iron-helmet.webp"),
-    new Item("item", "Runed Helmet", "Boosts defense by 1 with faintly glowing runes enhancing its protective capabilities.", "uncommon", (player) => player.defense += 1, "./assets/images/items/helmets/rune-helmet.webp"),
-    new Item("item", "Guardian’s Helmet", "Adds 1 to defense, designed for those who stand firm against incoming attacks.", "rare", (player) => player.defense += 1, "./assets/images/items/helmets/guardian-helmet.webp"),
-    new Item("item", "Dragonsteel Helmet", "Increases defense by 1, its legendary craftsmanship providing unmatched protection.", "epic", (player) => player.defense += 1, "./assets/images/items/helmets/dragonsteel-helmet.webp"),
+    new Item("item", "Runed Helmet", "Boosts defense by 4 with faintly glowing runes enhancing its protective capabilities.", "uncommon", (player) => player.defense += 4, "./assets/images/items/helmets/rune-helmet.webp"),
+    new Item("item", "Guardian’s Helmet", "Adds 8 to defense, designed for those who stand firm against incoming attacks.", "rare", (player) => player.defense += 8, "./assets/images/items/helmets/guardian-helmet.webp"),
+    new Item("item", "Dragonsteel Helmet", "Increases defense by 12, its legendary craftsmanship providing unmatched protection.", "epic", (player) => player.defense += 12, "./assets/images/items/helmets/dragonsteel-helmet.webp"),
 
     // Armor
-    new Item("item", "Leather Jerkin", "Adds 1 to health, offering basic resistance against physical damage.", "common", (player) => player.health += 1, "./assets/images/items/armor/leather-jerkin.webp"),
-    new Item("item", "Chainmail Armor", "Boosts health by 1, providing decent protection against stronger blows.", "common", (player) => player.health += 1, "./assets/images/items/armor/chainmail-armor.webp"),
-    new Item("item", "Armored Robe", "Increases health by 1, blending mobility with added protection.", "uncommon", (player) => player.health += 1, "./assets/images/items/armor/armored-robe.webp"),
-    new Item("item", "Shadow Armor", "Adds 1 to health, allowing the wearer to blend into the shadows and avoid detection.", "rare", (player) => player.health += 1, "./assets/images/items/armor/shadow-armor.webp"),
-    new Item("item", "Titan Armor", "Boosts health by 1, its legendary durability shielding against powerful attacks.", "epic", (player) => player.health += 1, "./assets/images/items/armor/titan-armor.webp"),
+    new Item("item", "Leather Jerkin", "Adds 10 to health, offering basic resistance against physical damage.", "common", (player) => player.health += 10, "./assets/images/items/armor/leather-jerkin.webp"),
+    new Item("item", "Chainmail Armor", "Boosts health by 14, providing decent protection against stronger blows.", "common", (player) => player.health += 14, "./assets/images/items/armor/chainmail-armor.webp"),
+    new Item("item", "Armored Robe", "Increases health by 20, blending mobility with added protection.", "uncommon", (player) => player.health += 20, "./assets/images/items/armor/armored-robe.webp"),
+    new Item("item", "Shadow Armor", "Adds 25 to health, allowing the wearer to blend into the shadows and avoid detection.", "rare", (player) => player.health += 25, "./assets/images/items/armor/shadow-armor.webp"),
+    new Item("item", "Titan Armor", "Boosts health by 100, its legendary durability shielding against powerful attacks.", "epic", (player) => player.health += 100, "./assets/images/items/armor/titan-armor.webp"),
 
     // Shoes
     new Item("item", "Worn Boots", "Increases dodge chance by 1, offering slight agility despite their age.", "common", (player) => player.dodgeChance += 1, "./assets/images/items/shoes/worn-boots.webp"),
     new Item("item", "Light Sandals", "Boosts dodge chance by 1, improving movement speed and evasion.", "common", (player) => player.dodgeChance += 1, "./assets/images/items/shoes/light-sandals.webp"),
-    new Item("item", "Windrunner Boots", "Adds 1 to dodge chance, their enchantment enhancing the wearer’s speed.", "uncommon", (player) => player.dodgeChance += 1, "./assets/images/items/shoes/windrunner-boots.webp"),
-    new Item("item", "Wanderer’s Boots", "Boosts dodge chance by 1, their sturdy design aiding long journeys and evasion.", "rare", (player) => player.dodgeChance += 1, "./assets/images/items/shoes/wanderers-boots.webp"),
-    new Item("item", "Phantom Shoes", "Increases dodge chance by 1, making the wearer almost ghost-like in movement.", "epic", (player) => player.dodgeChance += 1, "./assets/images/items/shoes/phantom-shoes.webp")
+    new Item("item", "Windrunner Boots", "Adds 7 to dodge chance, their enchantment enhancing the wearer’s speed.", "uncommon", (player) => player.dodgeChance += 7, "./assets/images/items/shoes/windrunner-boots.webp"),
+    new Item("item", "Wanderer’s Boots", "Boosts dodge chance by 12, their sturdy design aiding long journeys and evasion.", "rare", (player) => player.dodgeChance += 12, "./assets/images/items/shoes/wanderers-boots.webp"),
+    new Item("item", "Phantom Shoes", "Increases dodge chance by 20, making the wearer almost ghost-like in movement.", "epic", (player) => player.dodgeChance += 20, "./assets/images/items/shoes/phantom-shoes.webp")
 ];
 
 //Numbers have to be edited
@@ -219,10 +219,15 @@ export function activateSkills(player) {
 export function fight(player, monster, onFightEnd) {
     console.log(`The battle between ${player.name} and ${monster.name} begins!`);
 
+    // Apply all player effects if needed (extendable for monster skills)
+    playerAvailableSkills.forEach(skill => {
+        if (skill.type == 'skill') {
+            skill.applyEffect(player, monster);
+        }
+    });
+
     function playerAttackTurn() {
         if (player.health <= 0 || monster.health <= 0) return;
-
-
 
         const playerDamage = player.attack(monster);
 
@@ -256,7 +261,8 @@ export function fight(player, monster, onFightEnd) {
             console.log(`${player.name} dodged the attack!`);
         }
 
-        // Apply all monster effects if needed (extendable for monster skills)
+
+
         updateHealthDisplay(player, monster);
 
         if (player.health > 0) {
