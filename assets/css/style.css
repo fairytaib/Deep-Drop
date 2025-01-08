@@ -217,6 +217,10 @@ button:active {
     transform: translate(-50%, -50%);
 }
 
+/* .player-menu-display {
+    overflow: scroll;
+} */
+
 .player-menu-item-display {
     justify-content: space-between;
     padding: 20px 20px 5px 20px;
@@ -343,11 +347,16 @@ button:active {
 }
 
 /* fighting menu */
+.fighting-styles-container {
+    width: 100%;
+    font-size: 0.7rem;
+}
+
 .fighting-styles-divs {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 70%;
+    width: 100%;
 }
 
 .active-fighting-style-display {

@@ -341,6 +341,11 @@ export let playerAvailableFightingStyle = [{
             player.dodgeChance = (player.dodgeChance || 0) * 1.2; // Increases dodge chance by 20%
             player.damage *= 0.85; // Reduces physical damage by 15%
         }
+    },
+    {
+        name: "None",
+        description: "Remove current Style",
+        effect: console.log("Removed")
     }
 ];
 

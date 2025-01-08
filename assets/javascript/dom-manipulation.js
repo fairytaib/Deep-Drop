@@ -8,7 +8,6 @@ import {
     assassinSkills,
     rangerSkills,
     universalSkills,
-    activateSkills,
     fight,
     playerAvailableFightingStyle,
     playerAvailableItems,
@@ -395,6 +394,9 @@ function displayPLayerMenuItems(itemContent, appendBox) {
                 }
                 currentItemDiv.appendChild(activeStyle);
             }
+            let stylesContainer = document.createElement("div")
+            stylesContainer.classList.add("fighting-styles-container")
+            appendBox.appendChild(stylesContainer)
         }
 
         if (Array.isArray(itemContent) && itemContent === playerAvailableItems) {
@@ -418,6 +420,8 @@ function displayPLayerMenuItems(itemContent, appendBox) {
         }
     }
     itemContent.forEach(item => {
+        const stylesContainer = document.querySelector(".fighting-styles-container")
+
         const itemContainer = document.createElement("div");
         itemContainer.classList.add("player-menu-display-option", "text-font");
 
@@ -426,8 +430,10 @@ function displayPLayerMenuItems(itemContent, appendBox) {
         itemTitle.classList.add("player-menu-item");
         itemTitle.setAttribute("data-tooltip", item.description);
 
-        appendBox.appendChild(itemContainer);
-        itemContainer.appendChild(itemTitle);
+        appendBox.appendChild(stylesContainer);
+        stylesContainer.appendChild(itemContainer)
+        itemContainer.appendChild(itemTitle)
+
 
         if (itemContent === playerAvailableItems) {
             const selectButton = document.createElement("button");
@@ -446,6 +452,8 @@ function displayPLayerMenuItems(itemContent, appendBox) {
             });
             itemContainer.appendChild(selectButton);
         } else if (itemContent === playerAvailableFightingStyle) {
+
+
             const selectButton = document.createElement("button");
             selectButton.textContent = `Select`;
             selectButton.classList.add("reward-button", "player-inner-menu-button");
@@ -466,6 +474,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
 
         if (itemContent === playerAvailableFightingStyle) {
             itemContainer.classList.add("fighting-styles-divs");
+
         }
     });
 }
@@ -758,12 +767,13 @@ function goToContinueScreen() {
     }
 
     displayItems("h2", "Do you want to go to the next fight?", displayBox, "continue-screen", "continue-item");
+
     displayItems("button", "Continue", displayBox, "continue-screen", "continue-item", "continue-button");
 
-    displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "player-attribute-button", "continue-item");
-    displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "player-skill-button", "continue-item");
     displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "player-item-button", "continue-item");
+    displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "player-skill-button", "continue-item");
     displayItems("button", "Attack Patterns", buttonBox, "player-menu-button", "menu-item", "player-attack-pattern-button", "continue-item");
+    displayItems("button", "Attributes", buttonBox, "player-menu-button", "menu-item", "player-attribute-button", "continue-item");
 
     addFunction("player-attribute-button", () => displayPlayerMenuAttributes("Attributes"));
 
