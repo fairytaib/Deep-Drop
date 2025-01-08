@@ -2,8 +2,8 @@
 export class Character {
     constructor(name, maxHealth, health, damage, attackSpeed, defense, dodgeChance, critChance) {
         this.name = name
-        this.maxHealth = maxHealth
-        this.health = health
+        this.maxHealth = Math.round(maxHealth)
+        this.health = Math.round(health)
         this.damage = damage
         this.attackSpeed = attackSpeed
         this.defense = defense
@@ -20,7 +20,7 @@ export class Character {
 
     calculateDamage(monsterDefense) {
         const damageReduction = monsterDefense / 100;
-        return Math.max(0, this.damage * (1 - damageReduction));
+        return Math.round(this.damage * (1 - damageReduction));
     }
 
 
@@ -29,7 +29,7 @@ export class Character {
     }
 
     takeDamage(damage) {
-        this.health -= damage;
+        this.health -= Math.round(damage);
         console.log(`${this.name} has ${this.health} HP left.`);
     }
 }
@@ -202,7 +202,7 @@ function repairProtocol(player) {
 
 export const universalSkills = [
     new Skill("skill", "Longshot", "Reduces attack speed by 50%, but increases damage dealt by 200%, ideal for calculated and powerful strikes.", "common", (player) => longshot(player), "./assets/images/skills/universal-skills/longshot.webp", (player, enemy) => true),
-    new Skill("skill", "Dodge Roll", "Adds an additional 5% chance to dodge attacks, improving your evasive capabilities.", "common", "Insert Function", "./assets/images/skills/universal-skills/dodge-roll.webp", (player) => true),
+    new Skill("skill", "Dodge Roll", "Adds an additional 5% chance to dodge attacks, improving your evasive capabilities.", "common", (player) => dogdeRoll(player), "./assets/images/skills/universal-skills/dodge-roll.webp", (player) => true),
     new Skill("skill", "Bloody Determination", "Increases damage by 15% when your HP falls below 25%, turning desperation into power.", "common", (player) => dogdeRoll(player), "./assets/images/skills/universal-skills/bloody-determination.webp", (player) => player.health <= player.maxHealth * 0.25),
     new Skill("skill", "Path of Balance", "Grants 10% additional attack and defense as long as your HP remains above 75%, maintaining strength while healthy.", "common", (player) => pathOfBalance(player), "./assets/images/skills/universal-skills/path-of-balance.webp", (player) => player.health >= player.maxHealth * 0.75)
 ];
