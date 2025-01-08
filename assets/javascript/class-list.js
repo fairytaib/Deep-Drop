@@ -103,7 +103,7 @@ export const allItemsList = [
 
     // Helmets
     new Item("item", "Leather Hood", "Adds 1 to defense, offering minimal protection against weak attacks.", "common", (player, state) => player.defense += state ? -1 : 1, "./assets/images/items/helmets/leather-hood.webp"),
-    new Item("item", "Iron Helmet", "Increases defense by 2, providing basic protection for the wearer.", "common", (player, state) => player.defense += state ? -2 : 2, "helmet", "./assets/images/items/helmets/iron-helmet.webp"),
+    new Item("item", "Iron Helmet", "Increases defense by 2, providing basic protection for the wearer.", "common", (player, state) => player.defense += state ? -2 : 2, "./assets/images/items/helmets/iron-helmet.webp"),
     new Item("item", "Runed Helmet", "Boosts defense by 4 with faintly glowing runes enhancing its protective capabilities.", "uncommon", (player, state) => player.defense += state ? -4 : 4, "./assets/images/items/helmets/rune-helmet.webp"),
     new Item("item", "Guardian’s Helmet", "Adds 8 to defense, designed for those who stand firm against incoming attacks.", "rare", (player, state) => player.defense += state ? -8 : 8, "./assets/images/items/helmets/guardian-helmet.webp"),
     new Item("item", "Dragonsteel Helmet", "Increases defense by 12, its legendary craftsmanship providing unmatched protection.", "epic", (player, state) => player.defense += state ? -12 : 12, "./assets/images/items/helmets/dragonsteel-helmet.webp"),
@@ -300,11 +300,11 @@ function updateHealthDisplay(player, monster) {
     const monsterHealth = document.getElementById("monster-hp");
 
     if (playerHealth) {
-        playerHealth.textContent = Math.floor(player.health);
+        playerHealth.textContent = Math.round(player.health);
     }
 
     if (monsterHealth) {
-        monsterHealth.textContent = Math.floor(monster.health);
+        monsterHealth.textContent = Math.round(monster.health);
     }
 }
 
