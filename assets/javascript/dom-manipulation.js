@@ -507,6 +507,8 @@ function resetFightingStyleEffects(style) {
     } else if (style.name === "Skillful Dodger") {
         player.dodgeChance /= 1.2;
         player.damage /= 0.85;
+    } else if (style.name === "None") {
+        player.maxHealth /= 1
     }
 }
 

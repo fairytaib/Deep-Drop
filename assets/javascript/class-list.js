@@ -345,7 +345,7 @@ export let playerAvailableFightingStyle = [{
     {
         name: "None",
         description: "Remove current Style",
-        effect: console.log("Removed")
+        effect: (player) => player.maxHealth *= 1
     }
 ];
 
