@@ -434,7 +434,12 @@ function displayPLayerMenuItems(itemContent, appendBox) {
             selectButton.textContent = `Select`;
             selectButton.classList.add("reward-button", "player-inner-menu-button");
             selectButton.addEventListener("click", () => {
+                if (playerActiveItem) {
+                    playerActiveItem.resetEffect(player)
+                }
                 playerActiveItem = item
+                playerActiveItem.applyEffect(player)
+
                 const activeStyleElement = document.getElementById("active-style");
                 activeStyleElement.innerText = playerActiveItem.name
 
@@ -518,7 +523,6 @@ function selectClass(classOption) {
 function selectReward(reward, player) {
     if (reward.type === "item") {
         playerAvailableItems.push(reward);
-        reward.applyEffect(player)
     } else if (reward.type === "skill") {
         // Füge den Skill zur Liste der aktiven Skills hinzu
         playerAvailableSkills.push(reward);
