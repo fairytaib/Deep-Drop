@@ -435,7 +435,6 @@ function displayPLayerMenuItems(itemContent, appendBox) {
             selectButton.classList.add("reward-button", "player-inner-menu-button");
             selectButton.addEventListener("click", () => {
                 playerActiveItem = item
-
                 const activeStyleElement = document.getElementById("active-style");
                 activeStyleElement.innerText = playerActiveItem.name
 
@@ -518,14 +517,10 @@ function selectClass(classOption) {
 }
 
 function selectReward(reward, player) {
-    if (reward.type === "Item") {
+    if (reward.type === "item") {
         playerAvailableItems.push(reward);
+        reward.applyEffect(player)
     } else if (reward.type === "skill") {
-        if (playerAvailableSkills.some(activeSkill => activeSkill.name === reward.name)) {
-            alert(`Skill "${reward.name}" is already in your Skillist.`);
-            return;
-        }
-
         // Füge den Skill zur Liste der aktiven Skills hinzu
         playerAvailableSkills.push(reward);
         playerAvailableSkills.forEach(skill => {
@@ -620,7 +615,12 @@ function goToRewardSequenz() {
     removeItems("fight-item");
 
     const randomItem = allItemsList[Math.floor(Math.random() * allItemsList.length)];
+    const randomItemIndex = allItemsList.indexOf(randomItem)
+    allItemsList.splice(randomItemIndex, 1)
+
     const randomSkill = universalSkills[Math.floor(Math.random() * universalSkills.length)];
+    const randomSkillIndex = universalSkills.indexOf(randomItem)
+    allItemsList.splice(randomSkillIndex, 1)
 
     // const rewards = [{
     //         type: "Item",
@@ -689,7 +689,6 @@ function goToRewardSequenz() {
             }
             rewardContainer.appendChild(rewardRarity)
         }
-
 
         const rewardDescription = document.createElement("p");
         rewardDescription.textContent = reward.description;
