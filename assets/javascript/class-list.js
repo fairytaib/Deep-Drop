@@ -73,16 +73,30 @@ class Reward {
 export class Item extends Reward {
     constructor(type, name, description, rarity, effect, image) {
         super(type, name, description, rarity, effect, image);
+        this.isApplied = false
+    }
+    applyEffect(player) {
+        if (!this.isApplied) {
+            this.effect(player, false); // Anwenden des Effekts
+            this.isApplied = true;
+        }
+    }
+
+    resetEffect(player) {
+        if (this.isApplied) {
+            this.effect(player, true); // Rückgängig machen des Effekts
+            this.isApplied = false;
+        }
     }
 }
 
 export const allItemsList = [
     // Weapons
-    new Item("item", "Rusty Short Sword", "Increases damage by 1, but its dull blade makes it less effective than other weapons.", "common", (player) => player.damage += 1, "./assets/images/items/weapons/rusty-short-sword.webp"),
-    new Item("item", "Worn Magic Staff", "Adds 1 to damage, channeling faint magical energy to enhance attacks.", "common", (player) => player.damage += 1, "./assets/images/items/weapons/worn-magic-staff.webp"),
-    new Item("item", "Flame Dagger", "Increases damage by 4, its fiery aura adds a burning effect to your strikes.", "uncommon", (player) => player.damage += 4, "./assets/images/items/weapons/flame-dagger.webp"),
-    new Item("item", "Frost Mace", "Adds 8 to damage, with its freezing cold slowing enemies upon impact.", "rare", (player) => player.damage += 8, "./assets/images/items/weapons/frost-mace.webp"),
-    new Item("item", "Stormblade", "Increases damage by 10, crackling with lightning to deliver powerful strikes.", "epic", (player) => player.damage += 10, "./assets/images/items/weapons/stormblade.webp"),
+    new Item("item", "Rusty Short Sword", "Increases damage by 1, but its dull blade makes it less effective than other weapons.", "common", (player) => player.damage += value ? -1 : 1, "./assets/images/items/weapons/rusty-short-sword.webp"),
+    new Item("item", "Worn Magic Staff", "Adds 1 to damage, channeling faint magical energy to enhance attacks.", "common", (player) => player.damage += value ? -1 : 1, "./assets/images/items/weapons/worn-magic-staff.webp"),
+    new Item("item", "Flame Dagger", "Increases damage by 4, its fiery aura adds a burning effect to your strikes.", "uncommon", (player) => player.damage += value ? -4 : 4, "./assets/images/items/weapons/flame-dagger.webp"),
+    new Item("item", "Frost Mace", "Adds 8 to damage, with its freezing cold slowing enemies upon impact.", "rare", (player) => player.damage += value ? -8 : 8, "./assets/images/items/weapons/frost-mace.webp"),
+    new Item("item", "Stormblade", "Increases damage by 10, crackling with lightning to deliver powerful strikes.", "epic", (player) => player.damage += value ? -10 : 10, "./assets/images/items/weapons/stormblade.webp"),
 
     // Helmets
     new Item("item", "Leather Hood", "Adds 1 to defense, offering minimal protection against weak attacks.", "common", (player) => player.defense += 1, "./assets/images/items/helmets/leather-hood.webp"),
