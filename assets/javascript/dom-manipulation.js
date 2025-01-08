@@ -119,11 +119,11 @@ function resetFlexbox(displayBox, buttonBox) {
 
 function resetPlayer() {
     if (player.name === "Knight") {
-        player = new Character("Knight", 10, 10, 10, 10000, 10, 5, 5);
+        player = new Character("Knight", 100, 100, 10, 1500, 15, 5, 10);
     } else if (player.name === "Ranger") {
-        player = new Character("Ranger", 10, 10, 10, 10000, 10, 1, 1);
+        player = new Character("Ranger", 70, 70, 12, 1200, 10, 10, 15);
     } else if (player.name === "Assassin") {
-        player = new Character("Assassin", 10, 10, 10, 10000, 10, 1, 1);
+        player = new Character("Assassin", 50, 50, 15, 1000, 5, 15, 20);
     }
 }
 
@@ -503,17 +503,17 @@ function resetFightingStyleEffects(style) {
 
 function selectClass(classOption) {
     if (classOption.name === "Knight") {
-        player = new Character("Knight", 10, 10, 10, 1000, 10, 5, 5);
+        player = new Character("Knight", 100, 100, 10, 1500, 15, 5, 10);
         for (let i = 0; i < knightSkills.length; i++) {
             universalSkills.push(knightSkills[i]);
         }
     } else if (classOption.name === "Ranger") {
-        player = new Character("Ranger", 10, 10, 10, 1000, 10, 5, 5);
+        player = new Character("Ranger", 70, 70, 12, 1200, 10, 10, 15);
         for (let i = 0; i < rangerSkills.length; i++) {
             universalSkills.push(rangerSkills[i]);
         }
     } else if (classOption.name === "Assassin") {
-        player = new Character("Assassin", 10, 10, 10, 1000, 10, 5, 5);
+        player = new Character("Assassin", 50, 50, 15, 1000, 5, 15, 20);
         for (let i = 0; i < assassinSkills.length; i++) {
             universalSkills.push(assassinSkills[i]);
         }

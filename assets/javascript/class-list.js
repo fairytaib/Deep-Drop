@@ -19,8 +19,10 @@ export class Character {
     }
 
     calculateDamage(monsterDefense) {
-        return Math.max(0, this.damage - monsterDefense);
+        const damageReduction = monsterDefense / 100;
+        return Math.max(0, this.damage * (1 - damageReduction));
     }
+
 
     dodge() {
         return Math.random() < this.dodgeChance / 100;
@@ -37,14 +39,15 @@ export class Character {
 export const monsterList = [
     new Character("Slime", 25, 25, 5, 2000, 2, 0, 0),
     new Character("Swarm of Rats", 30, 30, 7, 1800, 3, 0, 0),
-    new Character("Kobold", 35, 35, 10, 1500, 5, 0, 5),
-    new Character("Goblin", 40, 35, 12, 1200, 6, 0, 10),
-    new Character("Skeleton Warrior", 50, 50, 15, 1000, 8, 50, 15),
-    new Character("Orc", 60, 60, 20, 900, 10, 5, 20),
-    new Character("Harpie", 45, 45, 18, 1100, 7, 25, 10),
+    new Character("Kobold", 35, 35, 10, 1500, 5, 5, 5),
+    new Character("Goblin", 40, 40, 12, 1200, 6, 5, 10),
+    new Character("Skeleton Warrior", 50, 50, 15, 1000, 8, 10, 15),
+    new Character("Orc", 70, 70, 20, 900, 10, 5, 20),
+    new Character("Harpie", 60, 60, 18, 1100, 7, 25, 10),
     new Character("Troll", 80, 80, 25, 800, 15, 5, 10),
     new Character("Fire Elemental", 70, 70, 30, 700, 10, 10, 25),
-    new Character("Boss", 100, 100, 50, 500, 20, 0, 30)
+    new Character("Boss", 120, 120, 50, 500, 20, 0, 30)
+
 
 ]
 
@@ -93,14 +96,14 @@ export class Item extends Reward {
 export const allItemsList = [
     // Weapons
     new Item("item", "Rusty Short Sword", "Increases damage by 1, but its dull blade makes it less effective than other weapons.", "common", (player, state) => player.damage += state ? -1 : 1, "./assets/images/items/weapons/rusty-short-sword.webp"),
-    new Item("item", "Worn Magic Staff", "Adds 1 to damage, channeling faint magical energy to enhance attacks.", "common", (player, state) => player.damage += state ? -1 : 1, "./assets/images/items/weapons/worn-magic-staff.webp"),
+    new Item("item", "Worn Magic Staff", "Adds 2 to damage, channeling faint magical energy to enhance attacks.", "common", (player, state) => player.damage += state ? -2 : 2, "./assets/images/items/weapons/worn-magic-staff.webp"),
     new Item("item", "Flame Dagger", "Increases damage by 4, its fiery aura adds a burning effect to your strikes.", "uncommon", (player, state) => player.damage += state ? -4 : 4, "./assets/images/items/weapons/flame-dagger.webp"),
     new Item("item", "Frost Mace", "Adds 8 to damage, with its freezing cold slowing enemies upon impact.", "rare", (player, state) => player.damage += state ? -8 : 8, "./assets/images/items/weapons/frost-mace.webp"),
     new Item("item", "Stormblade", "Increases damage by 10, crackling with lightning to deliver powerful strikes.", "epic", (player, state) => player.damage += state ? -10 : 10, "./assets/images/items/weapons/stormblade.webp"),
 
     // Helmets
     new Item("item", "Leather Hood", "Adds 1 to defense, offering minimal protection against weak attacks.", "common", (player, state) => player.defense += state ? -1 : 1, "./assets/images/items/helmets/leather-hood.webp"),
-    new Item("item", "Iron Helmet", "Increases defense by 1, providing basic protection for the wearer.", "common", (player, state) => player.defense += state ? -1 : 1, "helmet", "./assets/images/items/helmets/iron-helmet.webp"),
+    new Item("item", "Iron Helmet", "Increases defense by 2, providing basic protection for the wearer.", "common", (player, state) => player.defense += state ? -2 : 2, "helmet", "./assets/images/items/helmets/iron-helmet.webp"),
     new Item("item", "Runed Helmet", "Boosts defense by 4 with faintly glowing runes enhancing its protective capabilities.", "uncommon", (player, state) => player.defense += state ? -4 : 4, "./assets/images/items/helmets/rune-helmet.webp"),
     new Item("item", "Guardian’s Helmet", "Adds 8 to defense, designed for those who stand firm against incoming attacks.", "rare", (player, state) => player.defense += state ? -8 : 8, "./assets/images/items/helmets/guardian-helmet.webp"),
     new Item("item", "Dragonsteel Helmet", "Increases defense by 12, its legendary craftsmanship providing unmatched protection.", "epic", (player, state) => player.defense += state ? -12 : 12, "./assets/images/items/helmets/dragonsteel-helmet.webp"),
@@ -109,7 +112,7 @@ export const allItemsList = [
     new Item("item", "Leather Jerkin", "Adds 10 to health, offering basic resistance against physical damage.", "common", (player, state) => player.health += state ? -10 : 10, "./assets/images/items/armor/leather-jerkin.webp"),
     new Item("item", "Chainmail Armor", "Boosts health by 14, providing decent protection against stronger blows.", "common", (player, state) => player.health += state ? -14 : 14, "./assets/images/items/armor/chainmail-armor.webp"),
     new Item("item", "Armored Robe", "Increases health by 20, blending mobility with added protection.", "uncommon", (player, state) => player.health += state ? -20 : 20, "./assets/images/items/armor/armored-robe.webp"),
-    new Item("item", "Shadow Armor", "Adds 25 to health, allowing the wearer to blend into the shadows and avoid detection.", "rare", (player, state) => player.health += state ? -25 : 25, "./assets/images/items/armor/shadow-armor.webp"),
+    new Item("item", "Shadow Armor", "Adds 40 to health, allowing the wearer to blend into the shadows and avoid detection.", "rare", (player, state) => player.health += state ? -40 : 40, "./assets/images/items/armor/shadow-armor.webp"),
     new Item("item", "Titan Armor", "Boosts health by 100, its legendary durability shielding against powerful attacks.", "epic", (player, state) => player.health += state ? -100 : 100, "./assets/images/items/armor/titan-armor.webp"),
 
     // Shoes
