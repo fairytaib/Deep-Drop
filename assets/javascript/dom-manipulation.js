@@ -484,16 +484,15 @@ function resetFightingStyleEffects(style) {
         player.attackSpeed /= 1.15; // Rückgängig machen
         player.defense /= 0.8;
     } else if (style.name === "Defensive Tank") {
-        player.incomingDamageReduction -= 0.3;
+        player.defense /= 1.3;
         player.attackSpeed /= 0.75;
     } else if (style.name === "Critical Fighter") {
-        player.critChance -= 0.5;
+        player.critChance /= 1.5;
         player.attackSpeed /= 0.8;
 
     } else if (style.name === "Skillful Dodger") {
-        player.dodgeChance -= 0.2;
-        player.physicalDamage /= 0.85;
-        player.magicalDamage /= 0.85;
+        player.dodgeChance /= 1.2;
+        player.damage /= 0.85;
     }
 }
 

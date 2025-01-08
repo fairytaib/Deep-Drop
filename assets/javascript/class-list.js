@@ -327,7 +327,7 @@ export let playerAvailableFightingStyle = [{
         name: "Critical Fighter",
         description: "Increases critical hit chance by 50%, allowing for powerful strikes, but lowers attack speed by 20%, resulting in slower attacks.",
         effect: (player) => {
-            player.critChance = (player.critChance || 0) + 0.5; // Increases critical hit chance by 50%
+            player.critChance = (player.critChance || 0) * 1.5; // Increases critical hit chance by 50%
             player.attackSpeed *= 0.8; // Reduces attack speed by 20%
         }
     },
@@ -335,7 +335,7 @@ export let playerAvailableFightingStyle = [{
         name: "Skillful Dodger",
         description: "Improves dodge chance by 20%, enhancing evasiveness, but decreases physical damage dealt by 15%.",
         effect: (player) => {
-            player.dodgeChance = (player.dodgeChance || 0) + 0.2; // Increases dodge chance by 20%
+            player.dodgeChance = (player.dodgeChance || 0) * 1.2; // Increases dodge chance by 20%
             player.damage *= 0.85; // Reduces physical damage by 15%
         }
     }
