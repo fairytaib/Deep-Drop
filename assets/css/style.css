@@ -36,7 +36,7 @@ button {
     color: #d4d4d4;
     border: 2px solid #2b2b2b;
     border-radius: 5px;
-    padding: 2px 20px;
+    padding: 0.125rem 1.25rem;
     text-shadow: 1px 1px 2px #000;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -60,11 +60,11 @@ button:active {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 500px;
-    height: 500px;
+    width: 31.25rem;
+    height: 31.25rem;
     border: 1px solid black;
     background-color: #f5f5dcf2;
-    padding: 0 0 20px 0;
+    padding: 0 0 1.25rem 0;
 }
 
 .title-box {
@@ -74,7 +74,7 @@ button:active {
     width: 90%;
     gap: 20%;
     font-family: var(--title-font);
-    padding: 10px 0;
+    padding: 0.75rem 0;
 }
 
 #middle-item {
@@ -100,7 +100,7 @@ button:active {
 }
 
 #info-button i {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: inherit;
 }
 
@@ -115,13 +115,13 @@ button:active {
 /* Start Items */
 #player-name-input,
 #start-button {
-    margin: 2px;
+    margin: 0.125rem;
 }
 
 /* Middle Section pure html elements */
 .display-box {
     position: relative;
-    padding: 10px;
+    padding: 0.625rem;
 }
 
 .display-box-flex-column {
@@ -170,7 +170,7 @@ button:active {
 }
 
 .button-box {
-    padding: 5px;
+    padding: 0.3rem;
 }
 
 /* Display Section with JavaScript*/
@@ -179,13 +179,13 @@ button:active {
     background-color: red;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 0.3rem 0.6rem;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 5px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0.625rem;
+    right: 0.625rem;
 }
 
 .close-button:hover {
@@ -196,8 +196,7 @@ button:active {
 .tutorial-window {
     width: 90%;
     height: 90%;
-    max-width: 400px;
-    padding: 20px;
+    padding: 1.25rem;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     text-align: center;
@@ -209,7 +208,7 @@ button:active {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
 
     position: absolute;
     top: 50%;
@@ -223,7 +222,7 @@ button:active {
 
 .player-menu-item-display {
     justify-content: space-between;
-    padding: 20px 20px 5px 20px;
+    padding: 1.25rem 1.25rem 0.313rem 1.25rem;
 }
 
 /* tutorial */
@@ -235,7 +234,7 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 1rem;
 }
 
 .next-slide-button {
@@ -251,8 +250,7 @@ button:active {
 .confirm-window {
     width: 80%;
     height: 80%;
-    max-width: 400px;
-    padding: 20px;
+    padding: 1.25rem;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     text-align: center;
@@ -264,7 +262,7 @@ button:active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
 
     position: absolute;
     top: 50%;
@@ -323,7 +321,7 @@ button:active {
     transform: translateX(-50%);
     background-color: var(--background);
     color: white;
-    padding: 5px;
+    padding: 0.313rem;
     border-radius: 4px;
     font-size: 1rem;
     white-space: nowrap;
@@ -342,7 +340,7 @@ button:active {
 .player-menu-button {
     width: 5rem;
     height: 3.5rem;
-    padding: 5px;
+    padding: 0.313rem;
     text-align: center;
 }
 
@@ -393,8 +391,8 @@ button:active {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    padding: 10px 0 0 0;
-    margin: 10px;
+    padding: 0.625rem 0 0 0;
+    margin: 0.625rem;
 }
 
 .class-item-box {
@@ -412,7 +410,7 @@ button:active {
 .class-title,
 .reward-title {
     color: #d4d4d4;
-    padding: 7px 0;
+    padding: 0.438rem 0;
 }
 
 /* Reward Section */
@@ -425,7 +423,7 @@ button:active {
     font-size: 0.8rem;
     color: #d4d4d4;
     text-align: center;
-    padding: 7px 0;
+    padding: 0.438rem 0;
 }
 
 .reward-description {
@@ -477,12 +475,4 @@ button {
 .disabled {
     cursor: not-allowed;
     color: gray;
-}
-
-/* Media Query */
-@media (max-width: 600px) {
-    .outer-box {
-        width: 100%;
-        height: 100%;
-    }
 }
