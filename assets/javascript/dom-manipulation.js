@@ -420,7 +420,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
         }
     }
     itemContent.forEach(item => {
-        const stylesContainer = document.querySelector(".fighting-styles-container")
+        let stylesContainer = document.querySelector(".fighting-styles-container")
 
         const itemContainer = document.createElement("div");
         itemContainer.classList.add("player-menu-display-option", "text-font");
@@ -430,7 +430,11 @@ function displayPLayerMenuItems(itemContent, appendBox) {
         itemTitle.classList.add("player-menu-item");
         itemTitle.setAttribute("data-tooltip", item.description);
 
-        appendBox.appendChild(stylesContainer);
+        if (!stylesContainer) {
+            stylesContainer = document.createElement("div");
+            stylesContainer.classList.add("fighting-styles-container");
+            appendBox.appendChild(stylesContainer);
+        }
         stylesContainer.appendChild(itemContainer)
         itemContainer.appendChild(itemTitle)
 
