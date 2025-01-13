@@ -495,7 +495,7 @@ button {
         justify-content: center;
         align-items: center;
         width: 90vw;
-        height: 85vh;
+        height: 95vh;
         padding: 1rem;
         background-color: rgba(245, 245, 220, 0.95);
         border-radius: 15px;
@@ -541,11 +541,17 @@ button {
         padding: 1rem;
     }
 
+    .button-box>h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1px;
+    }
+
     .reward-display-option,
     .class-display-option {
         width: 30%;
         /* Einheitliche Breite */
         height: auto;
+        max-height: 220px;
         padding: 1rem;
         background-color: rgba(58, 58, 58, 0.9);
         border-radius: 10px;
@@ -555,6 +561,10 @@ button {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .start-item+button {
+        padding: 0.2rem 1rem
     }
 
     .reward-image,
@@ -576,8 +586,8 @@ button {
     #player-name-input {
         width: 100%;
         max-width: 300px;
-        font-size: 1rem;
-        padding: 0.6rem;
+        font-size: 0.8rem;
+        padding: 0.4rem;
         border-radius: 6px;
         border: 1px solid #ccc;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
