@@ -95,32 +95,32 @@ export class Item extends Reward {
 
 export const allItemsList = [
     // Weapons
-    new Item("item", "Rusty Short Sword", "Increases damage by 1, but its dull blade makes it less effective than other weapons.", "common", (player, state) => player.damage += state ? -1 : 1, "./assets/images/items/weapons/rusty-short-sword.webp"),
-    new Item("item", "Worn Magic Staff", "Adds 2 to damage, channeling faint magical energy to enhance attacks.", "common", (player, state) => player.damage += state ? -2 : 2, "./assets/images/items/weapons/worn-magic-staff.webp"),
-    new Item("item", "Flame Dagger", "Increases damage by 4, its fiery aura adds a burning effect to your strikes.", "uncommon", (player, state) => player.damage += state ? -4 : 4, "./assets/images/items/weapons/flame-dagger.webp"),
-    new Item("item", "Frost Mace", "Adds 8 to damage, with its freezing cold slowing enemies upon impact.", "rare", (player, state) => player.damage += state ? -8 : 8, "./assets/images/items/weapons/frost-mace.webp"),
-    new Item("item", "Stormblade", "Increases damage by 10, crackling with lightning to deliver powerful strikes.", "epic", (player, state) => player.damage += state ? -10 : 10, "./assets/images/items/weapons/stormblade.webp"),
+    new Item("item", "Rusty Short Sword", "Increases damage by 1, but its dull blade makes it less effective than other weapons.", "common", (player, state) => player.damage += state ? -1 : 1, "assets/images/items/weapons/rusty-short-sword.webp"),
+    new Item("item", "Worn Magic Staff", "Adds 2 to damage, channeling faint magical energy to enhance attacks.", "common", (player, state) => player.damage += state ? -2 : 2, "assets/images/items/weapons/worn-magic-staff.webp"),
+    new Item("item", "Flame Dagger", "Increases damage by 4, its fiery aura adds a burning effect to your strikes.", "uncommon", (player, state) => player.damage += state ? -4 : 4, "assets/images/items/weapons/flame-dagger.webp"),
+    new Item("item", "Frost Mace", "Adds 8 to damage, with its freezing cold slowing enemies upon impact.", "rare", (player, state) => player.damage += state ? -8 : 8, "assets/images/items/weapons/frost-mace.webp"),
+    new Item("item", "Stormblade", "Increases damage by 10, crackling with lightning to deliver powerful strikes.", "epic", (player, state) => player.damage += state ? -10 : 10, "assets/images/items/weapons/stormblade.webp"),
 
     // Helmets
-    new Item("item", "Leather Hood", "Adds 1 to defense, offering minimal protection against weak attacks.", "common", (player, state) => player.defense += state ? -1 : 1, "./assets/images/items/helmets/leather-hood.webp"),
-    new Item("item", "Iron Helmet", "Increases defense by 2, providing basic protection for the wearer.", "common", (player, state) => player.defense += state ? -2 : 2, "./assets/images/items/helmets/iron-helmet.webp"),
-    new Item("item", "Runed Helmet", "Boosts defense by 4 with faintly glowing runes enhancing its protective capabilities.", "uncommon", (player, state) => player.defense += state ? -4 : 4, "./assets/images/items/helmets/rune-helmet.webp"),
-    new Item("item", "Guardian’s Helmet", "Adds 8 to defense, designed for those who stand firm against incoming attacks.", "rare", (player, state) => player.defense += state ? -8 : 8, "./assets/images/items/helmets/guardian-helmet.webp"),
-    new Item("item", "Dragonsteel Helmet", "Increases defense by 12, its legendary craftsmanship providing unmatched protection.", "epic", (player, state) => player.defense += state ? -12 : 12, "./assets/images/items/helmets/dragonsteel-helmet.webp"),
+    new Item("item", "Leather Hood", "Adds 1 to defense, offering minimal protection against weak attacks.", "common", (player, state) => player.defense += state ? -1 : 1, "assets/images/items/helmets/leather-hood.webp"),
+    new Item("item", "Iron Helmet", "Increases defense by 2, providing basic protection for the wearer.", "common", (player, state) => player.defense += state ? -2 : 2, "assets/images/items/helmets/iron-helmet.webp"),
+    new Item("item", "Runed Helmet", "Boosts defense by 4 with faintly glowing runes enhancing its protective capabilities.", "uncommon", (player, state) => player.defense += state ? -4 : 4, "assets/images/items/helmets/rune-helmet.webp"),
+    new Item("item", "Guardian’s Helmet", "Adds 8 to defense, designed for those who stand firm against incoming attacks.", "rare", (player, state) => player.defense += state ? -8 : 8, "assets/images/items/helmets/guardian-helmet.webp"),
+    new Item("item", "Dragonsteel Helmet", "Increases defense by 12, its legendary craftsmanship providing unmatched protection.", "epic", (player, state) => player.defense += state ? -12 : 12, "assets/images/items/helmets/dragonsteel-helmet.webp"),
 
     // Armor
-    new Item("item", "Leather Jerkin", "Adds 10 to health, offering basic resistance against physical damage.", "common", (player, state) => player.health += state ? -10 : 10, "./assets/images/items/armor/leather-jerkin.webp"),
-    new Item("item", "Chainmail Armor", "Boosts health by 14, providing decent protection against stronger blows.", "common", (player, state) => player.health += state ? -14 : 14, "./assets/images/items/armor/chainmail-armor.webp"),
-    new Item("item", "Armored Robe", "Increases health by 20, blending mobility with added protection.", "uncommon", (player, state) => player.health += state ? -20 : 20, "./assets/images/items/armor/armored-robe.webp"),
-    new Item("item", "Shadow Armor", "Adds 40 to health, allowing the wearer to blend into the shadows and avoid detection.", "rare", (player, state) => player.health += state ? -40 : 40, "./assets/images/items/armor/shadow-armor.webp"),
-    new Item("item", "Titan Armor", "Boosts health by 100, its legendary durability shielding against powerful attacks.", "epic", (player, state) => player.health += state ? -100 : 100, "./assets/images/items/armor/titan-armor.webp"),
+    new Item("item", "Leather Jerkin", "Adds 10 to health, offering basic resistance against physical damage.", "common", (player, state) => player.health += state ? -10 : 10, "assets/images/items/armor/leather-jerkin.webp"),
+    new Item("item", "Chainmail Armor", "Boosts health by 14, providing decent protection against stronger blows.", "common", (player, state) => player.health += state ? -14 : 14, "assets/images/items/armor/chainmail-armor.webp"),
+    new Item("item", "Armored Robe", "Increases health by 20, blending mobility with added protection.", "uncommon", (player, state) => player.health += state ? -20 : 20, "assets/images/items/armor/armored-robe.webp"),
+    new Item("item", "Shadow Armor", "Adds 40 to health, allowing the wearer to blend into the shadows and avoid detection.", "rare", (player, state) => player.health += state ? -40 : 40, "assets/images/items/armor/shadow-armor.webp"),
+    new Item("item", "Titan Armor", "Boosts health by 100, its legendary durability shielding against powerful attacks.", "epic", (player, state) => player.health += state ? -100 : 100, "assets/images/items/armor/titan-armor.webp"),
 
     // Shoes
-    new Item("item", "Worn Boots", "Increases dodge chance by 1, offering slight agility despite their age.", "common", (player, state) => player.dodgeChance += state ? -1 : 1, "./assets/images/items/shoes/worn-boots.webp"),
-    new Item("item", "Light Sandals", "Boosts dodge chance by 1, improving movement speed and evasion.", "common", (player, state) => player.dodgeChance += state ? -1 : 1, "./assets/images/items/shoes/light-sandals.webp"),
-    new Item("item", "Windrunner Boots", "Adds 7 to dodge chance, their enchantment enhancing the wearer’s speed.", "uncommon", (player, state) => player.dodgeChance += state ? -7 : 7, "./assets/images/items/shoes/windrunner-boots.webp"),
-    new Item("item", "Wanderer’s Boots", "Boosts dodge chance by 12, their sturdy design aiding long journeys and evasion.", "rare", (player, state) => player.dodgeChance += state ? -12 : 12, "./assets/images/items/shoes/wanderers-boots.webp"),
-    new Item("item", "Phantom Shoes", "Increases dodge chance by 20, making the wearer almost ghost-like in movement.", "epic", (player, state) => player.dodgeChance += state ? -20 : 20, "./assets/images/items/shoes/phantom-shoes.webp")
+    new Item("item", "Worn Boots", "Increases dodge chance by 1, offering slight agility despite their age.", "common", (player, state) => player.dodgeChance += state ? -1 : 1, "assets/images/items/shoes/worn-boots.webp"),
+    new Item("item", "Light Sandals", "Boosts dodge chance by 1, improving movement speed and evasion.", "common", (player, state) => player.dodgeChance += state ? -1 : 1, "assets/images/items/shoes/light-sandals.webp"),
+    new Item("item", "Windrunner Boots", "Adds 7 to dodge chance, their enchantment enhancing the wearer’s speed.", "uncommon", (player, state) => player.dodgeChance += state ? -7 : 7, "assets/images/items/shoes/windrunner-boots.webp"),
+    new Item("item", "Wanderer’s Boots", "Boosts dodge chance by 12, their sturdy design aiding long journeys and evasion.", "rare", (player, state) => player.dodgeChance += state ? -12 : 12, "assets/images/items/shoes/wanderers-boots.webp"),
+    new Item("item", "Phantom Shoes", "Increases dodge chance by 20, making the wearer almost ghost-like in movement.", "epic", (player, state) => player.dodgeChance += state ? -20 : 20, "assets/images/items/shoes/phantom-shoes.webp")
 ];
 
 //Numbers have to be edited
@@ -142,8 +142,8 @@ export class Skill extends Reward {
 }
 
 export const knightSkills = [
-    new Skill("skill", "Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses against attacks.", "common", (player) => player.defense = (player.defense || 0) + 0.15, "./assets/images/skills/knight-skills/shieldwall.webp", (player, enemy) => true),
-    new Skill("skill", "Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP, keeping the fight alive.", "rare", (player) => unyieldingWill(player), "./assets/images/skills/knight-skills/unyielding-will.webp", (player) => player.health === 1 && Math.random() <= 0.1)
+    new Skill("skill", "Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses against attacks.", "common", (player) => player.defense = (player.defense || 0) + 0.15, "assets/images/skills/knight-skills/shieldwall.webp", (player, enemy) => true),
+    new Skill("skill", "Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP, keeping the fight alive.", "rare", (player) => unyieldingWill(player), "assets/images/skills/knight-skills/unyielding-will.webp", (player) => player.health === 1 && Math.random() <= 0.1)
 ];
 
 function unyieldingWill(player) {
@@ -154,7 +154,7 @@ function unyieldingWill(player) {
 }
 
 export const assassinSkills = [
-    new Skill("skill", "Blinding Speed", "Increases all Stats by 10%", "common", (player) => blindingSpeed(player), "./assets/images/skills/assassin-skills/blinding-speed.webp", (player) => true),
+    new Skill("skill", "Blinding Speed", "Increases all Stats by 10%", "common", (player) => blindingSpeed(player), "assets/images/skills/assassin-skills/blinding-speed.webp", (player) => true),
 
 ];
 
@@ -169,8 +169,8 @@ function blindingSpeed(player) {
 // }
 
 export const rangerSkills = [
-    new Skill("skill", "Targeted Weakness", "Deals 20% extra damage to enemies with less than 30% HP, exploiting their vulnerabilities.", "common", (enemy) => targetedWeakness(enemy), "./assets/images/skills/ranger-skills/targeted-weakness.webp", (player, enemy) => enemy.health <= enemy.maxHealth * 0.3),
-    new Skill("skill", "Repair Protocol", "Restores 2% of your maximum HP each time you successfully dodge an attack, enhancing survivability.", "common", (player) => repairProtocol(player), "./assets/images/skills/ranger-skills/repair-protocol.webp", (player) => true)
+    new Skill("skill", "Targeted Weakness", "Deals 20% extra damage to enemies with less than 30% HP, exploiting their vulnerabilities.", "common", (enemy) => targetedWeakness(enemy), "assets/images/skills/ranger-skills/targeted-weakness.webp", (player, enemy) => enemy.health <= enemy.maxHealth * 0.3),
+    new Skill("skill", "Repair Protocol", "Restores 2% of your maximum HP each time you successfully dodge an attack, enhancing survivability.", "common", (player) => repairProtocol(player), "assets/images/skills/ranger-skills/repair-protocol.webp", (player) => true)
 ];
 
 
@@ -201,10 +201,10 @@ function repairProtocol(player) {
 
 
 export const universalSkills = [
-    new Skill("skill", "Longshot", "Reduces attack speed by 50%, but increases damage dealt by 200%, ideal for calculated and powerful strikes.", "common", (player) => longshot(player), "./assets/images/skills/universal-skills/longshot.webp", (player, enemy) => true),
-    new Skill("skill", "Dodge Roll", "Adds an additional 5% chance to dodge attacks, improving your evasive capabilities.", "common", (player) => dogdeRoll(player), "./assets/images/skills/universal-skills/dodge-roll.webp", (player) => true),
-    new Skill("skill", "Bloody Determination", "Increases damage by 15% when your HP falls below 25%, turning desperation into power.", "common", (player) => dogdeRoll(player), "./assets/images/skills/universal-skills/bloody-determination.webp", (player) => player.health <= player.maxHealth * 0.25),
-    new Skill("skill", "Path of Balance", "Grants 10% additional attack and defense as long as your HP remains above 75%, maintaining strength while healthy.", "common", (player) => pathOfBalance(player), "./assets/images/skills/universal-skills/path-of-balance.webp", (player) => player.health >= player.maxHealth * 0.75)
+    new Skill("skill", "Longshot", "Reduces attack speed by 50%, but increases damage dealt by 200%, ideal for calculated and powerful strikes.", "common", (player) => longshot(player), "assets/images/skills/universal-skills/longshot.webp", (player, enemy) => true),
+    new Skill("skill", "Dodge Roll", "Adds an additional 5% chance to dodge attacks, improving your evasive capabilities.", "common", (player) => dogdeRoll(player), "assets/images/skills/universal-skills/dodge-roll.webp", (player) => true),
+    new Skill("skill", "Bloody Determination", "Increases damage by 15% when your HP falls below 25%, turning desperation into power.", "common", (player) => dogdeRoll(player), "assets/images/skills/universal-skills/bloody-determination.webp", (player) => player.health <= player.maxHealth * 0.25),
+    new Skill("skill", "Path of Balance", "Grants 10% additional attack and defense as long as your HP remains above 75%, maintaining strength while healthy.", "common", (player) => pathOfBalance(player), "assets/images/skills/universal-skills/path-of-balance.webp", (player) => player.health >= player.maxHealth * 0.75)
 ];
 
 function longshot(player) {

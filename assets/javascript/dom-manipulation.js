@@ -14,74 +14,79 @@ import {
     playerAvailableSkills,
     Skill,
     Item
-} from "./class-list.js";
+} from "class-list.js";
 
-//EXAMPLE
-// Variables
-// Refine Stats later on
+// Keep track of the current round
 let roundCounter = 0;
+
+// Decide the monster that is displayed in Round x
 let monster = monsterList[roundCounter]
+
+// Initialize variables
 let playerActiveFightingStyle;
 let playerActiveItem;
+
+// Initilize Varibales for the reset function
 let originalItemsList = [...allItemsList];
 let originalSkillsList = [...universalSkills];
 
+// Character and Monster options
 const classOptions = [{
         name: "Knight",
         description: "A strong and resilient warrior, excelling in defense.",
-        image: "./assets/images/player-classes/knight.webp"
+        image: "assets/images/player-classes/knight.webp"
     },
     {
         name: "Ranger",
         description: "A swift and agile archer, skilled in ranged attacks.",
-        image: "./assets/images/player-classes/ranger.webp"
+        image: "assets/images/player-classes/ranger.webp"
     },
     {
         name: "Assassin",
         description: "A deadly and elusive fighter, striking from the shadows.",
-        image: "./assets/images/player-classes/assassin.webp"
+        image: "assets/images/player-classes/assassin.webp"
     }
 ];
 
 const monsterOptions = [{
         name: "slime",
-        image: "./assets/images/monsters/slime.webp"
+        image: "assets/images/monsters/slime.webp"
     },
     {
         name: "Swarm of Rats",
-        image: "./assets/images/monsters/swarm-of-rats.webp"
+        image: "assets/images/monsters/swarm-of-rats.webp"
     },
     {
         name: "Kobold",
-        image: "./assets/images/monsters/kobold.webp"
+        image: "assets/images/monsters/kobold.webp"
     },
     {
         name: "Goblin",
-        image: "./assets/images/monsters/goblin.webp"
+        image: "assets/images/monsters/goblin.webp"
     },
     {
         name: "Skeleton Warrior",
-        image: "./assets/images/monsters/skeleton-warrior.webp"
+        image: "assets/images/monsters/skeleton-warrior.webp"
     },
     {
         name: "Orc",
-        image: "./assets/images/monsters/orc.webp"
+        image: "assets/images/monsters/orc.webp"
     },
     {
         name: "Harpie",
-        image: "./assets/images/monsters/harpie.webp"
+        image: "assets/images/monsters/harpie.webp"
     },
     {
         name: "Troll",
-        image: "./assets/images/monsters/troll.webp"
+        image: "assets/images/monsters/troll.webp"
     },
     {
         name: "Fire Elemental",
-        image: "./assets/images/monsters/fire-elemental.webp"
+        image: "assets/images/monsters/fire-elemental.webp"
     },
     {
         name: "The Boss",
-        image: "./assets/images/monsters/boss.webp"
+        image: "assets/images/monsters/boss.webp"
     },
 ]
 
@@ -90,7 +95,7 @@ let playerNameInput = document.getElementById("player-name-input");
 let playerName = "";
 let player
 
-//Loading Screen
+//Loading Screen functions
 
 function showLoadingScreen() {
     const loadingScreen = document.getElementById("loading-screen");
@@ -115,15 +120,14 @@ function preloadImage(src, callback) {
 }
 
 
-//Display
+//---------- Initialize Display Divs
+
 // Display Box Items
 const displayBox = document.getElementById("display-box-section");
 // Button Box Items
 const buttonBox = document.getElementById("button-box-section");
 
-// FUNCTIONS START
-// Reset Game
-//Reset Monster
+//----------- Reset Functions
 function resetMonsters() {
     monsterList.forEach((monster, index) => {
         Object.assign(monster, new Character(
@@ -137,12 +141,14 @@ function resetMonsters() {
         ));
     });
 }
+
 // Reset Flexbox
 function resetFlexbox(displayBox, buttonBox) {
     displayBox.className = "display-box display-box-flex-column";
     buttonBox.className = "button-box button-box-flex-column";
 }
 
+//Reset player
 function resetPlayer() {
     if (player.name === "Knight") {
         player = new Character("Knight", 100, 100, 10, 1500, 15, 5, 10);
@@ -153,44 +159,13 @@ function resetPlayer() {
     }
 }
 
-function displayUserChoiceConfirmation() {
-    const confirmWindow = document.createElement("div");
-    confirmWindow.classList.add("confirm-window");
-
-    confirmWindow.textContent = "Are you sure you want to proceed?";
-
-    const yesButton = document.createElement("button");
-    yesButton.classList.add("yes-reset-button")
-    yesButton.textContent = "Yes";
-    yesButton.addEventListener("click", () => {
-        confirmWindow.remove();
-        resetGame();
-    });
-
-    const noButton = document.createElement("button");
-    noButton.classList.add("no-reset-button")
-    noButton.textContent = "No";
-    noButton.addEventListener("click", () => confirmWindow.remove());
-
-    confirmWindow.appendChild(yesButton);
-    confirmWindow.appendChild(noButton);
-
-    displayBox.appendChild(confirmWindow);
-}
-
+//Reset Rewards
 function resetRewards() {
-    // Items und Skills wiederherstellen
-
-    // Items zurücksetzen
     allItemsList = [...originalItemsList];
-
-    // Skills zurücksetzen
     universalSkills = [...originalSkillsList];
-
-    console.log("Belohnungen wurden zurückgesetzt.");
 }
 
-
+//Reset the game
 function resetGame() {
     // 1. Entferne alle dynamisch hinzugefügten Elemente
     displayBox.innerHTML = `
@@ -240,6 +215,35 @@ function resetGame() {
     console.log("Spiel wurde erfolgreich zurückgesetzt.");
 }
 
+/* --------- Generic functions
+ * General functions that are later used to display windows or create needed Elements
+ *
+ **/
+
+function displayUserChoiceConfirmation() {
+    const confirmWindow = document.createElement("div");
+    confirmWindow.classList.add("confirm-window");
+
+    confirmWindow.textContent = "Are you sure you want to proceed?";
+
+    const yesButton = document.createElement("button");
+    yesButton.classList.add("yes-reset-button")
+    yesButton.textContent = "Yes";
+    yesButton.addEventListener("click", () => {
+        confirmWindow.remove();
+        resetGame();
+    });
+
+    const noButton = document.createElement("button");
+    noButton.classList.add("no-reset-button")
+    noButton.textContent = "No";
+    noButton.addEventListener("click", () => confirmWindow.remove());
+
+    confirmWindow.appendChild(yesButton);
+    confirmWindow.appendChild(noButton);
+
+    displayBox.appendChild(confirmWindow);
+}
 
 function displayTutorial() {
     const tutorialContainer = document.createElement("div");
@@ -323,6 +327,42 @@ function displayTutorial() {
     updateTutorial(currentStep);
 }
 
+function toggleFlexbox(displayWindow, toggleType, detoggleType) {
+    displayWindow.classList.toggle(toggleType);
+    displayWindow.classList.toggle(detoggleType);
+}
+
+function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
+    const displayedItem = document.createElement(tagType);
+    displayedItem.classList.add(...classAttribute);
+    displayedItem.innerText = innerText;
+    displayPlace.appendChild(displayedItem);
+}
+
+function removeItems(classItem) {
+    const removableItems = document.getElementsByClassName(classItem);
+    while (removableItems.length > 0) {
+        removableItems[0].remove();
+    }
+}
+
+function addFunction(targetClass, ...targetFunctions) {
+    const targetedItems = document.getElementsByClassName(targetClass);
+    for (let item = 0; item < targetedItems.length; item++) {
+        targetedItems[item].addEventListener("click", () => {
+            targetFunctions.forEach(func => func());
+        });
+    }
+}
+
+function createCloseButton() {
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "X";
+    closeButton.classList.add("close-button");
+    closeButton.addEventListener("click", () => closeButton.parentElement.remove());
+    return closeButton;
+}
+
 function displayPlayerStats(player) {
     const statsContainer = document.createElement("div");
     statsContainer.classList.add("stats-container");
@@ -359,43 +399,6 @@ function displayPlayerStats(player) {
 
     const menuContainer = document.querySelector(".player-menu-display");
     menuContainer.appendChild(statsContainer);
-}
-
-// Generic functions
-function toggleFlexbox(displayWindow, toggleType, detoggleType) {
-    displayWindow.classList.toggle(toggleType);
-    displayWindow.classList.toggle(detoggleType);
-}
-
-function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
-    const displayedItem = document.createElement(tagType);
-    displayedItem.classList.add(...classAttribute);
-    displayedItem.innerText = innerText;
-    displayPlace.appendChild(displayedItem);
-}
-
-function removeItems(classItem) {
-    const removableItems = document.getElementsByClassName(classItem);
-    while (removableItems.length > 0) {
-        removableItems[0].remove();
-    }
-}
-
-function addFunction(targetClass, ...targetFunctions) {
-    const targetedItems = document.getElementsByClassName(targetClass);
-    for (let item = 0; item < targetedItems.length; item++) {
-        targetedItems[item].addEventListener("click", () => {
-            targetFunctions.forEach(func => func());
-        });
-    }
-}
-
-function createCloseButton() {
-    const closeButton = document.createElement("button");
-    closeButton.textContent = "X";
-    closeButton.classList.add("close-button");
-    closeButton.addEventListener("click", () => closeButton.parentElement.remove());
-    return closeButton;
 }
 
 function displayPlayerMenu(menuTitle, itemContent) {
@@ -712,7 +715,7 @@ function goToRewardSequenz() {
             type: "Heal",
             name: "Healing Potion",
             description: "Double your current HP.",
-            image: "./assets/images/heal-picture/heal.webp"
+            image: "assets/images/heal-picture/heal.webp"
         }
     ];
 
