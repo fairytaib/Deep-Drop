@@ -112,6 +112,34 @@ button:active {
     color: #ccc;
 }
 
+/* Ladebildschirm */
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-size: 2rem;
+    color: white;
+    font-family: var(--title-font);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+#loading-screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
 /* Start Items */
 #player-name-input,
 #start-button {
