@@ -23,6 +23,8 @@ let roundCounter = 0;
 let monster = monsterList[roundCounter]
 let playerActiveFightingStyle;
 let playerActiveItem;
+let originalItemsList = [...allItemsList];
+let originalSkillsList = [...universalSkills];
 
 const classOptions = [{
         name: "Knight",
@@ -176,30 +178,68 @@ function displayUserChoiceConfirmation() {
     displayBox.appendChild(confirmWindow);
 }
 
+function resetRewards() {
+    // Items und Skills wiederherstellen
+
+    // Items zurücksetzen
+    allItemsList = [...originalItemsList];
+
+    // Skills zurücksetzen
+    universalSkills = [...originalSkillsList];
+
+    console.log("Belohnungen wurden zurückgesetzt.");
+}
+
+
 function resetGame() {
-    // Lösche alle dynamisch hinzugefügten Elemente
+    // 1. Entferne alle dynamisch hinzugefügten Elemente
     displayBox.innerHTML = `
     <h1 class="start-item">The Deep Drop</h1>
     <h2 class="start-item">Welcome to the bottom of the well!</h2>
     `;
+
     buttonBox.innerHTML = `
     <h2 class="start-item" id="input-title">Enter your character's name</h2>
-    <input class="start-item" type="text" placeholder="Enter your player name" id="player-name-input" name="player-name-input" minlength="1" maxlength="13"  required>
+    <input class="start-item" type="text" placeholder="Enter your player name" id="player-name-input" name="player-name-input" minlength="1" maxlength="13" required>
     <button class="start-item" type="submit" id="start-button">Start the Game</button>`;
 
+    // 2. Spielername zurücksetzen
     playerNameInput = document.getElementById("player-name-input");
-
-    // Event-Listener für den Start-Button erneut hinzufügen
-    document.getElementById("start-button").addEventListener("click", validateInput);
-
-    resetFlexbox(displayBox, buttonBox);
-    resetMonsters()
-    resetPlayer()
-    // Setze den Spielernamen zurück
     playerName = "";
     playerNameInput.value = "";
+
+    // 3. Rundenzähler zurücksetzen
     roundCounter = 0;
+
+    // 4. Spieler zurücksetzen
+    player = null;
+
+    // 5. Aktiven Kampfstil und Gegenstände zurücksetzen
+    playerActiveFightingStyle = null;
+    playerActiveItem = null;
+
+    // 6. Inventar (Items und Skills) leeren
+    playerAvailableItems = [];
+    playerAvailableSkills = [];
+
+    // 7. Monster zurücksetzen
+    resetMonsters();
+
+    // 8. Flexbox-Layout zurücksetzen
+    resetFlexbox(displayBox, buttonBox);
+
+    // 9. Event-Listener für den Start-Button neu hinzufügen
+    document.getElementById("start-button").addEventListener("click", validateInput);
+
+    // 10. Ladebildschirm ausblenden
+    hideLoadingScreen();
+
+    // 11. Items und Skills wiederherstellen (WICHTIG!)
+    resetRewards();
+
+    console.log("Spiel wurde erfolgreich zurückgesetzt.");
 }
+
 
 function displayTutorial() {
     const tutorialContainer = document.createElement("div");
