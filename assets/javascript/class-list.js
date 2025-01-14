@@ -308,6 +308,7 @@ function updateHealthDisplay(player, monster) {
     }
 }
 
+export let playerAvailableItems = []
 
 export let playerAvailableFightingStyle = [{
         name: "Aggressive Attacker",
@@ -347,3 +348,6 @@ export let playerAvailableFightingStyle = [{
         effect: (player) => player.maxHealth *= 1
     }
 ];
+
+
+export let playerAvailableSkills = []
