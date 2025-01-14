@@ -495,6 +495,42 @@ button {
     font-family: var(--text-font);
 }
 
+/* Footer*/
+#main-footer {
+    background-color: #2b2b2b;
+    color: #d4d4d4;
+    padding: 1rem 0;
+    font-family: var(--text-font);
+    text-align: center;
+    border-top: 2px solid #4a4e44;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 10px 10px;
+}
+
+
+#main-footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px #000;
+
+    letter-spacing: 0.5px;
+}
+
+#main-footer p:hover {
+    color: #67a667;
+    transition: color 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #main-footer {
+        width: 100vw;
+        margin-top: 1rem;
+        border-radius: 0px;
+    }
+}
+
+
 /* Hide Items */
 .hidden {
     display: none;
