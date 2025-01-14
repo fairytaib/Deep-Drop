@@ -657,13 +657,13 @@ function goToRewardSequenz() {
     }
     removeItems("fight-item");
 
-    const randomItem = allItemsList[Math.floor(Math.random() * allItemsList.length)];
-    const randomItemIndex = allItemsList.indexOf(randomItem)
-    allItemsList.splice(randomItemIndex, 1)
+    const randomItemIndex = Math.floor(Math.random() * allItemsList.length);
+    const randomItem = allItemsList[randomItemIndex];
+    allItemsList.splice(randomItemIndex, 1);
 
-    const randomSkill = universalSkills[Math.floor(Math.random() * universalSkills.length)];
-    const randomSkillIndex = universalSkills.indexOf(randomItem)
-    allItemsList.splice(randomSkillIndex, 1)
+    const randomSkillIndex = Math.floor(Math.random() * universalSkills.length);
+    const randomSkill = universalSkills[randomSkillIndex];
+    universalSkills.splice(randomSkillIndex, 1);
 
     const rewards = [
         new Item(randomItem.type, randomItem.name, randomItem.description, randomItem.rarity, randomItem.effect, randomItem.image),
