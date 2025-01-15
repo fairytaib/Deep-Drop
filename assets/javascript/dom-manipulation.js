@@ -194,6 +194,17 @@ function resetGame() {
  *
  **/
 
+
+function showLoadingScreenForThreeSeconds() {
+    const loadingScreen = document.getElementById("loading-screen");
+
+    loadingScreen.classList.add("active");
+
+    setTimeout(() => {
+        loadingScreen.classList.remove("active");
+    }, 1500);
+}
+
 function displayUserChoiceConfirmation() {
     const confirmWindow = document.createElement("div");
     confirmWindow.classList.add("confirm-window");
@@ -578,6 +589,7 @@ function selectClass(classOption) {
 }
 
 function selectReward(reward, player) {
+    showLoadingScreenForThreeSeconds()
     if (reward.type === "item") {
         playerAvailableItems.push(reward);
     } else if (reward.type === "skill") {
@@ -610,6 +622,7 @@ function validateInput() {
 }
 
 function goToClassChoice() {
+    showLoadingScreenForThreeSeconds()
     removeItems("start-item");
 
     toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column")
@@ -664,6 +677,7 @@ function goToClassChoice() {
 
 // Next page
 function goToRewardSequenz() {
+    showLoadingScreenForThreeSeconds()
 
     if (displayBox.classList.contains("display-box-flex-row")) {
         toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
@@ -764,33 +778,38 @@ function goToRewardSequenz() {
 // Next page
 function goToFightSequenz(hideItem) {
     removeItems(hideItem);
-    const roundCounterDisplay = document.createElement("h3")
-    roundCounterDisplay.classList.add("title-font", "fight-item")
-    roundCounterDisplay.innerHTML = `Round: ${roundCounter+1}`
-    displayBox.appendChild(roundCounterDisplay)
 
-    const monsterImage = document.createElement("img");
-    monsterImage.src = monsterOptions[roundCounter].image;
-    monsterImage.alt = monsterOptions[roundCounter].name;
-    monsterImage.classList.add("fight-item", "monster-image")
-    displayBox.appendChild(monsterImage)
-    if (buttonBox.classList.contains("button-box-flex-row")) {
-        toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
-    }
-    displayItems("h3", "Fight in progress", buttonBox, "fight-item", "title-font");
-    displayItems("div", "", buttonBox, "fight-item");
-    monster = monsterList[roundCounter]
-    const playerHPContainer = document.createElement("div");
-    playerHPContainer.classList.add("fight-item", "title-font");
-    playerHPContainer.innerHTML = `${playerName} HP: <span id="player-hp">${player.health}</span>`;
-    buttonBox.appendChild(playerHPContainer);
-    const monsterHPContainer = document.createElement("div");
-    monsterHPContainer.classList.add("fight-item", "title-font");
-    monsterHPContainer.innerHTML = `${monsterOptions[roundCounter].name} HP: <span id="monster-hp">${monster.health}</span>`;
-    buttonBox.appendChild(monsterHPContainer);
-    if (roundCounter < 10) {
-        fight(player, monster, goToRewardSequenz)
-    }
+    showLoadingScreenForThreeSeconds()
+
+    setTimeout(() => {
+        const roundCounterDisplay = document.createElement("h3")
+        roundCounterDisplay.classList.add("title-font", "fight-item")
+        roundCounterDisplay.innerHTML = `Round: ${roundCounter+1}`
+        displayBox.appendChild(roundCounterDisplay)
+
+        const monsterImage = document.createElement("img");
+        monsterImage.src = monsterOptions[roundCounter].image;
+        monsterImage.alt = monsterOptions[roundCounter].name;
+        monsterImage.classList.add("fight-item", "monster-image")
+        displayBox.appendChild(monsterImage)
+        if (buttonBox.classList.contains("button-box-flex-row")) {
+            toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
+        }
+        displayItems("h3", "Fight in progress", buttonBox, "fight-item", "title-font");
+        displayItems("div", "", buttonBox, "fight-item");
+        monster = monsterList[roundCounter]
+        const playerHPContainer = document.createElement("div");
+        playerHPContainer.classList.add("fight-item", "title-font");
+        playerHPContainer.innerHTML = `${playerName} HP: <span id="player-hp">${player.health}</span>`;
+        buttonBox.appendChild(playerHPContainer);
+        const monsterHPContainer = document.createElement("div");
+        monsterHPContainer.classList.add("fight-item", "title-font");
+        monsterHPContainer.innerHTML = `${monsterOptions[roundCounter].name} HP: <span id="monster-hp">${monster.health}</span>`;
+        buttonBox.appendChild(monsterHPContainer);
+        if (roundCounter < 10) {
+            fight(player, monster, goToRewardSequenz)
+        }
+    }, 3000)
 }
 
 
