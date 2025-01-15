@@ -14,7 +14,7 @@ import {
     playerAvailableSkills,
     Skill,
     Item
-} from "class-list.js";
+} from "./class-list.js";
 
 // Keep track of the current round
 let roundCounter = 0;
