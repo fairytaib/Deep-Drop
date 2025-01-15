@@ -744,11 +744,11 @@ function goToRewardSequenz() {
             rewardRarity.textContent = reward.rarity
             rewardRarity.classList.add("reward-rarity")
             if (reward.rarity == "common") {
-                rewardRarity.style.color = "grey"
+                rewardRarity.style.color = "#ffffff"
             } else if (reward.rarity == "rare") {
-                rewardRarity.style.color = "green"
+                rewardRarity.style.color = "#01c801"
             } else if (reward.rarity == "epic") {
-                rewardRarity.style.color = "purple"
+                rewardRarity.style.color = "#ed03ed"
             }
             rewardContainer.appendChild(rewardRarity)
         }
@@ -769,7 +769,6 @@ function goToRewardSequenz() {
         buttonBox.appendChild(selectButton)
     });
 }
-
 
 
 // Next page
