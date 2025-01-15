@@ -692,21 +692,24 @@ function goToClassChoice() {
 // Next page
 function goToRewardSequenz() {
 
-    if (displayBox.classList.contains("display-box-flex-column")) {
+    if (displayBox.classList.contains("display-box-flex-row")) {
         toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
     }
     if (buttonBox.classList.contains("button-box-flex-column")) {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
     }
 
+    displayBox.classList.add("reward-display")
+
     removeItems("fight-item");
 
     const rewardSequenzTitle = document.createElement("h3")
-    rewardSequenzTitle.classList.add("title-font")
+    rewardSequenzTitle.classList.add("title-font", "reward-item")
     rewardSequenzTitle.innerText = "Choose your reward"
     displayBox.appendChild(rewardSequenzTitle)
 
     const rewardItemDiv = document.createElement("div");
+    rewardItemDiv.classList.add("reward-item")
     rewardItemDiv.id = "reward-container"
     displayBox.appendChild(rewardItemDiv)
 
@@ -777,6 +780,7 @@ function goToRewardSequenz() {
         selectButton.classList.add("class-button", "reward-item");
         selectButton.addEventListener("click", () => {
             selectReward(reward, player), goToContinueScreen("reward-item");
+            displayBox.classList.remove("reward-display")
         });
 
         buttonBox.appendChild(selectButton)
