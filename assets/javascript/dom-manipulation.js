@@ -619,7 +619,6 @@ function selectReward(reward, player) {
     }
 }
 
-
 // Input validation - First Page
 function validateInput() {
     const pattern = /^[a-zA-Z0-9]+$/;
@@ -834,9 +833,9 @@ function goToContinueScreen() {
         toggleFlexbox(displayBox, "display-box-flex-column", "display-box-flex-row");
     }
 
-    displayItems("h2", "Do you want to go to the next fight?", displayBox, "continue-screen", "continue-item");
+    displayItems("h2", "If you are ready start the next fight", displayBox, "continue-screen", "continue-item");
 
-    displayItems("button", "Continue", displayBox, "continue-screen", "continue-item", "continue-button");
+    displayItems("button", "Start next fight", displayBox, "continue-screen", "continue-item", "continue-button");
 
     displayItems("button", "Items", buttonBox, "player-menu-button", "menu-item", "player-item-button", "continue-item");
     displayItems("button", "Skills", buttonBox, "player-menu-button", "menu-item", "player-skill-button", "continue-item");
