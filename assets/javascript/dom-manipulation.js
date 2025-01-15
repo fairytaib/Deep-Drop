@@ -95,30 +95,6 @@ let playerNameInput = document.getElementById("player-name-input");
 let playerName = "";
 let player
 
-//Loading Screen functions
-
-function showLoadingScreen() {
-    const loadingScreen = document.getElementById("loading-screen");
-    loadingScreen.classList.remove("hidden");
-}
-
-function hideLoadingScreen() {
-    const loadingScreen = document.getElementById("loading-screen");
-    setTimeout(() => {
-        loadingScreen.classList.add("hidden");
-    }, 500); // Leichte Verzögerung für besseren Übergang
-}
-
-function preloadImage(src, callback) {
-    showLoadingScreen();
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-        hideLoadingScreen();
-        callback(img);
-    };
-}
-
 
 //---------- Initialize Display Divs
 
@@ -206,8 +182,6 @@ function resetGame() {
     // 9. Event-Listener für den Start-Button neu hinzufügen
     document.getElementById("start-button").addEventListener("click", validateInput);
 
-    // 10. Ladebildschirm ausblenden
-    hideLoadingScreen();
 
     // 11. Items und Skills wiederherstellen (WICHTIG!)
     resetRewards();
@@ -790,34 +764,28 @@ function goToRewardSequenz() {
 // Next page
 function goToFightSequenz(hideItem) {
     removeItems(hideItem);
-
-    preloadImage(monsterOptions[roundCounter].image, (loadedImage) => {
-        loadedImage.classList.add("fight-item", "monster-image");
-        displayBox.appendChild(loadedImage);
-
-        if (buttonBox.classList.contains("button-box-flex-row")) {
-            toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
-        }
-
-        displayItems("h3", "Fight in progress", buttonBox, "fight-item", "title-font");
-        displayItems("div", "", buttonBox, "fight-item");
-
-        monster = monsterList[roundCounter];
-
-        const playerHPContainer = document.createElement("div");
-        playerHPContainer.classList.add("fight-item", "title-font");
-        playerHPContainer.innerHTML = `${playerName} HP: <span id="player-hp">${player.health}</span>`;
-        buttonBox.appendChild(playerHPContainer);
-
-        const monsterHPContainer = document.createElement("div");
-        monsterHPContainer.classList.add("fight-item", "title-font");
-        monsterHPContainer.innerHTML = `${monsterOptions[roundCounter].name} HP: <span id="monster-hp">${monster.health}</span>`;
-        buttonBox.appendChild(monsterHPContainer);
-
-        if (roundCounter < 10) {
-            fight(player, monster, goToRewardSequenz);
-        }
-    });
+    const monsterImage = document.createElement("img");
+    monsterImage.src = monsterOptions[roundCounter].image;
+    monsterImage.alt = monsterOptions[roundCounter].name;
+    monsterImage.classList.add("fight-item", "monster-image")
+    displayBox.appendChild(monsterImage)
+    if (buttonBox.classList.contains("button-box-flex-row")) {
+        toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
+    }
+    displayItems("h3", "Fight in progress", buttonBox, "fight-item", "title-font");
+    displayItems("div", "", buttonBox, "fight-item");
+    monster = monsterList[roundCounter]
+    const playerHPContainer = document.createElement("div");
+    playerHPContainer.classList.add("fight-item", "title-font");
+    playerHPContainer.innerHTML = `${playerName} HP: <span id="player-hp">${player.health}</span>`;
+    buttonBox.appendChild(playerHPContainer);
+    const monsterHPContainer = document.createElement("div");
+    monsterHPContainer.classList.add("fight-item", "title-font");
+    monsterHPContainer.innerHTML = `${monsterOptions[roundCounter].name} HP: <span id="monster-hp">${monster.health}</span>`;
+    buttonBox.appendChild(monsterHPContainer);
+    if (roundCounter < 10) {
+        fight(player, monster, goToRewardSequenz)
+    }
 }
 
 
