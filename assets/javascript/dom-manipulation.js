@@ -764,6 +764,11 @@ function goToRewardSequenz() {
 // Next page
 function goToFightSequenz(hideItem) {
     removeItems(hideItem);
+    const roundCounterDisplay = document.createElement("h3")
+    roundCounterDisplay.classList.add("title-font", "fight-item")
+    roundCounterDisplay.innerHTML = `Round: ${roundCounter+1}`
+    displayBox.appendChild(roundCounterDisplay)
+
     const monsterImage = document.createElement("img");
     monsterImage.src = monsterOptions[roundCounter].image;
     monsterImage.alt = monsterOptions[roundCounter].name;
