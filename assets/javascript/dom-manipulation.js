@@ -698,7 +698,18 @@ function goToRewardSequenz() {
     if (buttonBox.classList.contains("button-box-flex-column")) {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
     }
+
     removeItems("fight-item");
+
+    const rewardSequenzTitle = document.createElement("h3")
+    rewardSequenzTitle.classList.add("title-font")
+    rewardSequenzTitle.innerText = "Choose your reward"
+    displayBox.appendChild(rewardSequenzTitle)
+
+    const rewardItemDiv = document.createElement("div");
+    rewardItemDiv.id = "reward-container"
+    displayBox.appendChild(rewardItemDiv)
+
 
     const randomItemIndex = Math.floor(Math.random() * allItemsList.length);
     const randomItem = allItemsList[randomItemIndex];
@@ -720,8 +731,11 @@ function goToRewardSequenz() {
     ];
 
     rewards.forEach(reward => {
+
         const rewardContainer = document.createElement("div");
         rewardContainer.classList.add("reward-display-option", "text-font", "reward-item");
+
+        rewardItemDiv.appendChild(rewardContainer)
 
         const rewardImage = document.createElement("img");
         rewardImage.src = reward.image;
@@ -765,7 +779,6 @@ function goToRewardSequenz() {
             selectReward(reward, player), goToContinueScreen("reward-item");
         });
 
-        displayBox.appendChild(rewardContainer);
         buttonBox.appendChild(selectButton)
     });
 }
