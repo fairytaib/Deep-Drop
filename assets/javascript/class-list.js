@@ -37,7 +37,7 @@ export class Character {
 // Monster Classes
 // Refine Stats later on
 export const monsterList = [
-    new Character("Slime", 25, 25, 5, 2000, 2, 0, 0),
+    new Character("Slime", 25, 25, 500, 2000, 2, 0, 0),
     new Character("Swarm of Rats", 30, 30, 7, 1800, 3, 0, 0),
     new Character("Kobold", 35, 35, 10, 1500, 5, 5, 5),
     new Character("Goblin", 40, 40, 12, 1200, 6, 5, 10),
@@ -233,9 +233,10 @@ export function activateSkills(player) {
     });
 }
 
-export function fight(player, monster, onFightEnd) {
+export function fight(player, monster, onFightEnd, onDefeat) {
     console.log(`The battle between ${player.name} and ${monster.name} begins!`);
 
+    let isGameOver = false
     // Apply all player effects if needed (extendable for monster skills)
     playerAvailableSkills.forEach(skill => {
         if (skill.type == 'skill') {
@@ -244,7 +245,9 @@ export function fight(player, monster, onFightEnd) {
     });
 
     function playerAttackTurn() {
-        if (player.health <= 0 || monster.health <= 0) return;
+        if (player.health <= 0 || isGameOver) return
+
+        if (monster.health <= 0) return
 
         const playerDamage = player.attack(monster);
 
@@ -268,7 +271,8 @@ export function fight(player, monster, onFightEnd) {
     }
 
     function monsterAttackTurn() {
-        if (player.health <= 0 || monster.health <= 0) return;
+        if (monster.health <= 0 || isGameOver) return
+
 
         const monsterDamage = monster.attack(player);
 
@@ -286,7 +290,8 @@ export function fight(player, monster, onFightEnd) {
             setTimeout(monsterAttackTurn, monster.attackSpeed); // Pass function reference properly
         } else {
             console.log(`${player.name} has been defeated!`);
-            onFightEnd();
+            isGameOver = false
+            onDefeat()
         }
     }
 

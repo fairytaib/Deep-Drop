@@ -816,7 +816,7 @@ function goToFightSequenz(hideItem) {
 
     if (roundCounter < 10) {
         setTimeout(() => {
-            fight(player, monster, goToRewardSequenz)
+            fight(player, monster, goToRewardSequenz, goToLosingScreen)
         }, 1500)
 
     }
@@ -861,6 +861,18 @@ function goToContinueScreen() {
         }
     });
 
+}
+
+//Last Page
+
+function goToLosingScreen() {
+    displayBox.innerHTML = ""
+    buttonBox.innerHTML = ""
+
+    const losingText = document.createElement("h2")
+    losingText.classList.add("title-font", "end-item")
+    losingText.innerText = "You lost. Better luck next time!"
+    displayBox.appendChild(losingText)
 }
 
 //Apply reset settings
