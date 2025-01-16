@@ -271,6 +271,11 @@ function createCloseButton() {
     return closeButton;
 }
 
+function closeAllMenus() {
+    const openMenus = document.querySelectorAll(".player-menu-display");
+    openMenus.forEach(menu => menu.remove());
+}
+
 function displayPlayerStats(player) {
     const statsContainer = document.createElement("div");
     statsContainer.classList.add("stats-container");
@@ -310,6 +315,8 @@ function displayPlayerStats(player) {
 }
 
 function displayPlayerMenu(menuTitle, itemContent) {
+    closeAllMenus()
+
     const menuContainer = document.createElement("div");
     menuContainer.classList.add("player-menu-display");
 
@@ -327,6 +334,8 @@ function displayPlayerMenu(menuTitle, itemContent) {
 }
 
 function displayPlayerMenuAttributes(menuTitle) {
+    closeAllMenus()
+
     const menuContainer = document.createElement("div");
     menuContainer.classList.add("player-menu-display");
 
