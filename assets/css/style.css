@@ -138,12 +138,25 @@ button:active {
     visibility: visible;
 }
 
-
-
 /* Start Items */
 #player-name-input,
 #start-button {
     margin: 0.125rem;
+}
+
+.input-container {
+    position: relative;
+    left: 50%;
+    width: 100%;
+}
+
+#error-message {
+    position: absolute;
+    top: 35px;
+    left: 5px;
+    color: red;
+    font-size: 12px;
+    display: none;
 }
 
 /* Middle Section pure html elements */
