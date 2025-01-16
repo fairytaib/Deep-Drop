@@ -26,10 +26,6 @@ let monster = monsterList[roundCounter]
 let playerActiveFightingStyle;
 let playerActiveItem;
 
-// Initilize Varibales for the reset function
-let originalItemsList = [...allItemsList];
-let originalSkillsList = [...universalSkills];
-
 // Character and Monster options
 const classOptions = [{
         name: "Knight",
@@ -103,20 +99,6 @@ const displayBox = document.getElementById("display-box-section");
 // Button Box Items
 const buttonBox = document.getElementById("button-box-section");
 
-//----------- Reset Functions
-function resetMonsters() {
-    monsterList.forEach((monster, index) => {
-        Object.assign(monster, new Character(
-            originalMonsterList[index].name,
-            originalMonsterList[index].health,
-            originalMonsterList[index].damage,
-            originalMonsterList[index].attackSpeed,
-            originalMonsterList[index].defense,
-            originalMonsterList[index].dodgeChance,
-            originalMonsterList[index].critChance
-        ));
-    });
-}
 
 // Reset Flexbox
 function resetFlexbox(displayBox, buttonBox) {
@@ -124,69 +106,10 @@ function resetFlexbox(displayBox, buttonBox) {
     buttonBox.className = "button-box button-box-flex-column";
 }
 
-//Reset player
-function resetPlayer() {
-    if (player.name === "Knight") {
-        player = new Character("Knight", 100, 100, 10, 1500, 15, 5, 10);
-    } else if (player.name === "Ranger") {
-        player = new Character("Ranger", 70, 70, 12, 1200, 10, 10, 15);
-    } else if (player.name === "Assassin") {
-        player = new Character("Assassin", 50, 50, 15, 1000, 5, 15, 20);
-    }
-}
-
-//Reset Rewards
-function resetRewards() {
-    allItemsList = [...originalItemsList];
-    universalSkills = [...originalSkillsList];
-}
 
 //Reset the game
 function resetGame() {
-    // 1. Entferne alle dynamisch hinzugefügten Elemente
-    displayBox.innerHTML = `
-    <h1 class="start-item">The Deep Drop</h1>
-    <h2 class="start-item">Welcome to the bottom of the well!</h2>
-    `;
-
-    buttonBox.innerHTML = `
-    <h2 class="start-item" id="input-title">Enter your character's name</h2>
-    <input class="start-item" type="text" placeholder="Enter your player name" id="player-name-input" name="player-name-input" minlength="1" maxlength="13" required>
-    <button class="start-item" type="submit" id="start-button">Start the Game</button>`;
-
-    // 2. Spielername zurücksetzen
-    playerNameInput = document.getElementById("player-name-input");
-    playerName = "";
-    playerNameInput.value = "";
-
-    // 3. Rundenzähler zurücksetzen
-    roundCounter = 0;
-
-    // 4. Spieler zurücksetzen
-    player = null;
-
-    // 5. Aktiven Kampfstil und Gegenstände zurücksetzen
-    playerActiveFightingStyle = null;
-    playerActiveItem = null;
-
-    // 6. Inventar (Items und Skills) leeren
-    playerAvailableItems = [];
-    playerAvailableSkills = [];
-
-    // 7. Monster zurücksetzen
-    resetMonsters();
-
-    // 8. Flexbox-Layout zurücksetzen
-    resetFlexbox(displayBox, buttonBox);
-
-    // 9. Event-Listener für den Start-Button neu hinzufügen
-    document.getElementById("start-button").addEventListener("click", validateInput);
-
-
-    // 11. Items und Skills wiederherstellen (WICHTIG!)
-    resetRewards();
-
-    console.log("Spiel wurde erfolgreich zurückgesetzt.");
+    location.reload()
 }
 
 /* --------- Generic functions
@@ -873,6 +796,14 @@ function goToLosingScreen() {
     losingText.classList.add("title-font", "end-item")
     losingText.innerText = "You lost. Better luck next time!"
     displayBox.appendChild(losingText)
+
+    const resetButton = document.createElement("button")
+    resetButton.classList.add("text-font", "end-item")
+    resetButton.innerText = "Restart the game?"
+    resetButton.addEventListener("click", () => {
+        location.reload()
+    })
+    displayBox.appendChild(resetButton)
 }
 
 //Apply reset settings
