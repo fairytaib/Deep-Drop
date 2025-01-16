@@ -541,11 +541,14 @@ function validateInput() {
     const pattern = /^[a-zA-Z0-9]+$/;
 
     if (playerNameInput.value.length <= 2) {
-        alert("Too short");
+        playerNameInput.value = ""
+        playerNameInput.placeholder = "Your Name is too short"
     } else if (!pattern.test(playerNameInput.value)) {
-        alert("Wrong");
+        playerNameInput.value = ""
+        playerNameInput.placeholder = "Invalid signs used"
     } else if (playerNameInput.value.length >= 20) {
-        alert("Too long");
+        playerNameInput.value = ""
+        playerNameInput.placeholder = "Your Name is too long"
     } else {
         playerName = playerNameInput.value;
         goToClassChoice();
