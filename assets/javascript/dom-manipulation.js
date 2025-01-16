@@ -556,6 +556,9 @@ function validateInput() {
         playerName = playerNameInput.value;
         const restartButton = document.getElementById("restart-button")
         restartButton.classList.remove("hidden")
+
+        const outerBoxTitle = document.getElementById("title-display")
+        outerBoxTitle.classList.add("hidden")
         goToClassChoice();
     }
 }
