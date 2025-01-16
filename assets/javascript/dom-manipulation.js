@@ -543,12 +543,15 @@ function validateInput() {
     if (playerNameInput.value.length <= 2) {
         playerNameInput.value = ""
         playerNameInput.placeholder = "Your Name is too short"
+        playerNameInput.style.setProperty('--placeholder-color', 'red');
     } else if (!pattern.test(playerNameInput.value)) {
         playerNameInput.value = ""
         playerNameInput.placeholder = "Invalid signs used"
+        playerNameInput.style.setProperty('--placeholder-color', 'red');
     } else if (playerNameInput.value.length >= 20) {
         playerNameInput.value = ""
         playerNameInput.placeholder = "Your Name is too long"
+        playerNameInput.style.setProperty('--placeholder-color', 'red');
     } else {
         playerName = playerNameInput.value;
         goToClassChoice();

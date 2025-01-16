@@ -168,6 +168,10 @@ button:active {
     border-radius: 5px;
 }
 
+#player-name-input::placeholder {
+    color: var(--placeholder-color, gray);
+}
+
 
 /* Middle Section pure html elements */
 .display-box {
