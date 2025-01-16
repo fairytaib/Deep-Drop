@@ -656,19 +656,22 @@ function goToClassChoice() {
         const classDescription = document.createElement("p");
         classDescription.textContent = classOption.description;
         classDescription.classList.add("class-description")
+        setTimeout(() => {
+            const selectButton = document.createElement("button");
+            selectButton.textContent = `Select ${classOption.name}`;
+            selectButton.classList.add("class-button", "class-item");
+            selectButton.addEventListener("click", () => {
+                selectClass(classOption);
+                goToFightSequenz("class-item");
+            });
+            buttonBox.appendChild(selectButton);
+        }, 1000)
 
-        const selectButton = document.createElement("button");
-        selectButton.textContent = `Select ${classOption.name}`;
-        selectButton.classList.add("class-button", "class-item");
-        selectButton.addEventListener("click", () => {
-            selectClass(classOption);
-            goToFightSequenz("class-item");
-        });
 
         classContainer.appendChild(classImage);
         classContainer.appendChild(classTitle);
         classContainer.appendChild(classDescription);
-        buttonBox.appendChild(selectButton);
+
 
         itemBox.appendChild(classContainer)
     });
@@ -761,15 +764,18 @@ function goToRewardSequenz() {
         rewardDescription.classList.add("reward-description")
         rewardContainer.appendChild(rewardDescription);
 
-        const selectButton = document.createElement("button");
-        selectButton.textContent = `Select ${reward.type}`;
-        selectButton.classList.add("class-button", "reward-item");
-        selectButton.addEventListener("click", () => {
-            selectReward(reward, player), goToContinueScreen("reward-item");
-            displayBox.classList.remove("reward-display")
-        });
+        setTimeout(() => {
+            const selectButton = document.createElement("button");
+            selectButton.textContent = `Select ${reward.type}`;
+            selectButton.classList.add("class-button", "reward-item");
+            selectButton.addEventListener("click", () => {
+                selectReward(reward, player), goToContinueScreen("reward-item");
+                displayBox.classList.remove("reward-display")
+            });
 
-        buttonBox.appendChild(selectButton)
+            buttonBox.appendChild(selectButton)
+        }, 1000)
+
     });
 }
 
@@ -793,17 +799,21 @@ function goToFightSequenz(hideItem) {
     if (buttonBox.classList.contains("button-box-flex-row")) {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
     }
-    displayItems("h3", "Fight in progress", buttonBox, "fight-item", "title-font");
-    displayItems("div", "", buttonBox, "fight-item");
-    monster = monsterList[roundCounter]
-    const playerHPContainer = document.createElement("div");
-    playerHPContainer.classList.add("fight-item", "title-font");
-    playerHPContainer.innerHTML = `${playerName} HP: <span id="player-hp">${player.health}</span>`;
-    buttonBox.appendChild(playerHPContainer);
-    const monsterHPContainer = document.createElement("div");
-    monsterHPContainer.classList.add("fight-item", "title-font");
-    monsterHPContainer.innerHTML = `${monsterOptions[roundCounter].name} HP: <span id="monster-hp">${monster.health}</span>`;
-    buttonBox.appendChild(monsterHPContainer);
+
+    setTimeout(() => {
+        displayItems("h3", "Fight in progress", buttonBox, "fight-item", "title-font");
+        displayItems("div", "", buttonBox, "fight-item");
+        monster = monsterList[roundCounter]
+        const playerHPContainer = document.createElement("div");
+        playerHPContainer.classList.add("fight-item", "title-font");
+        playerHPContainer.innerHTML = `${playerName} HP: <span id="player-hp">${player.health}</span>`;
+        buttonBox.appendChild(playerHPContainer);
+        const monsterHPContainer = document.createElement("div");
+        monsterHPContainer.classList.add("fight-item", "title-font");
+        monsterHPContainer.innerHTML = `${monsterOptions[roundCounter].name} HP: <span id="monster-hp">${monster.health}</span>`;
+        buttonBox.appendChild(monsterHPContainer);
+    }, 1000);
+
     if (roundCounter < 10) {
         setTimeout(() => {
             fight(player, monster, goToRewardSequenz)
