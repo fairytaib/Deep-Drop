@@ -69,7 +69,7 @@ button:active {
 
 .title-box {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 90%;
     gap: 20%;
@@ -604,14 +604,6 @@ button {
         /* Damit es wirklich in der Mitte bleibt */
     }
 
-    .title-box {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        gap: 1rem;
-        padding: 0.5rem 0;
-    }
 
     #middle-item {
         flex-grow: 1;
