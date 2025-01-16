@@ -554,6 +554,8 @@ function validateInput() {
         playerNameInput.style.setProperty('--placeholder-color', 'red');
     } else {
         playerName = playerNameInput.value;
+        const restartButton = document.getElementById("restart-button")
+        restartButton.classList.remove("hidden")
         goToClassChoice();
     }
 }
