@@ -37,16 +37,16 @@ export class Character {
 // Monster Classes
 // Refine Stats later on
 export const monsterList = [
-    new Character("Slime", 25, 25, 500, 2000, 2, 0, 0),
+    new Character("Slime", 50, 25, 10, 2000, 2, 0, 0),
     new Character("Swarm of Rats", 30, 30, 7, 1800, 3, 0, 0),
-    new Character("Kobold", 35, 35, 10, 1500, 5, 5, 5),
-    new Character("Goblin", 40, 40, 12, 1200, 6, 5, 10),
+    new Character("Kobold", 70, 35, 10, 1500, 5, 5, 5),
+    new Character("Goblin", 90, 40, 12, 1200, 6, 5, 10),
     new Character("Skeleton Warrior", 50, 50, 15, 1000, 8, 10, 15),
-    new Character("Orc", 70, 70, 20, 900, 10, 5, 20),
-    new Character("Harpie", 60, 60, 18, 1100, 7, 25, 10),
-    new Character("Troll", 80, 80, 25, 800, 15, 5, 10),
+    new Character("Orc", 140, 70, 20, 900, 10, 5, 20),
+    new Character("Harpie", 180, 60, 18, 1100, 7, 25, 10),
+    new Character("Troll", 200, 80, 25, 800, 15, 5, 10),
     new Character("Fire Elemental", 70, 70, 30, 700, 10, 10, 25),
-    new Character("Boss", 120, 120, 50, 500, 20, 0, 30)
+    new Character("Boss", 300, 120, 50, 500, 20, 0, 30)
 
 
 ]
