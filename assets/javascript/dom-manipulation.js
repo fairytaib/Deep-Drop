@@ -832,3 +832,5 @@ document.getElementById("restart-button").addEventListener("click", displayUserC
 document.getElementById("start-button").addEventListener("click", validateInput);
 //Info Button
 document.getElementById("info-button").addEventListener("click", displayTutorial)
+//Info Button inside Display Box
+document.getElementById("inner-info-button").addEventListener("click", displayTutorial)
