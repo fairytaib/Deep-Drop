@@ -100,13 +100,6 @@ const displayBox = document.getElementById("display-box-section");
 const buttonBox = document.getElementById("button-box-section");
 
 
-// Reset Flexbox
-function resetFlexbox(displayBox, buttonBox) {
-    displayBox.className = "display-box display-box-flex-column";
-    buttonBox.className = "button-box button-box-flex-column";
-}
-
-
 //Reset the game
 function resetGame() {
     location.reload()
@@ -559,6 +552,10 @@ function validateInput() {
 
         const outerBoxTitle = document.getElementById("title-display")
         outerBoxTitle.classList.add("hidden")
+
+        const tutorialInfoButton = document.getElementById("information-icon")
+        tutorialInfoButton.classList.remove("hidden")
+
         goToClassChoice();
     }
 }
