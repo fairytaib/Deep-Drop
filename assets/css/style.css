@@ -4,6 +4,7 @@
     --title-font: "MedievalSharp", cursive;
     --text-font: "IM Fell English", serif;
     --background: #3a3a3a;
+    --character-background: #3a3a3a;
 }
 
 * {
@@ -97,6 +98,8 @@ button:active {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    background-color: #1E90FF;
+    color: #fff
 }
 
 #info-button i {
@@ -111,6 +114,7 @@ button:active {
 #info-button:hover i {
     color: #ccc;
 }
+
 
 /* Loading Screen */
 #loading-screen {
@@ -301,6 +305,20 @@ button:active {
 }
 
 /* reset */
+#restart-button {
+    background-color: #DAA520;
+    /* Gold */
+    color: #000;
+    border: 2px solid #8B7500;
+    box-shadow: 0 0 5px rgba(218, 165, 32, 0.7);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#restart-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(218, 165, 32, 1);
+}
+
 .confirm-window {
     width: 80%;
     height: 80%;
