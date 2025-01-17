@@ -37,7 +37,7 @@ export class Character {
 // Monster Classes
 // Refine Stats later on
 export const monsterList = [
-    new Character("Slime", 50, 25, 10, 2000, 2, 0, 0),
+    new Character("Slime", 50, 25, 100, 2000, 2, 0, 0),
     new Character("Swarm of Rats", 30, 30, 7, 1800, 3, 0, 0),
     new Character("Kobold", 70, 35, 10, 1500, 5, 5, 5),
     new Character("Goblin", 90, 40, 12, 1200, 6, 5, 10),

@@ -758,7 +758,8 @@ function goToFightSequenz(hideItem) {
         setTimeout(() => {
             fight(player, monster, goToRewardSequenz, goToLosingScreen)
         }, 1500)
-
+    } else {
+        goToWinningScreen()
     }
 }
 
@@ -809,10 +810,20 @@ function goToLosingScreen() {
     displayBox.innerHTML = ""
     buttonBox.innerHTML = ""
 
+    displayBox.style.justifyContent = "space-around"
+
+    const endScreenImage = document.createElement("img")
+    endScreenImage.src = "assets/images/end-screen/player-lose.webp"
+    endScreenImage.alt = "You lost"
+    endScreenImage.classList.add("end-item")
+    endScreenImage.style.width = "80%"
+    displayBox.appendChild(endScreenImage)
+
     const losingText = document.createElement("h2")
     losingText.classList.add("title-font", "end-item")
-    losingText.innerText = "You lost. Better luck next time!"
+    losingText.innerText = "You died. Better luck next time."
     displayBox.appendChild(losingText)
+
 
     const resetButton = document.createElement("button")
     resetButton.classList.add("text-font", "end-item")
@@ -820,7 +831,35 @@ function goToLosingScreen() {
     resetButton.addEventListener("click", () => {
         location.reload()
     })
-    displayBox.appendChild(resetButton)
+    buttonBox.appendChild(resetButton)
+}
+
+function goToWinningScreen() {
+    displayBox.innerHTML = ""
+    buttonBox.innerHTML = ""
+
+    displayBox.style.justifyContent = "space-around"
+
+    const endScreenImage = document.createElement("img")
+    endScreenImage.src = "assets/images/end-screen/player-win.webp"
+    endScreenImage.alt = "You lost"
+    endScreenImage.classList.add("end-item")
+    endScreenImage.style.width = "80%"
+    displayBox.appendChild(endScreenImage)
+
+    const winningText = document.createElement("h2")
+    winningText.classList.add("title-font", "end-item")
+    winningText.innerText = "You are victorious"
+    displayBox.appendChild(winningText)
+
+
+    const resetButton = document.createElement("button")
+    resetButton.classList.add("text-font", "end-item")
+    resetButton.innerText = "Restart the game?"
+    resetButton.addEventListener("click", () => {
+        location.reload()
+    })
+    buttonBox.appendChild(resetButton)
 }
 
 //Apply reset settings
