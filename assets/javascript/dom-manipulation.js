@@ -185,7 +185,7 @@ function displayTutorial() {
         },
         {
             title: "Choose Your Class",
-            text: "Choose one of three classes. Each class has its own strength and weaknesses"
+            text: "Choose one of three classes. Each class has its own strength and weaknesses. The Knight has high defense but low attack power. The Assassin excells in damage but is quite weak to attacks. The ranger is a combination of both"
         },
         {
             title: "Fight Monsters",
@@ -193,11 +193,11 @@ function displayTutorial() {
         },
         {
             title: "Improving Your Character",
-            text: "There are different rewards you can choose from after a fight. Items that can be equiped. Skills add passive bonuses and 'Healing' wich restore health for the next fight."
+            text: "There are different rewards you can choose from after a fight. Items that can be equiped. Skills add passive bonuses and 'Healing' wich restore health for the next fight. There is also the possibility to apply a fighting style"
         },
         {
             title: "Adjust & Continue",
-            text: "Equip items and tweak your fighting style each round after you have chosen your reward"
+            text: "Equip items and tweak your fighting style each round after you have chosen your reward. Items are not automatically equipped when selected!"
         }
     ];
 
