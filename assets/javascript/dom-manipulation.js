@@ -516,9 +516,11 @@ function selectClass(classOption) {
 function selectReward(reward, player) {
     if (reward.type === "item") {
         playerAvailableItems.push(reward);
+        allItemsList.splice(reward, 1)
     } else if (reward.type === "skill") {
         // Füge den Skill zur Liste der aktiven Skills hinzu
         playerAvailableSkills.push(reward);
+        universalSkills.splice(reward, 1)
         playerAvailableSkills.forEach(skill => {
             if (skill.type == 'skill') {
                 skill.applyEffect(player, monster);
@@ -649,7 +651,6 @@ function goToRewardSequenz() {
 
     const randomSkillIndex = Math.floor(Math.random() * universalSkills.length);
     const randomSkill = universalSkills[randomSkillIndex];
-    universalSkills.splice(randomSkillIndex, 1);
 
     const rewards = [
         new Item(randomItem.type, randomItem.name, randomItem.description, randomItem.rarity, randomItem.effect, randomItem.image),
