@@ -130,7 +130,6 @@ button:active {
     transform: translate(-50%, -50%);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.15s ease-out, visibility 0.15s ease-out;
 }
 
 #loading-screen.active {
