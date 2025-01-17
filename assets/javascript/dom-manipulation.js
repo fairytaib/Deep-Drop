@@ -516,20 +516,34 @@ function selectClass(classOption) {
 function selectReward(reward, player) {
     if (reward.type === "item") {
         playerAvailableItems.push(reward);
-        allItemsList.splice(reward, 1)
+
+        // Korrektur: Index des Items finden und entfernen
+        const itemIndex = allItemsList.indexOf(reward);
+        if (itemIndex !== -1) {
+            allItemsList.splice(itemIndex, 1);
+        }
+
     } else if (reward.type === "skill") {
-        // Füge den Skill zur Liste der aktiven Skills hinzu
         playerAvailableSkills.push(reward);
-        universalSkills.splice(reward, 1)
+
+        // Korrektur: Index des Skills finden und entfernen
+        const skillIndex = universalSkills.indexOf(reward);
+        if (skillIndex !== -1) {
+            universalSkills.splice(skillIndex, 1);
+        }
+
+        // Effekt auf Spieler anwenden
         playerAvailableSkills.forEach(skill => {
-            if (skill.type == 'skill') {
+            if (skill.type === 'skill' && typeof skill.applyEffect === 'function') {
                 skill.applyEffect(player, monster);
             }
         });
+
     } else if (reward.type === "Heal") {
-        player.health *= 2
+        player.health *= 2;
     }
 }
+
 
 // Input validation - First Page
 function validateInput() {
