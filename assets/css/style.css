@@ -121,8 +121,8 @@ button:active {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 95%;
-    height: 95%;
+    width: 97%;
+    height: 97%;
     background-color: rgba(0, 0, 0, 0.95);
     display: flex;
     justify-content: center;
