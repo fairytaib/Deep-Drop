@@ -247,7 +247,9 @@ export function fight(player, monster, onFightEnd, onDefeat) {
     function playerAttackTurn() {
         if (player.health <= 0 || isGameOver) return
 
-        if (monster.health <= 0) return
+        if (monster.health <= 0) {
+            onFightEnd()
+        }
 
         const playerDamage = player.attack(monster);
 
