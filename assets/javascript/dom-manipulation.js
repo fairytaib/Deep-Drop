@@ -517,8 +517,8 @@ function selectReward(reward, player) {
     if (reward.type === "item") {
         playerAvailableItems.push(reward);
 
-        // Korrektur: Index des Items finden und entfernen
-        const itemIndex = allItemsList.indexOf(reward);
+        // Korrektur: Index des Items über den Namen finden
+        const itemIndex = allItemsList.findIndex(item => item.name === reward.name);
         if (itemIndex !== -1) {
             allItemsList.splice(itemIndex, 1);
         }
@@ -526,8 +526,8 @@ function selectReward(reward, player) {
     } else if (reward.type === "skill") {
         playerAvailableSkills.push(reward);
 
-        // Korrektur: Index des Skills finden und entfernen
-        const skillIndex = universalSkills.indexOf(reward);
+        // Korrektur: Index des Skills über den Namen finden
+        const skillIndex = universalSkills.findIndex(skill => skill.name === reward.name);
         if (skillIndex !== -1) {
             universalSkills.splice(skillIndex, 1);
         }
@@ -543,6 +543,7 @@ function selectReward(reward, player) {
         player.health *= 2;
     }
 }
+
 
 
 // Input validation - First Page
@@ -635,7 +636,7 @@ function goToClassChoice() {
 
 // Next page
 function goToRewardSequenz() {
-    showLoadingScreenForThreeSeconds()
+    showLoadingScreenForThreeSeconds();
 
     if (displayBox.classList.contains("display-box-flex-row")) {
         toggleFlexbox(displayBox, "display-box-flex-row", "display-box-flex-column");
@@ -644,20 +645,43 @@ function goToRewardSequenz() {
         toggleFlexbox(buttonBox, "button-box-flex-row", "button-box-flex-column");
     }
 
-    displayBox.classList.add("reward-display")
-
+    displayBox.classList.add("reward-display");
     removeItems("fight-item");
 
-    const rewardSequenzTitle = document.createElement("h3")
-    rewardSequenzTitle.classList.add("title-font", "reward-item")
-    rewardSequenzTitle.innerText = "Choose your reward"
-    displayBox.appendChild(rewardSequenzTitle)
+    const rewardSequenzTitle = document.createElement("h3");
+    rewardSequenzTitle.classList.add("title-font", "reward-item");
+    rewardSequenzTitle.innerText = "Choose your reward";
+    displayBox.appendChild(rewardSequenzTitle);
 
     const rewardItemDiv = document.createElement("div");
-    rewardItemDiv.classList.add("reward-item")
-    rewardItemDiv.id = "reward-container"
-    displayBox.appendChild(rewardItemDiv)
+    rewardItemDiv.classList.add("reward-item");
+    rewardItemDiv.id = "reward-container";
+    displayBox.appendChild(rewardItemDiv);
 
+    // Prüfen, ob keine Skills mehr verfügbar sind
+    if (universalSkills.length === 0) {
+        const emptyRewardContainer = document.createElement("div");
+        emptyRewardContainer.classList.add("reward-display-option", "text-font", "reward-item");
+        rewardItemDiv.appendChild(emptyRewardContainer);
+
+        const emptyRewardImage = document.createElement("img");
+        emptyRewardImage.src = "assets/images/filler-images/empty-chest.webp";
+        emptyRewardImage.alt = "Empty Chest";
+        emptyRewardImage.classList.add("reward-image");
+        emptyRewardContainer.appendChild(emptyRewardImage);
+
+        const emptyRewardTitle = document.createElement("h3");
+        emptyRewardTitle.textContent = "Rivet";
+        emptyRewardTitle.classList.add("reward-title");
+        emptyRewardContainer.appendChild(emptyRewardTitle);
+
+        const emptyRewardDescription = document.createElement("p");
+        emptyRewardDescription.textContent = "There are no skills available anymore. Choose a different reward.";
+        emptyRewardDescription.classList.add("reward-description");
+        emptyRewardContainer.appendChild(emptyRewardDescription);
+
+        return; // Beendet die Funktion, sodass kein Button erstellt wird
+    }
 
     const randomItemIndex = Math.floor(Math.random() * allItemsList.length);
     const randomItem = allItemsList[randomItemIndex];
@@ -678,45 +702,37 @@ function goToRewardSequenz() {
     ];
 
     rewards.forEach(reward => {
-
         const rewardContainer = document.createElement("div");
         rewardContainer.classList.add("reward-display-option", "text-font", "reward-item");
-
-        rewardItemDiv.appendChild(rewardContainer)
+        rewardItemDiv.appendChild(rewardContainer);
 
         const rewardImage = document.createElement("img");
         rewardImage.src = reward.image;
         rewardImage.alt = reward.name;
-        rewardImage.classList.add("reward-image")
+        rewardImage.classList.add("reward-image");
         rewardContainer.appendChild(rewardImage);
 
         const rewardTitle = document.createElement("h3");
         rewardTitle.textContent = reward.name;
-        rewardTitle.classList.add("reward-title")
+        rewardTitle.classList.add("reward-title");
         rewardContainer.appendChild(rewardTitle);
 
-        const rewardType = document.createElement("h4")
-        rewardType.textContent = reward.type
-        rewardType.classList.add("reward-type")
-        rewardContainer.appendChild(rewardType)
+        const rewardType = document.createElement("h4");
+        rewardType.textContent = reward.type;
+        rewardType.classList.add("reward-type");
+        rewardContainer.appendChild(rewardType);
 
         if (reward.rarity) {
-            const rewardRarity = document.createElement("h5")
-            rewardRarity.textContent = reward.rarity
-            rewardRarity.classList.add("reward-rarity")
-            if (reward.rarity == "common") {
-                rewardRarity.style.color = "#ffffff"
-            } else if (reward.rarity == "rare") {
-                rewardRarity.style.color = "#01c801"
-            } else if (reward.rarity == "epic") {
-                rewardRarity.style.color = "#ed03ed"
-            }
-            rewardContainer.appendChild(rewardRarity)
+            const rewardRarity = document.createElement("h5");
+            rewardRarity.textContent = reward.rarity;
+            rewardRarity.classList.add("reward-rarity");
+            rewardRarity.style.color = reward.rarity === "common" ? "#ffffff" : reward.rarity === "rare" ? "#01c801" : "#ed03ed";
+            rewardContainer.appendChild(rewardRarity);
         }
 
         const rewardDescription = document.createElement("p");
         rewardDescription.textContent = reward.description;
-        rewardDescription.classList.add("reward-description")
+        rewardDescription.classList.add("reward-description");
         rewardContainer.appendChild(rewardDescription);
 
         setTimeout(() => {
@@ -724,15 +740,15 @@ function goToRewardSequenz() {
             selectButton.textContent = `Select ${reward.type}`;
             selectButton.classList.add("class-button", "reward-item");
             selectButton.addEventListener("click", () => {
-                selectReward(reward, player), goToContinueScreen("reward-item");
-                displayBox.classList.remove("reward-display")
+                selectReward(reward, player);
+                goToContinueScreen("reward-item");
+                displayBox.classList.remove("reward-display");
             });
-
-            buttonBox.appendChild(selectButton)
-        }, 1000)
-
+            buttonBox.appendChild(selectButton);
+        }, 1000);
     });
 }
+
 
 
 // Next page
