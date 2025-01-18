@@ -785,12 +785,12 @@ function goToFightSequenz(hideItem) {
         buttonBox.appendChild(monsterHPContainer);
     }, 1000);
 
-    if (roundCounter < 10) {
+    if (roundCounter < 9) {
         setTimeout(() => {
             fight(player, monster, goToRewardSequenz, goToLosingScreen)
         }, 1500)
     } else {
-        goToWinningScreen()
+        fight(player, monster, goToWinningScreen, goToLosingScreen)
     }
 }
 
