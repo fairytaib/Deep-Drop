@@ -658,30 +658,6 @@ function goToRewardSequenz() {
     rewardItemDiv.id = "reward-container";
     displayBox.appendChild(rewardItemDiv);
 
-    // Prüfen, ob keine Skills mehr verfügbar sind
-    if (universalSkills.length === 0) {
-        const emptyRewardContainer = document.createElement("div");
-        emptyRewardContainer.classList.add("reward-display-option", "text-font", "reward-item");
-        rewardItemDiv.appendChild(emptyRewardContainer);
-
-        const emptyRewardImage = document.createElement("img");
-        emptyRewardImage.src = "assets/images/filler-images/empty-chest.webp";
-        emptyRewardImage.alt = "Empty Chest";
-        emptyRewardImage.classList.add("reward-image");
-        emptyRewardContainer.appendChild(emptyRewardImage);
-
-        const emptyRewardTitle = document.createElement("h3");
-        emptyRewardTitle.textContent = "Rivet";
-        emptyRewardTitle.classList.add("reward-title");
-        emptyRewardContainer.appendChild(emptyRewardTitle);
-
-        const emptyRewardDescription = document.createElement("p");
-        emptyRewardDescription.textContent = "There are no skills available anymore. Choose a different reward.";
-        emptyRewardDescription.classList.add("reward-description");
-        emptyRewardContainer.appendChild(emptyRewardDescription);
-
-        return; // Beendet die Funktion, sodass kein Button erstellt wird
-    }
 
     const randomItemIndex = Math.floor(Math.random() * allItemsList.length);
     const randomItem = allItemsList[randomItemIndex];
@@ -690,63 +666,141 @@ function goToRewardSequenz() {
     const randomSkillIndex = Math.floor(Math.random() * universalSkills.length);
     const randomSkill = universalSkills[randomSkillIndex];
 
-    const rewards = [
-        new Item(randomItem.type, randomItem.name, randomItem.description, randomItem.rarity, randomItem.effect, randomItem.image),
-        new Skill(randomSkill.type, randomSkill.name, randomSkill.description, randomSkill.rarity, randomSkill.effect, randomSkill.image, randomSkill.triggerCondition),
-        {
-            type: "Heal",
-            name: "Healing Potion",
-            description: "Double your current HP.",
-            image: "assets/images/heal-picture/heal.webp"
-        }
-    ];
 
-    rewards.forEach(reward => {
-        const rewardContainer = document.createElement("div");
-        rewardContainer.classList.add("reward-display-option", "text-font", "reward-item");
-        rewardItemDiv.appendChild(rewardContainer);
+    // Prüfen, ob keine Skills mehr verfügbar sind
+    if (universalSkills.length === 0) {
+        const rewards = [
+            new Item(randomItem.type, randomItem.name, randomItem.description, randomItem.rarity, randomItem.effect, randomItem.image),
+            {
+                type: "Empty Chest",
+                name: "Empty Chest",
+                description: "There are no skills available anymore. Choose a different reward.",
+                image: "assets/images/filler-images/empty-chest.webp"
+            },
 
-        const rewardImage = document.createElement("img");
-        rewardImage.src = reward.image;
-        rewardImage.alt = reward.name;
-        rewardImage.classList.add("reward-image");
-        rewardContainer.appendChild(rewardImage);
+            {
+                type: "Heal",
+                name: "Healing Potion",
+                description: "Double your current HP.",
+                image: "assets/images/heal-picture/heal.webp"
+            }
+        ];
 
-        const rewardTitle = document.createElement("h3");
-        rewardTitle.textContent = reward.name;
-        rewardTitle.classList.add("reward-title");
-        rewardContainer.appendChild(rewardTitle);
+        rewards.forEach(reward => {
+            const rewardContainer = document.createElement("div");
+            rewardContainer.classList.add("reward-display-option", "text-font", "reward-item");
+            rewardItemDiv.appendChild(rewardContainer);
 
-        const rewardType = document.createElement("h4");
-        rewardType.textContent = reward.type;
-        rewardType.classList.add("reward-type");
-        rewardContainer.appendChild(rewardType);
+            const rewardImage = document.createElement("img");
+            rewardImage.src = reward.image;
+            rewardImage.alt = reward.name;
+            rewardImage.classList.add("reward-image");
+            rewardContainer.appendChild(rewardImage);
 
-        if (reward.rarity) {
-            const rewardRarity = document.createElement("h5");
-            rewardRarity.textContent = reward.rarity;
-            rewardRarity.classList.add("reward-rarity");
-            rewardRarity.style.color = reward.rarity === "common" ? "#ffffff" : reward.rarity === "rare" ? "#01c801" : "#ed03ed";
-            rewardContainer.appendChild(rewardRarity);
-        }
+            const rewardTitle = document.createElement("h3");
+            rewardTitle.textContent = reward.name;
+            rewardTitle.classList.add("reward-title");
+            rewardContainer.appendChild(rewardTitle);
 
-        const rewardDescription = document.createElement("p");
-        rewardDescription.textContent = reward.description;
-        rewardDescription.classList.add("reward-description");
-        rewardContainer.appendChild(rewardDescription);
+            const rewardType = document.createElement("h4");
+            rewardType.textContent = reward.type;
+            rewardType.classList.add("reward-type");
+            rewardContainer.appendChild(rewardType);
 
-        setTimeout(() => {
-            const selectButton = document.createElement("button");
-            selectButton.textContent = `Select ${reward.type}`;
-            selectButton.classList.add("class-button", "reward-item");
-            selectButton.addEventListener("click", () => {
-                selectReward(reward, player);
-                goToContinueScreen("reward-item");
-                displayBox.classList.remove("reward-display");
-            });
-            buttonBox.appendChild(selectButton);
-        }, 1000);
-    });
+            if (reward.rarity) {
+                const rewardRarity = document.createElement("h5");
+                rewardRarity.textContent = reward.rarity;
+                rewardRarity.classList.add("reward-rarity");
+                rewardRarity.style.color = reward.rarity === "common" ? "#ffffff" : reward.rarity === "rare" ? "#01c801" : "#ed03ed";
+                rewardContainer.appendChild(rewardRarity);
+            }
+
+            const rewardDescription = document.createElement("p");
+            rewardDescription.textContent = reward.description;
+            rewardDescription.classList.add("reward-description");
+            rewardContainer.appendChild(rewardDescription);
+
+            setTimeout(() => {
+                const selectButton = document.createElement("button");
+                selectButton.textContent = `Select ${reward.type}`;
+                selectButton.classList.add("class-button", "reward-item");
+
+                if (reward.name === "Empty Chest") {
+                    selectButton.classList.add("hidden");
+                } else {
+                    selectButton.addEventListener("click", () => {
+                        selectReward(reward, player);
+                        goToContinueScreen("reward-item");
+                        displayBox.classList.remove("reward-display");
+                    });
+                }
+
+                buttonBox.appendChild(selectButton);
+            }, 1000);
+
+            return
+        });
+    } else {
+        const rewards = [
+            new Item(randomItem.type, randomItem.name, randomItem.description, randomItem.rarity, randomItem.effect, randomItem.image),
+            new Skill(randomSkill.type, randomSkill.name, randomSkill.description, randomSkill.rarity, randomSkill.effect, randomSkill.image, randomSkill.triggerCondition),
+            {
+                type: "Heal",
+                name: "Healing Potion",
+                description: "Double your current HP.",
+                image: "assets/images/heal-picture/heal.webp"
+            }
+        ];
+
+        rewards.forEach(reward => {
+            const rewardContainer = document.createElement("div");
+            rewardContainer.classList.add("reward-display-option", "text-font", "reward-item");
+            rewardItemDiv.appendChild(rewardContainer);
+
+            const rewardImage = document.createElement("img");
+            rewardImage.src = reward.image;
+            rewardImage.alt = reward.name;
+            rewardImage.classList.add("reward-image");
+            rewardContainer.appendChild(rewardImage);
+
+            const rewardTitle = document.createElement("h3");
+            rewardTitle.textContent = reward.name;
+            rewardTitle.classList.add("reward-title");
+            rewardContainer.appendChild(rewardTitle);
+
+            const rewardType = document.createElement("h4");
+            rewardType.textContent = reward.type;
+            rewardType.classList.add("reward-type");
+            rewardContainer.appendChild(rewardType);
+
+            if (reward.rarity) {
+                const rewardRarity = document.createElement("h5");
+                rewardRarity.textContent = reward.rarity;
+                rewardRarity.classList.add("reward-rarity");
+                rewardRarity.style.color = reward.rarity === "common" ? "#ffffff" : reward.rarity === "rare" ? "#01c801" : "#ed03ed";
+                rewardContainer.appendChild(rewardRarity);
+            }
+
+            const rewardDescription = document.createElement("p");
+            rewardDescription.textContent = reward.description;
+            rewardDescription.classList.add("reward-description");
+            rewardContainer.appendChild(rewardDescription);
+
+            setTimeout(() => {
+                const selectButton = document.createElement("button");
+                selectButton.textContent = `Select ${reward.type}`;
+                selectButton.classList.add("class-button", "reward-item");
+                selectButton.addEventListener("click", () => {
+                    selectReward(reward, player);
+                    goToContinueScreen("reward-item");
+                    displayBox.classList.remove("reward-display");
+                });
+                buttonBox.appendChild(selectButton);
+            }, 1000);
+        });
+    }
+
+
 }
 
 
