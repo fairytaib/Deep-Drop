@@ -636,7 +636,7 @@ button {
     .display-box-flex-column {
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 2px;
     }
 
     .button-box {
@@ -655,8 +655,7 @@ button {
     .reward-display-option,
     .class-display-option {
         width: 30%;
-        /* Einheitliche Breite */
-        height: 98%;
+        height: 90%;
         padding: 1rem;
         background-color: rgba(58, 58, 58, 0.9);
         border-radius: 10px;
@@ -731,3 +730,5 @@ button {
         overflow-y: scroll;
     }
 }
+
+@media only screen and (max-width: 450px) {}
