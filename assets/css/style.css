@@ -274,9 +274,10 @@ button:active {
     transform: translate(-50%, -50%);
 }
 
-/* .player-menu-display {
-    overflow: scroll;
-} */
+.player-menu-display {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
 
 .player-menu-item-display {
     justify-content: space-between;
@@ -373,7 +374,7 @@ button:active {
 
 /* The button that opens with the menu-window */
 .player-inner-menu-button {
-    font-size: 0.5rem;
+    margin-bottom: 10px;
 }
 
 .player-menu-item {
@@ -689,10 +690,13 @@ button {
     .class-image {
         width: 100%;
         height: auto;
-        min-width: 70px;
         max-width: 100px;
         border-radius: 10px;
         margin-bottom: 1rem;
+    }
+
+    .reward-image {
+        min-width: 70px;
     }
 
     button {
