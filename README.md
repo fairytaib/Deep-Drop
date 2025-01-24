@@ -292,7 +292,13 @@ Tested on:
 
 The HTML and CSS have been validated using the W3C Validator to ensure compliance.
 
+- Index Page HTML Validation:
 
+  ![W3C Validation Index page](./read-me-images/w3c-validation/html-validation.png)
+
+- CSS Validation:
+
+  ![W3C css validation ](./read-me-images/w3c-validation/css-validation.png)
 
 
 ## Future Plans
