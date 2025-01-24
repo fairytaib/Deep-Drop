@@ -731,4 +731,20 @@ button {
     }
 }
 
-@media only screen and (max-width: 450px) {}
+@media only screen and (max-width: 375px) {
+    .class-display-option {
+        margin: 0.3rem;
+    }
+
+    .reward-display-option {
+        height: 100%;
+    }
+
+    .button-box {
+        justify-content: center;
+    }
+
+    .button-box-flex-row {
+        gap: 0.5rem;
+    }
+}
