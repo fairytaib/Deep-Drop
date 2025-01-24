@@ -123,6 +123,14 @@ Experience the game firsthand: [Play Deep Drop here!](https://fairytaib.github.i
 ### Monsters and Challenges
 - Each monster has different strengthes, requiring a solid strategie.
 
+## Wireframe
+
+I started the project with wireframes to visualize for myself the project i wanted to make
+
+## Dieser Baum den ich gemacht habe !!!!!!!!!!!!!!!!!!!!!
+
+I constructed to basic layout with pseudo-code and visualized it with a graph
+
 
 ### Visual Design
 
@@ -242,7 +250,7 @@ Tested on:
 - Add more character classes, monsters, and items to enrich gameplay.
 - Introduce a story mode with narrative elements and quests.
 - Implement sound effects and background music for greater immersion.
-- Explore multiplayer functionality for cooperative and competitive gameplay.
+
 
 ## Credits
 
@@ -264,9 +272,9 @@ Tested on:
 **Mentoring and Guidance**
 - **Iuliia Konovalova**: Mentoring and guidance by [Iuliia Konovalova](https://github.com/IuliiaKonovalova).
 
-## License
+- **Code Institute Student Support**: Helping me debugg specific difficultys
 
-This project is licensed under the MIT License. Refer to the LICENSE file for more information.
+
 
 ---
 
