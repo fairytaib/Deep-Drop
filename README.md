@@ -290,7 +290,7 @@ Tested on:
 
 ### Validation
 
-The HTML and CSS have been validated using the W3C Validator to ensure compliance.
+The HTML and CSS have been validated using the W3C Validator to ensure compliance. Javascript was tested by the Jshint Validator
 
 - Index Page HTML Validation:
 
@@ -299,6 +299,11 @@ The HTML and CSS have been validated using the W3C Validator to ensure complianc
 - CSS Validation:
 
   ![W3C css validation ](./read-me-images/w3c-validation/css-validation.png)
+
+  - Javascript Validation:
+
+  ![W3C css validation ](./read-me-images/w3c-validation/javascript-validation.png)
+
 
 
 ## Future Plans
