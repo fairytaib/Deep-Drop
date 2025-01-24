@@ -152,7 +152,7 @@ Users can inspect a Skill, Item or Fighting Skill by hovering or clicking the na
 ### Monsters and Challenges
 - Each monster has different strengthes, requiring a solid strategie.
 
-## Wireframe
+## Balsamiq wireframe
 
 I started the project with wireframes to visualize for myself the project i wanted to make
 
@@ -288,6 +288,13 @@ Tested on:
 
 - Verified consistent performance on a range of devices and screen sizes, including mobile.
 
+### Validation
+
+The HTML and CSS have been validated using the W3C Validator to ensure compliance.
+
+
+
+
 ## Future Plans
 
 - Add more character classes, monsters, and items to enrich gameplay.
@@ -303,6 +310,10 @@ Tested on:
 **Design and Functionality**
 - **Google Fonts**: Fonts used from [Google Fonts](https://fonts.google.com/).
 
+- **Miro**: [Miro](https://miro.com/de/) was my tool to create and visualize my pseudo-code
+
+- **Wireframe**: My Page layout was created with the tool [Balsamiq](https://balsamiq.com/)
+
 **Content and Tutorials**
 - **Stack Overflow**: All kinds of different questions and anwsers from [Stack Overflow](https://stackoverflow.com/).
 
@@ -316,6 +327,7 @@ Tested on:
 - **Iuliia Konovalova**: Mentoring and guidance by [Iuliia Konovalova](https://github.com/IuliiaKonovalova).
 
 - **Code Institute Student Support**: Helping me debugg specific difficultys
+
 
 
 
