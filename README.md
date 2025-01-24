@@ -116,6 +116,35 @@ Experience the game firsthand: [Play Deep Drop here!](https://fairytaib.github.i
   - High damage output with critical strike potential.
   - Excels in fast-paced and aggressive gameplay.
 
+### Restart Option
+
+The player has the option to reset his game and start over if he doesn't like his run.
+His decision has to be confirmed within another Screen
+
+![Restart Button inner view](./read-me-images/specific-images/restart-button.png)
+
+![Restart Button inner view](./read-me-images/general-images/restart-view.png)
+
+### Tutorial
+A tutorial is integrated for better understanding at the start of the game and during the game
+
+![How to play Button ](./read-me-images/specific-images/how-to-play-button.png)
+
+When the player starts a run the icon below is always clickable to let the user reread the rules
+
+![How to play Button ](./read-me-images/specific-images/how-to-play-button-icon.png)
+
+He can manouver through the slides by clicking on the buttons marked with an arrow.
+
+![How to play Button ](./read-me-images/general-images/tutorial-view.png)
+
+### Tooltip
+Users can inspect a Skill, Item or Fighting Skill by hovering or clicking the name of it
+
+![Tooltip view ](./read-me-images/specific-images/filled-skill-menu.png)
+
+![Tooltip view ](./read-me-images/specific-images/hover-skill-description.png)
+
 ### Rewards and Progression
 - Items and skills provide meaningful choices after every battle.
 - Strategic planning is crucial for managing health and resources.
