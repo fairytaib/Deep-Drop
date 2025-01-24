@@ -156,9 +156,23 @@ Users can inspect a Skill, Item or Fighting Skill by hovering or clicking the na
 
 I started the project with wireframes to visualize for myself the project i wanted to make
 
-## Dieser Baum den ich gemacht habe !!!!!!!!!!!!!!!!!!!!!
+## Miro
 
-I constructed to basic layout with pseudo-code and visualized it with a graph
+I constructed to basic layout as pseudo-code and visualized it with a graph
+
+![Miro general game flow](./read-me-images/miro/general-game-flow.jpg)
+
+![Miro general game flow](./read-me-images/miro/fighting-system.jpg)
+
+![Miro general game flow](./read-me-images/miro/character-base-class.jpg)
+
+![Miro general game flow](./read-me-images/miro/item-base-class.jpg)
+
+![Miro general game flow](./read-me-images/miro/skill-rewards.jpg)
+
+![Miro general game flow](./read-me-images/miro/needed-technology.jpg)
+
+![Miro general game flow](./read-me-images/miro/javascript-example.jpg)
 
 
 ### Visual Design
