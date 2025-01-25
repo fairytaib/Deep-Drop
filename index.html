@@ -18,13 +18,10 @@
 
 <body>
     <section>
-        <header>
-        </header>
         <main class="outer-box">
             <div class="title-box">
                 <div id="left-item">
-                    <button id="restart-button" class="hidden">Restart Game</button>
-                    <button id="restart-button" class="hidden title-box-button">Restart Game</button>
+                    <button id="restart-button" class="hidden" aria-label="Restart the game">Restart Game</button>
                 </div>
                 <div id="middle-item">
                     <h1 id="title-display">Deep Drop</h1>
@@ -32,7 +29,7 @@
                 <div id="right-item">
                     <button id="info-button">
                         <i class='bx bx-info-circle tutorial-button hidden' id="information-icon"></i>
-                        <button id="info-button" class="title-box-button">
+                        <button id="info-button" class="title-box-button" aria-label="Open Tutorial">
                             <i class='bx bx-info-circle tutorial-button hidden ' id="information-icon"></i>
                         </button>
                 </div>
@@ -41,7 +38,8 @@
             <div class=" display-box display-box-flex-column" id="display-box-section">
                 <div id="loading-screen">Loading...</div>
                 <h2 class="start-item">Welcome to the bottom of the well!</h2>
-                <button class="start-item tutorial-button" id="inner-info-button">How to play</button>
+                <button class="start-item tutorial-button" id="inner-info-button" aria-label="Open Tutorial">How to
+                    play</button>
             </div>
             <div class="button-box button-box-flex-column" id="button-box-section">
                 <!-- Start-Text -->
@@ -52,7 +50,7 @@
                             id="player-name-input" name="player-name-input" minlength="1" maxlength="13" required>
                     </div>
                 </div>
-                <button class="start-item" type="submit" id="start-button"> Start the
+                <button class="start-item" type="submit" id="start-button" aria-label="Start the game"> Start the
                     Game</button>
             </div>
         </main>
