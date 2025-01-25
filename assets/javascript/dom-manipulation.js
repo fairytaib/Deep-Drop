@@ -107,7 +107,7 @@ function resetGame() {
  */
 
 // Show a loading screen for 3 seconds
-function showLoadingScreenForThreeSeconds() {
+function showLoadingScreen() {
     const loadingScreen = document.getElementById("loading-screen");
 
     loadingScreen.classList.add("active"); // Activate the loading screen
@@ -127,6 +127,7 @@ function displayUserChoiceConfirmation() {
     const yesButton = document.createElement("button");
     yesButton.classList.add("yes-reset-button");
     yesButton.textContent = "Yes"; // "Yes" button text
+    yesButton.setAttribute("aria-label", "Yes")
     yesButton.addEventListener("click", () => {
         confirmWindow.remove(); // Remove the confirmation window
         resetGame(); // Reset the game
@@ -135,6 +136,7 @@ function displayUserChoiceConfirmation() {
     const noButton = document.createElement("button");
     noButton.classList.add("no-reset-button");
     noButton.textContent = "No"; // "No" button text
+    noButton.setAttribute("aria-label", "No")
     noButton.addEventListener("click", () => confirmWindow.remove()); // Close the confirmation window
 
     confirmWindow.appendChild(yesButton); // Add "Yes" button to the window
@@ -163,10 +165,12 @@ function displayTutorial() {
     const rightSlideButton = document.createElement("button");
     rightSlideButton.innerHTML = "<i class='bx bx-chevron-right' ></i>"; // Add an icon for the right button
     rightSlideButton.classList.add("next-slide-button");
+    rightSlideButton.setAttribute("aria-label", "Next Slide")
 
     const leftSlideButton = document.createElement("button");
     leftSlideButton.innerHTML = "<i class='bx bx-chevron-left' ></i>"; // Add an icon for the left button
     leftSlideButton.classList.add("next-slide-button");
+    leftSlideButton.setAttribute("aria-label", "previous slide")
 
     // Append elements to the tutorial container
     displayBox.appendChild(tutorialContainer);
@@ -237,6 +241,9 @@ function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
     const displayedItem = document.createElement(tagType); // Create an HTML element
     displayedItem.classList.add(...classAttribute); // Add specified classes
     displayedItem.innerText = innerText; // Set the text content
+    if (tagType === "button") {
+        displayedItem.setAttribute("aria-label", innerText)
+    } // Add an aria-label attribute
     displayPlace.appendChild(displayedItem); // Append the element to the given display place
 }
 
@@ -262,6 +269,7 @@ function addFunction(targetClass, ...targetFunctions) {
 function createCloseButton() {
     const closeButton = document.createElement("button"); // Create a button element
     closeButton.textContent = "X"; // Set the button text
+    closeButton.setAttribute("aria-label", "Close window")
     closeButton.classList.add("close-button"); // Add a CSS class for styling
     closeButton.addEventListener("click", () => closeButton.parentElement.remove()); // Remove the parent element on click
     return closeButton; // Return the close button
@@ -429,6 +437,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
             const selectButton = document.createElement("button");
             selectButton.textContent = `Select`; // Button to select the item
             selectButton.classList.add("reward-button", "player-inner-menu-button");
+            selectButton.setAttribute("aria-label", `Select ${item.type}`)
             selectButton.addEventListener("click", () => {
                 if (playerActiveItem) {
                     playerActiveItem.resetEffect(player); // Reset the effect of the current item
@@ -443,6 +452,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
         } else if (itemContent === playerAvailableFightingStyle) {
             const selectButton = document.createElement("button");
             selectButton.textContent = `Select`; // Button to select the fighting style
+            selectButton.setAttribute("aria-label", "Select this fighting Style")
             selectButton.classList.add("reward-button", "player-inner-menu-button");
             selectButton.addEventListener("click", () => {
                 activateFightingStyle(item); // Activate the selected fighting style
@@ -572,7 +582,7 @@ function validateInput() {
 }
 // Navigate to the class choice screen
 function goToClassChoice() {
-    showLoadingScreenForThreeSeconds(); // Display a loading screen for 3 seconds
+    showLoadingScreen(); // Display a loading screen for 3 seconds
     removeItems("start-item"); // Remove items with the "start-item" class
 
     // Toggle button box layout to a row layout
@@ -619,6 +629,7 @@ function goToClassChoice() {
         setTimeout(() => {
             const selectButton = document.createElement("button");
             selectButton.textContent = `Select ${classOption.name}`; // Set the button text
+            selectButton.setAttribute("aria-label", `Select the ${classOption.name}`)
             selectButton.classList.add("class-button", "class-item"); // Add CSS classes
             selectButton.addEventListener("click", () => {
                 selectClass(classOption); // Call selectClass with the selected option
@@ -638,7 +649,7 @@ function goToClassChoice() {
 }
 // Navigate to the reward sequence
 function goToRewardSequenz() {
-    showLoadingScreenForThreeSeconds(); // Display a loading screen for 3 seconds
+    showLoadingScreen(); // Display a loading screen for 3 seconds
 
     // Adjust display box and button box layout if necessary
     if (displayBox.classList.contains("display-box-flex-row")) {
@@ -732,6 +743,7 @@ function goToRewardSequenz() {
             setTimeout(() => {
                 const selectButton = document.createElement("button");
                 selectButton.textContent = `Select ${reward.type}`;
+                selectButton.setAttribute("aria-label", `Select ${reward.type}`)
                 selectButton.classList.add("class-button", "reward-item");
 
                 if (reward.name === "Empty Chest") {
@@ -802,6 +814,7 @@ function goToRewardSequenz() {
             setTimeout(() => {
                 const selectButton = document.createElement("button");
                 selectButton.textContent = `Select ${reward.type}`;
+                selectButton.setAttribute("aria-label", `Select ${reward.type}`)
                 selectButton.classList.add("class-button", "reward-item");
                 selectButton.addEventListener("click", () => {
                     selectReward(reward, player); // Apply the selected reward
@@ -817,7 +830,7 @@ function goToRewardSequenz() {
 function goToFightSequenz(hideItem) {
     removeItems(hideItem); // Remove the specified items from the display
 
-    showLoadingScreenForThreeSeconds(); // Display a loading screen for 3 seconds
+    showLoadingScreen(); // Display a loading screen for 3 seconds
 
     // Display the current round counter
     const roundCounterDisplay = document.createElement("h3");
@@ -935,6 +948,7 @@ function goToLosingScreen() {
     const resetButton = document.createElement("button");
     resetButton.classList.add("text-font", "end-item"); // Add CSS classes
     resetButton.innerText = "Restart the game?"; // Set the button text
+    resetButton.setAttribute("aria-label", `Restart the game?`)
     resetButton.addEventListener("click", () => {
         location.reload(); // Reload the page to restart the game
     });
@@ -966,6 +980,7 @@ function goToWinningScreen() {
     const resetButton = document.createElement("button");
     resetButton.classList.add("text-font", "end-item"); // Add CSS classes
     resetButton.innerText = "Restart the game?"; // Set the button text
+    resetButton.setAttribute("aria-label", `Restart the game?`)
     resetButton.addEventListener("click", () => {
         location.reload(); // Reload the page to restart the game
     });
