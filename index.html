@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Fill out -->
-    <meta name="description" content="">
-    <!-- Fill out -->
-    <meta name="keywords" content="">
+    <meta name="description"
+        content="Deep Drop is an immersive turn-based dungeon crawler where players battle through eerie underground levels, encounter monsters, collect powerful items, and develop unique skills to survive. Dive into a mysterious medieval world full of strategy, choice, and danger.">
+    <meta name="keywords"
+        content="Deep Drop, dungeon crawler, turn-based RPG, medieval game, monsters, skills, items, dungeon adventure, character development, strategy game, immersive gameplay">
+
     <meta name="author" content="Sophjan Moubarrid">
     <title>Deep Drop</title>
     <!-- Boxicon -->
@@ -19,41 +21,41 @@
 <body>
 
     <div>
-        <header>
-
-        </header>
-        <main class="outer-box">
+        <header class="outer-box">
             <div class="title-box">
                 <div id="left-item">
-                    <button id="restart-button" class="hidden title-box-button">Restart Game</button>
+                    <button id="restart-button" class="hidden title-box-button" aria-label="Restart the game">Restart
+                        Game</button>
                 </div>
                 <div id="middle-item">
                     <h1 id="title-display">Deep Drop</h1>
                 </div>
                 <div id="right-item">
-                    <button id="info-button" class="title-box-button">
+                    <button id="info-button" class="title-box-button" aria-label="Open information about the game">
                         <i class='bx bx-info-circle tutorial-button hidden ' id="information-icon"></i>
                     </button>
                 </div>
-
             </div>
+        </header>
 
-            <div class=" display-box display-box-flex-column" id="display-box-section">
+        <main>
+            <div class="display-box display-box-flex-column" id="display-box-section">
                 <div id="loading-screen">Loading...</div>
                 <h2 class="start-item">Welcome to the bottom of the well!</h2>
-                <button class="start-item tutorial-button" id="inner-info-button">How to play</button>
+                <button class="start-item tutorial-button" id="inner-info-button" aria-label="How to play the game">How
+                    to play</button>
             </div>
 
             <div class="button-box button-box-flex-column" id="button-box-section">
                 <!-- Start-Text -->
-                <h2 class="start-item" id="input-title">Enter your characters name</h2>
+                <h2 class="start-item" id="input-title">Enter your character's name</h2>
                 <div class="input-wrapper start-item">
                     <div class="input-container">
                         <input class="start-item" type="text" placeholder="Enter your player name"
                             id="player-name-input" name="player-name-input" minlength="1" maxlength="13" required>
                     </div>
                 </div>
-                <button class="start-item" type="submit" id="start-button"> Start the
+                <button class="start-item" type="submit" id="start-button" aria-label="Start the game">Start the
                     Game</button>
             </div>
         </main>
