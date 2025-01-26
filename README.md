@@ -235,11 +235,18 @@ This structured approach allowed me to stay organized and focus on the most crit
 
 ## Technologies Used
 
-- **HTML**: Provides the structural framework for the game.
-- **CSS**: Styles the game with a medieval theme and ensures responsiveness.
-- **JavaScript**:
-  - Implements game logic, including character management, combat mechanics, and reward distribution.
-  - Utilizes modular design for maintainable and scalable code.
+- **Languages**:
+  - HTML: Provides the structural framework for the game.
+  - CSS: Styles the game with a medieval theme and ensures responsiveness.
+  - JavaScript:
+    - Implements game logic, including character management, combat mechanics, and reward distribution.
+    - Utilizes modular design for maintainable and scalable code.
+
+- **Version Control**:
+  - Git: Used for version control to track changes and manage the development process.
+  - GitHub: Used as a cloud-based platform to store and share the code repository.
+  - Gitpod: Used as an integrated development environment (IDE) to write and edit the code.
+
 
 ## Project Structure
 
@@ -349,6 +356,30 @@ The HTML and CSS have been validated using the W3C Validator to ensure complianc
   ![W3C css validation ](./read-me-images/w3c-validation/javascript-validation.png)
 
 
+## Bugs Encountered, Solutions, and General Observations
+
+### Bugs Encountered
+During the development of **Deep Drop**, several challenges and bugs were encountered. Below is a summary of the most significant ones:
+
+1. **Fighting Style Selection Not Displaying Properly**  
+   - **Issue**: Fighting styles were not appearing correctly in the player menu.  
+   - **Cause**: The `displayPlayerMenu` function was not appending the fighting styles due to a mismatch in variable references.  
+   - **Solution**: Ensured that the correct variable (`playerAvailableFightingStyle`) was passed to the function and verified that all data structures were properly initialized before rendering.
+
+2. **Buttons Overlapping or Misaligned**  
+   - **Issue**: Buttons occasionally overlapped with other UI elements, especially on smaller screen sizes.  
+   - **Cause**: CSS styling for button positioning was inconsistent across different screen sizes.  
+   - **Solution**: Implemented a more robust CSS grid and flexbox system for responsive alignment. Added media queries to ensure consistent spacing and alignment on all devices.
+
+3. **Reward Selection Not Functioning as Intended**  
+   - **Issue**: Rewards (skills, items, healing) were not being added to the player's inventory or applied correctly.  
+   - **Cause**: The reward selection logic did not update the corresponding player attributes or lists.  
+   - **Solution**: Updated the reward selection function to directly modify `playerAvailableItems` and `playerAvailableSkills`. Added real-time feedback to confirm the reward selection.
+
+4. **Monster and Player Health Bar Sync**  
+   - **Issue**: Health values displayed during fights occasionally desynced from actual game logic.  
+   - **Cause**: The health bar update function was not being called consistently after each attack.  
+   - **Solution**: Ensured health bar updates were triggered immediately after health changes, using dedicated event listeners.
 
 ## Future Plans
 
