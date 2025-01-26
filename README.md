@@ -32,6 +32,10 @@ Experience the game firsthand: [Play Deep Drop here!](https://fairytaib.github.i
 
 ![Deep Drop restart view](./read-me-images/general-images/restart-view.png)
 
+![Deep Drop restart view](./read-me-images/general-images/losing-screen.png)
+
+![Deep Drop restart view](./read-me-images/general-images/winning-screen.png)
+
 ## Features
 
 ### Core Gameplay Mechanics
@@ -152,27 +156,46 @@ Users can inspect a Skill, Item or Fighting Skill by hovering or clicking the na
 ### Monsters and Challenges
 - Each monster has different strengthes, requiring a solid strategie.
 
-## Balsamiq wireframe
+## Working process
+The development of Deep Drop followed a structured and iterative process, ensuring clarity and focus throughout the project. Below is an overview of the main steps involved in creating the game:
 
-I started the project with wireframes to visualize for myself the project i wanted to make
+### Balsamiq wireframe
 
-## Miro
+To begin the project, I created wireframes using Balsamiq. These wireframes allowed me to visualize the overall structure and design of the game. This step was crucial in translating abstract ideas into tangible layouts, ensuring that the design would align with the game's core objectives.
 
-I constructed to basic layout as pseudo-code and visualized it with a graph
+### Miro
 
+After the wireframe stage, I used Miro to further refine the game's structure and flow. Miro served as a dynamic tool for visualizing both the game's mechanics and its underlying code. The following diagrams were created to map out the game's logic and design:
+
+1. General Gameflow
+This flowchart outlines the player's journey through the game, from class selection to monster battles and rewards.
 ![Miro general game flow](./read-me-images/miro/general-game-flow.jpg)
 
+2. Fighting System
+A detailed view of the turn-based fighting mechanics, illustrating how players and monsters interact during battles.
 ![Miro general game flow](./read-me-images/miro/fighting-system.jpg)
 
+3. Character Base Class
+The core structure for player and monster classes, showing shared attributes such as health, damage, and defense.
 ![Miro general game flow](./read-me-images/miro/character-base-class.jpg)
 
+4. Item Base Class
+A blueprint for the game's item system, detailing how items influence player stats and interact with the game mechanics.
 ![Miro general game flow](./read-me-images/miro/item-base-class.jpg)
 
+5. Skill Rewards
+This diagram illustrates how players unlock and choose skills during their progression through the game.
 ![Miro general game flow](./read-me-images/miro/skill-rewards.jpg)
 
+6. Required Technologies
+A visualization of the technologies and tools needed to implement various aspects of the game, from design to functionality.
 ![Miro general game flow](./read-me-images/miro/needed-technology.jpg)
 
+7. JavaScript Example
+A snapshot of the pseudo-code structure for core functionalities, offering a clear starting point for coding.
 ![Miro general game flow](./read-me-images/miro/javascript-example.jpg)
+
+This structured approach allowed me to stay organized and focus on the most critical elements of the project. Each step provided a clear roadmap for the development process, ensuring that all game mechanics, visuals, and interactions were cohesive and aligned with the original vision.
 
 
 ### Visual Design
@@ -288,13 +311,34 @@ Tested on:
 
 - Verified consistent performance on a range of devices and screen sizes, including mobile.
 
+### Lighthouse performance rating
+
+The website was evaluated using Google's Lighthouse extension and received the following performance ratings on all pages: 
+
+- On Desktop:
+  - Performance: 100/100
+  - Accessibility: 100/100
+  - Best Practices: 100/100
+  - SEO: 100/100
+
+![Lighthouse desktop rating](./read-me-images/lighthouse/lighthouse-desktop.png)
+
+- On Mobile:
+  - Performance: 92/100
+  - Accessibility: 100/100
+  - Best Practices: 100/100
+  - SEO: 100/100
+
+![Lighthouse mobile rating](./read-me-images/lighthouse/lighthouse-mobile.png)
+
 ### Validation
 
 The HTML and CSS have been validated using the W3C Validator to ensure compliance. Javascript was tested by the Jshint Validator
 
 - Index Page HTML Validation:
 
-  ![W3C Validation Index page](./read-me-images/w3c-validation/html-validation.png)
+
+![W3C Validation Index page](./read-me-images/w3c-validation/html-validation.png)
 
 - CSS Validation:
 
