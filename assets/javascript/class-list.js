@@ -42,11 +42,11 @@ export const monsterList = [
     new Character("Kobold", 70, 70, 10, 1500, 5, 5, 5),
     new Character("Goblin", 90, 90, 12, 1200, 6, 5, 10),
     new Character("Skeleton Warrior", 50, 50, 15, 1000, 8, 10, 15),
-    new Character("Orc", 140, 70, 20, 900, 10, 5, 20),
-    new Character("Harpie", 180, 60, 18, 1100, 7, 25, 10),
-    new Character("Troll", 200, 80, 25, 800, 15, 5, 10),
+    new Character("Orc", 140, 140, 20, 900, 10, 5, 20),
+    new Character("Harpie", 180, 180, 18, 1100, 7, 25, 10),
+    new Character("Troll", 200, 200, 25, 800, 15, 5, 10),
     new Character("Fire Elemental", 70, 70, 30, 700, 10, 10, 25),
-    new Character("Boss", 300, 120, 50, 500, 20, 0, 30)
+    new Character("Boss", 300, 300, 50, 500, 20, 0, 30)
 
 
 ]
