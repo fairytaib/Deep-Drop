@@ -168,8 +168,23 @@ function enableHoverDescriptions() {
     });
 }
 
+// Enable Bakground music
+function playBackgroundMusic() {
+    const audio = document.createElement("audio");
+    audio.id = "background-music";
+    audio.src = "assets/audio/relaxing-green-nature.mp3"; 
+    audio.loop = true;
+    audio.autoplay = true; 
+    audio.volume = 0.25;
 
-// Show a loading screen for 3 seconds
+    document.body.appendChild(audio); 
+
+    audio.play()
+        .catch(error => console.error("Fehler beim Abspielen der Musik:", error));
+}
+
+
+// Show a loading screen
 function showLoadingScreen() {
     const loadingScreen = document.getElementById("loading-screen");
 
@@ -631,6 +646,7 @@ function validateInput() {
     } else {
         playerName = playerNameInput.value; // Set the player's name
 
+        playBackgroundMusic()
         const restartButton = document.getElementById("restart-button");
         restartButton.classList.remove("hidden"); // Show the restart button
 
