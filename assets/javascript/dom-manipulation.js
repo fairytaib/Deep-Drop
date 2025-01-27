@@ -172,12 +172,12 @@ function enableHoverDescriptions() {
 function playBackgroundMusic() {
     const audio = document.createElement("audio");
     audio.id = "background-music";
-    audio.src = "assets/audio/relaxing-green-nature.mp3"; 
+    audio.src = "assets/audio/relaxing-green-nature.mp3";
     audio.loop = true;
-    audio.autoplay = true; 
+    audio.autoplay = true;
     audio.volume = 0.25;
 
-    document.body.appendChild(audio); 
+    document.body.appendChild(audio);
 
     audio.play()
         .catch(error => console.error("Fehler beim Abspielen der Musik:", error));
@@ -278,7 +278,16 @@ function displayTutorial() {
         {
             title: "Adjust & Continue",
             text: "Equip items and tweak your fighting style each round after you have chosen your reward. Items are not automatically equipped when selected!"
+        },
+        {
+            title: "Raritys",
+            text: `Each Item and Skill has a color which represents its rarity.
+            <span style="color: white;">White</span> = common<br>
+            <span style="color: green;">Green</span> = uncommon<br>
+            <span style="color: blue;">Blue</span> = Rare<br>
+            <span style="color: purple;">Purple</span> = epic`
         }
+
     ]; // Tutorial steps with titles and descriptions
 
     let currentStep = 0; // Track the current tutorial step
@@ -599,7 +608,7 @@ function selectClass(classOption) {
 
 // Select and apply a reward to the player
 function selectReward(reward, player) {
-    if (reward.type === "item") {
+    if (reward.type === "Item") {
         playerAvailableItems.push(reward); // Add item to available items
 
         // Remove the item from the global list
@@ -607,7 +616,7 @@ function selectReward(reward, player) {
         if (itemIndex !== -1) {
             allItemsList.splice(itemIndex, 1);
         }
-    } else if (reward.type === "skill") {
+    } else if (reward.type === "Skill") {
         playerAvailableSkills.push(reward); // Add skill to available skills
 
         // Remove the skill from the global list
