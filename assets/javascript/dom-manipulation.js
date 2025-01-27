@@ -875,22 +875,15 @@ function goToRewardSequenz() {
             const rewardTitle = document.createElement("h3");
             rewardTitle.textContent = reward.name;
             rewardTitle.classList.add("reward-title");
+            rewardTitle.style.color = reward.rarity === "common" ? "#ffffff" : reward.rarity === "rare" ? "#01c801" : "#ed03ed";
             rewardContainer.appendChild(rewardTitle);
 
             // Add reward type
             const rewardType = document.createElement("h4");
             rewardType.textContent = reward.type;
             rewardType.classList.add("reward-type");
+            rewardType.style.color = reward.type === "Heal" ? "#02E702" : reward.type === "Skill" ? "#FCF55F" : reward.type === "Item" ? "#fff" : "#fff";
             rewardContainer.appendChild(rewardType);
-
-            // Add reward rarity if available
-            if (reward.rarity) {
-                const rewardRarity = document.createElement("h5");
-                rewardRarity.textContent = reward.rarity;
-                rewardRarity.classList.add("reward-rarity");
-                rewardRarity.style.color = reward.rarity === "common" ? "#ffffff" : reward.rarity === "rare" ? "#01c801" : "#ed03ed";
-                rewardContainer.appendChild(rewardRarity);
-            }
 
             // Add reward description
             const rewardDescription = document.createElement("p");
