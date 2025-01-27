@@ -501,13 +501,17 @@ button:active {
 
 .class-title,
 .reward-title {
-    color: #d4d4d4;
+    color: #fff;
     padding: 0.438rem 0;
 }
 
 /* Reward Section */
 .reward-title {
     font-size: 0.7rem;
+}
+
+.reward-type{
+    
 }
 
 .class-description,
