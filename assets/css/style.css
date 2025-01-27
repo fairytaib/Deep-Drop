@@ -437,6 +437,10 @@ button:active {
 }
 
 .reward-button {
+    background-color: #DAA520;
+    color: black;
+    text-shadow: none;
+    font-weight: 600;
     width: 6rem;
     padding: 5px;
     text-align: center;
