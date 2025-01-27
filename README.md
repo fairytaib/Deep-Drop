@@ -409,6 +409,8 @@ During the development of **Deep Drop**, several challenges and bugs were encoun
 - **GitHub**: Cloud-based platform for storing and sharing code via [GitHub](https://github.com/).
 - **Gitpod**: Online IDE for coding provided by [Gitpod](https://gitpod.io/).
 
+- **Soundtrack**: The Background music was made by David Fesliyan and is called Relaxing Green Nature. The Soundtrack can be found at [fesliyanstudios.com](https://www.fesliyanstudios.com/royalty-free-music/downloads-c/fantasy-music/27) 
+
 **Mentoring and Guidance**
 - **Iuliia Konovalova**: Mentoring and guidance by [Iuliia Konovalova](https://github.com/IuliiaKonovalova).
 
