@@ -5,6 +5,8 @@
     --text-font: "IM Fell English", serif;
     --background: #3a3a3a;
     --character-background: #3a3a3a;
+    --active-button-color: #771104;
+    --tutorial-button-color: #1a76d2;
 }
 
 * {
@@ -34,7 +36,7 @@ body {
 button {
     font-size: 1rem;
     background-color: var(--background);
-    color: #d4d4d4;
+    color: #fff;
     border: 2px solid #2b2b2b;
     border-radius: 5px;
     padding: 0.125rem 1.25rem;
@@ -45,7 +47,7 @@ button {
 }
 
 button:hover {
-    background-color: #4a4e44;
+    /* background-color: #4a4e44; */
     color: #e5e5e5;
     border-color: #67a667;
     transform: scale(1.05);
@@ -85,35 +87,7 @@ button:active {
     white-space: nowrap;
 }
 
-#information-icon {
-    font-size: 1.5rem;
-}
 
-#info-button {
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #1E90FF;
-    color: #fff
-}
-
-#info-button i {
-    font-size: 1.5rem;
-    color: inherit;
-}
-
-#info-button:focus {
-    outline: none;
-}
-
-#info-button:hover i {
-    color: #ccc;
-}
 
 
 /* Loading Screen */
@@ -145,6 +119,11 @@ button:active {
 #player-name-input,
 #start-button {
     margin: 0.125rem;
+}
+
+#start-button{
+    background-color: var(--active-button-color);
+    text-shadow: none;
 }
 
 .input-wrapper {
@@ -285,6 +264,44 @@ button:active {
 }
 
 /* tutorial */
+
+.tutorial-button{
+    background-color: var(--tutorial-button-color);
+    text-shadow: none;
+    font-weight: 400;
+}
+
+#information-icon {
+    font-size: 1.5rem;
+}
+
+#info-button {
+    background-color: inherit;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#info-button i {
+    font-size: 1.5rem;
+    color: inherit;
+}
+
+#info-button:focus {
+    outline: none;
+}
+
+#info-button:hover i {
+    color: #ccc;
+}
+
+
+
 .tutorial-window {
     justify-content: space-evenly;
 }
@@ -346,6 +363,11 @@ button:active {
 .no-reset-button,
 .yes-reset-button {
     width: 60%;
+}
+
+/* Character Selection */
+.class-button{
+    background-color: var(--active-button-color);
 }
 
 /* fighting-sequenz */
