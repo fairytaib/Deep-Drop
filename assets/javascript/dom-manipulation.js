@@ -258,7 +258,7 @@ function displayTutorial() {
         },
         {
             title: "Improving Your Character",
-            text: "There are different rewards you can choose from after a fight. Items can be equipped. Skills add passive bonuses, and 'Healing' restores health for the next fight. There is also the possibility to apply a fighting style."
+            text: "There are different rewards you can choose from after a fight. Items must be equipped. Skills add passive bonuses, and 'Healing' restores health for the next fight. There is also the possibility to apply a fighting style."
         },
         {
             title: "Adjust & Continue",
