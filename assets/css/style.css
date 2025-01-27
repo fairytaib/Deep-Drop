@@ -386,28 +386,11 @@ button:active {
     cursor: pointer;
 }
 
-.player-menu-item::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    top: 140%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--background);
-    color: white;
-    padding: 0.313rem;
-    border-radius: 4px;
+#hover-description-box {
+    font-family: var(--text-font);
     font-size: 1rem;
-    white-space: nowrap;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-    z-index: 10;
-}
-
-.player-menu-item:hover::after {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(-5px);
+    max-width: 200px;
+    word-wrap: break-word;
 }
 
 
