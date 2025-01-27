@@ -61,7 +61,7 @@ export const originalMonsterList = monsterList.map(monster => ({
     critChance: monster.critChance
 }));
 // Basis Reward Class for Items and Skills
-class Reward {
+export class Reward {
     constructor(type, name, description, rarity, effect, image) {
         this.type = type
         this.name = name
@@ -71,6 +71,13 @@ class Reward {
         this.image = image
     }
 }
+
+//Heal Reward
+export const allHealsList = [
+    new Reward("Heal", "Useless Potion", "This potion increases your current life by 25%", "common", (player) => player.health *= 1.25, "assets/images/heal-pictures/small-heal.webp"),
+    new Reward("Heal", "Well made Potion", "This potion increases your current life by 50%", "rare", (player) => player.health *= 1.5, "assets/images/heal-pictures/medium-heal.webp"),
+    new Reward("Heal", "The blood of a dragon", "This potion increases your current life by 150%", "epic", (player) => player.health *= 2.5, "assets/images/heal-pictures/great-heal.webp")
+]
 
 // Item Class
 export class Item extends Reward {

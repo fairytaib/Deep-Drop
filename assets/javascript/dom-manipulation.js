@@ -2,6 +2,7 @@
 import {
     Character,
     monsterList,
+    allHealsList,
     allItemsList,
     knightSkills,
     assassinSkills,
@@ -11,6 +12,7 @@ import {
     playerAvailableFightingStyle,
     playerAvailableItems,
     playerAvailableSkills,
+    Reward,
     Skill,
     Item
 } from "./class-list.js"; // Importing various classes, lists, and utilities from an external module
@@ -632,7 +634,7 @@ function selectReward(reward, player) {
             }
         });
     } else if (reward.type === "Heal") {
-        player.health *= 2; // Double the player's health
+        reward.effect(player)
     }
 }
 
@@ -770,6 +772,9 @@ function goToRewardSequenz() {
     const randomSkillIndex = Math.floor(Math.random() * universalSkills.length);
     const randomSkill = universalSkills[randomSkillIndex];
 
+    const randomHealIndex = Math.floor(Math.random() * allHealsList.length)
+    const randomHeal = allHealsList[randomHealIndex]
+
     // Check if no skills are available
     if (universalSkills.length === 0) {
         const rewards = [
@@ -851,12 +856,7 @@ function goToRewardSequenz() {
         const rewards = [
             new Item(randomItem.type, randomItem.name, randomItem.description, randomItem.rarity, randomItem.effect, randomItem.image),
             new Skill(randomSkill.type, randomSkill.name, randomSkill.description, randomSkill.rarity, randomSkill.effect, randomSkill.image, randomSkill.triggerCondition),
-            {
-                type: "Heal",
-                name: "Healing Potion",
-                description: "Double your current HP.",
-                image: "assets/images/heal-picture/heal.webp"
-            }
+            new Reward(randomHeal.type, randomHeal.name, randomHeal.description, randomHeal.rarity, randomHeal.effect, randomHeal.image)
         ];
 
         rewards.forEach(reward => {
