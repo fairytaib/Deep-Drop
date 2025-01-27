@@ -793,3 +793,18 @@ button {
         width: 100%;
     }
 }
+
+@media only screen and (max-width: 370) {
+    .class-item-box {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .class-display-option {
+        width: 30%;
+    }
+
+    .button-box-flex-row {
+        gap: 0.2rem;
+    }
+}
