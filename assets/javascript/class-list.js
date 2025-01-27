@@ -74,7 +74,8 @@ export class Reward {
 
 //Heal Reward
 export const allHealsList = [
-    new Reward("Heal", "Useless Potion", "This potion increases your current life by 25%", "common", (player) => player.health *= 1.25, "assets/images/heal-pictures/small-heal.webp"),
+    new Reward("Heal", "Broken Potion", "This Potion broke. You can not heal this round.", "common", (player) => player.health *= 1, "assets/images/heal-pictures/broken-potion.webp"),
+    new Reward("Heal", "Small Potion", "This potion increases your current life by 25%", "uncommon", (player) => player.health *= 1.25, "assets/images/heal-pictures/small-heal.webp"),
     new Reward("Heal", "Well made Potion", "This potion increases your current life by 50%", "rare", (player) => player.health *= 1.5, "assets/images/heal-pictures/medium-heal.webp"),
     new Reward("Heal", "The blood of a dragon", "This potion increases your current life by 150%", "epic", (player) => player.health *= 2.5, "assets/images/heal-pictures/great-heal.webp")
 ]

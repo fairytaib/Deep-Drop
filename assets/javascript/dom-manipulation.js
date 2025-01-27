@@ -597,13 +597,13 @@ function resetFightingStyleEffects(style) {
 // Select the player class and initialize stats and skills
 function selectClass(classOption) {
     if (classOption.name === "Knight") {
-        player = new Character("Knight", 100, 100, 10, 1500, 15, 5, 10); // Knight stats
+        player = new Character("Knight", 180, 180, 10, 1500, 15, 5, 10); // Knight stats
         knightSkills.forEach(skill => universalSkills.push(skill)); // Add Knight skills
     } else if (classOption.name === "Ranger") {
-        player = new Character("Ranger", 70, 70, 12, 1200, 10, 10, 15); // Ranger stats
+        player = new Character("Ranger", 140, 140, 12, 1200, 10, 10, 15); // Ranger stats
         rangerSkills.forEach(skill => universalSkills.push(skill)); // Add Ranger skills
     } else if (classOption.name === "Assassin") {
-        player = new Character("Assassin", 50, 50, 15, 1000, 5, 15, 20); // Assassin stats
+        player = new Character("Assassin", 100, 100, 15, 1000, 5, 15, 20); // Assassin stats
         assassinSkills.forEach(skill => universalSkills.push(skill)); // Add Assassin skills
     }
 }
