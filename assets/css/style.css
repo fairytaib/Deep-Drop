@@ -265,7 +265,7 @@ button:active {
 
 /* tutorial */
 
-.tutorial-button{
+#inner-info-button{
     background-color: var(--tutorial-button-color);
     text-shadow: none;
     font-weight: 400;
@@ -275,8 +275,9 @@ button:active {
     font-size: 1.5rem;
 }
 
+
 #info-button {
-    background-color: inherit;
+    background-color: var(--tutorial-button-color);
     border: none;
     border-radius: 50%;
     cursor: pointer;
