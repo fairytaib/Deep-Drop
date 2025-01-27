@@ -106,6 +106,69 @@ function resetGame() {
  * General functions that are later used to display windows or create needed elements
  */
 
+// Function to display a description box on hover
+function enableHoverDescriptions() {
+    const elements = document.querySelectorAll(".player-menu-display-option"); // Elemente mit Beschreibungen
+
+    // Liste aller relevanten Arrays
+    const allSources = [
+        playerAvailableFightingStyle,
+        playerAvailableItems,
+        playerAvailableSkills,
+        knightSkills,
+        rangerSkills,
+        assassinSkills,
+        universalSkills,
+        allItemsList
+    ];
+
+    // Beschreibung-Box erstellen
+    const descriptionBox = document.createElement("div");
+    descriptionBox.id = "hover-description-box";
+    descriptionBox.style.position = "absolute";
+    descriptionBox.style.padding = "10px";
+    descriptionBox.style.backgroundColor = "#333";
+    descriptionBox.style.color = "#fff";
+    descriptionBox.style.borderRadius = "8px";
+    descriptionBox.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.3)";
+    descriptionBox.style.display = "none";
+    descriptionBox.style.zIndex = "1000";
+    document.body.appendChild(descriptionBox);
+
+    // Events für die Elemente hinzufügen
+    elements.forEach((element) => {
+        element.addEventListener("mouseenter", (e) => {
+            const itemName = element.querySelector(".player-menu-item").textContent.trim(); // Namen des Items ermitteln
+            let description = "No description available"; // Standard-Beschreibung
+
+            // Suche in allen Arrays
+            for (const source of allSources) {
+                const match = source.find((entry) => entry.name === itemName);
+                if (match) {
+                    description = match.description;
+                    break; // Beschreibung gefunden, Schleife abbrechen
+                }
+            }
+
+            // Beschreibung setzen
+            descriptionBox.textContent = description;
+            descriptionBox.style.left = `${e.pageX + 15}px`;
+            descriptionBox.style.top = `${e.pageY + 15}px`;
+            descriptionBox.style.display = "block";
+        });
+
+        element.addEventListener("mousemove", (e) => {
+            descriptionBox.style.left = `${e.pageX + 15}px`;
+            descriptionBox.style.top = `${e.pageY + 15}px`;
+        });
+
+        element.addEventListener("mouseleave", () => {
+            descriptionBox.style.display = "none"; // Box ausblenden
+        });
+    });
+}
+
+
 // Show a loading screen for 3 seconds
 function showLoadingScreen() {
     const loadingScreen = document.getElementById("loading-screen");
@@ -423,7 +486,6 @@ function displayPLayerMenuItems(itemContent, appendBox) {
         const itemTitle = document.createElement("h3");
         itemTitle.textContent = item.name; // Set the item name
         itemTitle.classList.add("player-menu-item");
-        itemTitle.setAttribute("data-tooltip", item.description); // Add a tooltip with the item description
 
         if (!stylesContainer) {
             stylesContainer = document.createElement("div");
@@ -470,6 +532,7 @@ function displayPLayerMenuItems(itemContent, appendBox) {
             itemContainer.classList.add("fighting-styles-divs"); // Add a specific class for fighting styles
         }
     });
+    enableHoverDescriptions()
 }
 // Activate the selected fighting style
 function activateFightingStyle(style) {
