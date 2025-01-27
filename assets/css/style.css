@@ -121,7 +121,7 @@ button:active {
     margin: 0.125rem;
 }
 
-#start-button{
+#start-button {
     background-color: var(--active-button-color);
     text-shadow: none;
 }
@@ -265,7 +265,7 @@ button:active {
 
 /* tutorial */
 
-#inner-info-button{
+#inner-info-button {
     background-color: var(--tutorial-button-color);
     text-shadow: none;
     font-weight: 400;
@@ -367,7 +367,7 @@ button:active {
 }
 
 /* Character Selection */
-.class-button{
+.class-button {
     background-color: var(--active-button-color);
 }
 
@@ -508,10 +508,6 @@ button:active {
 /* Reward Section */
 .reward-title {
     font-size: 0.7rem;
-}
-
-.reward-type{
-    
 }
 
 .class-description,

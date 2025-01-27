@@ -284,10 +284,10 @@ function displayTutorial() {
         {
             title: "Raritys",
             text: `Each Item and Skill has a color which represents its rarity.
-            <span style="color: white;">White</span> = common<br>
-            <span style="color: green;">Green</span> = uncommon<br>
-            <span style="color: blue;">Blue</span> = Rare<br>
-            <span style="color: purple;">Purple</span> = epic`
+            White = common
+            Green= uncommon
+            Blue = rare
+            Purple = epic`
         }
 
     ]; // Tutorial steps with titles and descriptions
