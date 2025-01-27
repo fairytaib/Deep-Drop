@@ -260,74 +260,78 @@ export function activateSkills(player) {
     });
 }
 
+// Insert sounds
+const monsterAttackSound = new Audio("assets/audio/fast-punch.mp3")
+monsterAttackSound.volume = 0.25;
+const playerAttackSound = new Audio("assets/audio/soft-kick.mp3")
+playerAttackSound.volume = 0.25;
+
 export function fight(player, monster, onFightEnd, onDefeat) {
     console.log(`The battle between ${player.name} and ${monster.name} begins!`);
 
-    let isGameOver = false
-    // Apply all player effects if needed (extendable for monster skills)
+
+    let isGameOver = false;
+
+    // Apply all player effects at the start of the fight
     playerAvailableSkills.forEach(skill => {
-        if (skill.type == 'skill') {
+        if (skill.type === 'skill') {
             skill.applyEffect(player, monster);
         }
     });
 
     function playerAttackTurn() {
-        if (player.health <= 0 || isGameOver) return
-
-        if (monster.health <= 0) {
-            onFightEnd()
-        }
+        if (player.health <= 0 || isGameOver) return;
 
         const playerDamage = player.attack(monster);
 
         if (!monster.dodge()) {
             monster.takeDamage(playerDamage);
+            playerAttackSound.play(); // Play player attack sound
+            console.log(`${player.name} hits ${monster.name} for ${playerDamage} damage!`);
         } else {
             console.log(`${monster.name} dodged the attack!`);
         }
 
-        // Apply all player skills
-
-
         updateHealthDisplay(player, monster);
 
-        if (monster.health > 0) {
-            setTimeout(playerAttackTurn, player.attackSpeed);
-        } else {
+        if (monster.health <= 0) {
             console.log(`${monster.name} has been defeated!`);
+            isGameOver = true;
             onFightEnd();
+        } else {
+            setTimeout(monsterAttackTurn, monster.attackSpeed);
         }
     }
 
     function monsterAttackTurn() {
-        if (monster.health <= 0 || isGameOver) return
-
+        if (monster.health <= 0 || isGameOver) return;
 
         const monsterDamage = monster.attack(player);
 
         if (!player.dodge()) {
             player.takeDamage(monsterDamage);
+            monsterAttackSound.play(); // Play monster attack sound
+            console.log(`${monster.name} hits ${player.name} for ${monsterDamage} damage!`);
         } else {
             console.log(`${player.name} dodged the attack!`);
         }
 
-
-
         updateHealthDisplay(player, monster);
 
-        if (player.health > 0) {
-            setTimeout(monsterAttackTurn, monster.attackSpeed); // Pass function reference properly
-        } else {
+        if (player.health <= 0) {
             console.log(`${player.name} has been defeated!`);
-            isGameOver = false
-            onDefeat()
+            isGameOver = true;
+            onDefeat();
+        } else {
+            setTimeout(playerAttackTurn, player.attackSpeed);
         }
     }
 
-    // Start both attack turns
+    // Start the fight
     setTimeout(playerAttackTurn, player.attackSpeed);
     setTimeout(monsterAttackTurn, monster.attackSpeed);
 }
+
 
 function updateHealthDisplay(player, monster) {
     const playerHealth = document.getElementById("player-hp");
