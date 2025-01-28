@@ -758,6 +758,11 @@ function goToRewardSequenz() {
     rewardSequenzTitle.innerText = "Choose your reward";
     displayBox.appendChild(rewardSequenzTitle);
 
+    const currentHp = document.createElement("h5");
+    currentHp.classList.add("text-font", "reward-item");
+    currentHp.innerText = `Current HP: ${Math.round(player.health)}`;
+    displayBox.appendChild(currentHp)
+
     // Create a container for rewards
     const rewardItemDiv = document.createElement("div");
     rewardItemDiv.classList.add("reward-item");
@@ -881,13 +886,10 @@ function goToFightSequenz(hideItem) {
         // Add empty div for layout adjustments
         displayItems("div", "", buttonBox, "fight-item");
 
-        // Initialize monster for the current round
-        monster = monsterList[roundCounter];
-
         // Display player's HP
         const playerHPContainer = document.createElement("div");
         playerHPContainer.classList.add("fight-item", "title-font");
-        playerHPContainer.innerHTML = `${playerName} HP: <span id="player-hp">${player.health}</span>`;
+        playerHPContainer.innerHTML = `${playerName} HP: <span id="player-hp">${Math.floor(player.health)}</span>`;
         buttonBox.appendChild(playerHPContainer);
 
         // Display monster's HP
@@ -903,7 +905,9 @@ function goToFightSequenz(hideItem) {
             fight(player, monster, goToRewardSequenz, goToLosingScreen); // Regular fight
         }, 1500);
     } else {
-        setTimeout(() => fight(player, monster, goToWinningScreen, goToLosingScreen)); // Final fight
+        setTimeout(() => {
+            fight(player, monster, goToWinningScreen, goToLosingScreen)
+        }); // Final fight
     }
 }
 
@@ -918,6 +922,7 @@ function goToContinueScreen() {
     if (displayBox.classList.contains("display-box-flex-row")) {
         toggleFlexbox(displayBox, "display-box-flex-column", "display-box-flex-row");
     }
+
 
     // Display the continue screen message
     displayItems("h2", "If you are ready start the next fight", displayBox, "continue-screen", "continue-item");
@@ -939,11 +944,10 @@ function goToContinueScreen() {
 
     // Add functionality to the "Start next fight" button
     addFunction("continue-button", () => {
-        if (roundCounter < 10) {
+        if (roundCounter <= 9) {
             roundCounter++; // Increment the round counter
+            monster = monsterList[roundCounter]; // Initialize monster for the current round
             goToFightSequenz("continue-item"); // Start the next fight sequence
-        } else {
-            displayItems("h2", "Congratulations! You have completed the Game", displayBox, "game-end-message"); // End game message
         }
     });
 }

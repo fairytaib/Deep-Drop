@@ -37,15 +37,15 @@ export class Character {
 // Monster Classes
 // Refine Stats later on
 export const monsterList = [
-    new Character("Slime", 50, 50, 10, 2000, 2, 0, 0),
-    new Character("Swarm of Rats", 60, 60, 7, 1800, 3, 0, 0),
-    new Character("Kobold", 70, 70, 10, 1500, 5, 5, 5),
-    new Character("Goblin", 90, 90, 12, 1200, 6, 5, 10),
-    new Character("Skeleton Warrior", 50, 50, 15, 1000, 8, 10, 15),
-    new Character("Orc", 140, 140, 20, 900, 10, 5, 20),
-    new Character("Harpie", 180, 180, 18, 1100, 7, 25, 10),
-    new Character("Troll", 200, 200, 25, 800, 15, 5, 10),
-    new Character("Fire Elemental", 70, 70, 30, 700, 10, 10, 25),
+    new Character("Slime", 50, 1, 10, 2000, 2, 0, 0),
+    new Character("Swarm of Rats", 60, 1, 7, 1800, 3, 0, 0),
+    new Character("Kobold", 70, 1, 10, 1500, 5, 5, 5),
+    new Character("Goblin", 90, 1, 12, 1200, 6, 5, 10),
+    new Character("Skeleton Warrior", 120, 1, 15, 1000, 8, 10, 15),
+    new Character("Orc", 140, 1, 20, 900, 10, 5, 20),
+    new Character("Harpie", 180, 1, 18, 1100, 7, 25, 10),
+    new Character("Troll", 200, 1, 25, 800, 15, 5, 10),
+    new Character("Fire Elemental", 70, 1, 30, 700, 10, 10, 25),
     new Character("Boss", 300, 300, 50, 500, 20, 0, 30)
 
 
@@ -75,9 +75,9 @@ export class Reward {
 //Heal Reward
 export const allHealsList = [
     new Reward("Heal", "Broken Potion", "This Potion broke. You can not heal this round.", "common", (player) => player.health *= 1, "assets/images/heal-pictures/broken-potion.webp"),
-    new Reward("Heal", "Small Potion", "This potion increases your current life by 25%", "uncommon", (player) => player.health *= 1.25, "assets/images/heal-pictures/small-heal.webp"),
-    new Reward("Heal", "Well made Potion", "This potion increases your current life by 50%", "rare", (player) => player.health *= 1.5, "assets/images/heal-pictures/medium-heal.webp"),
-    new Reward("Heal", "The blood of a dragon", "This potion increases your current life by 150%", "epic", (player) => player.health *= 2.5, "assets/images/heal-pictures/great-heal.webp")
+    new Reward("Heal", "Small Potion", "This potion increases your current life by 25%", "uncommon", (player) => Math.round(player.health *= 1.25), "assets/images/heal-pictures/small-heal.webp"),
+    new Reward("Heal", "Well made Potion", "This potion increases your current life by 50%", "rare", (player) => Math.round(player.health *= 1.5), "assets/images/heal-pictures/medium-heal.webp"),
+    new Reward("Heal", "The blood of a dragon", "This potion increases your current life by 150%", "epic", (player) => Math.round(player.health *= 2.5), "assets/images/heal-pictures/great-heal.webp")
 ]
 
 // Item Class
@@ -282,7 +282,7 @@ export function fight(player, monster, onFightEnd, onDefeat) {
 
     // Apply all player effects at the start of the fight
     playerAvailableSkills.forEach(skill => {
-        if (skill.type === 'skill') {
+        if (skill.type === 'Skill') {
             skill.applyEffect(player, monster);
         }
     });
