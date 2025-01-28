@@ -774,25 +774,25 @@ function goToRewardSequenz() {
 
     const randomHealIndex = Math.floor(Math.random() * allHealsList.length)
     const randomHeal = allHealsList[randomHealIndex]
-    const rewards = []
+
     // Check if no skills are available
+    let rewards = []
     if (universalSkills.length === 0) {
         rewards = [
             new Item(randomItem.type, randomItem.name, randomItem.description, randomItem.rarity, randomItem.effect, randomItem.image),
             {
-                type: "Empty Chest",
+                type: "Skill",
                 name: "Empty Chest",
                 description: "There are no skills available anymore. Choose a different reward.",
                 image: "assets/images/filler-images/empty-chest.webp"
             },
             new Reward(randomHeal.type, randomHeal.name, randomHeal.description, randomHeal.rarity, randomHeal.effect, randomHeal.image)
-        ]
+        ];
     } else {
         rewards = [
             new Item(randomItem.type, randomItem.name, randomItem.description, randomItem.rarity, randomItem.effect, randomItem.image),
             new Skill(randomSkill.type, randomSkill.name, randomSkill.description, randomSkill.rarity, randomSkill.effect, randomSkill.image, randomSkill.triggerCondition),
             new Reward(randomHeal.type, randomHeal.name, randomHeal.description, randomHeal.rarity, randomHeal.effect, randomHeal.image)
-
         ];
     }
     rewards.forEach(reward => {
@@ -818,7 +818,6 @@ function goToRewardSequenz() {
         const rewardType = document.createElement("h4");
         rewardType.textContent = reward.type;
         rewardType.classList.add("reward-type");
-        rewardType.style.color = reward.type === "Heal" ? "#02E702" : reward.type === "Skill" ? "#FCF55F" : reward.type === "Item" ? "#fff" : "#fff";
         rewardContainer.appendChild(rewardType);
 
         // Add reward description
@@ -833,16 +832,24 @@ function goToRewardSequenz() {
             selectButton.textContent = `Select ${reward.type}`;
             selectButton.setAttribute("aria-label", `Select ${reward.type}`)
             selectButton.classList.add("class-button", "reward-item");
+
+            if (reward.name === "Broken Potion") {
+                selectButton.classList.add("hidden")
+            }
+            if (reward.name === "Empty Chest") {
+                selectButton.classList.add("hidden");
+            }
+
             selectButton.addEventListener("click", () => {
                 selectReward(reward, player); // Apply the selected reward
                 goToContinueScreen("reward-item"); // Navigate to the continue screen
                 displayBox.classList.remove("reward-display"); // Remove reward display class
             });
+
             buttonBox.appendChild(selectButton); // Append the button to the button box
         }, 1000);
     });
 }
-
 // Navigate to the fight sequence
 function goToFightSequenz(hideItem) {
     removeItems(hideItem); // Remove the specified items from the display
@@ -896,7 +903,7 @@ function goToFightSequenz(hideItem) {
             fight(player, monster, goToRewardSequenz, goToLosingScreen); // Regular fight
         }, 1500);
     } else {
-        fight(player, monster, goToWinningScreen, goToLosingScreen); // Final fight
+        setTimeout(() => fight(player, monster, goToWinningScreen, goToLosingScreen)); // Final fight
     }
 }
 
