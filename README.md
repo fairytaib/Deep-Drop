@@ -161,7 +161,35 @@ The development of Deep Drop followed a structured and iterative process, ensuri
 
 ### Balsamiq wireframe
 
-To begin the project, I created wireframes using Balsamiq. These wireframes allowed me to visualize the overall structure and design of the game. This step was crucial in translating abstract ideas into tangible layouts, ensuring that the design would align with the game's core objectives.
+To begin the project, I created wireframes using Balsamiq. These wireframes allowed me to visualize the overall structure and design of the game. This step was crucial in translating abstract ideas into tangible layouts, ensuring that the design would align with the game's core objectives. Although some elements changed during the process the foundation was build on these wireframes.
+
+![Wireframe](./read-me-images/wireframe/basic-site-structure.png)
+
+![Wireframe](./read-me-images/wireframe/mobile-view.png)
+
+![Wireframe](./read-me-images/wireframe/start-page.png)
+
+![Wireframe](./read-me-images/wireframe/class-selection.png)
+
+![Wireframe](./read-me-images/wireframe/fighting-sequenz.png)
+
+![Wireframe](./read-me-images/wireframe/fighting-reward.png)
+
+![Wireframe](./read-me-images/wireframe/continue-sequenz.png)
+
+![Wireframe](./read-me-images/wireframe/abilitys.png)
+
+![Wireframe](./read-me-images/wireframe/attack-style.png)
+
+![Wireframe](./read-me-images/wireframe/character-stats.png)
+
+![Wireframe](./read-me-images/wireframe/inventory.png)
+
+![Wireframe](./read-me-images/wireframe/evolution.png)
+
+![Wireframe](./read-me-images/wireframe/classes-and-evolutions.png)
+
+Due to the already large scale of the project i waived the additional classes and evolutions
 
 ### Miro
 
