@@ -160,8 +160,8 @@ function unyieldingWill(player) {
 }
 
 export const assassinSkills = [
-    new Skill("Skill", "Blinding Speed", "Increases all Stats by 10%", "common", (player) => blindingSpeed(player), "assets/images/skills/assassin-skills/blinding-speed.webp", (player) => true),
 
+    new Skill("Skill", "Repair Protocol", "Restores 2% of your maximum HP each time you successfully dodge an attack, enhancing survivability.", "common", (player) => repairProtocol(player), "assets/images/skills/ranger-skills/repair-protocol.webp", (player) => true)
 ];
 
 function blindingSpeed(player) {
@@ -176,7 +176,7 @@ function blindingSpeed(player) {
 
 export const rangerSkills = [
     new Skill("Skill", "Targeted Weakness", "Deals 20% extra damage to enemies with less than 30% HP, exploiting their vulnerabilities.", "common", (enemy) => targetedWeakness(enemy), "assets/images/skills/ranger-skills/targeted-weakness.webp", (player, enemy) => enemy.health <= enemy.maxHealth * 0.3),
-    new Skill("Skill", "Repair Protocol", "Restores 2% of your maximum HP each time you successfully dodge an attack, enhancing survivability.", "common", (player) => repairProtocol(player), "assets/images/skills/ranger-skills/repair-protocol.webp", (player) => true)
+    new Skill("Skill", "Blinding Speed", "Increases all Stats by 10%", "common", (player) => blindingSpeed(player), "assets/images/skills/assassin-skills/blinding-speed.webp", (player) => true)
 ];
 
 
