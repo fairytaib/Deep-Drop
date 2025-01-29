@@ -14,7 +14,6 @@ export class Character {
 
     attack(enemy) {
         const actualDamage = this.calculateDamage(enemy.defense);
-        console.log(`${this.name} attacks ${enemy.name} for ${actualDamage} damage!`);
         return actualDamage;
     }
 
@@ -30,7 +29,6 @@ export class Character {
 
     takeDamage(damage) {
         this.health -= Math.round(damage);
-        console.log(`${this.name} has ${this.health} HP left.`);
     }
 }
 
@@ -199,7 +197,6 @@ function repairProtocol(player) {
         if (dodged) {
             const healAmount = player.maxHealth * 0.02;
             player.health = Math.min(player.health + healAmount, player.maxHealth); // HP überschreiten Maximum nicht
-            console.log(`${player.name} successfully dodged and restored ${healAmount.toFixed(2)} HP!`);
         }
 
         return dodged; // Rückgabe, ob ausgewichen wurde
@@ -247,7 +244,6 @@ function longshot(player) {
 function bloodyDetermination(player) {
     if (player.health <= player.maxHealth * 0.25) {
         player.damage *= 1.15; // Erhöht den Schaden um 15%
-        console.log(`${player.name} is fueled by Bloody Determination! Damage increased by 15%!`);
     }
 }
 
@@ -275,7 +271,6 @@ const playerAttackSound = new Audio("assets/audio/soft-kick.mp3")
 playerAttackSound.volume = 0.25;
 
 export function fight(player, monster, onFightEnd, onDefeat) {
-    console.log(`The battle between ${player.name} and ${monster.name} begins!`);
 
 
     let isGameOver = false;
@@ -295,15 +290,12 @@ export function fight(player, monster, onFightEnd, onDefeat) {
         if (!monster.dodge()) {
             monster.takeDamage(playerDamage);
             playerAttackSound.play(); // Play player attack sound
-            console.log(`${player.name} hits ${monster.name} for ${playerDamage} damage!`);
-        } else {
-            console.log(`${monster.name} dodged the attack!`);
+
         }
 
         updateHealthDisplay(player, monster);
 
         if (monster.health <= 0) {
-            console.log(`${monster.name} has been defeated!`);
             isGameOver = true;
             onFightEnd();
         } else {
@@ -319,15 +311,12 @@ export function fight(player, monster, onFightEnd, onDefeat) {
         if (!player.dodge()) {
             player.takeDamage(monsterDamage);
             monsterAttackSound.play(); // Play monster attack sound
-            console.log(`${monster.name} hits ${player.name} for ${monsterDamage} damage!`);
-        } else {
-            console.log(`${player.name} dodged the attack!`);
+
         }
 
         updateHealthDisplay(player, monster);
 
         if (player.health <= 0) {
-            console.log(`${player.name} has been defeated!`);
             isGameOver = true;
             onDefeat();
         } else {
