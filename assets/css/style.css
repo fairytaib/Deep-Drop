@@ -94,7 +94,7 @@ button:active {
     left: 50%;
     width: 97%;
     height: 97%;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.99);
     display: flex;
     justify-content: center;
     align-items: center;
