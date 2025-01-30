@@ -1,163 +1,175 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=MedievalSharp&display=swap');
 
+/* Root variables for colors, fonts, and themes */
 :root {
-    --title-font: "MedievalSharp", cursive;
-    --text-font: "IM Fell English", serif;
-    --background: #3a3a3a;
-    --character-background: #3a3a3a;
-    --active-button-color: #771104;
-    --tutorial-button-color: #1a76d2;
+    --title-font: "MedievalSharp", cursive; /* Font for titles */
+    --text-font: "IM Fell English", serif; /* Font for general text */
+    --background: #3a3a3a; /* General background color */
+    --character-background: #3a3a3a; /* Background color for characters */
+    --active-button-color: #771104; /* Color for active buttons */
+    --tutorial-button-color: #1a76d2; /* Color for tutorial buttons */
 }
 
+/* Global reset to remove default margins, paddings, and set box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Start Page and general Designs */
+/* Start Page and General Design */
 body {
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url("../images/background/background-three.webp") no-repeat center center / cover;
-
+    background: url("../images/background/background-three.webp") no-repeat center center / cover; /* Background image */
 }
 
+/* Title font style */
 .title-font {
     font-family: var(--title-font);
 }
 
+/* General text font style */
 .text-font {
     font-family: var(--text-font);
 }
 
+/* Button styling */
 button {
     font-size: 1rem;
-    background-color: var(--background);
-    color: #fff;
-    border: 2px solid #2b2b2b;
-    border-radius: 5px;
-    padding: 0.125rem 1.25rem;
-    text-shadow: 1px 1px 2px #000;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    background-color: var(--background); /* Uses the defined background color */
+    color: #fff; /* White text color */
+    border: 2px solid #2b2b2b; /* Dark border */
+    border-radius: 5px; /* Rounded edges */
+    padding: 0.125rem 1.25rem; /* Padding for button spacing */
+    text-shadow: 1px 1px 2px #000; /* Adds a shadow effect to text */
+    cursor: pointer; /* Shows pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
 }
 
+/* Button hover effect */
 button:hover {
-    /* background-color: #4a4e44; */
-    color: #e5e5e5;
-    border-color: #67a667;
-    transform: scale(1.05);
+    /* background-color: #4a4e44;  Previous hover background color */
+    color: #e5e5e5; /* Lighter text color on hover */
+    border-color: #67a667; /* Green border on hover */
+    transform: scale(1.05); /* Slightly enlarges button */
 }
 
+/* Button click (active) effect */
 button:active {
-    transform: scale(0.8);
-    background-color: #2e2e2e;
+    transform: scale(0.8); /* Shrinks button when clicked */
+    background-color: #2e2e2e; /* Darker background when pressed */
 }
 
+/* Outer container box */
 .outer-box {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: column; /* Aligns items vertically */
+    justify-content: space-around; /* Spacing between items */
     align-items: center;
-    width: 31.25rem;
-    height: 36.25rem;
-    border: 1px solid black;
-    background-color: #f5f5dcf2;
-    padding: 0 0 1.25rem 0;
+    width: 31.25rem; /* Fixed width */
+    height: 36.25rem; /* Fixed height */
+    border: 1px solid black; /* Black border */
+    background-color: #f5f5dcf2; /* Light beige background */
+    padding: 0 0 1.25rem 0; /* Padding at the bottom */
 }
 
+/* Title box for layout organization */
 .title-box {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Evenly spaces elements */
     align-items: center;
     width: 90%;
-    gap: 20%;
-    font-family: var(--title-font);
-    padding: 0.75rem 0;
+    gap: 20%; /* Adds spacing between elements */
+    font-family: var(--title-font); /* Uses the title font */
+    padding: 0.75rem 0; /* Adds padding */
 }
 
+/* Centered item within the title box */
 #middle-item {
     display: flex;
     justify-content: center;
     align-items: center;
-    white-space: nowrap;
+    white-space: nowrap; /* Prevents text from wrapping */
 }
-
-/* Loading Screen */
+/* Loading Screen - A full-screen overlay for loading animations */
 #loading-screen {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 97%;
     height: 97%;
-    background-color: rgba(0, 0, 0, 0.99);
+    background-color: rgba(0, 0, 0, 0.99); /* Almost fully black background */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1000; /* Ensures it appears above other elements */
     font-size: 2rem;
     color: white;
-    font-family: var(--title-font);
-    transform: translate(-50%, -50%);
-    opacity: 0;
+    font-family: var(--title-font); /* Uses title font */
+    transform: translate(-50%, -50%); /* Centers the loading screen */
+    opacity: 0; /* Initially hidden */
     visibility: hidden;
 }
 
+/* When loading screen is active, it becomes visible */
 #loading-screen.active {
     opacity: 1;
     visibility: visible;
 }
 
-/* Start Items */
+/* Start Items - Input field and start button */
 #player-name-input,
 #start-button {
-    margin: 0.125rem;
+    margin: 0.125rem; /* Adds spacing between elements */
 }
 
+/* Start button styling */
 #start-button {
-    background-color: var(--active-button-color);
-    text-shadow: none;
+    background-color: var(--active-button-color); /* Uses defined button color */
+    text-shadow: none; /* Removes text shadow for better readability */
 }
 
+/* Wrapper for input fields to center them */
 .input-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack elements vertically */
     align-items: center;
     justify-content: center;
     height: 80%;
-    width: 60%
+    width: 60%;
 }
 
-
+/* Container for the input field */
 .input-container {
     position: relative;
     width: 100%;
 }
 
-/* Input-Feld */
+/* Input field styling */
 #player-name-input {
     width: 100%;
     padding: 5px;
     font-size: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Slightly rounded edges */
 }
 
+/* Placeholder text color, adjustable via CSS variable */
 #player-name-input::placeholder {
     color: var(--placeholder-color, gray);
 }
 
-
-/* Middle Section pure html elements */
+/* Middle Section - Display area for game information and UI elements */
 .display-box {
     position: relative;
     padding: 0.625rem;
 }
 
+/* Display box with column layout */
 .display-box-flex-column {
     display: flex;
     flex-direction: column;
@@ -168,6 +180,7 @@ button:active {
     height: 60%;
 }
 
+/* Display box with row layout */
 .display-box-flex-row {
     display: flex;
     justify-content: center;
@@ -175,109 +188,117 @@ button:active {
     border: 1px solid black;
     width: 90%;
     height: 60%;
-    gap: 1.5rem;
+    gap: 1.5rem; /* Adds spacing between items */
 }
-
 /* Button Display Section */
-/* Button Box Flex direction and general styling */
+/* General styling for buttons and their container */
+
+/* Button box with a row layout */
 .button-box-flex-row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1rem; /* Adds spacing between buttons */
     border: 1px solid black;
     width: 90%;
     height: 25%;
-
 }
 
+/* Button box with a column layout */
 .button-box-flex-column {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.5rem; /* Smaller spacing for column layout */
     border: 1px solid black;
     width: 90%;
     height: 25%;
-
 }
 
+/* General button box styling */
 .button-box {
-    padding: 0.3rem;
+    padding: 0.3rem; /* Adds padding around the button box */
 }
 
-/* Display Section with JavaScript*/
-/* general */
+/* Display Section with JavaScript Manipulation */
+/* General styling */
+
+/* Close button for pop-ups or menus */
 .close-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 0.3rem 0.6rem;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
+    background-color: red; /* Red background for visibility */
+    color: white; /* White text for contrast */
+    border: none; /* Removes default border */
+    padding: 0.3rem 0.6rem; /* Adds padding for better clickability */
+    font-size: 1rem; /* Standard button font size */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    border-radius: 5px; /* Slightly rounded edges */
     position: absolute;
     top: 0.625rem;
     right: 0.625rem;
 }
 
+/* Close button hover effect */
 .close-button:hover {
-    background-color: darkred;
+    background-color: darkred; /* Darker red for hover effect */
 }
 
+/* General styling for player menu and tutorial window */
 .player-menu-display,
 .tutorial-window {
     width: 90%;
     height: 90%;
-    padding: 1.25rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    text-align: center;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 1.25rem; /* Adds internal spacing */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+    color: white; /* White text for readability */
+    text-align: center; /* Centers text */
+    border: 2px solid #fff; /* White border for contrast */
+    border-radius: 10px; /* Rounded edges */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Adds shadow for depth */
 
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    gap: 0.625rem;
+    gap: 0.625rem; /* Adds spacing between elements */
 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Centers the element */
 }
 
+/* Player menu allows scrolling if content overflows */
 .player-menu-display {
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
+/* Display settings for menu items */
 .player-menu-item-display {
     justify-content: space-between;
-    padding: 1.25rem 1.25rem 0.313rem 1.25rem;
+    padding: 1.25rem 1.25rem 0.313rem 1.25rem; /* Adds padding around menu items */
 }
 
-/* tutorial */
+/* Tutorial section */
 
+/* Inner tutorial button inside the game UI */
 #inner-info-button {
-    background-color: var(--tutorial-button-color);
-    text-shadow: none;
-    font-weight: 400;
+    background-color: var(--tutorial-button-color); /* Uses the defined tutorial button color */
+    text-shadow: none; /* Removes text shadow */
+    font-weight: 400; /* Normal font weight */
 }
 
+/* Information icon used for tutorial or help sections */
 #information-icon {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Increases the size of the info icon */
 }
-
-
+/* Info Button - Used for tutorial or help sections */
 #info-button {
-    background-color: var(--tutorial-button-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
+    background-color: var(--tutorial-button-color); /* Uses predefined tutorial button color */
+    border: none; /* Removes default border */
+    border-radius: 50%; /* Makes the button circular */
+    cursor: pointer; /* Changes cursor to pointer on hover */
     padding: 0;
     margin: 0;
     display: inline-flex;
@@ -285,136 +306,140 @@ button:active {
     justify-content: center;
 }
 
+/* Icon inside the info button */
 #info-button i {
-    font-size: 1.5rem;
-    color: inherit;
+    font-size: 1.5rem; /* Adjusts icon size */
+    color: inherit; /* Inherits the color from the parent */
 }
 
+/* Removes the default outline when the button is focused */
 #info-button:focus {
     outline: none;
 }
 
+/* Changes icon color when hovered */
 #info-button:hover i {
-    color: #ccc;
+    color: #ccc; /* Light gray color for hover effect */
 }
 
-
-
+/* Tutorial Window Styling */
 .tutorial-window {
-    justify-content: space-evenly;
+    justify-content: space-evenly; /* Distributes content evenly */
 }
 
+/* Container for tutorial navigation buttons */
 .next-slide-button-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1rem; /* Adds spacing between buttons */
 }
 
+/* Styling for next/previous tutorial slide buttons */
 .next-slide-button {
     min-width: 2.4rem;
     min-height: 2.4rem;
     font-size: 1.2rem;
     text-align: center;
-    border-radius: 50%;
+    border-radius: 50%; /* Circular buttons */
     padding: 0;
 }
 
-/* reset */
+/* Reset Button - Used for restarting the game */
 #restart-button {
-    background-color: #DAA520;
-    /* Gold */
-    color: #000;
-    border: 2px solid #8B7500;
-    box-shadow: 0 0 5px rgba(218, 165, 32, 0.7);
-    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #DAA520; /* Gold color */
+    color: #000; /* Black text for contrast */
+    border: 2px solid #8B7500; /* Dark gold border */
+    box-shadow: 0 0 5px rgba(218, 165, 32, 0.7); /* Soft glow effect */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth scaling and shadow effect */
 }
 
+/* Reset Button Hover Effect */
 #restart-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(218, 165, 32, 1);
+    transform: scale(1.1); /* Slightly enlarges the button */
+    box-shadow: 0 0 15px rgba(218, 165, 32, 1); /* Stronger glow effect */
 }
 
+/* Confirmation Window - Displayed when asking the user for confirmation */
 .confirm-window {
     width: 80%;
     height: 80%;
     padding: 1.25rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    text-align: center;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8); /* Dark, semi-transparent background */
+    color: white; /* White text for contrast */
+    text-align: center; /* Centers text */
+    border: 2px solid #fff; /* White border */
+    border-radius: 10px; /* Rounded edges */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Adds depth with shadow */
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.625rem;
+    gap: 0.625rem; /* Adds spacing between elements */
 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Centers the confirmation window */
 }
 
+/* Buttons inside the confirmation window */
 .no-reset-button,
 .yes-reset-button {
-    width: 60%;
+    width: 60%; /* Sets the width of confirmation buttons */
 }
 
-/* Character Selection */
+/* Character Selection - Styling for class selection buttons */
 .class-button {
-    background-color: var(--active-button-color);
+    background-color: var(--active-button-color); /* Uses predefined active button color */
 }
-
-/* fighting-sequenz */
+/* Fighting Sequence - Display container for the battle */
 .fight-sequenz-display {
     width: 80%;
     height: 80%;
-    border: 1px solid black;
+    border: 1px solid black; /* Black border for visibility */
 }
 
+/* Monster Image - Styling for the displayed enemy */
 .monster-image {
     width: 80%;
     height: 80%;
-    border-radius: 5%;
+    border-radius: 5%; /* Slightly rounded corners */
 }
 
-/* Player Menu */
-/* inside Player Menu */
+/* Player Menu - Contains player-related options */
+/* Inside Player Menu */
 .player-menu-display-option {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; /* Prevents wrapping of elements */
     justify-content: center;
     align-items: center;
-    font-size: 0.5rem;
-    gap: 0.8rem;
+    font-size: 0.5rem; /* Small font size */
+    gap: 0.8rem; /* Spacing between elements */
 }
 
-/* The button that opens with the menu-window */
+/* Button inside the player menu window */
 .player-inner-menu-button {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Adds spacing below */
 }
 
+/* Styling for each selectable item inside the player menu */
 .player-menu-item {
     font-size: 1rem;
-}
-
-.player-menu-item {
     position: relative;
-    cursor: pointer;
+    cursor: pointer; /* Indicates interactivity */
 }
 
+/* Hover description box for player menu items */
 #hover-description-box {
     font-family: var(--text-font);
     font-size: 1rem;
     max-width: 200px;
-    word-wrap: break-word;
+    word-wrap: break-word; /* Ensures long words do not overflow */
 }
 
-
-
+/* Player Menu Buttons */
 .player-menu-button {
     width: 5rem;
     height: 3.5rem;
@@ -422,12 +447,13 @@ button:active {
     text-align: center;
 }
 
-/* fighting menu */
+/* Fighting Styles Section - Contains different combat styles */
 .fighting-styles-container {
     width: 100%;
     font-size: 0.7rem;
 }
 
+/* Fighting Style Option Divs */
 .fighting-styles-divs {
     display: flex;
     justify-content: space-between;
@@ -435,20 +461,19 @@ button:active {
     width: 100%;
 }
 
-
-/* Attributes menu */
+/* Attributes Menu - List of player stats */
 .stats-list {
-    list-style-type: none;
+    list-style-type: none; /* Removes bullet points */
 }
 
-/* Item menu */
+/* Item Menu - Display box for equipped items */
 .equipped-item-box {
     width: 100%;
     border: 2px white solid;
-    height: 40%
+    height: 40%;
 }
 
-/* Reward Sequenz */
+/* Reward Sequence - Container for selecting rewards */
 #reward-container {
     display: flex;
     justify-content: center;
@@ -456,8 +481,9 @@ button:active {
     height: 95%;
 }
 
+/* Reward Button - Styling for selecting a reward */
 .reward-button {
-    background-color: #DAA520;
+    background-color: #DAA520; /* Gold color for a premium feel */
     color: black;
     text-shadow: none;
     font-weight: 600;
