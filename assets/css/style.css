@@ -797,12 +797,12 @@ button {
 @media only screen and (max-width: 370px) {
     .class-item-box {
         justify-content: center;
-        gap: 8px;
+        gap: 0;
     }
 
     .class-display-option {
         width: 30%;
-        margin: 0.2rem;
+        margin: 0.1rem;
     }
 
     .button-box-flex-row {
