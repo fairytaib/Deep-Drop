@@ -1,39 +1,41 @@
-// Basis Character Class for Monster and Player
+// Base Character Class for Monsters and Players
 export class Character {
     constructor(name, maxHealth, health, damage, attackSpeed, defense, dodgeChance, critChance) {
-        this.name = name
-        this.maxHealth = Math.round(maxHealth)
-        this.health = Math.round(health)
-        this.damage = damage
-        this.attackSpeed = attackSpeed
-        this.defense = defense
-        this.dodgeChance = dodgeChance
-        this.critChance = critChance
-
+        this.name = name;
+        this.maxHealth = Math.round(maxHealth);
+        this.health = Math.round(health);
+        this.damage = damage;
+        this.attackSpeed = attackSpeed;
+        this.defense = defense;
+        this.dodgeChance = dodgeChance;
+        this.critChance = critChance;
     }
 
+    // Perform an attack on an enemy and return the actual damage dealt
     attack(enemy) {
         const actualDamage = this.calculateDamage(enemy.defense);
         return actualDamage;
     }
 
+    // Calculate the damage output based on the enemy's defense
     calculateDamage(monsterDefense) {
         const damageReduction = monsterDefense / 100;
         return Math.round(this.damage * (1 - damageReduction));
     }
 
-
+    // Determine if the character successfully dodges an attack
     dodge() {
         return Math.random() < this.dodgeChance / 100;
     }
 
+    // Reduce character's health when taking damage
     takeDamage(damage) {
         this.health -= Math.round(damage);
     }
 }
 
-// Monster Classes
-// Refine Stats later on
+// Monster List
+// These represent different types of enemies in the game
 export const monsterList = [
     new Character("Slime", 50, 50, 10, 2000, 2, 0, 0),
     new Character("Swarm of Rats", 60, 60, 7, 1800, 3, 0, 0),
@@ -45,10 +47,9 @@ export const monsterList = [
     new Character("Troll", 200, 200, 25, 800, 15, 5, 10),
     new Character("Fire Elemental", 220, 220, 30, 700, 10, 10, 25),
     new Character("Boss", 300, 300, 50, 500, 20, 0, 30)
+];
 
-
-]
-
+// Create a backup copy of the original monster list
 export const originalMonsterList = monsterList.map(monster => ({
     name: monster.name,
     health: monster.health,
@@ -58,153 +59,182 @@ export const originalMonsterList = monsterList.map(monster => ({
     dodgeChance: monster.dodgeChance,
     critChance: monster.critChance
 }));
-// Basis Reward Class for Items and Skills
+
+// Base Reward Class for Items and Skills
 export class Reward {
     constructor(type, name, description, rarity, effect, image) {
-        this.type = type
-        this.name = name
-        this.description = description
-        this.rarity = rarity
-        this.effect = effect
-        this.image = image
+        this.type = type;
+        this.name = name;
+        this.description = description;
+        this.rarity = rarity;
+        this.effect = effect;
+        this.image = image;
     }
 }
 
-//Heal Reward
+// Healing Rewards List
 export const allHealsList = [
-    new Reward("Heal", "Broken Potion", "This Potion broke. You can not heal this round.", "common", (player) => player.health *= 1, "assets/images/heal-pictures/broken-potion.webp"),
-    new Reward("Heal", "Small Potion", "This potion increases your current life by 25%", "uncommon", (player) => Math.round(player.health *= 1.25), "assets/images/heal-pictures/small-heal.webp"),
-    new Reward("Heal", "Well made Potion", "This potion increases your current life by 50%", "rare", (player) => Math.round(player.health *= 1.5), "assets/images/heal-pictures/medium-heal.webp"),
-    new Reward("Heal", "The blood of a dragon", "This potion increases your current life by 150%", "epic", (player) => Math.round(player.health *= 2.5), "assets/images/heal-pictures/great-heal.webp")
-]
+    new Reward("Heal", "Broken Potion", "This Potion broke. You cannot heal this round.", "common", 
+        (player) => player.health *= 1, "assets/images/heal-pictures/broken-potion.webp"),
+    new Reward("Heal", "Small Potion", "This potion increases your current life by 25%.", "uncommon", 
+        (player) => Math.round(player.health *= 1.25), "assets/images/heal-pictures/small-heal.webp"),
+    new Reward("Heal", "Well-made Potion", "This potion increases your current life by 50%.", "rare", 
+        (player) => Math.round(player.health *= 1.5), "assets/images/heal-pictures/medium-heal.webp"),
+    new Reward("Heal", "The Blood of a Dragon", "This potion increases your current life by 150%.", "epic", 
+        (player) => Math.round(player.health *= 2.5), "assets/images/heal-pictures/great-heal.webp")
+];
 
-// Item Class
+// Item Class - Extends the Reward class
 export class Item extends Reward {
     constructor(type, name, description, rarity, effect, image) {
         super(type, name, description, rarity, effect, image);
-        this.isApplied = false
+        this.isApplied = false;
     }
+
+    // Apply the item's effect to the player
     applyEffect(player) {
         if (!this.isApplied) {
-            this.effect(player, false); // Anwenden des Effekts
+            this.effect(player, false); // Apply effect
             this.isApplied = true;
         }
     }
 
+    // Reset the item's effect when unequipped
     resetEffect(player) {
         if (this.isApplied) {
-            this.effect(player, true); // Rückgängig machen des Effekts
+            this.effect(player, true); // Reverse effect
             this.isApplied = false;
         }
     }
 }
 
+// List of all available items
 export const allItemsList = [
     // Weapons
-    new Item("Item", "Rusty Short Sword", "Increases damage by 1, but its dull blade makes it less effective than other weapons.", "common", (player, state) => player.damage += state ? -1 : 1, "assets/images/items/weapons/rusty-short-sword.webp"),
-    new Item("Item", "Worn Magic Staff", "Adds 2 to damage, channeling faint magical energy to enhance attacks.", "common", (player, state) => player.damage += state ? -2 : 2, "assets/images/items/weapons/worn-magic-staff.webp"),
-    new Item("Item", "Flame Dagger", "Increases damage by 4, its fiery aura adds a burning effect to your strikes.", "uncommon", (player, state) => player.damage += state ? -4 : 4, "assets/images/items/weapons/flame-dagger.webp"),
-    new Item("Item", "Frost Mace", "Adds 8 to damage, with its freezing cold slowing enemies upon impact.", "rare", (player, state) => player.damage += state ? -8 : 8, "assets/images/items/weapons/frost-mace.webp"),
-    new Item("Item", "Stormblade", "Increases damage by 10, crackling with lightning to deliver powerful strikes.", "epic", (player, state) => player.damage += state ? -10 : 10, "assets/images/items/weapons/stormblade.webp"),
+    new Item("Item", "Rusty Short Sword", "Increases damage by 1, but its dull blade makes it less effective than other weapons.", "common", 
+        (player, state) => player.damage += state ? -1 : 1, "assets/images/items/weapons/rusty-short-sword.webp"),
+    new Item("Item", "Worn Magic Staff", "Adds 2 to damage, channeling faint magical energy to enhance attacks.", "common", 
+        (player, state) => player.damage += state ? -2 : 2, "assets/images/items/weapons/worn-magic-staff.webp"),
+    new Item("Item", "Flame Dagger", "Increases damage by 4, its fiery aura adds a burning effect to your strikes.", "uncommon", 
+        (player, state) => player.damage += state ? -4 : 4, "assets/images/items/weapons/flame-dagger.webp"),
+    new Item("Item", "Frost Mace", "Adds 8 to damage, with its freezing cold slowing enemies upon impact.", "rare", 
+        (player, state) => player.damage += state ? -8 : 8, "assets/images/items/weapons/frost-mace.webp"),
+    new Item("Item", "Stormblade", "Increases damage by 10, crackling with lightning to deliver powerful strikes.", "epic", 
+        (player, state) => player.damage += state ? -10 : 10, "assets/images/items/weapons/stormblade.webp"),
 
     // Helmets
-    new Item("Item", "Leather Hood", "Adds 1 to defense, offering minimal protection against weak attacks.", "common", (player, state) => player.defense += state ? -1 : 1, "assets/images/items/helmets/leather-hood.webp"),
-    new Item("Item", "Iron Helmet", "Increases defense by 2, providing basic protection for the wearer.", "common", (player, state) => player.defense += state ? -2 : 2, "assets/images/items/helmets/iron-helmet.webp"),
-    new Item("Item", "Runed Helmet", "Boosts defense by 4 with faintly glowing runes enhancing its protective capabilities.", "uncommon", (player, state) => player.defense += state ? -4 : 4, "assets/images/items/helmets/rune-helmet.webp"),
-    new Item("Item", "Guardian’s Helmet", "Adds 8 to defense, designed for those who stand firm against incoming attacks.", "rare", (player, state) => player.defense += state ? -8 : 8, "assets/images/items/helmets/guardian-helmet.webp"),
-    new Item("Item", "Dragonsteel Helmet", "Increases defense by 12, its legendary craftsmanship providing unmatched protection.", "epic", (player, state) => player.defense += state ? -12 : 12, "assets/images/items/helmets/dragonsteel-helmet.webp"),
+    new Item("Item", "Leather Hood", "Adds 1 to defense, offering minimal protection against weak attacks.", "common", 
+        (player, state) => player.defense += state ? -1 : 1, "assets/images/items/helmets/leather-hood.webp"),
+    new Item("Item", "Iron Helmet", "Increases defense by 2, providing basic protection for the wearer.", "common", 
+        (player, state) => player.defense += state ? -2 : 2, "assets/images/items/helmets/iron-helmet.webp"),
+    new Item("Item", "Runed Helmet", "Boosts defense by 4 with faintly glowing runes enhancing its protective capabilities.", "uncommon", 
+        (player, state) => player.defense += state ? -4 : 4, "assets/images/items/helmets/rune-helmet.webp"),
+    new Item("Item", "Guardian’s Helmet", "Adds 8 to defense, designed for those who stand firm against incoming attacks.", "rare", 
+        (player, state) => player.defense += state ? -8 : 8, "assets/images/items/helmets/guardian-helmet.webp"),
+    new Item("Item", "Dragonsteel Helmet", "Increases defense by 12, its legendary craftsmanship providing unmatched protection.", "epic", 
+        (player, state) => player.defense += state ? -12 : 12, "assets/images/items/helmets/dragonsteel-helmet.webp"),
 
     // Armor
-    new Item("Item", "Leather Jerkin", "Adds 10 to health, offering basic resistance against physical damage.", "common", (player, state) => player.health += state ? -10 : 10, "assets/images/items/armor/leather-jerkin.webp"),
-    new Item("Item", "Chainmail Armor", "Boosts health by 14, providing decent protection against stronger blows.", "common", (player, state) => player.health += state ? -14 : 14, "assets/images/items/armor/chainmail-armor.webp"),
-    new Item("Item", "Armored Robe", "Increases health by 20, blending mobility with added protection.", "uncommon", (player, state) => player.health += state ? -20 : 20, "assets/images/items/armor/armored-robe.webp"),
-    new Item("Item", "Shadow Armor", "Adds 40 to health, allowing the wearer to blend into the shadows and avoid detection.", "rare", (player, state) => player.health += state ? -40 : 40, "assets/images/items/armor/shadow-armor.webp"),
-    new Item("Item", "Titan Armor", "Boosts health by 100, its legendary durability shielding against powerful attacks.", "epic", (player, state) => player.health += state ? -100 : 100, "assets/images/items/armor/titan-armor.webp"),
-
-    // Shoes
-    new Item("Item", "Worn Boots", "Increases dodge chance by 1, offering slight agility despite their age.", "common", (player, state) => player.dodgeChance += state ? -1 : 1, "assets/images/items/shoes/worn-boots.webp"),
-    new Item("Item", "Light Sandals", "Boosts dodge chance by 1, improving movement speed and evasion.", "common", (player, state) => player.dodgeChance += state ? -1 : 1, "assets/images/items/shoes/light-sandals.webp"),
-    new Item("Item", "Windrunner Boots", "Adds 7 to dodge chance, their enchantment enhancing the wearer’s speed.", "uncommon", (player, state) => player.dodgeChance += state ? -7 : 7, "assets/images/items/shoes/windrunner-boots.webp"),
-    new Item("Item", "Wanderer’s Boots", "Boosts dodge chance by 12, their sturdy design aiding long journeys and evasion.", "rare", (player, state) => player.dodgeChance += state ? -12 : 12, "assets/images/items/shoes/wanderers-boots.webp"),
-    new Item("Item", "Phantom Shoes", "Increases dodge chance by 20, making the wearer almost ghost-like in movement.", "epic", (player, state) => player.dodgeChance += state ? -20 : 20, "assets/images/items/shoes/phantom-shoes.webp")
+    new Item("Item", "Leather Jerkin", "Adds 10 to health, offering basic resistance against physical damage.", "common", 
+        (player, state) => player.health += state ? -10 : 10, "assets/images/items/armor/leather-jerkin.webp"),
+    new Item("Item", "Chainmail Armor", "Boosts health by 14, providing decent protection against stronger blows.", "common", 
+        (player, state) => player.health += state ? -14 : 14, "assets/images/items/armor/chainmail-armor.webp"),
+    new Item("Item", "Armored Robe", "Increases health by 20, blending mobility with added protection.", "uncommon", 
+        (player, state) => player.health += state ? -20 : 20, "assets/images/items/armor/armored-robe.webp"),
+    new Item("Item", "Shadow Armor", "Adds 40 to health, allowing the wearer to blend into the shadows and avoid detection.", "rare", 
+        (player, state) => player.health += state ? -40 : 40, "assets/images/items/armor/shadow-armor.webp"),
+    new Item("Item", "Titan Armor", "Boosts health by 100, its legendary durability shielding against powerful attacks.", "epic", 
+        (player, state) => player.health += state ? -100 : 100, "assets/images/items/armor/titan-armor.webp")
 ];
 
-//Numbers have to be edited
-//Skill Class
-
+// Skill Class extending the Reward class
 export class Skill extends Reward {
     constructor(type, name, description, rarity, effect, image, triggerCondition = () => true) {
-        super(type, name, description, rarity, effect, image)
-        this.triggerCondition = triggerCondition
-        this.isApplied = false
+        super(type, name, description, rarity, effect, image);
+        this.triggerCondition = triggerCondition;
+        this.isApplied = false;
     }
 
+    // Apply the skill effect if the trigger condition is met
     applyEffect(player, enemy) {
         if (this.triggerCondition(player, enemy) && !this.isApplied) {
-            this.effect(player, enemy); // Applies the skill's effect if the condition is met
-            this.isApplied = true
+            this.effect(player, enemy);
+            this.isApplied = true;
         }
     }
 }
 
+// List of knight-specific skills
 export const knightSkills = [
-    new Skill("Skill", "Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses against attacks.", "common", (player) => player.defense = (player.defense || 0) + 0.15, "assets/images/skills/knight-skills/shieldwall.webp", (player, enemy) => true),
-    new Skill("Skill", "Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP, keeping the fight alive.", "rare", (player) => unyieldingWill(player), "assets/images/skills/knight-skills/unyielding-will.webp", (player) => player.health === 1 && Math.random() <= 0.1)
+    new Skill("Skill", "Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses.", "common", 
+        (player) => player.defense = (player.defense || 0) + 0.15, "assets/images/skills/knight-skills/shieldwall.webp", 
+        (player, enemy) => true),
+    new Skill("Skill", "Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP.", "rare", 
+        (player) => unyieldingWill(player), "assets/images/skills/knight-skills/unyielding-will.webp", 
+        (player) => player.health === 1 && Math.random() <= 0.1)
 ];
 
+// Skill function for Unyielding Will
 function unyieldingWill(player) {
-    let survive = Math.floor(Math.random() * 101)
-    if (player.health == 1 && survive >= 10) {
-        player.health = player.maxHealth
+    let survive = Math.floor(Math.random() * 101);
+    if (player.health === 1 && survive >= 10) {
+        player.health = player.maxHealth;
     }
 }
 
+// List of assassin-specific skills
 export const assassinSkills = [
-
-    new Skill("Skill", "Repair Protocol", "Restores 2% of your maximum HP each time you successfully dodge an attack, enhancing survivability.", "common", (player) => repairProtocol(player), "assets/images/skills/ranger-skills/repair-protocol.webp", (player) => true)
+    new Skill("Skill", "Repair Protocol", "Restores 2% of your max HP each time you dodge an attack.", "common", 
+        (player) => repairProtocol(player), "assets/images/skills/ranger-skills/repair-protocol.webp", 
+        (player) => true)
 ];
 
+// Skill function for Blinding Speed
 function blindingSpeed(player) {
-    player.damage *= 1.1
-    player.attackSpeed *= 1.1
-    player.defense *= 1.1
-    player.dodgeChance += 10
-    player.critChance += 10
+    player.damage *= 1.1;
+    player.attackSpeed *= 1.1;
+    player.defense *= 1.1;
+    player.dodgeChance += 10;
+    player.critChance += 10;
 }
 
-// }
-
+// List of ranger-specific skills
 export const rangerSkills = [
-    new Skill("Skill", "Targeted Weakness", "Deals 20% extra damage to enemies with less than 30% HP, exploiting their vulnerabilities.", "common", (enemy) => targetedWeakness(enemy), "assets/images/skills/ranger-skills/targeted-weakness.webp", (player, enemy) => enemy.health <= enemy.maxHealth * 0.3),
-    new Skill("Skill", "Blinding Speed", "Increases all Stats by 10%", "common", (player) => blindingSpeed(player), "assets/images/skills/assassin-skills/blinding-speed.webp", (player) => true)
+    new Skill("Skill", "Targeted Weakness", "Deals 20% extra damage to enemies with <30% HP.", "common", 
+        (enemy) => targetedWeakness(enemy), "assets/images/skills/ranger-skills/targeted-weakness.webp", 
+        (player, enemy) => enemy.health <= enemy.maxHealth * 0.3),
+    new Skill("Skill", "Blinding Speed", "Increases all stats by 10%.", "common", 
+        (player) => blindingSpeed(player), "assets/images/skills/assassin-skills/blinding-speed.webp", 
+        (player) => true)
 ];
 
-
+// Skill function for Targeted Weakness
 function targetedWeakness(enemy) {
-    if (enemy.healt <= (enemy.maxHealth * 0.3)) {
-        enemy.defense *= 0.8
+    if (enemy.health <= (enemy.maxHealth * 0.3)) {
+        enemy.defense *= 0.8;
     }
 }
 
+// Skill function for Repair Protocol
 function repairProtocol(player) {
-    // Speichere die ursprüngliche Dodge-Funktion
+    // Save the original dodge function
     const originalDodge = player.dodge.bind(player);
 
-    // Überschreibe die Dodge-Funktion des Spielers
+    // Override the player's dodge function
     player.dodge = function () {
-        const dodged = originalDodge(); // Aufruf der ursprünglichen Dodge-Funktion
+        const dodged = originalDodge(); // Call original dodge function
 
         if (dodged) {
             const healAmount = player.maxHealth * 0.02;
-            player.health = Math.min(player.health + healAmount, player.maxHealth); // HP überschreiten Maximum nicht
+            player.health = Math.min(player.health + healAmount, player.maxHealth); // Prevent overhealing
         }
 
-        return dodged; // Rückgabe, ob ausgewichen wurde
+        return dodged; // Return dodge result
     };
 }
 
 
-
+// List of universal skills available to all character classes
 export const universalSkills = [
     new Skill(
         "Skill",
@@ -235,115 +265,116 @@ export const universalSkills = [
     )
 ];
 
-
+// Skill function for Longshot - increases damage but reduces attack speed
 function longshot(player) {
-    player.damage *= 2
-    player.attackSpeed *= 0.5
+    player.damage *= 2;
+    player.attackSpeed *= 0.5;
 }
 
+// Skill function for Bloody Determination - increases damage when HP is low
 function bloodyDetermination(player) {
     if (player.health <= player.maxHealth * 0.25) {
-        player.damage *= 1.15; // Erhöht den Schaden um 15%
+        player.damage *= 1.15; // Increases damage by 15%
     }
 }
 
+// Skill function for Path of Balance - boosts attack and defense when HP is high
 function pathOfBalance(player) {
-    if (player.hp >= (player.maxHealth * 0.75)) {
-        player.damage *= 1.1
+    if (player.health >= (player.maxHealth * 0.75)) {
+        player.damage *= 1.1;
     }
 }
 
 // Fighting System
-//Player chooses Class
-
+// Activate skills for the player
 export function activateSkills(player) {
     playerAvailableSkills.forEach(skill => {
         if (skill.effect) {
-            skill.effect(player); // Wendet den Effekt auf den Spieler an
+            skill.effect(player); // Apply the skill effect to the player
         }
     });
 }
 
-// Insert sounds
-const monsterAttackSound = new Audio("assets/audio/fast-punch.mp3")
+// Insert sounds for combat actions
+const monsterAttackSound = new Audio("assets/audio/fast-punch.mp3");
 monsterAttackSound.volume = 0.25;
-const playerAttackSound = new Audio("assets/audio/soft-kick.mp3")
+
+const playerAttackSound = new Audio("assets/audio/soft-kick.mp3");
 playerAttackSound.volume = 0.25;
-
+// Function to handle the fight between player and monster
 export function fight(player, monster, onFightEnd, onDefeat) {
+    let isGameOver = false; // Track if the fight has ended
 
-
-    let isGameOver = false;
-
-    // Apply all player effects at the start of the fight
+    // Apply all available player skills at the start of the fight
     playerAvailableSkills.forEach(skill => {
         if (skill.type === 'Skill') {
             skill.applyEffect(player, monster);
         }
     });
 
+    // Player's attack turn
     function playerAttackTurn() {
-        if (player.health <= 0 || isGameOver) return;
+        if (player.health <= 0 || isGameOver) return; // Stop if player is dead or game is over
 
-        const playerDamage = player.attack(monster);
+        const playerDamage = player.attack(monster); // Calculate player's attack damage
 
         if (!monster.dodge()) {
-            monster.takeDamage(playerDamage);
+            monster.takeDamage(playerDamage); // Apply damage if the monster doesn't dodge
             playerAttackSound.play(); // Play player attack sound
-
         }
 
-        updateHealthDisplay(player, monster);
+        updateHealthDisplay(player, monster); // Update health display after attack
 
         if (monster.health <= 0) {
-            isGameOver = true;
-            onFightEnd();
+            isGameOver = true; // Mark game as over
+            onFightEnd(); // Call the function for fight completion
         } else {
-            setTimeout(monsterAttackTurn, monster.attackSpeed);
+            setTimeout(monsterAttackTurn, monster.attackSpeed); // Monster attacks next
         }
     }
 
+    // Monster's attack turn
     function monsterAttackTurn() {
-        if (monster.health <= 0 || isGameOver) return;
+        if (monster.health <= 0 || isGameOver) return; // Stop if monster is dead or game is over
 
-        const monsterDamage = monster.attack(player);
+        const monsterDamage = monster.attack(player); // Calculate monster's attack damage
 
         if (!player.dodge()) {
-            player.takeDamage(monsterDamage);
+            player.takeDamage(monsterDamage); // Apply damage if player doesn't dodge
             monsterAttackSound.play(); // Play monster attack sound
-
         }
 
-        updateHealthDisplay(player, monster);
+        updateHealthDisplay(player, monster); // Update health display after attack
 
         if (player.health <= 0) {
-            isGameOver = true;
-            onDefeat();
+            isGameOver = true; // Mark game as over
+            onDefeat(); // Call the function for player's defeat
         } else {
-            setTimeout(playerAttackTurn, player.attackSpeed);
+            setTimeout(playerAttackTurn, player.attackSpeed); // Player attacks next
         }
     }
 
-    // Start the fight
+    // Start the fight with both player and monster attacking based on their speeds
     setTimeout(playerAttackTurn, player.attackSpeed);
     setTimeout(monsterAttackTurn, monster.attackSpeed);
 }
 
-
+// Function to update the player's and monster's health display in the UI
 function updateHealthDisplay(player, monster) {
     const playerHealth = document.getElementById("player-hp");
     const monsterHealth = document.getElementById("monster-hp");
 
     if (playerHealth) {
-        playerHealth.textContent = Math.round(player.health);
+        playerHealth.textContent = Math.round(player.health); // Update player's health display
     }
 
     if (monsterHealth) {
-        monsterHealth.textContent = Math.round(monster.health);
+        monsterHealth.textContent = Math.round(monster.health); // Update monster's health display
     }
 }
 
-export let playerAvailableItems = []
+// List of items available to the player
+export let playerAvailableItems = [];
 
 export let playerAvailableFightingStyle = [{
         name: "Aggressive Attacker",
@@ -383,6 +414,5 @@ export let playerAvailableFightingStyle = [{
         effect: (player) => player.maxHealth *= 1
     }
 ];
-
 
 export let playerAvailableSkills = []
