@@ -372,16 +372,20 @@ The HTML and CSS have been validated using the W3C Validator to ensure complianc
 
 - Index Page HTML Validation:
 
-
 ![W3C Validation Index page](./read-me-images/w3c-validation/html-validation.png)
 
 - CSS Validation:
 
-  ![W3C css validation ](./read-me-images/w3c-validation/css-validation.png)
+![W3C css validation ](./read-me-images/w3c-validation/css-validation.png)
 
-  - Javascript Validation:
+- Script.js Validation:
 
-  ![W3C css validation ](./read-me-images/w3c-validation/javascript-validation.png)
+![W3C css validation ](./read-me-images/w3c-validation/javascript-validation.png)
+
+- class-list.js Validation:
+  
+![W3C css validation ](./read-me-images/w3c-validation/class-list-validation.png)
+
 
 
 ## Bugs Encountered, Solutions, and General Observations
