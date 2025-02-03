@@ -74,13 +74,13 @@ export class Reward {
 
 // Healing Rewards List
 export const allHealsList = [
-    new Reward("Heal", "Broken Potion", "This Potion broke. You cannot heal this round.", "common", 
+    new Reward("Heal", "Broken Potion", "This Potion broke. You cannot heal this round.", "common",
         (player) => player.health *= 1, "assets/images/heal-pictures/broken-potion.webp"),
-    new Reward("Heal", "Small Potion", "This potion increases your current life by 25%.", "uncommon", 
+    new Reward("Heal", "Small Potion", "This potion increases your current life by 25%.", "uncommon",
         (player) => Math.round(player.health *= 1.25), "assets/images/heal-pictures/small-heal.webp"),
-    new Reward("Heal", "Well-made Potion", "This potion increases your current life by 50%.", "rare", 
+    new Reward("Heal", "Well-made Potion", "This potion increases your current life by 50%.", "rare",
         (player) => Math.round(player.health *= 1.5), "assets/images/heal-pictures/medium-heal.webp"),
-    new Reward("Heal", "The Blood of a Dragon", "This potion increases your current life by 150%.", "epic", 
+    new Reward("Heal", "The Blood of a Dragon", "This potion increases your current life by 150%.", "epic",
         (player) => Math.round(player.health *= 2.5), "assets/images/heal-pictures/great-heal.webp")
 ];
 
@@ -111,39 +111,39 @@ export class Item extends Reward {
 // List of all available items
 export const allItemsList = [
     // Weapons
-    new Item("Item", "Rusty Short Sword", "Increases damage by 1, but its dull blade makes it less effective than other weapons.", "common", 
+    new Item("Item", "Rusty Short Sword", "Increases damage by 1, but its dull blade makes it less effective than other weapons.", "common",
         (player, state) => player.damage += state ? -1 : 1, "assets/images/items/weapons/rusty-short-sword.webp"),
-    new Item("Item", "Worn Magic Staff", "Adds 2 to damage, channeling faint magical energy to enhance attacks.", "common", 
+    new Item("Item", "Worn Magic Staff", "Adds 2 to damage, channeling faint magical energy to enhance attacks.", "common",
         (player, state) => player.damage += state ? -2 : 2, "assets/images/items/weapons/worn-magic-staff.webp"),
-    new Item("Item", "Flame Dagger", "Increases damage by 4, its fiery aura adds a burning effect to your strikes.", "uncommon", 
+    new Item("Item", "Flame Dagger", "Increases damage by 4, its fiery aura adds a burning effect to your strikes.", "uncommon",
         (player, state) => player.damage += state ? -4 : 4, "assets/images/items/weapons/flame-dagger.webp"),
-    new Item("Item", "Frost Mace", "Adds 8 to damage, with its freezing cold slowing enemies upon impact.", "rare", 
+    new Item("Item", "Frost Mace", "Adds 8 to damage, with its freezing cold slowing enemies upon impact.", "rare",
         (player, state) => player.damage += state ? -8 : 8, "assets/images/items/weapons/frost-mace.webp"),
-    new Item("Item", "Stormblade", "Increases damage by 10, crackling with lightning to deliver powerful strikes.", "epic", 
+    new Item("Item", "Stormblade", "Increases damage by 10, crackling with lightning to deliver powerful strikes.", "epic",
         (player, state) => player.damage += state ? -10 : 10, "assets/images/items/weapons/stormblade.webp"),
 
     // Helmets
-    new Item("Item", "Leather Hood", "Adds 1 to defense, offering minimal protection against weak attacks.", "common", 
+    new Item("Item", "Leather Hood", "Adds 1 to defense, offering minimal protection against weak attacks.", "common",
         (player, state) => player.defense += state ? -1 : 1, "assets/images/items/helmets/leather-hood.webp"),
-    new Item("Item", "Iron Helmet", "Increases defense by 2, providing basic protection for the wearer.", "common", 
+    new Item("Item", "Iron Helmet", "Increases defense by 2, providing basic protection for the wearer.", "common",
         (player, state) => player.defense += state ? -2 : 2, "assets/images/items/helmets/iron-helmet.webp"),
-    new Item("Item", "Runed Helmet", "Boosts defense by 4 with faintly glowing runes enhancing its protective capabilities.", "uncommon", 
+    new Item("Item", "Runed Helmet", "Boosts defense by 4 with faintly glowing runes enhancing its protective capabilities.", "uncommon",
         (player, state) => player.defense += state ? -4 : 4, "assets/images/items/helmets/rune-helmet.webp"),
-    new Item("Item", "Guardian’s Helmet", "Adds 8 to defense, designed for those who stand firm against incoming attacks.", "rare", 
+    new Item("Item", "Guardian’s Helmet", "Adds 8 to defense, designed for those who stand firm against incoming attacks.", "rare",
         (player, state) => player.defense += state ? -8 : 8, "assets/images/items/helmets/guardian-helmet.webp"),
-    new Item("Item", "Dragonsteel Helmet", "Increases defense by 12, its legendary craftsmanship providing unmatched protection.", "epic", 
+    new Item("Item", "Dragonsteel Helmet", "Increases defense by 12, its legendary craftsmanship providing unmatched protection.", "epic",
         (player, state) => player.defense += state ? -12 : 12, "assets/images/items/helmets/dragonsteel-helmet.webp"),
 
     // Armor
-    new Item("Item", "Leather Jerkin", "Adds 10 to health, offering basic resistance against physical damage.", "common", 
+    new Item("Item", "Leather Jerkin", "Adds 10 to health, offering basic resistance against physical damage.", "common",
         (player, state) => player.health += state ? -10 : 10, "assets/images/items/armor/leather-jerkin.webp"),
-    new Item("Item", "Chainmail Armor", "Boosts health by 14, providing decent protection against stronger blows.", "common", 
+    new Item("Item", "Chainmail Armor", "Boosts health by 14, providing decent protection against stronger blows.", "common",
         (player, state) => player.health += state ? -14 : 14, "assets/images/items/armor/chainmail-armor.webp"),
-    new Item("Item", "Armored Robe", "Increases health by 20, blending mobility with added protection.", "uncommon", 
+    new Item("Item", "Armored Robe", "Increases health by 20, blending mobility with added protection.", "uncommon",
         (player, state) => player.health += state ? -20 : 20, "assets/images/items/armor/armored-robe.webp"),
-    new Item("Item", "Shadow Armor", "Adds 40 to health, allowing the wearer to blend into the shadows and avoid detection.", "rare", 
+    new Item("Item", "Shadow Armor", "Adds 40 to health, allowing the wearer to blend into the shadows and avoid detection.", "rare",
         (player, state) => player.health += state ? -40 : 40, "assets/images/items/armor/shadow-armor.webp"),
-    new Item("Item", "Titan Armor", "Boosts health by 100, its legendary durability shielding against powerful attacks.", "epic", 
+    new Item("Item", "Titan Armor", "Boosts health by 100, its legendary durability shielding against powerful attacks.", "epic",
         (player, state) => player.health += state ? -100 : 100, "assets/images/items/armor/titan-armor.webp")
 ];
 
@@ -166,11 +166,11 @@ export class Skill extends Reward {
 
 // List of knight-specific skills
 export const knightSkills = [
-    new Skill("Skill", "Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses.", "common", 
-        (player) => player.defense = (player.defense || 0) + 0.15, "assets/images/skills/knight-skills/shieldwall.webp", 
+    new Skill("Skill", "Shieldwall", "Reduces incoming damage by 15%, fortifying your defenses.", "common",
+        (player) => player.defense = (player.defense || 0) + 0.15, "assets/images/skills/knight-skills/shieldwall.webp",
         (player, enemy) => true),
-    new Skill("Skill", "Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP.", "rare", 
-        (player) => unyieldingWill(player), "assets/images/skills/knight-skills/unyielding-will.webp", 
+    new Skill("Skill", "Unyielding Will", "Grants a 10% chance to survive a lethal attack and restore full HP.", "rare",
+        (player) => unyieldingWill(player), "assets/images/skills/knight-skills/unyielding-will.webp",
         (player) => player.health === 1 && Math.random() <= 0.1)
 ];
 
@@ -184,8 +184,8 @@ function unyieldingWill(player) {
 
 // List of assassin-specific skills
 export const assassinSkills = [
-    new Skill("Skill", "Repair Protocol", "Restores 2% of your max HP each time you dodge an attack.", "common", 
-        (player) => repairProtocol(player), "assets/images/skills/ranger-skills/repair-protocol.webp", 
+    new Skill("Skill", "Repair Protocol", "Restores 2% of your max HP each time you dodge an attack.", "common",
+        (player) => repairProtocol(player), "assets/images/skills/ranger-skills/repair-protocol.webp",
         (player) => true)
 ];
 
@@ -200,11 +200,11 @@ function blindingSpeed(player) {
 
 // List of ranger-specific skills
 export const rangerSkills = [
-    new Skill("Skill", "Targeted Weakness", "Deals 20% extra damage to enemies with <30% HP.", "common", 
-        (enemy) => targetedWeakness(enemy), "assets/images/skills/ranger-skills/targeted-weakness.webp", 
+    new Skill("Skill", "Targeted Weakness", "Deals 20% extra damage to enemies with <30% HP.", "common",
+        (enemy) => targetedWeakness(enemy), "assets/images/skills/ranger-skills/targeted-weakness.webp",
         (player, enemy) => enemy.health <= enemy.maxHealth * 0.3),
-    new Skill("Skill", "Blinding Speed", "Increases all stats by 10%.", "common", 
-        (player) => blindingSpeed(player), "assets/images/skills/assassin-skills/blinding-speed.webp", 
+    new Skill("Skill", "Blinding Speed", "Increases all stats by 10%.", "common",
+        (player) => blindingSpeed(player), "assets/images/skills/assassin-skills/blinding-speed.webp",
         (player) => true)
 ];
 
@@ -296,10 +296,10 @@ export function activateSkills(player) {
 }
 
 // Insert sounds for combat actions
-const monsterAttackSound = new Audio("assets/audio/fast-punch.mp3");
+export const monsterAttackSound = new Audio("assets/audio/fast-punch.mp3");
 monsterAttackSound.volume = 0.25;
 
-const playerAttackSound = new Audio("assets/audio/soft-kick.mp3");
+export const playerAttackSound = new Audio("assets/audio/soft-kick.mp3");
 playerAttackSound.volume = 0.25;
 // Function to handle the fight between player and monster
 export function fight(player, monster, onFightEnd, onDefeat) {
