@@ -660,30 +660,23 @@ button:active {
 }
 
 /* Scrollbar */
-/* Für Webkit-Browser (Chrome, Edge, Safari) */
+
 ::-webkit-scrollbar {
     width: 0.2rem;
-    /* Breite der Scrollbar */
-
 }
 
 ::-webkit-scrollbar-thumb {
     background: #888;
-    /* Farbe des Scrollbalkens */
     border-radius: 10px;
-    /* Abgerundete Ecken */
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
-    /* Farbe beim Hover */
 }
 
 ::-webkit-scrollbar-track {
     background: var(--background);
-    /* Hintergrund der Scrollbar */
     border-radius: 10px;
-    /* Abgerundete Ecken */
 }
 
 
@@ -713,7 +706,6 @@ button {
     margin: 0;
     font-size: 0.9rem;
     text-shadow: 1px 1px 2px #000;
-
     letter-spacing: 0.5px;
 }
 
@@ -756,7 +748,6 @@ button {
         border-radius: 15px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
         margin: auto;
-        /* Damit es wirklich in der Mitte bleibt */
     }
 
     #loading-screen {
@@ -788,7 +779,6 @@ button {
     .button-box {
         display: flex;
         justify-content: space-evenly;
-        /* Buttons nebeneinander */
         width: 100%;
         padding: 1rem;
     }
