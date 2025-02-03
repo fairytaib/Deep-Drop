@@ -32,9 +32,9 @@ Experience the game firsthand: [Play Deep Drop here!](https://fairytaib.github.i
 
 ![Deep Drop restart view](./read-me-images/general-images/restart-view.png)
 
-![Deep Drop restart view](./read-me-images/general-images/losing-screen.png)
+![Deep Drop losing view](./read-me-images/general-images/losing-screen.png)
 
-![Deep Drop restart view](./read-me-images/general-images/winning-screen.png)
+![Deep Drop winning view](./read-me-images/general-images/winning-screen.png)
 
 ## Features
 
@@ -73,21 +73,21 @@ Experience the game firsthand: [Play Deep Drop here!](https://fairytaib.github.i
 
 - **Dynamic Menus**:
 
-![Deep Drop reward sequenz](./read-me-images/specific-images/player-menu-buttons.png)
+![Deep Drop player menu buttons](./read-me-images/specific-images/player-menu-buttons.png)
 
   - Access intuitive interfaces for managing character stats, equipping items, and selecting fighting styles.
 
 - **Tutorial Mode and restart button**:
 
-![Deep Drop reward sequenz](./read-me-images/general-images/tutorial-view.png)
+![Deep Drop tutorial](./read-me-images/general-images/tutorial-view.png)
 
-![Deep Drop reward sequenz](./read-me-images/specific-images/header-menu-buttons.png)
+![Deep Drop header buttons](./read-me-images/specific-images/header-menu-buttons.png)
 
   - A comprehensive step-by-step guide introduces players to gameplay mechanics, ensuring a smooth onboarding experience next to a reset button to start over if needed.
 
 - **Loading Screens**:
 
-![Deep Drop reward sequenz](./read-me-images/specific-images/loading-screen.png)
+![Deep Drop loading screen](./read-me-images/specific-images/loading-screen.png)
 
   - Seamlessly transition between game phases with immersive loading visuals.
 
@@ -125,9 +125,9 @@ Experience the game firsthand: [Play Deep Drop here!](https://fairytaib.github.i
 The player has the option to reset his game and start over if he doesn't like his run.
 His decision has to be confirmed within another Screen
 
-![Restart Button inner view](./read-me-images/specific-images/restart-button.png)
+![Restart Button restart button](./read-me-images/specific-images/restart-button.png)
 
-![Restart Button inner view](./read-me-images/general-images/restart-view.png)
+![Restart Button restart view](./read-me-images/general-images/restart-view.png)
 
 ### Tutorial
 A tutorial is integrated for better understanding at the start of the game and during the game
@@ -136,18 +136,18 @@ A tutorial is integrated for better understanding at the start of the game and d
 
 When the player starts a run the icon below is always clickable to let the user reread the rules
 
-![How to play Button ](./read-me-images/specific-images/how-to-play-button-icon.png)
+![How to play Button Icon](./read-me-images/specific-images/how-to-play-button-icon.png)
 
 He can manouver through the slides by clicking on the buttons marked with an arrow.
 
-![How to play Button ](./read-me-images/general-images/tutorial-view.png)
+![Tutorial view](./read-me-images/general-images/tutorial-view.png)
 
 ### Tooltip
 Users can inspect a Skill, Item or Fighting Skill by hovering or clicking the name of it
 
-![Tooltip view ](./read-me-images/specific-images/filled-skill-menu.png)
+![Skill menu](./read-me-images/specific-images/filled-skill-menu.png)
 
-![Tooltip view ](./read-me-images/specific-images/hover-skill-description.png)
+![Skill menu hovered ](./read-me-images/specific-images/hover-skill-description.png)
 
 ### Rewards and Progression
 - Items and skills provide meaningful choices after every battle.
@@ -163,31 +163,31 @@ The development of Deep Drop followed a structured and iterative process, ensuri
 
 To begin the project, I created wireframes using Balsamiq. These wireframes allowed me to visualize the overall structure and design of the game. This step was crucial in translating abstract ideas into tangible layouts, ensuring that the design would align with the game's core objectives. Although some elements changed during the process the foundation was build on these wireframes.
 
-![Wireframe](./read-me-images/wireframe/basic-site-structure.png)
+![Wireframe basic structure](./read-me-images/wireframe/basic-site-structure.png)
 
-![Wireframe](./read-me-images/wireframe/mobile-view.png)
+![Wireframe mobile view](./read-me-images/wireframe/mobile-view.png)
 
-![Wireframe](./read-me-images/wireframe/start-page.png)
+![Wireframe start page](./read-me-images/wireframe/start-page.png)
 
-![Wireframe](./read-me-images/wireframe/class-selection.png)
+![Wireframe class selection](./read-me-images/wireframe/class-selection.png)
 
-![Wireframe](./read-me-images/wireframe/fighting-sequenz.png)
+![Wireframe fighting sequenz](./read-me-images/wireframe/fighting-sequenz.png)
 
-![Wireframe](./read-me-images/wireframe/fighting-reward.png)
+![Wireframe fighting reward](./read-me-images/wireframe/fighting-reward.png)
 
-![Wireframe](./read-me-images/wireframe/continue-sequenz.png)
+![Wireframe continue sequenz](./read-me-images/wireframe/continue-sequenz.png)
 
-![Wireframe](./read-me-images/wireframe/abilitys.png)
+![Wireframe abilitys](./read-me-images/wireframe/abilitys.png)
 
-![Wireframe](./read-me-images/wireframe/attack-style.png)
+![Wireframe attack style](./read-me-images/wireframe/attack-style.png)
 
-![Wireframe](./read-me-images/wireframe/character-stats.png)
+![Wireframe character stats](./read-me-images/wireframe/character-stats.png)
 
-![Wireframe](./read-me-images/wireframe/inventory.png)
+![Wireframe inventory](./read-me-images/wireframe/inventory.png)
 
-![Wireframe](./read-me-images/wireframe/evolution.png)
+![Wireframe evolutions](./read-me-images/wireframe/evolution.png)
 
-![Wireframe](./read-me-images/wireframe/classes-and-evolutions.png)
+![Wireframe classes and evolutions](./read-me-images/wireframe/classes-and-evolutions.png)
 
 Due to the already large scale of the project i waived the additional classes and evolutions
 
@@ -201,27 +201,27 @@ This flowchart outlines the player's journey through the game, from class select
 
 2. Fighting System
 A detailed view of the turn-based fighting mechanics, illustrating how players and monsters interact during battles.
-![Miro general game flow](./read-me-images/miro/fighting-system.jpg)
+![Miro general fighting system](./read-me-images/miro/fighting-system.jpg)
 
 3. Character Base Class
 The core structure for player and monster classes, showing shared attributes such as health, damage, and defense.
-![Miro general game flow](./read-me-images/miro/character-base-class.jpg)
+![Miro general character base classes](./read-me-images/miro/character-base-class.jpg)
 
 4. Item Base Class
 A blueprint for the game's item system, detailing how items influence player stats and interact with the game mechanics.
-![Miro general game flow](./read-me-images/miro/item-base-class.jpg)
+![Miro general item base class](./read-me-images/miro/item-base-class.jpg)
 
 5. Skill Rewards
 This diagram illustrates how players unlock and choose skills during their progression through the game.
-![Miro general game flow](./read-me-images/miro/skill-rewards.jpg)
+![Miro general skill rewards](./read-me-images/miro/skill-rewards.jpg)
 
 6. Required Technologies
 A visualization of the technologies and tools needed to implement various aspects of the game, from design to functionality.
-![Miro general game flow](./read-me-images/miro/needed-technology.jpg)
+![Miro general needed technologys](./read-me-images/miro/needed-technology.jpg)
 
 7. JavaScript Example
 A snapshot of the pseudo-code structure for core functionalities, offering a clear starting point for coding.
-![Miro general game flow](./read-me-images/miro/javascript-example.jpg)
+![Miro general javascript example](./read-me-images/miro/javascript-example.jpg)
 
 This structured approach allowed me to stay organized and focus on the most critical elements of the project. Each step provided a clear roadmap for the development process, ensuring that all game mechanics, visuals, and interactions were cohesive and aligned with the original vision.
 
@@ -230,9 +230,9 @@ This structured approach allowed me to stay organized and focus on the most crit
 
 - **Medieval Aesthetic**:
 
-![Deep Drop reward sequenz](./read-me-images/fonts/font-im-fell-english.png)
+![Im fell english font](./read-me-images/fonts/font-im-fell-english.png)
 
-![Deep Drop reward sequenz](./read-me-images/fonts/font-medieval-sharp.png)
+![Medieval sharp font](./read-me-images/fonts/font-medieval-sharp.png)
 
 
   - Styled with custom fonts (MedievalSharp and IM Fell English) to create a classic and immersive atmosphere.
@@ -254,9 +254,9 @@ This structured approach allowed me to stay organized and focus on the most crit
 
 - **Input Validation**:
 
-  ![alt text](./read-me-images/specific-images/invalid-name-short.png)
+  ![Invalid short name](./read-me-images/specific-images/invalid-name-short.png)
   
-  ![alt text](./read-me-images/specific-images/invalid-name-invalid.png)
+  ![Invalid long name](./read-me-images/specific-images/invalid-name-invalid.png)
 
 
   - Player name inputs are validated to prevent errors and enhance usability.
@@ -380,11 +380,11 @@ The HTML and CSS have been validated using the W3C Validator to ensure complianc
 
 - Script.js Validation:
 
-![W3C css validation ](./read-me-images/w3c-validation/javascript-validation.png)
+![W3C style js validation ](./read-me-images/w3c-validation/javascript-validation.png)
 
 - class-list.js Validation:
   
-![W3C css validation ](./read-me-images/w3c-validation/class-list-validation.png)
+![W3C class list js validation ](./read-me-images/w3c-validation/class-list-validation.png)
 
 
 
