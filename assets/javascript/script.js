@@ -110,10 +110,9 @@ function resetGame() {
  * General functions that are later used to display windows or create needed elements
  */
 
-
-
-
-// Function to display a description box on hover
+/* Function to display a description box on hover
+ *
+ */
 function enableHoverDescriptions() {
     const elements = document.querySelectorAll(".player-menu-display-option"); // Elemente mit Beschreibungen
 
@@ -175,7 +174,9 @@ function enableHoverDescriptions() {
     });
 }
 
-// Enable Bakground music
+/* Enable Bakground music
+ *
+ */
 function playBackgroundMusic() {
     let existingAudio = document.getElementById("background-music");
 
@@ -193,7 +194,9 @@ function playBackgroundMusic() {
     }
 }
 
-
+/* Toggle the music via button
+ *
+ */
 function toggleMusic() {
     const audio = document.getElementById("background-music");
     const musicIcon = document.getElementById("music-icon");
@@ -213,8 +216,9 @@ function toggleMusic() {
     }
 }
 
-
-// Show a loading screen
+/* Show a loading screen
+ *
+ */
 function showLoadingScreen() {
     const loadingScreen = document.getElementById("loading-screen");
 
@@ -225,7 +229,10 @@ function showLoadingScreen() {
     }, 1000);
 }
 
-// Display a confirmation window for user choice
+/* Display a confirmation window for user choice
+*
+
+*/
 function displayUserChoiceConfirmation() {
     const confirmWindow = document.createElement("div");
     confirmWindow.classList.add("confirm-window"); // Add a CSS class for styling
@@ -253,7 +260,9 @@ function displayUserChoiceConfirmation() {
     displayBox.appendChild(confirmWindow); // Display the confirmation window
 }
 
-// Display a tutorial window
+/* Display a tutorial window
+ *
+ */
 function displayTutorial() {
     const tutorialContainer = document.createElement("div");
     tutorialContainer.classList.add("tutorial-window"); // Add a CSS class for the tutorial window
@@ -347,13 +356,18 @@ function displayTutorial() {
     // Initialize the tutorial with the first step
     updateTutorial(currentStep);
 }
-// Toggle Flexbox display for a given window
+
+/* Toggle Flexbox display for a given window
+ *
+ */
 function toggleFlexbox(displayWindow, toggleType, detoggleType) {
     displayWindow.classList.toggle(toggleType); // Add or remove the toggleType class
     displayWindow.classList.toggle(detoggleType); // Add or remove the detoggleType class
 }
 
-// Create and display items dynamically
+/* Create and display items dynamically
+ *
+ */
 function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
     const displayedItem = document.createElement(tagType); // Create an HTML element
     displayedItem.classList.add(...classAttribute); // Add specified classes
@@ -364,7 +378,9 @@ function displayItems(tagType, innerText, displayPlace, ...classAttribute) {
     displayPlace.appendChild(displayedItem); // Append the element to the given display place
 }
 
-// Remove all elements of a specific class
+/* Remove all elements of a specific class
+ *
+ */
 function removeItems(classItem) {
     const removableItems = document.getElementsByClassName(classItem); // Select all elements with the specified class
     while (removableItems.length > 0) {
@@ -372,7 +388,9 @@ function removeItems(classItem) {
     }
 }
 
-// Add multiple functions to all elements of a target class
+/* Add multiple functions to all elements of a target class
+ *
+ */
 function addFunction(targetClass, ...targetFunctions) {
     const targetedItems = document.getElementsByClassName(targetClass); // Select elements with the target class
     for (let item = 0; item < targetedItems.length; item++) {
@@ -382,7 +400,9 @@ function addFunction(targetClass, ...targetFunctions) {
     }
 }
 
-// Create a reusable close button
+/* Create a reusable close button
+ *
+ */
 function createCloseButton() {
     const closeButton = document.createElement("button"); // Create a button element
     closeButton.textContent = "X"; // Set the button text
@@ -392,12 +412,17 @@ function createCloseButton() {
     return closeButton; // Return the close button
 }
 
-// Close all open menus
+/* Close all open menus
+ *
+ */
 function closeAllMenus() {
     const openMenus = document.querySelectorAll(".player-menu-display"); // Select all open menus
     openMenus.forEach(menu => menu.remove()); // Remove each menu
 }
 
+/* Adds a label for player attribute menu
+ *
+ */
 function addStat(icon, label, value) {
     const statItem = document.createElement("li"); // Create a list item
     statItem.classList.add("stat-item"); // Add a CSS class
@@ -415,7 +440,9 @@ function addStat(icon, label, value) {
     statsList.appendChild(statItem); // Append the list item to the stats list
 }
 
-// Display player statistics in a menu
+/* Display player statistics in a menu
+ *
+ */
 function displayPlayerStats(player) {
     const statsContainer = document.createElement("div"); // Create a container for stats
     statsContainer.classList.add("stats-container"); // Add a CSS class
@@ -440,7 +467,9 @@ function displayPlayerStats(player) {
     menuContainer.appendChild(statsContainer); // Append the stats container to the menu
 }
 
-// Display the player's menu with a title and content
+/* Display the player's menu with a title and content
+ *
+ */
 function displayPlayerMenu(menuTitle, itemContent) {
     closeAllMenus(); // Close any open menus
 
@@ -458,7 +487,10 @@ function displayPlayerMenu(menuTitle, itemContent) {
 
     displayPLayerMenuItems(itemContent, menuContainer); // Display the menu items
 }
-// Display player menu for attributes
+
+/* Display player menu for attributes
+ *
+ */
 function displayPlayerMenuAttributes(menuTitle) {
     closeAllMenus(); // Close any open menus
 
@@ -477,7 +509,9 @@ function displayPlayerMenuAttributes(menuTitle) {
     displayPlayerStats(player); // Display the player's stats
 }
 
-// Display items in the player menu
+/* Display items in the player menu
+ *
+ */
 function displayPLayerMenuItems(itemContent, appendBox) {
     if (itemContent.length === 0) {
         const text = document.createElement("p");
@@ -590,7 +624,10 @@ function displayPLayerMenuItems(itemContent, appendBox) {
     });
     enableHoverDescriptions()
 }
-// Activate the selected fighting style
+
+/* Activate the selected fighting style
+ *
+ */
 function activateFightingStyle(style) {
     if (playerActiveFightingStyle) {
         resetFightingStyleEffects(playerActiveFightingStyle); // Reset the effects of the current style
@@ -602,7 +639,9 @@ function activateFightingStyle(style) {
     return playerActiveFightingStyle;
 }
 
-// Reset the effects of a fighting style
+/* Reset the effects of a fighting style
+ *
+ */
 function resetFightingStyleEffects(style) {
     if (!style) return;
 
@@ -624,7 +663,9 @@ function resetFightingStyleEffects(style) {
     }
 }
 
-// Select the player class and initialize stats and skills
+/* Select the player class and initialize stats and skills
+ *
+ */
 function selectClass(classOption) {
     if (classOption.name === "Knight") {
         player = new Character("Knight", 180, 180, 10, 1500, 15, 5, 10); // Knight stats
@@ -638,7 +679,9 @@ function selectClass(classOption) {
     }
 }
 
-// Select and apply a reward to the player
+/* Select and apply a reward to the player
+ *
+ */
 function selectReward(reward, player) {
     if (reward.type === "Item") {
         playerAvailableItems.push(reward); // Add item to available items
@@ -668,7 +711,9 @@ function selectReward(reward, player) {
     }
 }
 
-// Validate player input on the first page
+/* Validate player input on the first page
+ *
+ */
 function validateInput() {
     const pattern = /^[a-zA-Z0-9]+$/; // Allow only alphanumeric characters
 
@@ -703,7 +748,10 @@ function validateInput() {
         goToClassChoice(); // Proceed to class choice
     }
 }
-// Navigate to the class choice screen
+
+/* Navigate to the class choice screen
+ *
+ */
 function goToClassChoice() {
     showLoadingScreen(); // Display a loading screen for 3 seconds
     removeItems("start-item"); // Remove items with the "start-item" class
@@ -770,7 +818,10 @@ function goToClassChoice() {
         itemBox.appendChild(classContainer);
     });
 }
-// Navigate to the reward sequence
+
+/* Navigate to the reward sequence
+ *
+ */
 function goToRewardSequenz() {
     showLoadingScreen(); // Display a loading screen for 3 seconds
 
@@ -888,7 +939,10 @@ function goToRewardSequenz() {
         }, 1000);
     });
 }
-// Navigate to the fight sequence
+
+/* Navigate to the fight sequence
+ *
+ */
 function goToFightSequenz(hideItem) {
     removeItems(hideItem); // Remove the specified items from the display
 
@@ -944,7 +998,9 @@ function goToFightSequenz(hideItem) {
     }
 }
 
-// Navigate to the continue screen
+/* Navigate to the continue screen
+ *
+ */
 function goToContinueScreen() {
     removeItems("reward-item"); // Remove reward items from the display
 
@@ -984,7 +1040,10 @@ function goToContinueScreen() {
         }
     });
 }
-// Navigate to the losing screen
+
+/* Navigate to the losing screen
+ *
+ */
 function goToLosingScreen() {
     displayBox.innerHTML = ""; // Clear the display box content
     buttonBox.innerHTML = ""; // Clear the button box content
@@ -1016,7 +1075,9 @@ function goToLosingScreen() {
     buttonBox.appendChild(resetButton); // Append the button to the button box
 }
 
-// Navigate to the winning screen
+/* Navigate to the winning screen
+ *
+ */
 function goToWinningScreen() {
     displayBox.innerHTML = ""; // Clear the display box content
     buttonBox.innerHTML = ""; // Clear the button box content

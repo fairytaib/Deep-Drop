@@ -215,7 +215,9 @@ function targetedWeakness(enemy) {
     }
 }
 
-// Skill function for Repair Protocol
+/* Skill function for Repair Protocol
+ *
+ */
 function repairProtocol(player) {
     // Save the original dodge function
     const originalDodge = player.dodge.bind(player);
@@ -232,7 +234,6 @@ function repairProtocol(player) {
         return dodged; // Return dodge result
     };
 }
-
 
 // List of universal skills available to all character classes
 export const universalSkills = [
@@ -265,28 +266,35 @@ export const universalSkills = [
     )
 ];
 
-// Skill function for Longshot - increases damage but reduces attack speed
+/* Skill function for Longshot - increases damage but reduces attack speed
+ *
+ */
 function longshot(player) {
     player.damage *= 2;
     player.attackSpeed *= 0.5;
 }
 
-// Skill function for Bloody Determination - increases damage when HP is low
+/* Skill function for Bloody Determination - increases damage when HP is low
+ *
+ */
 function bloodyDetermination(player) {
     if (player.health <= player.maxHealth * 0.25) {
         player.damage *= 1.15; // Increases damage by 15%
     }
 }
 
-// Skill function for Path of Balance - boosts attack and defense when HP is high
+/* Skill function for Path of Balance - boosts attack and defense when HP is high
+ *
+ */
 function pathOfBalance(player) {
     if (player.health >= (player.maxHealth * 0.75)) {
         player.damage *= 1.1;
     }
 }
 
-// Fighting System
-// Activate skills for the player
+/* Fighting System
+ * Activate skills for the player
+ */
 export function activateSkills(player) {
     playerAvailableSkills.forEach(skill => {
         if (skill.effect) {
@@ -301,7 +309,10 @@ monsterAttackSound.volume = 0.25;
 
 export const playerAttackSound = new Audio("assets/audio/soft-kick.mp3");
 playerAttackSound.volume = 0.25;
-// Function to handle the fight between player and monster
+
+/* Function to handle the fight between player and monster
+ *
+ */
 export function fight(player, monster, onFightEnd, onDefeat) {
     let isGameOver = false; // Track if the fight has ended
 
@@ -359,7 +370,9 @@ export function fight(player, monster, onFightEnd, onDefeat) {
     setTimeout(monsterAttackTurn, monster.attackSpeed);
 }
 
-// Function to update the player's and monster's health display in the UI
+/* Function to update the player's and monster's health display in the UI
+ *
+ */
 function updateHealthDisplay(player, monster) {
     const playerHealth = document.getElementById("player-hp");
     const monsterHealth = document.getElementById("monster-hp");
