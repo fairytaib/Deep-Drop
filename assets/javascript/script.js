@@ -976,7 +976,7 @@ function goToLosingScreen() {
     const resetButton = document.createElement("button");
     resetButton.classList.add("text-font", "end-item"); // Add CSS classes
     resetButton.innerText = "Restart the game?"; // Set the button text
-    resetButton.setAttribute("aria-label", `Restart the game?`)
+    resetButton.setAttribute("aria-label", `Go back to menu?`)
     resetButton.addEventListener("click", () => {
         location.reload(); // Reload the page to restart the game
     });
@@ -1008,7 +1008,7 @@ function goToWinningScreen() {
     const resetButton = document.createElement("button");
     resetButton.classList.add("text-font", "end-item"); // Add CSS classes
     resetButton.innerText = "Restart the game?"; // Set the button text
-    resetButton.setAttribute("aria-label", `Restart the game?`)
+    resetButton.setAttribute("aria-label", `Go back to menu?`)
     resetButton.addEventListener("click", () => {
         location.reload(); // Reload the page to restart the game
     });
