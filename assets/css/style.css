@@ -2,12 +2,18 @@
 
 /* Root variables for colors, fonts, and themes */
 :root {
-    --title-font: "MedievalSharp", cursive; /* Font for titles */
-    --text-font: "IM Fell English", serif; /* Font for general text */
-    --background: #3a3a3a; /* General background color */
-    --character-background: #3a3a3a; /* Background color for characters */
-    --active-button-color: #771104; /* Color for active buttons */
-    --tutorial-button-color: #1a76d2; /* Color for tutorial buttons */
+    --title-font: "MedievalSharp", cursive;
+    /* Font for titles */
+    --text-font: "IM Fell English", serif;
+    /* Font for general text */
+    --background: #3a3a3a;
+    /* General background color */
+    --character-background: #3a3a3a;
+    /* Background color for characters */
+    --active-button-color: #771104;
+    /* Color for active buttons */
+    --tutorial-button-color: #1a76d2;
+    /* Color for tutorial buttons */
 }
 
 /* Global reset to remove default margins, paddings, and set box-sizing */
@@ -19,11 +25,13 @@
 
 /* Start Page and General Design */
 body {
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
+    /* Full viewport height */
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url("../images/background/background-three.webp") no-repeat center center / cover; /* Background image */
+    background: url("../images/background/background-three.webp") no-repeat center center / cover;
+    /* Background image */
 }
 
 /* Title font style */
@@ -39,53 +47,78 @@ body {
 /* Button styling */
 button {
     font-size: 1rem;
-    background-color: var(--background); /* Uses the defined background color */
-    color: #fff; /* White text color */
-    border: 2px solid #2b2b2b; /* Dark border */
-    border-radius: 5px; /* Rounded edges */
-    padding: 0.125rem 1.25rem; /* Padding for button spacing */
-    text-shadow: 1px 1px 2px #000; /* Adds a shadow effect to text */
-    cursor: pointer; /* Shows pointer cursor on hover */
-    transition: all 0.3s ease; /* Smooth transition effect */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+    background-color: var(--background);
+    /* Uses the defined background color */
+    color: #fff;
+    /* White text color */
+    border: 2px solid #2b2b2b;
+    /* Dark border */
+    border-radius: 5px;
+    /* Rounded edges */
+    padding: 0.125rem 1.25rem;
+    /* Padding for button spacing */
+    text-shadow: 1px 1px 2px #000;
+    /* Adds a shadow effect to text */
+    cursor: pointer;
+    /* Shows pointer cursor on hover */
+    transition: all 0.3s ease;
+    /* Smooth transition effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    /* Shadow effect for depth */
 }
 
 /* Button hover effect */
 button:hover {
     /* background-color: #4a4e44;  Previous hover background color */
-    color: #e5e5e5; /* Lighter text color on hover */
-    border-color: #67a667; /* Green border on hover */
-    transform: scale(1.05); /* Slightly enlarges button */
+    color: #e5e5e5;
+    /* Lighter text color on hover */
+    border-color: #67a667;
+    /* Green border on hover */
+    transform: scale(1.05);
+    /* Slightly enlarges button */
 }
 
 /* Button click (active) effect */
 button:active {
-    transform: scale(0.8); /* Shrinks button when clicked */
-    background-color: #2e2e2e; /* Darker background when pressed */
+    transform: scale(0.8);
+    /* Shrinks button when clicked */
+    background-color: #2e2e2e;
+    /* Darker background when pressed */
 }
 
 /* Outer container box */
 .outer-box {
     display: flex;
-    flex-direction: column; /* Aligns items vertically */
-    justify-content: space-around; /* Spacing between items */
+    flex-direction: column;
+    /* Aligns items vertically */
+    justify-content: space-around;
+    /* Spacing between items */
     align-items: center;
-    width: 31.25rem; /* Fixed width */
-    height: 36.25rem; /* Fixed height */
-    border: 1px solid black; /* Black border */
-    background-color: #f5f5dcf2; /* Light beige background */
-    padding: 0 0 1.25rem 0; /* Padding at the bottom */
+    width: 31.25rem;
+    /* Fixed width */
+    height: 36.25rem;
+    /* Fixed height */
+    border: 1px solid black;
+    /* Black border */
+    background-color: #f5f5dcf2;
+    /* Light beige background */
+    padding: 0 0 1.25rem 0;
+    /* Padding at the bottom */
 }
 
 /* Title box for layout organization */
 .title-box {
     display: flex;
-    justify-content: space-between; /* Evenly spaces elements */
+    justify-content: space-between;
+    /* Evenly spaces elements */
     align-items: center;
     width: 90%;
-    gap: 20%; /* Adds spacing between elements */
-    font-family: var(--title-font); /* Uses the title font */
-    padding: 0.75rem 0; /* Adds padding */
+    gap: 20%;
+    /* Adds spacing between elements */
+    font-family: var(--title-font);
+    /* Uses the title font */
+    padding: 0.75rem 0;
+    /* Adds padding */
 }
 
 /* Centered item within the title box */
@@ -93,8 +126,10 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    white-space: nowrap; /* Prevents text from wrapping */
+    white-space: nowrap;
+    /* Prevents text from wrapping */
 }
+
 /* Loading Screen - A full-screen overlay for loading animations */
 #loading-screen {
     position: absolute;
@@ -102,16 +137,21 @@ button:active {
     left: 50%;
     width: 97%;
     height: 97%;
-    background-color: rgba(0, 0, 0, 0.99); /* Almost fully black background */
+    background-color: rgba(0, 0, 0, 0.99);
+    /* Almost fully black background */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensures it appears above other elements */
+    z-index: 1000;
+    /* Ensures it appears above other elements */
     font-size: 2rem;
     color: white;
-    font-family: var(--title-font); /* Uses title font */
-    transform: translate(-50%, -50%); /* Centers the loading screen */
-    opacity: 0; /* Initially hidden */
+    font-family: var(--title-font);
+    /* Uses title font */
+    transform: translate(-50%, -50%);
+    /* Centers the loading screen */
+    opacity: 0;
+    /* Initially hidden */
     visibility: hidden;
 }
 
@@ -124,19 +164,23 @@ button:active {
 /* Start Items - Input field and start button */
 #player-name-input,
 #start-button {
-    margin: 0.125rem; /* Adds spacing between elements */
+    margin: 0.125rem;
+    /* Adds spacing between elements */
 }
 
 /* Start button styling */
 #start-button {
-    background-color: var(--active-button-color); /* Uses defined button color */
-    text-shadow: none; /* Removes text shadow for better readability */
+    background-color: var(--active-button-color);
+    /* Uses defined button color */
+    text-shadow: none;
+    /* Removes text shadow for better readability */
 }
 
 /* Wrapper for input fields to center them */
 .input-wrapper {
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: column;
+    /* Stack elements vertically */
     align-items: center;
     justify-content: center;
     height: 80%;
@@ -154,8 +198,10 @@ button:active {
     width: 100%;
     padding: 5px;
     font-size: 0.8rem;
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 5px; /* Slightly rounded edges */
+    border: 1px solid #ccc;
+    /* Light gray border */
+    border-radius: 5px;
+    /* Slightly rounded edges */
 }
 
 /* Placeholder text color, adjustable via CSS variable */
@@ -188,8 +234,10 @@ button:active {
     border: 1px solid black;
     width: 90%;
     height: 60%;
-    gap: 1.5rem; /* Adds spacing between items */
+    gap: 1.5rem;
+    /* Adds spacing between items */
 }
+
 /* Button Display Section */
 /* General styling for buttons and their container */
 
@@ -198,7 +246,8 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem; /* Adds spacing between buttons */
+    gap: 1rem;
+    /* Adds spacing between buttons */
     border: 1px solid black;
     width: 90%;
     height: 25%;
@@ -210,7 +259,8 @@ button:active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem; /* Smaller spacing for column layout */
+    gap: 0.5rem;
+    /* Smaller spacing for column layout */
     border: 1px solid black;
     width: 90%;
     height: 25%;
@@ -218,7 +268,8 @@ button:active {
 
 /* General button box styling */
 .button-box {
-    padding: 0.3rem; /* Adds padding around the button box */
+    padding: 0.3rem;
+    /* Adds padding around the button box */
 }
 
 /* Display Section with JavaScript Manipulation */
@@ -226,13 +277,20 @@ button:active {
 
 /* Close button for pop-ups or menus */
 .close-button {
-    background-color: red; /* Red background for visibility */
-    color: white; /* White text for contrast */
-    border: none; /* Removes default border */
-    padding: 0.3rem 0.6rem; /* Adds padding for better clickability */
-    font-size: 1rem; /* Standard button font size */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    border-radius: 5px; /* Slightly rounded edges */
+    background-color: red;
+    /* Red background for visibility */
+    color: white;
+    /* White text for contrast */
+    border: none;
+    /* Removes default border */
+    padding: 0.3rem 0.6rem;
+    /* Adds padding for better clickability */
+    font-size: 1rem;
+    /* Standard button font size */
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
+    border-radius: 5px;
+    /* Slightly rounded edges */
     position: absolute;
     top: 0.625rem;
     right: 0.625rem;
@@ -240,7 +298,8 @@ button:active {
 
 /* Close button hover effect */
 .close-button:hover {
-    background-color: darkred; /* Darker red for hover effect */
+    background-color: darkred;
+    /* Darker red for hover effect */
 }
 
 /* General styling for player menu and tutorial window */
@@ -248,24 +307,33 @@ button:active {
 .tutorial-window {
     width: 90%;
     height: 90%;
-    padding: 1.25rem; /* Adds internal spacing */
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
-    color: white; /* White text for readability */
-    text-align: center; /* Centers text */
-    border: 2px solid #fff; /* White border for contrast */
-    border-radius: 10px; /* Rounded edges */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Adds shadow for depth */
+    padding: 1.25rem;
+    /* Adds internal spacing */
+    background-color: rgba(0, 0, 0, 0.95);
+    /* Semi-transparent dark background */
+    color: white;
+    /* White text for readability */
+    text-align: center;
+    /* Centers text */
+    border: 2px solid #fff;
+    /* White border for contrast */
+    border-radius: 10px;
+    /* Rounded edges */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    /* Adds shadow for depth */
 
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    gap: 0.625rem; /* Adds spacing between elements */
+    gap: 0.625rem;
+    /* Adds spacing between elements */
 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Centers the element */
+    transform: translate(-50%, -50%);
+    /* Centers the element */
 }
 
 /* Player menu allows scrolling if content overflows */
@@ -277,28 +345,38 @@ button:active {
 /* Display settings for menu items */
 .player-menu-item-display {
     justify-content: space-between;
-    padding: 1.25rem 1.25rem 0.313rem 1.25rem; /* Adds padding around menu items */
+    padding: 1.25rem 1.25rem 0.313rem 1.25rem;
+    /* Adds padding around menu items */
 }
 
 /* Tutorial section */
 
 /* Inner tutorial button inside the game UI */
 #inner-info-button {
-    background-color: var(--tutorial-button-color); /* Uses the defined tutorial button color */
-    text-shadow: none; /* Removes text shadow */
-    font-weight: 400; /* Normal font weight */
+    background-color: var(--tutorial-button-color);
+    /* Uses the defined tutorial button color */
+    text-shadow: none;
+    /* Removes text shadow */
+    font-weight: 400;
+    /* Normal font weight */
 }
 
 /* Information icon used for tutorial or help sections */
 #information-icon {
-    font-size: 1.5rem; /* Increases the size of the info icon */
+    font-size: 1.5rem;
+    /* Increases the size of the info icon */
 }
+
 /* Info Button - Used for tutorial or help sections */
 #info-button {
-    background-color: var(--tutorial-button-color); /* Uses predefined tutorial button color */
-    border: none; /* Removes default border */
-    border-radius: 50%; /* Makes the button circular */
-    cursor: pointer; /* Changes cursor to pointer on hover */
+    background-color: var(--tutorial-button-color);
+    /* Uses predefined tutorial button color */
+    border: none;
+    /* Removes default border */
+    border-radius: 50%;
+    /* Makes the button circular */
+    cursor: pointer;
+    /* Changes cursor to pointer on hover */
     padding: 0;
     margin: 0;
     display: inline-flex;
@@ -308,8 +386,10 @@ button:active {
 
 /* Icon inside the info button */
 #info-button i {
-    font-size: 1.5rem; /* Adjusts icon size */
-    color: inherit; /* Inherits the color from the parent */
+    font-size: 1.5rem;
+    /* Adjusts icon size */
+    color: inherit;
+    /* Inherits the color from the parent */
 }
 
 /* Removes the default outline when the button is focused */
@@ -319,12 +399,14 @@ button:active {
 
 /* Changes icon color when hovered */
 #info-button:hover i {
-    color: #ccc; /* Light gray color for hover effect */
+    color: #ccc;
+    /* Light gray color for hover effect */
 }
 
 /* Tutorial Window Styling */
 .tutorial-window {
-    justify-content: space-evenly; /* Distributes content evenly */
+    justify-content: space-evenly;
+    /* Distributes content evenly */
 }
 
 /* Container for tutorial navigation buttons */
@@ -332,7 +414,8 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem; /* Adds spacing between buttons */
+    gap: 1rem;
+    /* Adds spacing between buttons */
 }
 
 /* Styling for next/previous tutorial slide buttons */
@@ -341,23 +424,31 @@ button:active {
     min-height: 2.4rem;
     font-size: 1.2rem;
     text-align: center;
-    border-radius: 50%; /* Circular buttons */
+    border-radius: 50%;
+    /* Circular buttons */
     padding: 0;
 }
 
 /* Reset Button - Used for restarting the game */
 #restart-button {
-    background-color: #DAA520; /* Gold color */
-    color: #000; /* Black text for contrast */
-    border: 2px solid #8B7500; /* Dark gold border */
-    box-shadow: 0 0 5px rgba(218, 165, 32, 0.7); /* Soft glow effect */
-    transition: transform 0.2s, box-shadow 0.2s; /* Smooth scaling and shadow effect */
+    background-color: #DAA520;
+    /* Gold color */
+    color: #000;
+    /* Black text for contrast */
+    border: 2px solid #8B7500;
+    /* Dark gold border */
+    box-shadow: 0 0 5px rgba(218, 165, 32, 0.7);
+    /* Soft glow effect */
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Smooth scaling and shadow effect */
 }
 
 /* Reset Button Hover Effect */
 #restart-button:hover {
-    transform: scale(1.1); /* Slightly enlarges the button */
-    box-shadow: 0 0 15px rgba(218, 165, 32, 1); /* Stronger glow effect */
+    transform: scale(1.1);
+    /* Slightly enlarges the button */
+    box-shadow: 0 0 15px rgba(218, 165, 32, 1);
+    /* Stronger glow effect */
 }
 
 /* Confirmation Window - Displayed when asking the user for confirmation */
@@ -365,70 +456,88 @@ button:active {
     width: 80%;
     height: 80%;
     padding: 1.25rem;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark, semi-transparent background */
-    color: white; /* White text for contrast */
-    text-align: center; /* Centers text */
-    border: 2px solid #fff; /* White border */
-    border-radius: 10px; /* Rounded edges */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Adds depth with shadow */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Dark, semi-transparent background */
+    color: white;
+    /* White text for contrast */
+    text-align: center;
+    /* Centers text */
+    border: 2px solid #fff;
+    /* White border */
+    border-radius: 10px;
+    /* Rounded edges */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    /* Adds depth with shadow */
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.625rem; /* Adds spacing between elements */
+    gap: 0.625rem;
+    /* Adds spacing between elements */
 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Centers the confirmation window */
+    transform: translate(-50%, -50%);
+    /* Centers the confirmation window */
 }
 
 /* Buttons inside the confirmation window */
 .no-reset-button,
 .yes-reset-button {
-    width: 60%; /* Sets the width of confirmation buttons */
+    width: 60%;
+    /* Sets the width of confirmation buttons */
 }
 
 /* Character Selection - Styling for class selection buttons */
 .class-button {
-    background-color: var(--active-button-color); /* Uses predefined active button color */
+    background-color: var(--active-button-color);
+    /* Uses predefined active button color */
 }
+
 /* Fighting Sequence - Display container for the battle */
 .fight-sequenz-display {
     width: 80%;
     height: 80%;
-    border: 1px solid black; /* Black border for visibility */
+    border: 1px solid black;
+    /* Black border for visibility */
 }
 
 /* Monster Image - Styling for the displayed enemy */
 .monster-image {
     width: 80%;
     height: 80%;
-    border-radius: 5%; /* Slightly rounded corners */
+    border-radius: 5%;
+    /* Slightly rounded corners */
 }
 
 /* Player Menu - Contains player-related options */
 /* Inside Player Menu */
 .player-menu-display-option {
     display: flex;
-    flex-wrap: nowrap; /* Prevents wrapping of elements */
+    flex-wrap: nowrap;
+    /* Prevents wrapping of elements */
     justify-content: center;
     align-items: center;
-    font-size: 0.5rem; /* Small font size */
-    gap: 0.8rem; /* Spacing between elements */
+    font-size: 0.5rem;
+    /* Small font size */
+    gap: 0.8rem;
+    /* Spacing between elements */
 }
 
 /* Button inside the player menu window */
 .player-inner-menu-button {
-    margin-bottom: 10px; /* Adds spacing below */
+    margin-bottom: 10px;
+    /* Adds spacing below */
 }
 
 /* Styling for each selectable item inside the player menu */
 .player-menu-item {
     font-size: 1rem;
     position: relative;
-    cursor: pointer; /* Indicates interactivity */
+    cursor: pointer;
+    /* Indicates interactivity */
 }
 
 /* Hover description box for player menu items */
@@ -436,7 +545,8 @@ button:active {
     font-family: var(--text-font);
     font-size: 1rem;
     max-width: 200px;
-    word-wrap: break-word; /* Ensures long words do not overflow */
+    word-wrap: break-word;
+    /* Ensures long words do not overflow */
 }
 
 /* Player Menu Buttons */
@@ -463,7 +573,8 @@ button:active {
 
 /* Attributes Menu - List of player stats */
 .stats-list {
-    list-style-type: none; /* Removes bullet points */
+    list-style-type: none;
+    /* Removes bullet points */
 }
 
 /* Item Menu - Display box for equipped items */
@@ -483,7 +594,8 @@ button:active {
 
 /* Reward Button - Styling for selecting a reward */
 .reward-button {
-    background-color: #DAA520; /* Gold color for a premium feel */
+    background-color: #DAA520;
+    /* Gold color for a premium feel */
     color: black;
     text-shadow: none;
     font-weight: 600;
