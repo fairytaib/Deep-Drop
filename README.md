@@ -351,6 +351,10 @@ Tested on:
 
 - Verified consistent performance on a range of devices and screen sizes, including mobile.
 
+![responsive view mobile](read-me-images/responsive-view/responsive-view-one.png)
+
+![responsive view mobile](read-me-images/responsive-view/resonsive-view-two.png)
+
 ### Lighthouse performance rating
 
 The website was evaluated using Google's Lighthouse extension and received the following performance ratings on all pages: 
