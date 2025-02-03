@@ -349,7 +349,7 @@ Tested on:
 
 - Internet Explorer
 
-  ![Google Chrome view](read-me-images/web-browser-view/google-chrome-view.png)
+  ![Internet Explorer view](read-me-images/web-browser-view/google-chrome-view.png)
 
 ### Responsiveness
 
