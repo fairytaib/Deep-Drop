@@ -8,6 +8,8 @@ import {
     assassinSkills,
     rangerSkills,
     universalSkills,
+    monsterAttackSound,
+    playerAttackSound,
     fight,
     playerAvailableFightingStyle,
     playerAvailableItems,
@@ -185,6 +187,7 @@ function playBackgroundMusic() {
         audio.autoplay = true;
         audio.volume = 0.25;
 
+
         document.body.appendChild(audio);
         audio.play().catch(error => console.error("Error to play music:", error));
     }
@@ -198,9 +201,13 @@ function toggleMusic() {
     if (audio) {
         if (audio.muted) {
             audio.volume = 0;
+            monsterAttackSound.volume = 0;
+            playerAttackSound.volume = 0;
             musicIcon.classList.replace("bx-volume-mute", "bx-volume-full");
         } else {
             audio.volume = 0.25;
+            monsterAttackSound.volume = 0.25;
+            playerAttackSound.volume = 0.25;
             musicIcon.classList.replace("bx-volume-full", "bx-volume-mute");
         }
     }
