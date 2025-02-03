@@ -344,8 +344,12 @@ To deploy the project via GitHub Pages:
 Tested on:
 
 - Google Chrome
-- Mozilla Firefox
-- Microsoft Edge
+
+  ![Google Chrome view](read-me-images/web-browser-view/google-chrome-view.png)
+
+- Internet Explorer
+
+  ![Google Chrome view](read-me-images/web-browser-view/google-chrome-view.png)
 
 ### Responsiveness
 
