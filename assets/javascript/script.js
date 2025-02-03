@@ -370,6 +370,23 @@ function closeAllMenus() {
     openMenus.forEach(menu => menu.remove()); // Remove each menu
 }
 
+function addStat(icon, label, value) {
+    const statItem = document.createElement("li"); // Create a list item
+    statItem.classList.add("stat-item"); // Add a CSS class
+
+    const statIcon = document.createElement("span"); // Create a span for the icon
+    statIcon.innerHTML = icon; // Set the icon
+    statIcon.classList.add("stat-icon"); // Add a CSS class
+
+    const statText = document.createElement("span"); // Create a span for the text
+    statText.innerText = `${label}: ${value}`; // Set the label and value
+    statText.classList.add("stat-text"); // Add a CSS class
+
+    statItem.appendChild(statIcon); // Append the icon to the list item
+    statItem.appendChild(statText); // Append the text to the list item
+    statsList.appendChild(statItem); // Append the list item to the stats list
+}
+
 // Display player statistics in a menu
 function displayPlayerStats(player) {
     const statsContainer = document.createElement("div"); // Create a container for stats
@@ -379,22 +396,7 @@ function displayPlayerStats(player) {
     statsList.classList.add("stats-list"); // Add a CSS class
 
     // Helper function to add a stat to the list
-    function addStat(icon, label, value) {
-        const statItem = document.createElement("li"); // Create a list item
-        statItem.classList.add("stat-item"); // Add a CSS class
 
-        const statIcon = document.createElement("span"); // Create a span for the icon
-        statIcon.innerHTML = icon; // Set the icon
-        statIcon.classList.add("stat-icon"); // Add a CSS class
-
-        const statText = document.createElement("span"); // Create a span for the text
-        statText.innerText = `${label}: ${value}`; // Set the label and value
-        statText.classList.add("stat-text"); // Add a CSS class
-
-        statItem.appendChild(statIcon); // Append the icon to the list item
-        statItem.appendChild(statText); // Append the text to the list item
-        statsList.appendChild(statItem); // Append the list item to the stats list
-    }
 
     // Add player stats to the list
     addStat("\u2764", "HP", Math.floor(player.health)); // Health
