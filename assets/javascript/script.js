@@ -108,6 +108,9 @@ function resetGame() {
  * General functions that are later used to display windows or create needed elements
  */
 
+
+
+
 // Function to display a description box on hover
 function enableHoverDescriptions() {
     const elements = document.querySelectorAll(".player-menu-display-option"); // Elemente mit Beschreibungen
@@ -172,17 +175,35 @@ function enableHoverDescriptions() {
 
 // Enable Bakground music
 function playBackgroundMusic() {
-    const audio = document.createElement("audio");
-    audio.id = "background-music";
-    audio.src = "assets/audio/relaxing-green-nature.mp3";
-    audio.loop = true;
-    audio.autoplay = true;
-    audio.volume = 0.25;
+    let existingAudio = document.getElementById("background-music");
 
-    document.body.appendChild(audio);
+    if (!existingAudio) {
+        const audio = document.createElement("audio");
+        audio.id = "background-music";
+        audio.src = "assets/audio/relaxing-green-nature.mp3";
+        audio.loop = true;
+        audio.autoplay = true;
+        audio.volume = 0.25;
 
-    audio.play()
-        .catch(error => console.error("Fehler beim Abspielen der Musik:", error));
+        document.body.appendChild(audio);
+        audio.play().catch(error => console.error("Error to play music:", error));
+    }
+}
+
+
+function toggleMusic() {
+    const audio = document.getElementById("background-music");
+    const musicIcon = document.getElementById("music-icon");
+
+    if (audio) {
+        if (audio.muted) {
+            audio.volume = 0;
+            musicIcon.classList.replace("bx-volume-mute", "bx-volume-full");
+        } else {
+            audio.volume = 0.25;
+            musicIcon.classList.replace("bx-volume-full", "bx-volume-mute");
+        }
+    }
 }
 
 
@@ -663,6 +684,9 @@ function validateInput() {
         const restartButton = document.getElementById("restart-button");
         restartButton.classList.remove("hidden"); // Show the restart button
 
+        const musicButton = document.getElementById("toggle-music-button")
+        musicButton.classList.remove("hidden")
+
         const outerBoxTitle = document.getElementById("title-display");
         outerBoxTitle.classList.add("hidden"); // Hide the title display
 
@@ -1028,3 +1052,6 @@ document.getElementById("info-button").addEventListener("click", displayTutorial
 
 // Apply functionality to the inner info button inside the display box
 document.getElementById("inner-info-button").addEventListener("click", displayTutorial);
+
+//Toggle Music
+document.getElementById("toggle-music-button").addEventListener("click", toggleMusic);
