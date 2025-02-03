@@ -18,7 +18,7 @@ import {
 } from "./class-list.js"; // Importing various classes, lists, and utilities from an external module
 
 // Keep track of the current round
-let roundCounter = 0; // Counter for the current game round
+let roundCounter = 8; // Counter for the current game round
 
 // Decide the monster that is displayed in Round x
 let monster = monsterList[roundCounter]; // Selecting the monster based on the round counter
