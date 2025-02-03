@@ -130,6 +130,24 @@ button:active {
     /* Prevents text from wrapping */
 }
 
+#right-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+#toggle-music-button {
+    font-size: 0.9rem;
+    padding: 0.2rem;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 50%;
+}
+
 /* Loading Screen - A full-screen overlay for loading animations */
 #loading-screen {
     position: absolute;
@@ -716,7 +734,7 @@ button {
 
 /* Hide Items */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .disabled {
