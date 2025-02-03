@@ -191,7 +191,7 @@ To begin the project, I created wireframes using Balsamiq. These wireframes allo
 
 Due to the already large scale of the project i waived the additional classes and evolutions
 
-### Miro
+### Flowchart
 
 After the wireframe stage, I used Miro to further refine the game's structure and flow. Miro served as a dynamic tool for visualizing both the game's mechanics and its underlying code. The following diagrams were created to map out the game's logic and design:
 
@@ -273,7 +273,12 @@ This structured approach allowed me to stay organized and focus on the most crit
 - **Version Control**:
   - Git: Used for version control to track changes and manage the development process.
   - GitHub: Used as a cloud-based platform to store and share the code repository.
+  - GitHub Pages: Used to deploy the game as a static web application for testing, showcasing, and easy access.
   - Gitpod: Used as an integrated development environment (IDE) to write and edit the code.
+
+- **Other Technology**
+  - Miro: Used for planning and visualizing game structure, creating flowcharts, and collaborating on gameplay mechanics.
+  - Balsamiq Wireframe: Used to create low-fidelity wireframes for UI layout and structure before design implementation.
 
 
 ## Project Structure
